@@ -1,0 +1,77 @@
+class User
+{
+  username;
+  password;
+  type;
+}
+class Administrator
+{
+    isA User;
+public void createEvent(){
+
+}
+public void deleteEvent(){
+
+}
+public void manageContent(){
+
+}
+public void viewUsers(){
+
+}
+public void deleteUsers(){
+
+}
+public void createEventType(){
+
+}
+public void deleteEventType(){
+
+}
+public void viewEventType(){
+
+}
+}
+class Participant
+{
+  isA User;
+public void createAccount(){
+
+}
+public void registerForEvent(){
+
+}
+public void searchByLocation(){
+
+}
+public void searchByType(){
+
+}
+public void searchByName(){
+
+}
+public void searchByDate(){
+
+}
+public void viewEvents(){
+
+}
+}//$?[End_of_model]$?
+
+namespace -;
+
+
+class User
+{
+  position 50 30 109 45;
+}
+
+class Participant
+{
+  position 50 130 109 45;
+}
+
+class Administrator
+{
+  position 50 130 109 45;
+}
