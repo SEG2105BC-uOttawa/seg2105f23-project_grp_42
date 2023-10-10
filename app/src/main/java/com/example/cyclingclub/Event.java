@@ -10,120 +10,119 @@ public class Event {
     public static String location;
     public static String rewards;
 
-    private List<User> users;
+    private List<Administrator> admins;
 
     public Event()
     {
-        users = new ArrayList<User>();
+        admins = new ArrayList<Administrator>();
     }
-    public User getUser(int index)
+    public Administrator getAdmin(int index)
     {
-        User aUser = users.get(index);
-        return aUser;
+        Administrator aAdmin = admins.get(index);
+        return aAdmin;
     }
-    public List<User> getUsers()
+    public List<Administrator> getAdmins()
     {
-        List<User> newUsers = Collections.unmodifiableList(users);
-        return newUsers;
+        List<Administrator> newAdmins = Collections.unmodifiableList(admins);
+        return newAdmins;
     }
-    public int numberOfUsers()
-
+    public int numberOfAdmins()
     {
-        int number = users.size();
+        int number = admins.size();
         return number;
     }
-    public boolean hasUsers()
+    public boolean hasAdmins()
     {
-        boolean has = users.size() > 0;
+        boolean has = admins.size() > 0;
         return has;
     }
 
-    public int indexOfUser(User aUser)
+    public int indexOfAdmin(Administrator aAdmin)
     {
-        int index = users.indexOf(aUser);
+        int index = admins.indexOf(aAdmin);
         return index;
     }
-    public static int minimumNumberOfUsers()
+    public static int minimumNumberOfAdmins()
     {
         return 0;
     }
-    public boolean addUser(User aUser)
+    public boolean addAdmin(Administrator aAdmin)
     {
         boolean wasAdded = false;
-        if (users.contains(aUser)) { return false; }
-        users.add(aUser);
-        if (aUser.indexOfEvent(this) != -1)
+        if (admins.contains(aAdmin)) { return false; }
+        admins.add(aAdmin);
+        if (aAdmin.indexOfEvent(this) != -1)
         {
             wasAdded = true;
         } else
         {
-            wasAdded = aUser.addEvent(this);
+            wasAdded = aAdmin.addEvent(this);
             if (!wasAdded)
             {
-                users.remove(aUser);
+                admins.remove(aAdmin);
             }
         }
         return wasAdded;
     }
-    public boolean removeUser(User aUser)
+    public boolean removeAdmin(Administrator aAdmin)
     {
         boolean wasRemoved = false;
-        if (!users.contains(aUser))
+        if (!admins.contains(aAdmin))
         {
             return wasRemoved;
         }
-        int oldIndex = users.indexOf(aUser);
-        users.remove(oldIndex);
-        if (aUser.indexOfEvent(this) == -1)
+        int oldIndex = admins.indexOf(aAdmin);
+        admins.remove(oldIndex);
+        if (aAdmin.indexOfEvent(this) == -1)
         {
             wasRemoved = true;
         } else
         {
-            wasRemoved = aUser.removeEvent(this);
+            wasRemoved = aAdmin.removeEvent(this);
             if (!wasRemoved)
             {
-                users.add(oldIndex,aUser);
+                admins.add(oldIndex,aAdmin);
             }
         }
         return wasRemoved;
     }
-    public boolean addUserAt(User aUser, int index)
+    public boolean addAdminAt(Administrator aAdmin, int index)
     {
         boolean wasAdded = false;
-        if(addUser(aUser))
+        if(addAdmin(aAdmin))
         {
             if(index < 0 ) { index = 0; }
-            if(index > numberOfUsers()) { index = numberOfUsers() - 1; }
-            users.remove(aUser);
-            users.add(index, aUser);
+            if(index > numberOfAdmins()) { index = numberOfAdmins() - 1; }
+            admins.remove(aAdmin);
+            admins.add(index, aAdmin);
             wasAdded = true;
         }
         return wasAdded;
     }
-    public boolean addOrMoveUserAt(User aUser, int index)
+    public boolean addOrMoveAdminAt(Administrator aAdmin, int index)
     {
         boolean wasAdded = false;
-        if(users.contains(aUser))
+        if(admins.contains(aAdmin))
         {
             if(index < 0 ) { index = 0; }
-            if(index > numberOfUsers()) { index = numberOfUsers() - 1; }
-            users.remove(aUser);
-            users.add(index, aUser);
+            if(index > numberOfAdmins()) { index = numberOfAdmins() - 1; }
+            admins.remove(aAdmin);
+            admins.add(index, aAdmin);
             wasAdded = true;
         }else
         {
-            wasAdded = addUserAt(aUser, index);
+            wasAdded = addAdminAt(aAdmin, index);
         }
         return wasAdded;
     }
 
     public void delete()
     {
-        ArrayList<User> copyOfUsers = new ArrayList<User>(users);
-        users.clear();
-        for(User aUser : copyOfUsers)
+        ArrayList<Administrator> copyOfAdmins = new ArrayList<Administrator>(admins);
+        admins.clear();
+        for(Administrator aAdmin : copyOfAdmins)
         {
-            aUser.removeEvent(this);
+            aAdmin.removeEvent(this);
         }
     }
 }

@@ -1,14 +1,17 @@
 package com.example.cyclingclub;
 
-public class EventOrganizer extends User{
+import java.util.Collections;
+import java.util.List;
 
+public class EventOrganizer extends User{
+    private List<Event> events;
     public void createProfile(){
 
     }
 
-    public Event selectEvents(){
-
-        return ;
+    public List<Event> selectEvents(){
+        List<Event> newEvents = Collections.unmodifiableList(events);
+        return newEvents;
     }
 
 }
