@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">CyclingClub</string>
+    <string name="project_app_name">GCC</string>
+    <string name="sign_in_text">Sign In</string>
+    <string name="register_text">Register</string>
 </resources>
