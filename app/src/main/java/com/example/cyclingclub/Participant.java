@@ -9,18 +9,19 @@ public class Participant extends User {
 
     }
 
-    public void searchByLocation(){
-
+    public String searchByLocation(){
+        return Event.location;
     }
 
-    public void searchByType(){
-
+    public String searchByType(){
+        return Event.type;
     }
-    public void searchByName(){
-
+    public String searchByName(){
+        return Event.name;
     }
-    public void searchByDate(){
+    public String searchByDate(){
 
+        return Event.date;
     }
     public void viewEvents(){
 

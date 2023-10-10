@@ -1,6 +1,6 @@
 package com.example.cyclingclub;
 
-public class CyclingClub {
+public class CyclingClub{
     String name;
     String region;
     String levelOfDifficulty;

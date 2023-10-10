@@ -2,9 +2,9 @@ package com.example.cyclingclub;
 
 public class Event {
 
-    public String name;
-    public String type;
-    public String date;
-    public String location;
-    public String rewards;
+    public static String name;
+    public static String type;
+    public static String date;
+    public static String location;
+    public static String rewards;
 }
