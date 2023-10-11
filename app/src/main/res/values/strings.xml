@@ -7,6 +7,9 @@
     <string name="username_hint">(Username)</string>
     <string name="password_hint">(Password)</string>
     <string name="login_final">Login</string>
+    <string name="insertUsername">Insert Username Here</string>
+    <string name="insertPassword">Insert Password Here</string>
+    <string name="createAccount">Sign Up</string>
 <<<<<<< HEAD
     <string name="invalid_login_credentials">Invalid login credentials</string>
 =======
