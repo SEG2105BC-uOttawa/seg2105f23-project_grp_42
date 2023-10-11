@@ -33,16 +33,16 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
-                android:id="@+id/btnSignin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/sign_in_text" />
+            android:id="@+id/btnLogIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/log_in_text" />
 
         <Button
-                android:id="@+id/btnRegister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/register_text" />
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up_text" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
