@@ -6,108 +6,112 @@ import java.util.List;
 
 public class Administrator extends User{
     private static List<Event> events;
+
     public Administrator(){
         events = new ArrayList<Event>();
     }
+
     public Event getEvent(int index)
     {
-        Event aEvent = events.get(index);
-        return aEvent;
+        return events.get(index);
     }
+
     public static List<Event> getEvents()
     {
-        List<Event> newEvents = Collections.unmodifiableList(events);
-        return newEvents;
+        return Collections.unmodifiableList(events);
     }
+
     public int numberOfEvents()
     {
-        int number = events.size();
-        return number;
+        return events.size();
     }
+
     public boolean hasEvents()
     {
-        boolean has = events.size() > 0;
-        return has;
+        return !events.isEmpty();
     }
-    public int indexOfEvent(Event aEvent)
+
+    public int indexOfEvent(Event event)
     {
-        int index = events.indexOf(aEvent);
-        return index;
+        return events.indexOf(event);
     }
+
     public static int minimumNumberOfEvents()
     {
         return 0;
     }
-    public boolean addEvent(Event aEvent)
+
+    public boolean addEvent(Event event)
     {
         boolean wasAdded = false;
-        if (events.contains(aEvent)) { return false; }
-        events.add(aEvent);
-        if (aEvent.indexOfAdmin(this) != -1)
+        if (events.contains(event)) { return false; }
+        events.add(event);
+        if (event.indexOfAdmin(this) != -1)
         {
             wasAdded = true;
-        }else
-        {
-            wasAdded = aEvent.addAdmin(this);
+        } else {
+            wasAdded = event.addAdmin(this);
             if (!wasAdded)
             {
-                events.remove(aEvent);
+                events.remove(event);
             }
         }
         return wasAdded;
     }
 
-    public boolean removeEvent(Event aEvent)
+    public boolean removeEvent(Event event)
     {
         boolean wasRemoved = false;
-        if (!events.contains(aEvent))
+        if (!events.contains(event))
         {
             return wasRemoved;
         }
-        int oldIndex = events.indexOf(aEvent);
+        int oldIndex = events.indexOf(event);
         events.remove(oldIndex);
-        if (aEvent.indexOfAdmin(this) == -1)
+        if (event.indexOfAdmin(this) == -1)
         {
             wasRemoved = true;
-        } else
-        {
-            wasRemoved = aEvent.removeAdmin(this);
+        } else {
+            wasRemoved = event.removeAdmin(this);
             if (!wasRemoved)
             {
-                events.add(oldIndex,aEvent);
+                events.add(oldIndex,event);
             }
         }
         return wasRemoved;
     }
-    public boolean addEventAt(Event aEvent, int index)
+
+    public boolean addEventAt(Event event, int index)
     {
         boolean wasAdded = false;
-        if(addEvent(aEvent))
+        if(addEvent(event))
         {
             if(index < 0 ) { index = 0; }
             if(index > numberOfEvents()) { index = numberOfEvents() - 1; }
-            events.remove(aEvent);
-            events.add(index, aEvent);
+            events.remove(event);
+            events.add(index, event);
             wasAdded = true;
         }
         return wasAdded;
     }
-    public boolean addOrMoveEventAt(Event aEvent, int index)
+
+    public boolean addOrMoveEventAt(Event event, int index)
     {
         boolean wasAdded = false;
-        if(events.contains(aEvent))
+        if(events.contains(event))
         {
             if(index < 0 ) { index = 0; }
             if(index > numberOfEvents()) { index = numberOfEvents() - 1; }
-            events.remove(aEvent);
-            events.add(index, aEvent);
+            events.remove(event);
+            events.add(index, event);
             wasAdded = true;
         } else
         {
-            wasAdded = addEventAt(aEvent, index);
+            wasAdded = addEventAt(event, index);
         }
         return wasAdded;
     }
+
     public void delete() {
         ArrayList<Event> copyOfEvents = new ArrayList<Event>(events);
         events.clear();
@@ -115,16 +119,19 @@ public class Administrator extends User{
             aEvent.removeAdmin(this);
         }
     }
+
     public void createEvent(){
-        Event aEvent = new Event();
+        Event event = new Event();
     }
 
     public void manageContent(){
 
     }
+
     public void viewUsers(){
 
     }
+
     public void deleteUser(){
 
     }
@@ -136,6 +143,7 @@ public class Administrator extends User{
     public void deleteEventType(){
 
     }
+
     public void viewEventType(){
 
     }

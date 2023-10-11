@@ -8,24 +8,22 @@ public class Participant extends User {
     public void createAccount(){
 
     }
+
     public void registerForEvent(){
 
     }
 
     public String searchByLocation(){
-        return Event.location;
+        return Event.getLocation();
     }
 
     public String searchByType(){
-        return Event.type;
+        return Event.getType();
     }
     public String searchByName(){
-        return Event.name;
+        return Event.getName();
     }
-    public String searchByDate(){
-
-        return Event.date;
-    }
+    public String searchByDate(){ return Event.getDate(); }
     public void viewEvents(){
 
     }
