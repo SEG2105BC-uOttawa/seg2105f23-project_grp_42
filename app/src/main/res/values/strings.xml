@@ -3,4 +3,8 @@
     <string name="project_app_name">GCC</string>
     <string name="log_in_text">Log In</string>
     <string name="sign_up_text">Sign Up</string>
+    <string name="member_login">Member Login</string>
+    <string name="username_hint">(Username)</string>
+    <string name="password_hint">(Password)</string>
+    <string name="login_final">Login</string>
 </resources>

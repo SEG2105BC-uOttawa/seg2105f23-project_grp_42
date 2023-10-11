@@ -11,9 +11,8 @@ public class Administrator extends User{
     //The cardinality is many to many, both classes have a list of the other class
     private static List<Event> events;
 
-
     //create a constructor with the array list of the events
-    public Administrator(){
+    public Administrator() {
         this.username = "admin";
         this.password = "admin";
         this.role = "admin";
