@@ -7,5 +7,13 @@
     <string name="username_hint">(Username)</string>
     <string name="password_hint">(Password)</string>
     <string name="login_final">Login</string>
+<<<<<<< HEAD
     <string name="invalid_login_credentials">Invalid login credentials</string>
+=======
+    <string name="welcome_message">Welcome!</string>
+    <string name="account_hint">(account type)</string>
+    <string name="login_info">you are currently logged in as a</string>
+
+
+>>>>>>> eea6b70b363d9f16e058b34d1013502c8967f8fb
 </resources>
