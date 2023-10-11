@@ -8,6 +8,8 @@ public class Administrator extends User{
     private static List<Event> events;
 
     public Administrator(){
+        this.username = "admin";
+        this.password = "admin";
         events = new ArrayList<Event>();
     }
 

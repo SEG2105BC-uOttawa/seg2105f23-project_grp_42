@@ -24,8 +24,8 @@ public class Participant extends User {
         return Event.getName();
     }
     public String searchByDate(){ return Event.getDate(); }
+
     public void viewEvents(){
 
     }
-
 }
