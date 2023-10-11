@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="0"
-            android:text="you are currently logged in as a"
+            android:text="@string/login_info"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <Space
