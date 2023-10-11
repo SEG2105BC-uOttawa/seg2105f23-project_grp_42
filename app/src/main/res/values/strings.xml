@@ -4,19 +4,16 @@
     <string name="log_in_text">Log In</string>
     <string name="sign_up_text">Sign Up</string>
     <string name="member_login">Member Login</string>
-    <string name="username_hint">(Username)</string>
-    <string name="password_hint">(Password)</string>
-    <string name="insertUsername">insert Username Here</string>
-    <string name="insertPassword">insert Password Here</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
     <string name="pickRole">Pick a Role</string>
     <string name="login_final">Login</string>
-    <string name="createAccount">Sign Up</string>
     <string name="invalid_login_credentials">Invalid login credentials</string>
     <string name="welcome_message">Welcome!</string>
     <string name="account_hint">(account type)</string>
     <string name="login_info">you are currently logged in as a</string>
     <string name="invalid_username_or_password">Invalid username or password</string>
-
-
-    >>>>>>> eea6b70b363d9f16e058b34d1013502c8967f8fb
+    <string name="participant">Participant</string>
+    <string name="cycling_club">Cycling Club</string>
+    <string name="email_hint">Email</string>
 </resources>

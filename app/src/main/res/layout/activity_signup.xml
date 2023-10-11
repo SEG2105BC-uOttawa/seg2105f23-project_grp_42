@@ -1,107 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".SignupActivity">>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SignupActivity">
 
     <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+            android:layout_height="match_parent" android:gravity="center" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
         <TextView
                 android:id="@+id/createAccount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/createAccount"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
-
-        <TextView
-                android:id="@+id/insertUsername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/insertUsername" />
-
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
-
-        <EditText
-                android:id="@+id/editTextText3"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10"
-                android:inputType="text" />
-
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="50dp" />
-
-        <TextView
-                android:id="@+id/insertPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/insertPassword" />
-
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
-
-        <EditText
-                android:id="@+id/editTextText4"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ems="10"
-                android:inputType="text" />
-
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        <TextView
-                android:id="@+id/pickRole"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/pickRole" />
-
-        <RadioButton
-                android:id="@+id/cyclingClub"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cycling Club" />
-
-        <RadioButton
-                android:id="@+id/participant"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Participant" />
-
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="95dp" />
-
-        <Button
-                android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/sign_up_text" />
+                android:text="@string/sign_up_text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_marginTop="32dp" android:layout_weight="1"/>
+        <Space
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/emailTextField" android:layout_marginHorizontal="15dp"
+                android:hint="@string/email_hint"
+                android:autofillHints="" android:layout_weight="1"/>
+        <EditText
+                android:id="@+id/usernameTextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/username_hint"
+                android:inputType="text"
+                android:layout_margin="15dp" android:autofillHints="" android:layout_weight="1"/>
+        <EditText
+                android:id="@+id/passwordTextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword" android:layout_marginHorizontal="15dp" android:autofillHints=""
+                android:layout_weight="1"/>
+
+        <RadioGroup
+                android:id="@+id/roleRadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+            <RadioButton
+                    android:id="@+id/cyclingClubRole"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cycling_club"
+                    android:layout_marginEnd="16dp" android:layout_weight="1"/>
+
+            <RadioButton
+                    android:id="@+id/participantRole"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/participant" android:layout_weight="1"/>
+        </RadioGroup>
+        <Button
+                android:id="@+id/btnFinalSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_up_text"
+                android:layout_marginTop="24dp" android:layout_marginBottom="200dp" android:layout_weight="1"
+                android:layout_marginHorizontal="15dp"/>
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

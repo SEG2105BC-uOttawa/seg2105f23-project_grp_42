@@ -1,17 +1,14 @@
 package com.example.cyclingclub;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Participant extends User {
     Participant newUser;
-    public Participant(String username, String password, String role) {
-        super(username, password, "Participant");
+    public Participant(String email, String username, String password, String salt) {
+        super(email, username, password, "Participant", salt);
     }
 
-    public void createAccount(String username, String password){
+    public void createAccount(String email, String username, String password, String salt){
         if(this.getUsername().equals(username) && this.getPassword().equals(password)){
-            newUser = new Participant(username, password, "Participant");
+            newUser = new Participant(email, username, password, salt);
         }
     }
 

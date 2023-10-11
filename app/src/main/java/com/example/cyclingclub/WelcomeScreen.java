@@ -17,7 +17,7 @@ public class WelcomeScreen extends AppCompatActivity {
         TextView showUsername = findViewById(R.id.showUsername);
         TextView accountType = findViewById(R.id.accountType);
 
-        showUsername.setText("Username: " + user.getUsername());
-        accountType.setText("You are logged in as " + user.getRole());
+        showUsername.setText(String.format("Username: %s", user.getUsername()));
+        accountType.setText(String.format("You are logged in as %s", user.getRole()));
     }
 }

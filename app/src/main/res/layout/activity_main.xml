@@ -42,7 +42,7 @@
             android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_up_text" />
+            android:text="@string/sign_up_text" android:onClick="onClickSignup"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
