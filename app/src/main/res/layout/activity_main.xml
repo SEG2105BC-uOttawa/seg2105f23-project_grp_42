@@ -33,10 +33,10 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
-            android:id="@+id/btnLogIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/log_in_text" />
+                android:id="@+id/btnLogIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/log_in_text" android:onClick="onClickLogin"/>
 
         <Button
             android:id="@+id/btnSignUp"
