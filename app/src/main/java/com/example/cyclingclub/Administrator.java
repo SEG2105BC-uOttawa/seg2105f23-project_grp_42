@@ -10,6 +10,7 @@ public class Administrator extends User{
     public Administrator(){
         this.username = "admin";
         this.password = "admin";
+        this.role = "admin";
         events = new ArrayList<Event>();
     }
 
