@@ -6,7 +6,7 @@ import java.util.List;
 public class Participant extends User {
 
     public void createAccount(){
-
+        
     }
 
     public void registerForEvent(){
