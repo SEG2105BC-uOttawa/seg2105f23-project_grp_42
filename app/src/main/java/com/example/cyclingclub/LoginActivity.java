@@ -43,10 +43,10 @@ public class LoginActivity extends AppCompatActivity {
 
         layout.setOrientation(LinearLayout.VERTICAL);
         TextView textView = new TextView(this);
-        textView.setText(R.string.invalid_login_credentials);
+        textView.setText(R.string.invalid_username_or_password);
 
         PopupWindow popupWindow = new PopupWindow(layout, LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
         popupWindow.setContentView(textView);
-        popupWindow.showAsDropDown(anchorView, 0, -200);
+        popupWindow.showAsDropDown(anchorView, 10, 0);
     }
 }
