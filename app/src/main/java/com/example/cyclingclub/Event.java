@@ -4,125 +4,168 @@ import java.util.*;
 
 public class Event {
 
-    public static String name;
-    public static String type;
-    public static String date;
-    public static String location;
-    public static String rewards;
+    private static String name;
+    private static String type;
+    private static String date;
+    private static String location;
+    private static String rewards;
 
-    private List<Administrator> admins;
+    private final List<Administrator> admins;
 
     public Event()
     {
         admins = new ArrayList<Administrator>();
     }
+
+    public static String getName() {
+        return name;
+    }
+
+    public static void setName(String name) {
+        Event.name = name;
+    }
+
+    public static String getType() {
+        return type;
+    }
+
+    public static void setType(String type) {
+        Event.type = type;
+    }
+
+    public static String getDate() {
+        return date;
+    }
+
+    public static void setDate(String date) {
+        Event.date = date;
+    }
+
+    public static String getLocation() {
+        return location;
+    }
+
+    public static void setLocation(String location) {
+        Event.location = location;
+    }
+
+    public static String getRewards() {
+        return rewards;
+    }
+
+    public static void setRewards(String rewards) {
+        Event.rewards = rewards;
+    }
+
     public Administrator getAdmin(int index)
     {
-        Administrator aAdmin = admins.get(index);
-        return aAdmin;
+        return admins.get(index);
     }
     public List<Administrator> getAdmins()
     {
-        List<Administrator> newAdmins = Collections.unmodifiableList(admins);
-        return newAdmins;
-    }
-    public int numberOfAdmins()
-    {
-        int number = admins.size();
-        return number;
-    }
-    public boolean hasAdmins()
-    {
-        boolean has = admins.size() > 0;
-        return has;
+        return Collections.unmodifiableList(admins);
     }
 
-    public int indexOfAdmin(Administrator aAdmin)
+    public int numberOfAdmins()
     {
-        int index = admins.indexOf(aAdmin);
-        return index;
+        return admins.size();
     }
+
+    public boolean hasAdmins()
+    {
+        return !admins.isEmpty();
+    }
+
+    public int indexOfAdmin(Administrator admin)
+    {
+        return admins.indexOf(admin);
+    }
+
     public static int minimumNumberOfAdmins()
     {
         return 0;
     }
-    public boolean addAdmin(Administrator aAdmin)
+
+    public boolean addAdmin(Administrator admin)
     {
         boolean wasAdded = false;
-        if (admins.contains(aAdmin)) { return false; }
-        admins.add(aAdmin);
-        if (aAdmin.indexOfEvent(this) != -1)
+        if (admins.contains(admin)) { return false; }
+        admins.add(admin);
+        if (admin.indexOfEvent(this) != -1)
         {
             wasAdded = true;
         } else
         {
-            wasAdded = aAdmin.addEvent(this);
+            wasAdded = admin.addEvent(this);
             if (!wasAdded)
             {
-                admins.remove(aAdmin);
+                admins.remove(admin);
             }
         }
         return wasAdded;
     }
-    public boolean removeAdmin(Administrator aAdmin)
+
+    public boolean removeAdmin(Administrator admin)
     {
         boolean wasRemoved = false;
-        if (!admins.contains(aAdmin))
+        if (!admins.contains(admin))
         {
             return wasRemoved;
         }
-        int oldIndex = admins.indexOf(aAdmin);
+        int oldIndex = admins.indexOf(admin);
         admins.remove(oldIndex);
-        if (aAdmin.indexOfEvent(this) == -1)
+        if (admin.indexOfEvent(this) == -1)
         {
             wasRemoved = true;
         } else
         {
-            wasRemoved = aAdmin.removeEvent(this);
+            wasRemoved = admin.removeEvent(this);
             if (!wasRemoved)
             {
-                admins.add(oldIndex,aAdmin);
+                admins.add(oldIndex,admin);
             }
         }
         return wasRemoved;
     }
-    public boolean addAdminAt(Administrator aAdmin, int index)
+
+    public boolean addAdminAt(Administrator admin, int index)
     {
         boolean wasAdded = false;
-        if(addAdmin(aAdmin))
+        if(addAdmin(admin))
         {
             if(index < 0 ) { index = 0; }
             if(index > numberOfAdmins()) { index = numberOfAdmins() - 1; }
-            admins.remove(aAdmin);
-            admins.add(index, aAdmin);
+            admins.remove(admin);
+            admins.add(index, admin);
             wasAdded = true;
         }
         return wasAdded;
     }
-    public boolean addOrMoveAdminAt(Administrator aAdmin, int index)
+
+    public boolean addOrMoveAdminAt(Administrator admin, int index)
     {
         boolean wasAdded = false;
-        if(admins.contains(aAdmin))
+        if(admins.contains(admin))
         {
             if(index < 0 ) { index = 0; }
             if(index > numberOfAdmins()) { index = numberOfAdmins() - 1; }
-            admins.remove(aAdmin);
-            admins.add(index, aAdmin);
+            admins.remove(admin);
+            admins.add(index, admin);
             wasAdded = true;
         }else
         {
-            wasAdded = addAdminAt(aAdmin, index);
+            wasAdded = addAdminAt(admin, index);
         }
         return wasAdded;
     }
 
     public void delete()
     {
-        ArrayList<Administrator> copyOfAdmins = new ArrayList<Administrator>(admins);
+        ArrayList<Administrator> copyOfAdmins = new ArrayList<>(admins);
         admins.clear();
-        for(Administrator aAdmin : copyOfAdmins)
+        for(Administrator admin : copyOfAdmins)
         {
-            aAdmin.removeEvent(this);
+            admin.removeEvent(this);
         }
     }
 }

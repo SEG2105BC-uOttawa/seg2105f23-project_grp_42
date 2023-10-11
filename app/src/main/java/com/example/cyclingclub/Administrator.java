@@ -5,109 +5,128 @@ import java.util.Collections;
 import java.util.List;
 
 public class Administrator extends User{
+    /*
+    Methods to establish an association with Events
+    */
+    //The cardinality is many to many, both classes have a list of the other class
     private static List<Event> events;
+
+
+    //create a constructor with the array list of the events
     public Administrator(){
+        this.username = "admin";
+        this.password = "admin";
+        this.role = "admin";
         events = new ArrayList<Event>();
     }
+
+    //Get the event index from the event array
     public Event getEvent(int index)
     {
-        Event aEvent = events.get(index);
-        return aEvent;
+        return events.get(index);
     }
+    //Return the array with the events
     public static List<Event> getEvents()
     {
-        List<Event> newEvents = Collections.unmodifiableList(events);
-        return newEvents;
+        return Collections.unmodifiableList(events);
     }
+
+    //Create a counter to add and subtract events from the array
     public int numberOfEvents()
     {
-        int number = events.size();
-        return number;
+        return events.size();
     }
+    //Check if cardinality is > 0
     public boolean hasEvents()
     {
-        boolean has = events.size() > 0;
-        return has;
+        return !events.isEmpty();
     }
-    public int indexOfEvent(Event aEvent)
+    //Return the index of any given event
+    public int indexOfEvent(Event event)
     {
-        int index = events.indexOf(aEvent);
-        return index;
+        return events.indexOf(event);
     }
+
+    //Minimum cardinality is 0
     public static int minimumNumberOfEvents()
     {
         return 0;
     }
-    public boolean addEvent(Event aEvent)
+
+    public boolean addEvent(Event event)
+    //Checks if an event was added onto the array
     {
         boolean wasAdded = false;
-        if (events.contains(aEvent)) { return false; }
-        events.add(aEvent);
-        if (aEvent.indexOfAdmin(this) != -1)
+        if (events.contains(event)) { return false; }
+        events.add(event);
+        if (event.indexOfAdmin(this) != -1)
         {
             wasAdded = true;
-        }else
-        {
-            wasAdded = aEvent.addAdmin(this);
+        } else {
+            wasAdded = event.addAdmin(this);
             if (!wasAdded)
             {
-                events.remove(aEvent);
+                events.remove(event);
             }
         }
         return wasAdded;
     }
-
-    public boolean removeEvent(Event aEvent)
+    public boolean removeEvent(Event event)
+    //Checks if an event was removed from the array
     {
         boolean wasRemoved = false;
-        if (!events.contains(aEvent))
+        if (!events.contains(event))
         {
             return wasRemoved;
         }
-        int oldIndex = events.indexOf(aEvent);
+        int oldIndex = events.indexOf(event);
         events.remove(oldIndex);
-        if (aEvent.indexOfAdmin(this) == -1)
+        if (event.indexOfAdmin(this) == -1)
         {
             wasRemoved = true;
-        } else
-        {
-            wasRemoved = aEvent.removeAdmin(this);
+        } else {
+            wasRemoved = event.removeAdmin(this);
             if (!wasRemoved)
             {
-                events.add(oldIndex,aEvent);
+                events.add(oldIndex,event);
             }
         }
         return wasRemoved;
     }
-    public boolean addEventAt(Event aEvent, int index)
+
+    public boolean addEventAt(Event event, int index)
+    //Add an event in the array at a given index
     {
         boolean wasAdded = false;
-        if(addEvent(aEvent))
+        if(addEvent(event))
         {
             if(index < 0 ) { index = 0; }
             if(index > numberOfEvents()) { index = numberOfEvents() - 1; }
-            events.remove(aEvent);
-            events.add(index, aEvent);
+            events.remove(event);
+            events.add(index, event);
             wasAdded = true;
         }
         return wasAdded;
     }
-    public boolean addOrMoveEventAt(Event aEvent, int index)
+    public boolean addOrMoveEventAt(Event event, int index)
+    //Move or add any event at any given index
     {
         boolean wasAdded = false;
-        if(events.contains(aEvent))
+        if(events.contains(event))
         {
             if(index < 0 ) { index = 0; }
             if(index > numberOfEvents()) { index = numberOfEvents() - 1; }
-            events.remove(aEvent);
-            events.add(index, aEvent);
+            events.remove(event);
+            events.add(index, event);
             wasAdded = true;
         } else
         {
-            wasAdded = addEventAt(aEvent, index);
+            wasAdded = addEventAt(event, index);
         }
         return wasAdded;
     }
+
+    //Clear the events' array
     public void delete() {
         ArrayList<Event> copyOfEvents = new ArrayList<Event>(events);
         events.clear();
@@ -115,8 +134,10 @@ public class Administrator extends User{
             aEvent.removeAdmin(this);
         }
     }
+
+    //Create a new event
     public void createEvent(){
-        Event aEvent = new Event();
+        Event event = new Event();
     }
 
     public void manageContent(){
@@ -125,6 +146,7 @@ public class Administrator extends User{
     public void viewUsers(){
 
     }
+
     public void deleteUser(){
 
     }
@@ -136,6 +158,7 @@ public class Administrator extends User{
     public void deleteEventType(){
 
     }
+
     public void viewEventType(){
 
     }
