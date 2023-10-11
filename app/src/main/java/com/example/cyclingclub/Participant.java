@@ -4,9 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Participant extends User {
-
-    public void createAccount(){
-        
+    Participant newUser;
+    public Participant(){
+        this.username = super.username;
+        this.password = super.password;
+        this.role = "Participant";
+    }
+    public void createAccount(String username, String password){
+        if(this.username.equals(username) && this.password.equals(password)){
+            newUser = new Participant();
+        }
     }
 
     public void registerForEvent(){
