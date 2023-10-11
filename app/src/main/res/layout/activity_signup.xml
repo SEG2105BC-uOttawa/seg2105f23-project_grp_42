@@ -90,17 +90,6 @@
             android:layout_height="wrap_content"
             android:text="Participant" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="95dp" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/sign_up_text" />
     </LinearLayout>
 
 </RelativeLayout>

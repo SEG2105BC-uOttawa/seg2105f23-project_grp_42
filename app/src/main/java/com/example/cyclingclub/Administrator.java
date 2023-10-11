@@ -13,9 +13,6 @@ public class Administrator extends User{
 
     //create a constructor with the array list of the events
     public Administrator() {
-        this.username = "admin";
-        this.password = "admin";
-        this.role = "admin";
         events = new ArrayList<Event>();
     }
 
