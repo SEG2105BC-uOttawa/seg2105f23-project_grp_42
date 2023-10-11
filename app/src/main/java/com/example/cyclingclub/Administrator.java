@@ -13,7 +13,7 @@ public class Administrator extends User{
 
     //create a constructor with the array list of the events
     public Administrator(String username, String password, String role) {
-        super(username, password, role);
+        super(username, password, "Administrator");
         events = new ArrayList<Event>();
     }
 
