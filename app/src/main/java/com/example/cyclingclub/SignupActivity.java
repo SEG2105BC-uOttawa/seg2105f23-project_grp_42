@@ -10,9 +10,10 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.*;
+import org.jetbrains.annotations.NotNull;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -58,11 +59,53 @@ public class SignupActivity extends AppCompatActivity {
                 String validationMessage = validateInput(enteredEmail, enteredUsername, enteredPassword);
 
                 if (validationMessage == null) {
-                    /* Save the credentials to Firebase and return to the MainActivity */
-                    saveCredentials(enteredEmail, enteredUsername, enteredPassword, role);
+                     /* Checks if the email is already in-use, if not, will then check the */
+                     /* username if its already taken, if not will then save the credentials */
+                     /* and send to the WelcomeScreen */
+                    checkEmailExistence(enteredEmail, enteredUsername, enteredPassword, role, view);
                 } else {
                     displayPopupMessage(validationMessage, view);
                 }
+            }
+        });
+    }
+
+    private void checkEmailExistence(String email, String username, String password, String role, View view) {
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users");
+        dbRef.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    /* Username is already taken, show an error message */
+                    displayPopupMessage("Email is already in-use.", view);
+                } else {
+                    checkUsernameExistence(email, username, password, role, view);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Log.e("checkEmailExistence", "Database error: " + error.getMessage());
+            }
+        });
+    }
+
+    private void checkUsernameExistence(String email, String username, String password, String role, View view) {
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users");
+        dbRef.orderByChild("username").equalTo(username).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                     /* Username is already taken, show an error message */
+                    displayPopupMessage("Username is already taken.", view);
+                } else {
+                    saveCredentials(email, username, password, role);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Log.e("checkUsernameExistence", "Database error: " + error.getMessage());
             }
         });
     }
