@@ -5,14 +5,13 @@ import java.util.List;
 
 public class Participant extends User {
     Participant newUser;
-    public Participant(){
-        this.username = super.username;
-        this.password = super.password;
-        this.role = "Participant";
+    public Participant(String username, String password, String role) {
+        super(username, password, "Participant");
     }
+
     public void createAccount(String username, String password){
-        if(this.username.equals(username) && this.password.equals(password)){
-            newUser = new Participant();
+        if(this.getUsername().equals(username) && this.getPassword().equals(password)){
+            newUser = new Participant(username, password, "Participant");
         }
     }
 

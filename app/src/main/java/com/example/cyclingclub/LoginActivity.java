@@ -2,6 +2,7 @@ package com.example.cyclingclub;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.os.Bundle;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private static final String PREFS_NAME = "MyPrefsFile";
+    private static final String USERNAME_KEY = "username";
+    private static final String PASSWORD_KEY = "password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +38,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void sendToWelcomeScreen() {
+        User user = new User("admin", "admin", "admin");
         Intent intent = new Intent(getApplicationContext(), WelcomeScreen.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
