@@ -6,6 +6,9 @@
     <string name="member_login">Member Login</string>
     <string name="username_hint">(Username)</string>
     <string name="password_hint">(Password)</string>
+    <string name="insertUsername">insert Username Here</string>
+    <string name="insertPassword">insert Password Here</string>
+    <string name="pickRole">Pick a Role</string>
     <string name="login_final">Login</string>
 <<<<<<< HEAD
 =======

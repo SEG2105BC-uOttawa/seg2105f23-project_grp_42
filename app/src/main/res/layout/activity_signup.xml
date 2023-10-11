@@ -72,24 +72,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <Spinner
-            android:id="@+id/Role"
+        <TextView
+            android:id="@+id/pickRole"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="Cycling Club, Participant"
-            android:spinnerMode="dropdown" />
+            android:text="@string/pickRole" />
+
+        <RadioButton
+            android:id="@+id/cyclingClub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cycling Club" />
+
+        <RadioButton
+            android:id="@+id/participant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Participant" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="250dp" />
+            android:layout_height="95dp" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Button" />
+            android:text="@string/sign_up_text" />
     </LinearLayout>
 
 </RelativeLayout>
