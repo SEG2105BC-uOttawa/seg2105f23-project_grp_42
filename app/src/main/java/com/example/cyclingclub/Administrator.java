@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Administrator extends User{
-    private List<Event> events;
+    private static List<Event> events;
     public Administrator(){
         events = new ArrayList<Event>();
     }
@@ -14,7 +14,7 @@ public class Administrator extends User{
         Event aEvent = events.get(index);
         return aEvent;
     }
-    public List<Event> getEvents()
+    public static List<Event> getEvents()
     {
         List<Event> newEvents = Collections.unmodifiableList(events);
         return newEvents;
