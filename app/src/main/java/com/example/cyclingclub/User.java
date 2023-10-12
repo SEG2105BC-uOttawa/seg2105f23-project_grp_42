@@ -3,17 +3,17 @@ package com.example.cyclingclub;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private final String email;
-    private final String username;
-    private final String password;
-    private final String role;
-    private final String salt;
+    private String email;
+    private String username;
+    private String role;
+    private String salt;
 
-    public User(String email, String username, String password, String role, String salt)
+    public User() { }
+
+    public User(String email, String username, String role, String salt)
     {
         this.email = email;
         this.username = username;
-        this.password = password;
         this.role = role;
         this.salt = salt;
     }
@@ -22,7 +22,6 @@ public class User implements Serializable {
 
     public String getUsername() { return username; }
 
-    public String getPassword() { return password; }
 
     public String getRole() { return role;}
 

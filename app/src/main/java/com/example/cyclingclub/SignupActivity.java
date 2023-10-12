@@ -10,22 +10,17 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.*;
-import org.jetbrains.annotations.NotNull;
 
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SignupActivity extends AppCompatActivity {
 
     private RadioButton cyclingClubRadio;
     private RadioButton participantRadio;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +30,7 @@ public class SignupActivity extends AppCompatActivity {
         // Initialize UI elements
         cyclingClubRadio = findViewById(R.id.cyclingClubRole);
         participantRadio = findViewById(R.id.participantRole);
+        firebaseAuth = FirebaseAuth.getInstance();
 
         Button signupButton = findViewById(R.id.btnFinalSignUp);
 
@@ -48,7 +44,7 @@ public class SignupActivity extends AppCompatActivity {
             String enteredPassword = passwordEditText.getText().toString();
 
             /* Check if one of the roles is selected */
-            String role = cyclingClubRadio.isChecked() ? "cycling_club" :
+            String role = cyclingClubRadio.isChecked() ? "cycling club" :
                     (participantRadio.isChecked() ? "participant" : "");
 
             if (role.isEmpty()) {
@@ -59,10 +55,8 @@ public class SignupActivity extends AppCompatActivity {
                 String validationMessage = validateInput(enteredEmail, enteredUsername, enteredPassword);
 
                 if (validationMessage == null) {
-                     /* Checks if the email is already in-use, if not, will then check the */
-                     /* username if its already taken, if not will then save the credentials */
-                     /* and send to the WelcomeScreen */
-                    checkEmailExistence(enteredEmail, enteredUsername, enteredPassword, role, view);
+                    /* Create the user account in Firebase Authentication */
+                    createFirebaseAccount(enteredEmail, enteredPassword, enteredUsername, role, view);
                 } else {
                     displayPopupMessage(validationMessage, view);
                 }
@@ -70,46 +64,48 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void checkEmailExistence(String email, String username, String password, String role, View view) {
-        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users");
-        dbRef.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    /* Username is already taken, show an error message */
-                    displayPopupMessage("Email is already in-use.", view);
-                } else {
-                    checkUsernameExistence(email, username, password, role, view);
-                }
-            }
+    /**
+     * Create a Firebase user account using the provided email and password.
+     * @param email The user's email.
+     * @param password The user's password.
+     * @param username The user's username.
+     * @param role The user's role.
+     * @param view The current view.
+     */
+    private void createFirebaseAccount(String email, String password, String username, String role, View view) {
+        byte[] salt = SecurityUtils.generateSalt();
 
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Log.e("checkEmailExistence", "Database error: " + error.getMessage());
-            }
-        });
+        try {
+            firebaseAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                            if (firebaseUser != null) {
+                                String userID = firebaseUser.getUid();
+
+                                DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+                                User user = new User(email, username, role, Base64.encodeToString(salt, Base64.NO_WRAP));
+                                dbRef.setValue(user);
+
+                                /* Redirect to the WelcomeScreen after creation */
+                                returnToWelcomeScreen(user);
+                            }
+                        } else {
+                            /* Account creation failed */
+                            Log.e("createFirebaseAccount", "Authentication failed.", task.getException());
+                            displayPopupMessage("Account creation failed", view);
+                        }
+                    });
+        } catch (Exception e) {
+            Log.e("createFirebaseAccount", String.format("Unexpected error when creating account: %s", e.getMessage()));
+        }
     }
 
-    private void checkUsernameExistence(String email, String username, String password, String role, View view) {
-        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users");
-        dbRef.orderByChild("username").equalTo(username).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                     /* Username is already taken, show an error message */
-                    displayPopupMessage("Username is already taken.", view);
-                } else {
-                    saveCredentials(email, username, password, role);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Log.e("checkUsernameExistence", "Database error: " + error.getMessage());
-            }
-        });
-    }
-
+    /**
+     * Display a popup message with the provided text.
+     * @param message The message to display.
+     * @param anchorView The view to anchor the popup to.
+     */
     private void displayPopupMessage(String message, View anchorView) {
         LinearLayout layout = new LinearLayout(this);
         layout.setLayoutParams(new ViewGroup.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT));
@@ -125,6 +121,13 @@ public class SignupActivity extends AppCompatActivity {
         popupWindow.showAsDropDown(anchorView, 10, 0);
     }
 
+    /**
+     * Validate the input fields for email, username, and password.
+     * @param email The user's email.
+     * @param username The user's username.
+     * @param password The user's password.
+     * @return A validation message if there's an issue, or null if everything is valid.
+     */
     private String validateInput(String email, String username, String password) {
         InputValidator validator = InputValidator.getInstance();
 
@@ -140,49 +143,10 @@ public class SignupActivity extends AppCompatActivity {
         return null;
     }
 
-    private void saveCredentials(String email, String username, String password, String role) {
-        try {
-            /* Generate secure salt */
-            SecureRandom random = new SecureRandom();
-            byte[] salt = new byte[16];
-            random.nextBytes(salt);
-
-            /* Hash the password with PBKDF2 */
-            String hashedPassword = hashPasswordPBKDF2(password, salt);
-
-            /* Save the salt and hashed password to Firebase */
-            DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users");
-            String userID = dbRef.push().getKey(); /* Create unique key for the user */
-
-            if (userID != null) {
-                /* Create User object with the salt and hashed password */
-                User user = new User(email, username, hashedPassword, role, Base64.encodeToString(salt, Base64.NO_WRAP));
-                dbRef.child(userID).setValue(user); /* Push the user data to Firebase, including unique user ID */
-                returnToWelcomeScreen(user);
-            } else {
-                Log.e("saveCredentials", "Failed to generate a unique user ID");
-            }
-
-        } catch (NoSuchAlgorithmException e) {
-            Log.e("saveCredentials", "Algorithm not available: " + e.getMessage());
-        } catch (InvalidKeySpecException e) {
-            Log.e("saveCredentials", "Invalid key specification: " + e.getMessage());
-        } catch (Exception e) {
-            Log.e("saveCredentials", "Unexpected error: " + e.getMessage());
-        }
-    }
-
-    private String hashPasswordPBKDF2(String password, byte[] salt) throws Exception {
-        int iterations = 10000;
-        int keyLength = 256; /* Key length in bits */
-
-        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, iterations, keyLength);
-        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-
-        byte[] hash = factory.generateSecret(spec).getEncoded();
-        return Base64.encodeToString(hash, Base64.NO_WRAP);
-    }
-
+    /**
+     * Navigate to the welcome screen with the user object.
+     * @param user The user object to pass to the welcome screen.
+     */
     private void returnToWelcomeScreen(User user) {
         Intent intent = new Intent(this, WelcomeScreen.class);
         intent.putExtra("user", user);

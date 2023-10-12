@@ -2,14 +2,8 @@ package com.example.cyclingclub;
 
 public class Participant extends User {
     Participant newUser;
-    public Participant(String email, String username, String password, String salt) {
-        super(email, username, password, "Participant", salt);
-    }
-
-    public void createAccount(String email, String username, String password, String salt){
-        if(this.getUsername().equals(username) && this.getPassword().equals(password)){
-            newUser = new Participant(email, username, password, salt);
-        }
+    public Participant(String email, String username, String salt) {
+        super(email, username, "Participant", salt);
     }
 
     public void registerForEvent(){

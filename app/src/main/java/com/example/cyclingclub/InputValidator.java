@@ -3,6 +3,9 @@ package com.example.cyclingclub;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+/**
+ * Utility class for input validation.
+ */
 public class InputValidator {
     private static InputValidator instance;
 
@@ -13,6 +16,10 @@ public class InputValidator {
 
     private InputValidator() { }
 
+    /**
+     * Get the instance of InputValidator.
+     * @return The InputValidator instance.
+     */
     public static InputValidator getInstance() {
         if (instance == null) {
             instance = new InputValidator();
@@ -20,28 +27,44 @@ public class InputValidator {
         return instance;
     }
 
-    /* Validate an email */
+    /**
+     * Validate an email.
+     * @param email The email to validate.
+     * @return True if the email is valid, false otherwise.
+     */
     public boolean isValidEmail(String email) {
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
 
-    /* Validate a name */
+    /**
+     * Validate a name.
+     * @param name The name to validate.
+     * @return True if the name is valid, false otherwise.
+     */
     public boolean isValidName(String name) {
         Pattern pattern = Pattern.compile(NAME_PATTERN);
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
 
-    /* 1 lowercase & uppercase letter, 1 digit, 1 special character, no spaces, minimum 8 characters */
+    /**
+     * Validate a strong password.
+     * @param password The password to validate.
+     * @return True if the password is strong, false otherwise.
+     */
     public boolean isStrongPassword(String password) {
         Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
     }
 
-    /* Validate a username */
+    /**
+     * Validate a username.
+     * @param name The username to validate.
+     * @return True if the username is valid, false otherwise.
+     */
     public boolean isValidUsername(String name) {
         Pattern pattern = Pattern.compile(USERNAME_PATTERN);
         Matcher matcher = pattern.matcher(name);

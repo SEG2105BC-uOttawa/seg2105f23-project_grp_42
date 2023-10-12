@@ -18,10 +18,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/member_login"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:layout_weight="1" android:layout_marginTop="32dp"/>
-        <Space
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"/>
+                android:layout_marginTop="32dp" android:layout_weight="1"/>
         <EditText
                 android:id="@+id/usernameTextField"
                 android:layout_width="match_parent"
@@ -44,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/login_final"
-                android:layout_marginBottom="300dp" android:layout_weight="1" android:layout_marginTop="70dp"
+                android:layout_marginTop="24dp" android:layout_marginBottom="350dp" android:layout_weight="1"
                 android:layout_marginHorizontal="15dp"/>
     </LinearLayout>
 

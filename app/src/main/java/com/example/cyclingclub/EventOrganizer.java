@@ -12,8 +12,8 @@ public class EventOrganizer extends User {
     public int numOfParticipants;
     public double fees;
 
-    public EventOrganizer(String email, String username, String password, String role, String salt) {
-        super(email, username, password, role, salt);
+    public EventOrganizer(String email, String username, String role, String salt) {
+        super(email, username, role, salt);
     }
 
     public void createProfile(){
