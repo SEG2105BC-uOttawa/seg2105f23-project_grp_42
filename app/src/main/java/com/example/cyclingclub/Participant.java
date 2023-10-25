@@ -2,8 +2,8 @@ package com.example.cyclingclub;
 
 public class Participant extends User {
     Participant newUser;
-    public Participant(String email, String username, String salt) {
-        super(email, username, "Participant", salt);
+    public Participant(String email, String username, String password, String salt) {
+        super(email, username, "Participant", password, salt);
     }
 
     public void registerForEvent(){

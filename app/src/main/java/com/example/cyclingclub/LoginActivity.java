@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 
             /* If the credentials are the hardcoded values for testing purposes, redirect them to administrator control panel */
             if (enteredUsername.equals(HARDCODED_USERNAME) && enteredPassword.equals(HARDCODED_PASSWORD)) {
-                User admin = new Administrator(HARDCODED_USERNAME);
+                User admin = new Administrator(HARDCODED_USERNAME, HARDCODED_PASSWORD);
                 sendToWelcomeScreen(admin);
             } else { /* Sign them in like a regular user if not the hardcoded values */
                 signInWithEmailAndPassword(enteredUsername, enteredPassword, view);
@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     String salt = snapshot.child("salt").getValue(String.class); /* Retrieve salt from the database */
-                    String storedHashedPassword = snapshot.child("hashedPassword").getValue(String.class); /* Retrieve hashed password from the database */
+                    String storedHashedPassword = snapshot.child("password").getValue(String.class); /* Retrieve hashed password from the database */
                     if (salt != null && storedHashedPassword != null) {
                         /* Check if the password is in the database by hashing the entered password and comparing it to the stored hashed password */
                         if (checkPassword(enteredPassword, salt, storedHashedPassword)) {
@@ -103,6 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     } else {
                         /* If salt or hashedPassword is missing, handle the error accordingly */
+                        Log.e("getUserDataFromDatabase", String.format("%s : %s", storedHashedPassword, salt));
                         displayPopupMessage("Password data not found", view);
                     }
                 } else {

@@ -5,6 +5,7 @@ import java.security.spec.KeySpec;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import android.util.Base64;
+import android.util.Log;
 
 /**
  * Utility class for security-related operations, such as password hashing and salt generation.
@@ -40,5 +41,14 @@ public class SecurityUtils {
         byte[] salt = new byte[16];
         random.nextBytes(salt);
         return salt;
+    }
+
+    public static String retHashedPassword(String password, byte[] salt) throws Exception {
+        try {
+            return SecurityUtils.hashPasswordPBKDF2(password, salt);
+        } catch (Exception e) {
+            Log.e("createFirebaseAccount", "Hashing password failed:" + e.getMessage());
+        }
+        return null;
     }
 }

@@ -12,8 +12,8 @@ public class Administrator extends User{
     private static List<Event> events;
 
     //create a constructor with the array list of the events
-    public Administrator(String username) {
-        super(null, username, "Administrator", null);
+    public Administrator(String username, String password) {
+        super(null, username, "Administrator", password, null);
         events = new ArrayList<Event>();
     }
 

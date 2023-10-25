@@ -56,7 +56,11 @@ public class SignupActivity extends AppCompatActivity {
 
                 if (validationMessage == null) {
                     /* Create the user account in Firebase Authentication */
-                    createFirebaseAccount(enteredEmail, enteredPassword, enteredUsername, role, view);
+                    try {
+                        createFirebaseAccount(enteredEmail, enteredPassword, enteredUsername, role, view);
+                    } catch (Exception e) {
+                        Log.e("createFirebaseAccount", "Failed to create firebase account: " + e.getMessage());
+                    }
                 } else {
                     displayPopupMessage(validationMessage, view);
                 }
@@ -72,32 +76,34 @@ public class SignupActivity extends AppCompatActivity {
      * @param role The user's role.
      * @param view The current view.
      */
-    private void createFirebaseAccount(String email, String password, String username, String role, View view) {
+    private void createFirebaseAccount(String email, String password, String username, String role, View view) throws Exception {
         byte[] salt = SecurityUtils.generateSalt();
+        if (SecurityUtils.retHashedPassword(password, salt) != null) {
+            String hashedPassword = SecurityUtils.retHashedPassword(password, salt);
+            try {
+                firebaseAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this, task -> {
+                            if (task.isSuccessful()) {
+                                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                                if (firebaseUser != null) {
+                                    String userID = firebaseUser.getUid();
 
-        try {
-            firebaseAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, task -> {
-                        if (task.isSuccessful()) {
-                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                            if (firebaseUser != null) {
-                                String userID = firebaseUser.getUid();
+                                    DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+                                    User user = new User(email, username, role, hashedPassword, Base64.encodeToString(salt, Base64.NO_WRAP));
+                                    dbRef.setValue(user);
 
-                                DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
-                                User user = new User(email, username, role, Base64.encodeToString(salt, Base64.NO_WRAP));
-                                dbRef.setValue(user);
-
-                                /* Redirect to the WelcomeScreen after creation */
-                                returnToWelcomeScreen(user);
+                                    /* Redirect to the WelcomeScreen after creation */
+                                    returnToWelcomeScreen(user);
+                                }
+                            } else {
+                                /* Account creation failed */
+                                Log.e("createFirebaseAccount", "Authentication failed.", task.getException());
+                                displayPopupMessage("Account creation failed", view);
                             }
-                        } else {
-                            /* Account creation failed */
-                            Log.e("createFirebaseAccount", "Authentication failed.", task.getException());
-                            displayPopupMessage("Account creation failed", view);
-                        }
-                    });
-        } catch (Exception e) {
-            Log.e("createFirebaseAccount", String.format("Unexpected error when creating account: %s", e.getMessage()));
+                        });
+            } catch (Exception e) {
+                Log.e("createFirebaseAccount", String.format("Unexpected error when creating account: %s", e.getMessage()));
+            }
         }
     }
 
