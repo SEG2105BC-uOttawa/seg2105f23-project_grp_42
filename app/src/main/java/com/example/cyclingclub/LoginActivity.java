@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
         try {
             byte[] decodedSalt = Base64.decode(salt, Base64.NO_WRAP);
             /* Hash the entered password with the retrieved salt */
-            String hashedPassword = SecurityUtils.hashPasswordPBKDF2(enteredPassword, decodedSalt);
+            String hashedPassword = Utils.hashPasswordPBKDF2(enteredPassword, decodedSalt);
             return hashedPassword.equals(storedHashedPassword);
         } catch (Exception e) {
             Log.e("checkPassword", String.format("Unexpected error when checking password: %s", e.getMessage()));

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/home_text"
+          android:icon="@drawable/baseline_home_outline"
+          android:id="@+id/homeItem"
+          android:tint="@color/black"/>
+    <item android:title="@string/profile_text"
+          android:icon="@drawable/baseline_person_outline_24"
+          android:id="@+id/profileItem"
+          android:tint="@color/black"/>
+    <item android:title="@string/settings_text"
+          android:icon="@drawable/baseline_settings_outline"
+          android:id="@+id/settingsItem"
+          android:tint="@color/black"/>
+</menu>

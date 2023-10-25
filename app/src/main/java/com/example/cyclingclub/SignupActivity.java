@@ -77,9 +77,9 @@ public class SignupActivity extends AppCompatActivity {
      * @param view The current view.
      */
     private void createFirebaseAccount(String email, String password, String username, String role, View view) throws Exception {
-        byte[] salt = SecurityUtils.generateSalt();
-        if (SecurityUtils.retHashedPassword(password, salt) != null) {
-            String hashedPassword = SecurityUtils.retHashedPassword(password, salt);
+        byte[] salt = Utils.generateSalt();
+        if (Utils.retHashedPassword(password, salt) != null) {
+            String hashedPassword = Utils.retHashedPassword(password, salt);
             try {
                 firebaseAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(this, task -> {

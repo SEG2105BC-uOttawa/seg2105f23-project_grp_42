@@ -8,9 +8,9 @@ import android.util.Base64;
 import android.util.Log;
 
 /**
- * Utility class for security-related operations, such as password hashing and salt generation.
+ * Utility class for general purpose operations, such as password hashing and salt generation, displaying popup messages, and more.
  */
-public class SecurityUtils {
+public class Utils {
 
     /**
      * Hash a password using PBKDF2 with a provided salt.
@@ -43,9 +43,16 @@ public class SecurityUtils {
         return salt;
     }
 
-    public static String retHashedPassword(String password, byte[] salt) throws Exception {
+    /**
+     * Returns the hashed password. Just a normal getter method.
+     *
+     * @param password The password that the user inputted
+     * @param salt Randomly generated salt
+     * @return Will return the hashed password
+     */
+    public static String retHashedPassword(String password, byte[] salt) {
         try {
-            return SecurityUtils.hashPasswordPBKDF2(password, salt);
+            return Utils.hashPasswordPBKDF2(password, salt);
         } catch (Exception e) {
             Log.e("createFirebaseAccount", "Hashing password failed:" + e.getMessage());
         }
