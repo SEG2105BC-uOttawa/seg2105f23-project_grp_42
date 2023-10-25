@@ -44,6 +44,9 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    //Adding Truth Library for simplifying assertions just for Test package
+    testImplementation("com.google.truth:truth:1.1.2") //Ketan
+
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
 
