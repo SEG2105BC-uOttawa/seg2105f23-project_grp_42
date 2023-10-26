@@ -3,14 +3,11 @@
 
     <item android:title="@string/home_text"
           android:icon="@drawable/baseline_home_outline"
-          android:id="@+id/homeItem"
-          android:tint="@color/black"/>
+          android:id="@+id/homeItem"/>
     <item android:title="@string/profile_text"
           android:icon="@drawable/baseline_person_outline_24"
-          android:id="@+id/profileItem"
-          android:tint="@color/black"/>
+          android:id="@+id/profileItem"/>
     <item android:title="@string/settings_text"
           android:icon="@drawable/baseline_settings_outline"
-          android:id="@+id/settingsItem"
-          android:tint="@color/black"/>
+          android:id="@+id/settingsItem"/>
 </menu>

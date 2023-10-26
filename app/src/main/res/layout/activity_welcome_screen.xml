@@ -26,6 +26,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu"
+        app:itemActiveIndicatorStyle="@android:color/transparent"
+        app:itemIconTint="?attr/icon_tint"
         app:labelVisibilityMode="unlabeled"
         android:defaultFocusHighlightEnabled="false"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

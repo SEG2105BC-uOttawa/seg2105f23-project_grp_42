@@ -6,7 +6,6 @@ import android.view.animation.AnimationUtils;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -50,7 +49,7 @@ public class WelcomeScreen extends AppCompatActivity {
 			}
 		}
 
-        bottomNavigationView.setOnItemSelectedListener(item -> {
+		bottomNavigationView.setOnItemSelectedListener(item -> {
 
 			/* Reset icons to their normal state for all items */
 			resetMenuIcons(bottomNavigationView);
@@ -99,7 +98,7 @@ public class WelcomeScreen extends AppCompatActivity {
 //                    break;
 //            }
 //        });
-    }
+	}
 
 	private void initFragments() {
 		/* Initialize the fragments */
