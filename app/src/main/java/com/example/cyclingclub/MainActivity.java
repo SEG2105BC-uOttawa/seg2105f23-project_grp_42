@@ -1,18 +1,34 @@
 package com.example.cyclingclub;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.preference.PreferenceManager;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /* Load the user's selected theme from SharedPreferences */
+        String savedTheme = loadSelectedTheme();
+
+        /* Apply the selected theme to the entire app */
+        int themeMode = SettingsFragment.getThemeMode(savedTheme);
+        AppCompatDelegate.setDefaultNightMode(themeMode);
+
         setContentView(R.layout.activity_main);
+    }
+
+    private String loadSelectedTheme() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        return sharedPreferences.getString("appearance_mode", "system");
     }
 
     public void onClickLogin(View view) {

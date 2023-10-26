@@ -4,6 +4,7 @@ import java.security.SecureRandom;
 import java.security.spec.KeySpec;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
+
 import android.util.Base64;
 import android.util.Log;
 
@@ -54,8 +55,9 @@ public class Utils {
         try {
             return Utils.hashPasswordPBKDF2(password, salt);
         } catch (Exception e) {
-            Log.e("createFirebaseAccount", "Hashing password failed:" + e.getMessage());
+            Log.e("createFirebaseAccount", "Hashing password failed: " + e.getMessage());
         }
         return null;
     }
+
 }

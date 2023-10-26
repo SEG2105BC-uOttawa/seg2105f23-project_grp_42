@@ -6,6 +6,7 @@ import android.view.animation.AnimationUtils;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -16,6 +17,7 @@ public class WelcomeScreen extends AppCompatActivity {
 	private HomeFragment homeFragment;
 	private ProfileFragment profileFragment;
 	private SettingsFragment settingsFragment;
+	private boolean recreateActivity = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +28,7 @@ public class WelcomeScreen extends AppCompatActivity {
 		BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 		Animation btnAnimation = AnimationUtils.loadAnimation(this, R.anim.button_click);
 
-		/* Initialize the fragments */
-		homeFragment = new HomeFragment();
-		profileFragment = new ProfileFragment();
-		settingsFragment = new SettingsFragment();
+		initFragments();
 
 		if (user != null) {
 			Bundle bundle = new Bundle(); /* Create a Bundle to pass user information */
@@ -38,11 +37,18 @@ public class WelcomeScreen extends AppCompatActivity {
 			homeFragment.setArguments(bundle);
 		}
 
-		setFragment(homeFragment);
-
-		/* Make home icon filled in */
-		bottomNavigationView.setSelectedItemId(R.id.homeItem);
-		bottomNavigationView.getMenu().findItem(R.id.homeItem).setIcon(R.drawable.baseline_home);
+		if (savedInstanceState == null) {
+			setFragment(homeFragment);
+			bottomNavigationView.setSelectedItemId(R.id.homeItem);
+			bottomNavigationView.getMenu().findItem(R.id.homeItem).setIcon(R.drawable.baseline_home);
+		} else {
+			Fragment activeFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+			if (activeFragment == null) {
+				setFragment(homeFragment);
+				bottomNavigationView.setSelectedItemId(R.id.homeItem);
+				bottomNavigationView.getMenu().findItem(R.id.homeItem).setIcon(R.drawable.baseline_home);
+			}
+		}
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
 
@@ -65,13 +71,16 @@ public class WelcomeScreen extends AppCompatActivity {
 
 					homeFragment.setArguments(bundle);
 				}
-				setFragment(homeFragment);
+				if (getSupportFragmentManager().findFragmentById(R.id.fragment_container) != homeFragment) {
+					setFragment(homeFragment);
+				}
 				return true;
 			} else if (item.getItemId() == R.id.profileItem) {
 				setFragment(profileFragment);
 				return true;
 			} else if (item.getItemId() == R.id.settingsItem) {
 				setFragment(settingsFragment);
+				recreateActivity = true;
 				return true;
 			}
 
@@ -91,6 +100,22 @@ public class WelcomeScreen extends AppCompatActivity {
 //            }
 //        });
     }
+
+	private void initFragments() {
+		/* Initialize the fragments */
+		homeFragment = new HomeFragment();
+		profileFragment = new ProfileFragment();
+		settingsFragment = new SettingsFragment();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (recreateActivity) {
+			recreateActivity = false;
+			recreate();
+		}
+	}
 
 	private void setFragment(Fragment fragment) {
 		FragmentManager fragmentManager = getSupportFragmentManager();
