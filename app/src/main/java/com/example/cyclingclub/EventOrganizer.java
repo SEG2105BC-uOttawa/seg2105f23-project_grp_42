@@ -17,7 +17,7 @@ public class EventOrganizer extends User {
     }
 
     public void createProfile(){
-
+        Event.name = name;
     }
 
     public List<Event> selectEvents(){
@@ -30,7 +30,14 @@ public class EventOrganizer extends User {
     }
 
     public void createRoute(){
-
+        String eventType = Event.getType();
+        if(eventType == "Hill Climb"){
+            HillClimb hillClimb = new HillClimb();
+        } else if (eventType == "Group Riders") {
+            GroupRiders groupRiders = new GroupRiders();
+        } else if (eventType == "Road Stage Race"){
+            RoadStageRace roadStageRace = new RoadStageRace();
+        }
     }
 
     public double distributeAwards(){
