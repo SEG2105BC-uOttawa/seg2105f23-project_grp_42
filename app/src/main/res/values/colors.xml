@@ -4,7 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="custom_text_color">@color/black</color>
     <color name="primary_color">#5698ed</color>
-    <color name="selected_color">#FF5733</color>
     <color name="icon_tint_light">@color/black</color>
     <color name="icon_tint_dark">@color/white</color>
 </resources>

@@ -13,11 +13,19 @@
         android:theme="@style/Theme.CyclingClub"
         tools:targetApi="34">
         <activity
+            android:name=".UserAccountManagement"
+            android:exported="false" />
+        <activity
+            android:name=".EventTypeManagement"
+            android:exported="false"
+            android:label="@string/title_activity_event_type_management"
+            android:theme="@style/Theme.CyclingClub" />
+        <activity
             android:name=".WelcomeScreen"
             android:exported="false" />
         <activity
-                android:name=".SignupActivity"
-                android:exported="false" />
+            android:name=".SignupActivity"
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />

@@ -29,4 +29,5 @@ public class User implements Serializable {
     public String getRole() { return role;}
 
     public String getSalt() { return salt; }
+
 }

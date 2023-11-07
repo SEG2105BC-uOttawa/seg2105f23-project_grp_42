@@ -17,7 +17,7 @@ public class EventOrganizer extends User {
     }
 
     public void createProfile(){
-        Event.name = name;
+        //Event.name = name;
     }
 
     public List<Event> selectEvents(){

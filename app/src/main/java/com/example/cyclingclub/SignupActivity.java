@@ -32,7 +32,7 @@ public class SignupActivity extends AppCompatActivity {
         participantRadio = findViewById(R.id.participantRole);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        Button signupButton = findViewById(R.id.btnFinalSignUp);
+        Button signupButton = findViewById(R.id.btnDeleteUser);
 
         signupButton.setOnClickListener(view -> {
             // Get the values from the input fields

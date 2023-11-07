@@ -9,5 +9,4 @@
         <item name="icon_tint">@color/icon_tint_dark</item>
     </style>
 
-    <style name="Theme.CyclingClub.Dark" parent="Base.Theme.CyclingClub" />
 </resources>

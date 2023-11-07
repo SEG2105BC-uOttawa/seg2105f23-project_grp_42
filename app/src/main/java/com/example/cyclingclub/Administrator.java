@@ -1,5 +1,7 @@
 package com.example.cyclingclub;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,11 +12,15 @@ public class Administrator extends User{
     */
     //The cardinality is many to many, both classes have a list of the other class
     private static List<Event> events;
+    private static List<EventType> eventTypes;
+    private DatabaseReference eventTypesDB;
 
     //create a constructor with the array list of the events
     public Administrator(String username, String password) {
         super(null, username, "Administrator", password, null);
         events = new ArrayList<Event>();
+
+        eventTypes=new ArrayList<EventType>();
     }
 
     //Get the event index from the event array
@@ -148,15 +154,29 @@ public class Administrator extends User{
 
     }
 
-    public void createEventType(){
-
+    public void setEventTypeDB(DatabaseReference db){
+        this.eventTypesDB=db;
     }
 
-    public void deleteEventType(){
-
+    public void createEventType(EventType et){
+        String id = eventTypesDB.push().getKey();
+        et.setId(id);
+        eventTypesDB.child(id).setValue(et);
     }
 
-    public void viewEventType(){
+    public void updateEventType(EventType et){
+        eventTypesDB.child(et.getId()).setValue(et);
+    }
+
+    public List<EventType>   getEventTypes(){
+        return eventTypes;
+    }
+
+    public void deleteEventType(EventType et){
+        eventTypesDB.child(et.getId()).removeValue();;
+    }
+
+    public void viewEventType(EventType et){
 
     }
 }

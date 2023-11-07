@@ -1,5 +1,6 @@
 package com.example.cyclingclub;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.widget.Button;
 
 public class WelcomeScreen extends AppCompatActivity {
 
@@ -28,6 +30,17 @@ public class WelcomeScreen extends AppCompatActivity {
 		Animation btnAnimation = AnimationUtils.loadAnimation(this, R.anim.button_click);
 
 		initFragments();
+		Button btnEventType=findViewById(R.id.adminBtnEventType);
+		Button btnUser=findViewById(R.id.adminBtnUser);
+
+		if(user.getUsername().equals("admin")) {
+		}else {
+			//Disable admin button for other users
+			btnEventType.setEnabled(false);
+			btnUser.setEnabled(false);
+		}
+
+
 
 		if (user != null) {
 			Bundle bundle = new Bundle(); /* Create a Bundle to pass user information */
@@ -142,4 +155,18 @@ public class WelcomeScreen extends AppCompatActivity {
 
 		return iconResource;
 	}
+
+	public void onClickEventManagement(View view) {
+		//Application Context and Activity
+		Intent intent = new Intent(getApplicationContext(), EventTypeManagement.class);
+		startActivity (intent);
+	}
+
+
+	public void onClickUserManagement(View view) {
+		//Application Context and Activity
+		Intent intent = new Intent(getApplicationContext(), UserAccountManagement.class);
+		startActivity (intent);
+	}
+
 }
