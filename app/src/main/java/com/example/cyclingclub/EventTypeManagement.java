@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -156,6 +157,8 @@ public class EventTypeManagement extends AppCompatActivity {
         }
         else{
             displayPopupMessage(validateInput(typeName),view);
+            //show message says invalid type name;
+            //Snackbar.make(view,"Error: Name cannot be empty",Snackbar.LENGTH_SHORT).show();
         }
     }
 
