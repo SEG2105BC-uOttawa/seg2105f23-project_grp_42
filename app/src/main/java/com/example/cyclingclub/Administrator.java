@@ -1,10 +1,16 @@
 package com.example.cyclingclub;
 
+import static java.security.AccessController.getContext;
+
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 
 public class Administrator extends User{
     /*
@@ -150,8 +156,8 @@ public class Administrator extends User{
 
     }
 
-    public void deleteUser(){
-
+    public void deleteUser(DatabaseReference db, String key){
+        db.child(key).removeValue();
     }
 
     public void setEventTypeDB(DatabaseReference db){
@@ -173,10 +179,12 @@ public class Administrator extends User{
     }
 
     public void deleteEventType(EventType et){
-        eventTypesDB.child(et.getId()).removeValue();;
+        eventTypesDB.child(et.getId()).removeValue();
     }
 
     public void viewEventType(EventType et){
 
     }
+
+
 }

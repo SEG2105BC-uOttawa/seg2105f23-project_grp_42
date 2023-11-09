@@ -36,6 +36,10 @@
             android:onClick="onClickAddEventType"
             android:text="@string/addNewEventType" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="66dp" />
+
         <ListView
             android:id="@+id/eventTypeList"
             android:layout_width="match_parent"

@@ -3,6 +3,7 @@ package com.example.cyclingclub;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ public class UserAccountManagement extends AppCompatActivity {
     private ListView listViewUser;
     // private List<User> users;
     private List<User> users;
+    private List<String> userKeys;
     private DatabaseReference databaseUser;
 
     private Administrator admin;
@@ -37,6 +39,7 @@ public class UserAccountManagement extends AppCompatActivity {
         setContentView(R.layout.activity_user_account_management);
 
         users = new ArrayList<>();
+        userKeys = new ArrayList<String>();
 
         listViewUser = (ListView) findViewById(R.id.userListView);
         admin= new Administrator("admin","admin");
@@ -46,9 +49,10 @@ public class UserAccountManagement extends AppCompatActivity {
         AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //String id = eventTypes.get(i).getId();
+                //databaseUser.child(users.get(i).getUsername()).removeValue();
                 User user = users.get(i);
-                showUpdateDeleteDialog(user);
+                String key= userKeys.get(i);
+                showUpdateDeleteDialog(user,key);
                 return true;
             }
         };
@@ -63,9 +67,13 @@ public class UserAccountManagement extends AppCompatActivity {
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                users.clear();
+                userKeys.clear();
                 for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
                     User user = postSnapShot.getValue(User.class);
+                    String key= postSnapShot.getKey();
                     users.add(user);
+                    userKeys.add(key);
                 }
 
                 UserList userAdapter = new UserList(UserAccountManagement.this, users);
@@ -81,7 +89,7 @@ public class UserAccountManagement extends AppCompatActivity {
     }
 
 
-    private void showUpdateDeleteDialog(User user) {
+    private void showUpdateDeleteDialog(User user, String key) {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -116,11 +124,13 @@ public class UserAccountManagement extends AppCompatActivity {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //deleteProduct(productId);
-                admin.deleteUser();
-                b.dismiss();
+                    admin.deleteUser(databaseUser,key);
+                    b.dismiss();
+
             }
         });
     }
+
+
 
 }

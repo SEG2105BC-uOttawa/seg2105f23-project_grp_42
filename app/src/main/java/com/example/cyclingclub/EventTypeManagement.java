@@ -2,10 +2,15 @@ package com.example.cyclingclub;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +24,8 @@ import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.text.TextUtils;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 public class EventTypeManagement extends AppCompatActivity {
 
@@ -35,6 +42,7 @@ public class EventTypeManagement extends AppCompatActivity {
         setContentView(R.layout.activity_event_type_management);
 
         eventTypeName=(EditText) findViewById(R.id.eventTypeName);
+        eventTypeName.setText("");
         listViewEventTypes = (ListView) findViewById(R.id.eventTypeList);
         eventTypes = new ArrayList<>();
         databaseProducts = FirebaseDatabase.getInstance().getReference("EventTypes1");
@@ -122,9 +130,13 @@ public class EventTypeManagement extends AppCompatActivity {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //deleteProduct(productId);
-                admin.deleteEventType(et);
-                b.dismiss();
+                if(et.getNumberOfEvent()==0){
+                    admin.deleteEventType(et);
+                    b.dismiss();
+                }
+                else {
+                    displayPopupMessage("There are events organized, can not delete",view);
+                }
             }
         });
     }
@@ -133,13 +145,47 @@ public class EventTypeManagement extends AppCompatActivity {
     public void onClickAddEventType(View view) {
         String typeName = eventTypeName.getText().toString().trim();
 
-        if(!typeName.isEmpty()){
+        InputValidator validator = InputValidator.getInstance();
+
+
+
+        if(validateInput(typeName)==null){
             EventType newEventType = new EventType("", typeName,0);
             admin.createEventType(newEventType);
+            eventTypeName.setText("");
         }
         else{
-            //show message says invalid type name;
+            displayPopupMessage(validateInput(typeName),view);
         }
+    }
+
+    private void displayPopupMessage(String message, View anchorView) {
+        LinearLayout layout = new LinearLayout(this);
+        layout.setLayoutParams(new ViewGroup.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT));
+
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setGravity(Gravity.CENTER);
+        TextView textView = new TextView(this);
+        textView.setText(message);
+        textView.setTextColor(Color.RED);
+
+        PopupWindow popupWindow = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
+        popupWindow.setContentView(textView);
+        popupWindow.showAsDropDown(anchorView, 10, 0);
+    }
+
+    /**
+     * Validate the input fields for email, username, and password.
+     * @param eventTypeName The event type name.
+     * @return A validation message if there's an issue, or null if everything is valid.
+     */
+    private String validateInput(String eventTypeName) {
+        InputValidator validator = InputValidator.getInstance();
+
+        /* Validate event type */
+        if (!validator.isValidName(eventTypeName)) { return "Event type name not valid.";}
+
+        return null;
     }
 
 }
