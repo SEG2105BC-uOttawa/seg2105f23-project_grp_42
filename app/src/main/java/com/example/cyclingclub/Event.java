@@ -10,6 +10,8 @@ public class Event {
     private static String location;
     private static String rewards;
 
+    public static Double duration;
+
     private final List<Administrator> admins;
 
     public Event()
@@ -140,6 +142,10 @@ public class Event {
             wasAdded = true;
         }
         return wasAdded;
+    }
+
+    public double getDuration(){
+        return this.duration;
     }
 
     public boolean addOrMoveAdminAt(Administrator admin, int index)
