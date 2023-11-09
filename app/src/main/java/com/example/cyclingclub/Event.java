@@ -144,7 +144,7 @@ public class Event {
         return wasAdded;
     }
 
-    public double getDuration(){
+    public static double getDuration(){
         return this.duration;
     }
 

@@ -28,10 +28,12 @@ public class EventOrganizer extends User {
     public void createEvent(){
         Event aEvent = new Event();
         String eventType = Event.getType();
-        createRoute(eventType);
+        double duration = Event.getDuration();
+        createRoute(eventType, duration);
+
     }
 
-    public void createRoute(String eventType){
+    public void createRoute(String eventType,double duration ){
         if(eventType == "Hill Climb"){
             HillClimb hillClimb = new HillClimb();
         } else if (eventType == "Group Riders") {
