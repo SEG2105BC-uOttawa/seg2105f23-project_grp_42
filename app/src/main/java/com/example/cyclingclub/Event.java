@@ -11,6 +11,7 @@ public class Event {
     private  String date;
     private  String location;
     private  String rewards;
+    private  List<User> users;
 
     private  Double duration;
 
@@ -20,13 +21,14 @@ public class Event {
     public Event() {}
 
 
-    public Event(String key, String name, String region, String type, String time , double duration){
+    public Event(String key, String name, String region, String type, String time , double duration, List<User> users){
         this.key=key;
         this.name=name;
         this.type=type;
         this.location=region;
         this.date=time;
         this.duration=duration;
+        this.users = users;
         //admins = new ArrayList<Administrator>();
     }
 
@@ -85,6 +87,9 @@ public class Event {
         this.duration = duration;
     }
 
+    public List<User> getUsers(){
+        return this.users;
+    }
 
 /*
     public Administrator getAdmin(int index)
