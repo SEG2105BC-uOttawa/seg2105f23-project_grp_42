@@ -46,6 +46,8 @@ public class EventManagement extends AppCompatActivity {
 
     private DatabaseReference databaseEvents;
 
+    private List<User> users;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -199,7 +201,7 @@ public class EventManagement extends AppCompatActivity {
                 double duration = Double.parseDouble(editTextDuration.getText().toString().trim());
 
 
-                Event newEvent=new Event(key, name, location, type, time , duration);
+                Event newEvent=new Event(key, name, location, type, time , duration, users);
                 databaseEvents.child(key).setValue(newEvent);
                 b.dismiss();
             }
@@ -229,7 +231,7 @@ public class EventManagement extends AppCompatActivity {
 
         String key = databaseEvents.push().getKey();
 
-        Event event=new Event(key, name, region, type, time , duration);
+        Event event=new Event(key, name, region, type, time , duration, users);
 
         databaseEvents.child(key).setValue(event);
 
