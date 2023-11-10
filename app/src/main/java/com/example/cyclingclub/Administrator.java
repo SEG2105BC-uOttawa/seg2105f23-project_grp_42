@@ -153,9 +153,6 @@ public class Administrator extends User{
 
     }
 
-    public static EventType getEventType(int index){
-        return this.eventTypes.get(index);
-    }
     public void viewUsers(){
 
     }
