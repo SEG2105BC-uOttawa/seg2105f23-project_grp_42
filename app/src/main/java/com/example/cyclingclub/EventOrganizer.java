@@ -1,5 +1,7 @@
 package com.example.cyclingclub;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -25,20 +27,25 @@ public class EventOrganizer extends User {
         List<Event> newEvents = Collections.unmodifiableList(events);
         return newEvents;
     }
-    public void createEvent(){
-        Event aEvent = new Event();
-        String eventType = Event.getType();
+    public void changeEvent(String name,DatabaseReference db){
+        int index = Administrator.getEvents().indexOf(name);
+        Event aEvent = Administrator.getEvents().get(index);
+        String eventType = String.valueOf(Administrator.getEventType(index));
         double duration = Event.getDuration();
-        createRoute(eventType, duration);
+        changeRoute(eventType, duration);
 
     }
 
-    public void createRoute(String eventType,double duration ){
-        if(eventType == "Hill Climb"){
+    public void changeRoute( String oldEventType, String newEventType, double duration ){
+        boolean ifChange = true;
+        while(ifChange == true){
+
+        }
+        if(newEventType == "Hill Climb"){
             HillClimb hillClimb = new HillClimb();
-        } else if (eventType == "Group Riders") {
-            GroupRiders groupRiders = new GroupRiders();
-        } else if (eventType == "Road Stage Race"){
+        } else if (newEventType == "Group Riders") {
+            GroupRiders groupRiders= new GroupRiders();
+        } else if (newEventType == "Road Stage Race"){
             RoadStageRace roadStageRace = new RoadStageRace();
         }
     }

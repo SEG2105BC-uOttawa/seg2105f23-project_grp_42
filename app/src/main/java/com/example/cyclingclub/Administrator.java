@@ -18,7 +18,7 @@ public class Administrator extends User{
     */
     //The cardinality is many to many, both classes have a list of the other class
     private static List<Event> events;
-    private static List<EventType> eventTypes;
+    public static List<EventType> eventTypes;
     private DatabaseReference eventTypesDB;
 
     //create a constructor with the array list of the events
@@ -151,6 +151,10 @@ public class Administrator extends User{
 
     public void manageContent(){
 
+    }
+
+    public static EventType getEventType(int index){
+        return this.eventTypes.get(index);
     }
     public void viewUsers(){
 
