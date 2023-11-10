@@ -3246,6 +3246,7 @@ id BOTTOM_END
 id BOTTOM_START
 id ButtonLayout
 id CTRL
+id CreationTitle
 id FUNCTION
 id META
 id NO_DEBUG
@@ -3978,6 +3979,7 @@ layout adt_layout_hint
 layout adt_layout_toast
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
+layout creation_screen
 layout custom_dialog
 layout custom_preference_category_layout
 layout delete_event

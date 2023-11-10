@@ -172,7 +172,13 @@ public class Event {
         return wasAdded;
     }
 
+<<<<<<< Updated upstream
 
+=======
+    public static double getDuration(){
+        return this.duration;
+    }
+>>>>>>> Stashed changes
 
     public boolean addOrMoveAdminAt(Administrator admin, int index)
     {

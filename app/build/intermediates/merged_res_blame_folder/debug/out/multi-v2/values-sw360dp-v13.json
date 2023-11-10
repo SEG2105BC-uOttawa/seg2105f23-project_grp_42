@@ -4,11 +4,15 @@
             "outputFile": "com.example.cyclingclub.app-mergeDebugResources-49:/values-sw360dp-v13/values-sw360dp-v13.xml",
             "map": [
                 {
+<<<<<<< Updated upstream
 <<<<<<< HEAD
                     "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-3\\ffd01f60fc7496b11752271ad82be88e\\transformed\\preference-1.2.1\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
 =======
                     "source": "C:\\Users\\bradl\\.gradle\\caches\\transforms-3\\ffd01f60fc7496b11752271ad82be88e\\transformed\\preference-1.2.1\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
 >>>>>>> b6a30152b57b4cedc6daceed5889bec12f706567
+=======
+                    "source": "C:\\Users\\Darre\\.gradle\\caches\\transforms-3\\cca54f931452eb9d985006b9c2df7f3d\\transformed\\preference-1.2.1\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
+>>>>>>> Stashed changes
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

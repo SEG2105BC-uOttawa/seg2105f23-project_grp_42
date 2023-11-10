@@ -24,6 +24,7 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 font atomic_age
 id ButtonLayout
+id CreationTitle
 id Text5
 id accountType
 id adminBtnEventType
@@ -108,6 +109,7 @@ layout activity_main
 layout activity_signup
 layout activity_user_account_management
 layout activity_welcome_screen
+layout creation_screen
 layout custom_preference_category_layout
 layout delete_event
 layout event_type_list
