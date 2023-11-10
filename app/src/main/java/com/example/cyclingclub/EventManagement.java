@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,20 +22,26 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+//import java.util.Collections;
+
 public class EventManagement extends AppCompatActivity {
 
     private EditText eventName;
     private EditText eventRegion;
-    private EditText eventType;
+
     private EditText eventTime;
     private EditText eventDuration;
+
+
+    private Spinner dropdownType ;
+
     private ListView listViewEvents;
     private List<Event> events;
-    private List<String> eventNames;
+    private ArrayList<String> eventNames;
 
     //private List<String> eventItems;
 
-
+    private List<String>  eventTypeNames;
 
 
     private DatabaseReference databaseEvents;
@@ -47,15 +54,25 @@ public class EventManagement extends AppCompatActivity {
 
         eventName=(EditText) findViewById(R.id.editEventName);
         eventRegion=(EditText) findViewById(R.id.editEventRegion);
-        eventType=(EditText) findViewById(R.id.editEventType);
         eventTime=(EditText) findViewById(R.id.editEventTime);
         eventDuration=(EditText) findViewById(R.id.editEventDuration);
 
         listViewEvents = (ListView) findViewById(R.id.listEvents);
 
         databaseEvents = FirebaseDatabase.getInstance().getReference("Events1");
+
+        dropdownType = findViewById(R.id.spinnerType);
+
+
         events = new ArrayList<Event>();
         eventNames=new ArrayList<String>();
+        eventTypeNames=new ArrayList<String>();
+
+
+        eventName.setText("");
+        eventRegion.setText("");
+        eventTime.setText("");
+        eventDuration.setText("0");
 
 
         AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
@@ -68,6 +85,41 @@ public class EventManagement extends AppCompatActivity {
         };
         listViewEvents.setOnItemLongClickListener(longClickListener);
 
+
+
+
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("EventTypes1");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //int i=0;
+                for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
+                    EventType et = postSnapShot.getValue(EventType.class);
+                    eventTypeNames.add(et.getTypeName());
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+
+        //create a list of items for the spinner.
+        //String[] items = (String[]) eventNames.toArray();
+        //String items[] = eventNames.toArray(new String[eventNames.size()]);
+        //String[] str = new String[10];
+
+        //for (int i = 0; i < eventNames.size(); i++) {
+        //    str[i] = eventNames.get(i).toString();
+       // }
+
+
+        String[] Types = {"Time Trial", "Hill Climb", "Road Stage Race", "Road Race", "Group Rides"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Types);
+        dropdownType.setAdapter(adapter);
 
 
     }
@@ -113,17 +165,22 @@ public class EventManagement extends AppCompatActivity {
 
         EditText editTextName = (EditText) dialogView.findViewById(R.id.editTextName);
         EditText editTextLocation = (EditText) dialogView.findViewById(R.id.editTextLocation);
-        EditText editTextType = (EditText) dialogView.findViewById(R.id.editTextType);
+        Spinner editSpinnerType = (Spinner) findViewById(R.id.spinnerTypeUpdate);
         EditText editTextTime = (EditText) dialogView.findViewById(R.id.editTextTime);
         EditText editTextDuration = (EditText) dialogView.findViewById(R.id.editTextDuration);
 
         final Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
         final Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
 
+        String[] Types = {"Time Trial", "Hill Climb", "Road Stage Race", "Road Race", "Group Rides"};
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Types);
+        //editSpinnerType.setAdapter(adapter1);
+
+
         dialogBuilder.setTitle("Selected Event Detail");
         editTextName.setText(event.getName());
         editTextLocation.setText(event.getLocation());
-        editTextType.setText(event.getType());
+        //editSpinnerType.setSelection(0);
         editTextTime.setText(event.getDate());
         editTextDuration.setText(Double.toString(event.getDuration()));
 
@@ -137,7 +194,7 @@ public class EventManagement extends AppCompatActivity {
                 String  key=event.getKey();
                 String name = editTextName.getText().toString().trim();
                 String location = editTextLocation.getText().toString().trim();
-                String type = editTextType.getText().toString().trim();
+                String type = editSpinnerType.getSelectedItem().toString();
                 String time = editTextTime.getText().toString().trim();
                 double duration = Double.parseDouble(editTextDuration.getText().toString().trim());
 
@@ -160,13 +217,12 @@ public class EventManagement extends AppCompatActivity {
 
 
 
+
     public void onClickAddEvent(View view) {
-
-
 
         String name = eventName.getText().toString().trim();
         String region = eventRegion.getText().toString().trim();
-        String type = eventType.getText().toString().trim();
+        String type = dropdownType.getSelectedItem().toString();
         String time = eventTime.getText().toString().trim();
         double duration = Double.parseDouble((eventDuration.getText().toString().trim()));
 
@@ -177,7 +233,10 @@ public class EventManagement extends AppCompatActivity {
 
         databaseEvents.child(key).setValue(event);
 
-       // eventNames.add("CCC");
+        eventName.setText("");
+        eventRegion.setText("");
+        eventTime.setText("");
+        eventDuration.setText("0");
 
 
 

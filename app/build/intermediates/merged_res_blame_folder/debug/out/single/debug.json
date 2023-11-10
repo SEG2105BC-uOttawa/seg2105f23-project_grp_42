@@ -1,250 +1,254 @@
 [
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-xhdpi_baseline_settings_outline.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-xhdpi/baseline_settings_outline.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\menu\\bottom_nav_menu.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-xxhdpi_baseline_settings.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-xxhdpi/baseline_settings.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-anydpi_baseline_home_outline.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-anydpi\\baseline_home_outline.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_fragment_second.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/fragment_second.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable_baseline_person_24.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable\\baseline_person_24.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_activity_welcome_screen.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/activity_welcome_screen.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-hdpi_baseline_home_outline.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-hdpi/baseline_home_outline.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable_baseline_person_outline_24.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable/baseline_person_outline_24.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_fragment_home.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/fragment_home.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-xxhdpi_baseline_home_outline.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-xxhdpi\\baseline_home_outline.png"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_activity_user_account_management.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/activity_user_account_management.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_admin_create_delete_event.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\admin_create_delete_event.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-xxhdpi_baseline_settings_outline.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-xxhdpi/baseline_settings_outline.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\font_atomic_age.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\font\\atomic_age.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_event_type_list.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/event_type_list.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-xhdpi_baseline_home.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-xhdpi/baseline_home.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_activity_signup.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_signup.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_item_view.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/item_view.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cyclingclub.app-main-53:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_activity_user_account_management.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_user_account_management.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_fragment_first.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/fragment_first.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_activity_event_management.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/activity_event_management.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-hdpi_baseline_home_outline.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-hdpi\\baseline_home_outline.png"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-mdpi_baseline_home_outline.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-mdpi/baseline_home_outline.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-xxhdpi_baseline_home.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-xxhdpi/baseline_home.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-anydpi\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_eventtype_update.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/eventtype_update.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-xxhdpi_baseline_settings_outline.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-xxhdpi\\baseline_settings_outline.png"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_user_list.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\user_list.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_admin_create_delete_event.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/admin_create_delete_event.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_event_type_list.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\event_type_list.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cyclingclub.app-main-53:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_activity_event_type_management.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_event_type_management.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_activity_login.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/activity_login.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_activity_event_management.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_event_management.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_fragment_profile.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/fragment_profile.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-xhdpi_baseline_home_outline.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-xhdpi\\baseline_home_outline.png"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/anim_button_click.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/anim/button_click.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_custom_preference_category_layout.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\custom_preference_category_layout.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-xhdpi_baseline_settings_outline.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-xhdpi\\baseline_settings_outline.png"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_activity_main.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/activity_main.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-hdpi_baseline_settings.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-hdpi/baseline_settings.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/xml_settings_preferences.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/xml/settings_preferences.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-mdpi_baseline_home_outline.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-mdpi\\baseline_home_outline.png"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-anydpi_baseline_home.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-anydpi/baseline_home.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-anydpi_baseline_settings.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-anydpi/baseline_settings.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_event_update.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\event_update.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cyclingclub.app-main-53:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-hdpi_baseline_settings.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-hdpi\\baseline_settings.png"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable_baseline_person_24.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable/baseline_person_24.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_item_view.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\item_view.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/mipmap-anydpi_ic_launcher_round.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/mipmap-anydpi/ic_launcher_round.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-xxhdpi_baseline_home.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-xxhdpi\\baseline_home.png"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.cyclingclub.app-main-53:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_fragment_second.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\fragment_second.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-xhdpi_baseline_home_outline.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-xhdpi/baseline_home_outline.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable_baseline_person_outline_24.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable\\baseline_person_outline_24.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cyclingclub.app-main-53:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\anim_button_click.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\anim\\button_click.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.cyclingclub.app-main-53:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_activity_welcome_screen.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_welcome_screen.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/xml_backup_rules.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-xhdpi_baseline_home.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-xhdpi\\baseline_home.png"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/font_atomic_age.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/font/atomic_age.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-mdpi_baseline_settings_outline.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-mdpi/baseline_settings_outline.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-anydpi_baseline_settings_outline.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-anydpi\\baseline_settings_outline.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-hdpi_baseline_settings_outline.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-hdpi/baseline_settings_outline.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_custom_preference_category_layout.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/custom_preference_category_layout.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_fragment_first.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\fragment_first.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_user_detail.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/user_detail.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.cyclingclub.app-main-53:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-mdpi_baseline_home.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-mdpi\\baseline_home.png"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-mdpi_baseline_settings.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-mdpi/baseline_settings.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-anydpi_baseline_settings.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-anydpi\\baseline_settings.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/menu_bottom_nav_menu.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/menu/bottom_nav_menu.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_creation_screen.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\creation_screen.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-xxhdpi_baseline_home_outline.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-xxhdpi/baseline_home_outline.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-anydpi_baseline_home.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-anydpi\\baseline_home.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-xhdpi_baseline_settings.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-xhdpi/baseline_settings.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-xhdpi_baseline_settings.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-xhdpi\\baseline_settings.png"
+    },
+    {
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-hdpi_baseline_home.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-hdpi\\baseline_home.png"
+    },
+    {
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-mdpi_baseline_settings.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-mdpi\\baseline_settings.png"
+    },
+    {
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
         "merged": "com.example.cyclingclub.app-merged_res-51:/layout_event_update.xml.flat",
         "source": "com.example.cyclingclub.app-main-53:/layout/event_update.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-anydpi_baseline_settings_outline.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-anydpi/baseline_settings_outline.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-anydpi\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-mdpi_baseline_home.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-mdpi/baseline_home.png"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.cyclingclub.app-main-53:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-mdpi_baseline_settings_outline.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-mdpi\\baseline_settings_outline.png"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_activity_event_type_management.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/activity_event_type_management.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_user_detail.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\user_detail.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_creation_screen.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/creation_screen.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\xml_settings_preferences.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\xml\\settings_preferences.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_activity_signup.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/activity_signup.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_login.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.cyclingclub.app-main-53:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_fragment_profile.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\fragment_profile.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-xxhdpi_baseline_settings.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-xxhdpi\\baseline_settings.png"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_user_list.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/user_list.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.cyclingclub.app-main-53:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-hdpi_baseline_settings_outline.png.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-hdpi\\baseline_settings_outline.png"
     },
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-anydpi_baseline_home_outline.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-anydpi/baseline_home_outline.xml"
-    },
-    {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/drawable-hdpi_baseline_home.png.flat",
-        "source": "com.example.cyclingclub.app-main-53:/drawable-hdpi/baseline_home.png"
-    },
-    {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/mipmap-anydpi_ic_launcher.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/mipmap-anydpi/ic_launcher.xml"
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_eventtype_update.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\eventtype_update.xml"
     }
 ]

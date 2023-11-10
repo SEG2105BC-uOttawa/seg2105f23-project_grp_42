@@ -3457,12 +3457,10 @@ id editEventName
 id editEventNumber
 id editEventRegion
 id editEventTime
-id editEventType
 id editTextDuration
 id editTextLocation
 id editTextName
 id editTextTime
-id editTextType
 id edit_query
 id edit_text_id
 id elastic
@@ -3739,6 +3737,8 @@ id south
 id spacer
 id special_effects_controller_view_tag
 id spinner
+id spinnerType
+id spinnerTypeUpdate
 id spline
 id split_action_bar
 id spread
@@ -3787,6 +3787,11 @@ id textTop
 id textView
 id textView10
 id textView11
+id textView12
+id textView13
+id textView14
+id textView15
+id textView16
 id textView2
 id textView3
 id textView4

@@ -3456,12 +3456,10 @@ int id editEventName 0x7f0a00d4
 int id editEventNumber 0x7f0a00d5
 int id editEventRegion 0x7f0a00d6
 int id editEventTime 0x7f0a00d7
-int id editEventType 0x7f0a00d8
 int id editTextDuration 0x7f0a00d9
 int id editTextLocation 0x7f0a00da
 int id editTextName 0x7f0a00db
 int id editTextTime 0x7f0a00dc
-int id editTextType 0x7f0a00dd
 int id edit_query 0x7f0a00de
 int id edit_text_id 0x7f0a00df
 int id elastic 0x7f0a00e0
@@ -3738,6 +3736,8 @@ int id south 0x7f0a01ee
 int id spacer 0x7f0a01ef
 int id special_effects_controller_view_tag 0x7f0a01f0
 int id spinner 0x7f0a01f1
+int id spinnerType 0x7f0a0268
+int id spinnerTypeUpdate 0x7f0a026e
 int id spline 0x7f0a01f2
 int id split_action_bar 0x7f0a01f3
 int id spread 0x7f0a01f4
@@ -3786,6 +3786,11 @@ int id textTop 0x7f0a021e
 int id textView 0x7f0a021f
 int id textView10 0x7f0a0220
 int id textView11 0x7f0a0221
+int id textView12 0x7f0a0269
+int id textView13 0x7f0a026a
+int id textView14 0x7f0a026b
+int id textView15 0x7f0a026c
+int id textView16 0x7f0a026d
 int id textView2 0x7f0a0222
 int id textView3 0x7f0a0223
 int id textView4 0x7f0a0224

@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -37,24 +39,45 @@ public final class ActivityEventManagementBinding implements ViewBinding {
   public final EditText editEventTime;
 
   @NonNull
-  public final EditText editEventType;
+  public final ListView listEvents;
 
   @NonNull
-  public final ListView listEvents;
+  public final Spinner spinnerType;
+
+  @NonNull
+  public final TextView textView12;
+
+  @NonNull
+  public final TextView textView13;
+
+  @NonNull
+  public final TextView textView14;
+
+  @NonNull
+  public final TextView textView15;
+
+  @NonNull
+  public final TextView textView16;
 
   private ActivityEventManagementBinding(@NonNull RelativeLayout rootView,
       @NonNull Button btnAddEvent, @NonNull EditText editEventDuration,
       @NonNull EditText editEventName, @NonNull EditText editEventRegion,
-      @NonNull EditText editEventTime, @NonNull EditText editEventType,
-      @NonNull ListView listEvents) {
+      @NonNull EditText editEventTime, @NonNull ListView listEvents, @NonNull Spinner spinnerType,
+      @NonNull TextView textView12, @NonNull TextView textView13, @NonNull TextView textView14,
+      @NonNull TextView textView15, @NonNull TextView textView16) {
     this.rootView = rootView;
     this.btnAddEvent = btnAddEvent;
     this.editEventDuration = editEventDuration;
     this.editEventName = editEventName;
     this.editEventRegion = editEventRegion;
     this.editEventTime = editEventTime;
-    this.editEventType = editEventType;
     this.listEvents = listEvents;
+    this.spinnerType = spinnerType;
+    this.textView12 = textView12;
+    this.textView13 = textView13;
+    this.textView14 = textView14;
+    this.textView15 = textView15;
+    this.textView16 = textView16;
   }
 
   @Override
@@ -114,21 +137,51 @@ public final class ActivityEventManagementBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.editEventType;
-      EditText editEventType = ViewBindings.findChildViewById(rootView, id);
-      if (editEventType == null) {
-        break missingId;
-      }
-
       id = R.id.listEvents;
       ListView listEvents = ViewBindings.findChildViewById(rootView, id);
       if (listEvents == null) {
         break missingId;
       }
 
+      id = R.id.spinnerType;
+      Spinner spinnerType = ViewBindings.findChildViewById(rootView, id);
+      if (spinnerType == null) {
+        break missingId;
+      }
+
+      id = R.id.textView12;
+      TextView textView12 = ViewBindings.findChildViewById(rootView, id);
+      if (textView12 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView13;
+      TextView textView13 = ViewBindings.findChildViewById(rootView, id);
+      if (textView13 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView14;
+      TextView textView14 = ViewBindings.findChildViewById(rootView, id);
+      if (textView14 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView15;
+      TextView textView15 = ViewBindings.findChildViewById(rootView, id);
+      if (textView15 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView16;
+      TextView textView16 = ViewBindings.findChildViewById(rootView, id);
+      if (textView16 == null) {
+        break missingId;
+      }
+
       return new ActivityEventManagementBinding((RelativeLayout) rootView, btnAddEvent,
-          editEventDuration, editEventName, editEventRegion, editEventTime, editEventType,
-          listEvents);
+          editEventDuration, editEventName, editEventRegion, editEventTime, listEvents, spinnerType,
+          textView12, textView13, textView14, textView15, textView16);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
