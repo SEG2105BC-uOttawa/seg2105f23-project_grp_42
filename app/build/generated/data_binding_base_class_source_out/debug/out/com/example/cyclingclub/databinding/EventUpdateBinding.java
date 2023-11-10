@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,6 +31,9 @@ public final class EventUpdateBinding implements ViewBinding {
   public final EditText editTextDuration;
 
   @NonNull
+  public final EditText editTextEventType;
+
+  @NonNull
   public final EditText editTextLocation;
 
   @NonNull
@@ -39,9 +41,6 @@ public final class EventUpdateBinding implements ViewBinding {
 
   @NonNull
   public final EditText editTextTime;
-
-  @NonNull
-  public final Spinner spinnerTypeUpdate;
 
   @NonNull
   public final TextView textView10;
@@ -60,18 +59,18 @@ public final class EventUpdateBinding implements ViewBinding {
 
   private EventUpdateBinding(@NonNull RelativeLayout rootView, @NonNull Button btnEventDelete,
       @NonNull Button btnEventUpdate, @NonNull EditText editTextDuration,
-      @NonNull EditText editTextLocation, @NonNull EditText editTextName,
-      @NonNull EditText editTextTime, @NonNull Spinner spinnerTypeUpdate,
-      @NonNull TextView textView10, @NonNull TextView textview, @NonNull TextView textview11,
-      @NonNull TextView textview3, @NonNull TextView textview4) {
+      @NonNull EditText editTextEventType, @NonNull EditText editTextLocation,
+      @NonNull EditText editTextName, @NonNull EditText editTextTime, @NonNull TextView textView10,
+      @NonNull TextView textview, @NonNull TextView textview11, @NonNull TextView textview3,
+      @NonNull TextView textview4) {
     this.rootView = rootView;
     this.btnEventDelete = btnEventDelete;
     this.btnEventUpdate = btnEventUpdate;
     this.editTextDuration = editTextDuration;
+    this.editTextEventType = editTextEventType;
     this.editTextLocation = editTextLocation;
     this.editTextName = editTextName;
     this.editTextTime = editTextTime;
-    this.spinnerTypeUpdate = spinnerTypeUpdate;
     this.textView10 = textView10;
     this.textview = textview;
     this.textview11 = textview11;
@@ -124,6 +123,12 @@ public final class EventUpdateBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.editTextEventType;
+      EditText editTextEventType = ViewBindings.findChildViewById(rootView, id);
+      if (editTextEventType == null) {
+        break missingId;
+      }
+
       id = R.id.editTextLocation;
       EditText editTextLocation = ViewBindings.findChildViewById(rootView, id);
       if (editTextLocation == null) {
@@ -139,12 +144,6 @@ public final class EventUpdateBinding implements ViewBinding {
       id = R.id.editTextTime;
       EditText editTextTime = ViewBindings.findChildViewById(rootView, id);
       if (editTextTime == null) {
-        break missingId;
-      }
-
-      id = R.id.spinnerTypeUpdate;
-      Spinner spinnerTypeUpdate = ViewBindings.findChildViewById(rootView, id);
-      if (spinnerTypeUpdate == null) {
         break missingId;
       }
 
@@ -179,7 +178,7 @@ public final class EventUpdateBinding implements ViewBinding {
       }
 
       return new EventUpdateBinding((RelativeLayout) rootView, btnEventDelete, btnEventUpdate,
-          editTextDuration, editTextLocation, editTextName, editTextTime, spinnerTypeUpdate,
+          editTextDuration, editTextEventType, editTextLocation, editTextName, editTextTime,
           textView10, textview, textview11, textview3, textview4);
     }
     String missingId = rootView.getResources().getResourceName(id);

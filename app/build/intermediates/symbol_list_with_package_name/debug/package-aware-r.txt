@@ -3458,6 +3458,7 @@ id editEventNumber
 id editEventRegion
 id editEventTime
 id editTextDuration
+id editTextEventType
 id editTextLocation
 id editTextName
 id editTextTime
@@ -3738,7 +3739,6 @@ id spacer
 id special_effects_controller_view_tag
 id spinner
 id spinnerType
-id spinnerTypeUpdate
 id spline
 id split_action_bar
 id spread

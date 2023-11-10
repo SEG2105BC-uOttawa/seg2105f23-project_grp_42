@@ -54,6 +54,7 @@ id editEventNumber
 id editEventRegion
 id editEventTime
 id editTextDuration
+id editTextEventType
 id editTextLocation
 id editTextName
 id editTextTime
@@ -82,7 +83,6 @@ id roleTextField
 id settingsItem
 id showUsername
 id spinnerType
-id spinnerTypeUpdate
 id text7
 id textAppNameView
 id textView

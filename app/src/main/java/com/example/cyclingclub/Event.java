@@ -21,6 +21,18 @@ public class Event {
     public Event() {}
 
 
+    public Event(String key, String name, String region, String type, String time , double duration){
+        this.key=key;
+        this.name=name;
+        this.type=type;
+        this.location=region;
+        this.date=time;
+        this.duration=duration;
+        this.users = users;
+        //admins = new ArrayList<Administrator>();
+    }
+
+
     public Event(String key, String name, String region, String type, String time , double duration, List<User> users){
         this.key=key;
         this.name=name;

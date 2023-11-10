@@ -70,6 +70,6 @@
     <string name="btnEventManagement"> Event </string>
     <string name="eventName">Event Name</string>
     <string name="eventRegion">Event Location</string>
-    <string name="eventTime">Event Time</string>
+    <string name="eventTime">Event Date</string>
     <string name="eventDuration">Event Duration</string>
 </resources>

@@ -33,8 +33,8 @@ public class EventTypeManagement extends AppCompatActivity {
     private EditText eventTypeName;
     private ListView listViewEventTypes;
     private List<EventType> eventTypes;
-    private DatabaseReference databaseProducts;
-    private Administrator admin;
+   // private DatabaseReference databaseProducts;
+    //private Administrator admin;
 
 
     @Override
@@ -46,7 +46,7 @@ public class EventTypeManagement extends AppCompatActivity {
         eventTypeName.setText("");
         listViewEventTypes = (ListView) findViewById(R.id.eventTypeList);
         eventTypes = new ArrayList<>();
-        databaseProducts = FirebaseDatabase.getInstance().getReference("EventTypes1");
+
 
         //AdapterView.OnItemSelectedListener;
         AdapterView.OnItemLongClickListener longClickListener= new AdapterView.OnItemLongClickListener() {
@@ -61,8 +61,7 @@ public class EventTypeManagement extends AppCompatActivity {
         listViewEventTypes.setOnItemLongClickListener(longClickListener);
 
         //The administrator who can manage the event type database;
-        admin= new Administrator("admin","admin");
-        admin.setEventTypeDB(databaseProducts);
+        //admin= new Administrator("admin","admin");
 
     }
 
@@ -87,7 +86,7 @@ public class EventTypeManagement extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         };
-        databaseProducts.addValueEventListener(postListener);
+        Administrator.getEventTypeDB().addValueEventListener(postListener);
     }
 
 
@@ -122,7 +121,7 @@ public class EventTypeManagement extends AppCompatActivity {
                 int newNumber = Integer.parseInt(editTextNumber.getText().toString().trim());
                 if (!TextUtils.isEmpty(newName)) {
                     EventType updatedET = new EventType(newId, newName, newNumber);
-                    admin.updateEventType(updatedET);
+                    Administrator.updateEventType(updatedET);
                     b.dismiss();
                 }
             }
@@ -132,7 +131,7 @@ public class EventTypeManagement extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(et.getNumberOfEvent()==0){
-                    admin.deleteEventType(et);
+                    Administrator.deleteEventType(et);
                     b.dismiss();
                 }
                 else {
@@ -146,13 +145,13 @@ public class EventTypeManagement extends AppCompatActivity {
     public void onClickAddEventType(View view) {
         String typeName = eventTypeName.getText().toString().trim();
 
-        InputValidator validator = InputValidator.getInstance();
+       // InputValidator validator = InputValidator.getInstance();
 
 
 
         if(validateInput(typeName)==null){
             EventType newEventType = new EventType("", typeName,0);
-            admin.createEventType(newEventType);
+            Administrator.createEventType(newEventType);
             eventTypeName.setText("");
         }
         else{
@@ -186,7 +185,7 @@ public class EventTypeManagement extends AppCompatActivity {
         InputValidator validator = InputValidator.getInstance();
 
         /* Validate event type */
-        if (!validator.isValidName(eventTypeName)) { return "Event type name not valid.";}
+        if (!validator.isValidName(eventTypeName)) { return "Event type name can not be blank or numbers";}
 
         return null;
     }

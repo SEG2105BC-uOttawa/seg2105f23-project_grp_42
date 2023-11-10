@@ -2,16 +2,23 @@ package com.example.cyclingclub;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
+import android.widget.PopupWindow;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,7 +51,7 @@ public class EventManagement extends AppCompatActivity {
     private List<String>  eventTypeNames;
 
 
-    private DatabaseReference databaseEvents;
+   // private DatabaseReference databaseEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +66,7 @@ public class EventManagement extends AppCompatActivity {
 
         listViewEvents = (ListView) findViewById(R.id.listEvents);
 
-        databaseEvents = FirebaseDatabase.getInstance().getReference("Events1");
+       // databaseEvents = FirebaseDatabase.getInstance().getReference("Events1");
 
         dropdownType = findViewById(R.id.spinnerType);
 
@@ -129,6 +136,7 @@ public class EventManagement extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        DatabaseReference  databaseEvents=Administrator.getEventDB();
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -165,7 +173,9 @@ public class EventManagement extends AppCompatActivity {
 
         EditText editTextName = (EditText) dialogView.findViewById(R.id.editTextName);
         EditText editTextLocation = (EditText) dialogView.findViewById(R.id.editTextLocation);
-        Spinner editSpinnerType = (Spinner) findViewById(R.id.spinnerTypeUpdate);
+        EditText editTextType=(EditText) dialogView.findViewById(R.id.editTextEventType);
+
+        //
         EditText editTextTime = (EditText) dialogView.findViewById(R.id.editTextTime);
         EditText editTextDuration = (EditText) dialogView.findViewById(R.id.editTextDuration);
 
@@ -180,7 +190,7 @@ public class EventManagement extends AppCompatActivity {
         dialogBuilder.setTitle("Selected Event Detail");
         editTextName.setText(event.getName());
         editTextLocation.setText(event.getLocation());
-        //editSpinnerType.setSelection(0);
+        editTextType.setText(event.getType());
         editTextTime.setText(event.getDate());
         editTextDuration.setText(Double.toString(event.getDuration()));
 
@@ -191,17 +201,24 @@ public class EventManagement extends AppCompatActivity {
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String  key=event.getKey();
+                //String  key=event.getKey();
                 String name = editTextName.getText().toString().trim();
                 String location = editTextLocation.getText().toString().trim();
-                String type = editSpinnerType.getSelectedItem().toString();
+                String type = editTextType.getText().toString().trim();
                 String time = editTextTime.getText().toString().trim();
-                double duration = Double.parseDouble(editTextDuration.getText().toString().trim());
+                String durationString = editTextDuration.getText().toString().trim();
 
+                String message=validateInput(name, location, time , durationString);
+                if(message.equals("")){
+                    double duration = Double.parseDouble(durationString);
+                    Administrator.updateEvent(event.getKey(), name, location, type, time , duration);
+                    b.dismiss();
+                }
+                else{
+                    displayPopupMessage(message,view);
 
-                Event newEvent=new Event(key, name, location, type, time , duration);
-                databaseEvents.child(key).setValue(newEvent);
-                b.dismiss();
+                }
+
             }
         });
 
@@ -209,7 +226,8 @@ public class EventManagement extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //
-                databaseEvents.child(event.getKey()).removeValue();
+                Administrator.removeEvent(event);
+
                 b.dismiss();
             }
         });
@@ -224,24 +242,53 @@ public class EventManagement extends AppCompatActivity {
         String region = eventRegion.getText().toString().trim();
         String type = dropdownType.getSelectedItem().toString();
         String time = eventTime.getText().toString().trim();
-        double duration = Double.parseDouble((eventDuration.getText().toString().trim()));
+        String durationString= eventDuration.getText().toString().trim();
 
+        String message=validateInput(name, region, time , durationString);
+        if(message.equals("")){
+            double duration = Double.parseDouble(durationString);
+            Administrator.createEvent( name, region, type, time , duration);
+            eventName.setText("");
+            eventRegion.setText("");
+            eventTime.setText("");
+            eventDuration.setText("0");
+        }
+        else{
+            displayPopupMessage(message,view);
 
-        String key = databaseEvents.push().getKey();
-
-        Event event=new Event(key, name, region, type, time , duration);
-
-        databaseEvents.child(key).setValue(event);
-
-        eventName.setText("");
-        eventRegion.setText("");
-        eventTime.setText("");
-        eventDuration.setText("0");
-
-
+        }
 
     }
 
 
+    private void displayPopupMessage(String message, View anchorView) {
+        LinearLayout layout = new LinearLayout(this);
+        layout.setLayoutParams(new ViewGroup.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT));
+
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setGravity(Gravity.CENTER);
+        TextView textView = new TextView(this);
+        textView.setText(message);
+        textView.setTextColor(Color.RED);
+
+        PopupWindow popupWindow = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
+        popupWindow.setContentView(textView);
+        popupWindow.showAsDropDown(anchorView, 10, 0);
+    }
+
+
+    private String validateInput(String name, String region, String time, String durationString ) {
+        InputValidator validator = InputValidator.getInstance();
+
+        String message="";
+
+        /* Validate event type */
+        if (!validator.isValidName(name)) { message= message+ "Event name can not be blank or special characters";}
+        if (!validator.isValidName(region)) { message= message+ "Location/Region can not be blank or special characters";}
+        if (!validator.isValidDate(time)) { message= message+ "Event Time must be in format YYYY-MM-DD";}
+        if (!validator.isValidNumber(durationString)) { message= message+ "Duration must be a number";}
+
+        return message;
+    }
 
 }

@@ -13,11 +13,15 @@ public class InputValidator {
     private static final String NAME_PATTERN = "^[\\p{L}'-]+(\\s[\\p{L}'-]+)*$";
     private static final String USERNAME_PATTERN = "^[A-Za-z]{2,}$";
     private static final String PASSWORD_PATTERN = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&+=!])(?!.*\\s).{8,}$";
+    private static final String NUMBER_PATTERN = "^[0-9]+(\\.[0-9]+)?$";
+    private static final String DATE_PATTERN = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$";
 
-    private InputValidator() { }
+    private InputValidator() {
+    }
 
     /**
      * Get the instance of InputValidator.
+     *
      * @return The InputValidator instance.
      */
     public static InputValidator getInstance() {
@@ -29,6 +33,7 @@ public class InputValidator {
 
     /**
      * Validate an email.
+     *
      * @param email The email to validate.
      * @return True if the email is valid, false otherwise.
      */
@@ -40,6 +45,7 @@ public class InputValidator {
 
     /**
      * Validate a name.
+     *
      * @param name The name to validate.
      * @return True if the name is valid, false otherwise.
      */
@@ -51,6 +57,7 @@ public class InputValidator {
 
     /**
      * Validate a strong password.
+     *
      * @param password The password to validate.
      * @return True if the password is strong, false otherwise.
      */
@@ -62,6 +69,7 @@ public class InputValidator {
 
     /**
      * Validate a username.
+     *
      * @param name The username to validate.
      * @return True if the username is valid, false otherwise.
      */
@@ -70,4 +78,29 @@ public class InputValidator {
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
+
+    /**
+     * Validate a number.
+     *
+     * @param number The name to validate.
+     * @return True if the number is valid, false otherwise.
+     */
+    public boolean isValidNumber(String number) {
+        Pattern pattern = Pattern.compile(NUMBER_PATTERN);
+        Matcher matcher = pattern.matcher(number);
+        return matcher.matches();
+    }
+
+    /**
+     * Validate a date.
+     *
+     * @param date The name to validate.
+     * @return True if the number is valid, false otherwise.
+     */
+    public boolean isValidDate(String date) {
+        Pattern pattern = Pattern.compile(DATE_PATTERN);
+        Matcher matcher = pattern.matcher(date);
+        return matcher.matches();
+    }
+
 }

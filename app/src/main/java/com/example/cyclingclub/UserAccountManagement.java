@@ -42,8 +42,8 @@ public class UserAccountManagement extends AppCompatActivity {
         userKeys = new ArrayList<String>();
 
         listViewUser = (ListView) findViewById(R.id.userListView);
-        admin= new Administrator("admin","admin");
-        admin.setEventTypeDB(databaseUser);
+        //admin= new Administrator("admin","admin");
+        //admin.setEventTypeDB(databaseUser);
 
         //AdapterView.OnItemSelectedListener;
         AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {

@@ -3,6 +3,7 @@ package com.example.cyclingclub;
 import static java.security.AccessController.getContext;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,7 +20,7 @@ public class Administrator extends User{
     //The cardinality is many to many, both classes have a list of the other class
     private static List<Event> events;
     public static List<EventType> eventTypes;
-    private DatabaseReference eventTypesDB;
+    //private DatabaseReference eventTypesDB;
 
     //create a constructor with the array list of the events
     public Administrator(String username, String password) {
@@ -82,7 +83,7 @@ public class Administrator extends User{
         return wasAdded; */
         return true;
     }
-    public boolean removeEvent(Event event)
+    public static boolean removeEvent(Event event)
     //Checks if an event was removed from the array
     {
         /*
@@ -105,6 +106,7 @@ public class Administrator extends User{
         }
         return wasRemoved;
         */
+        getEventDB().child(event.getKey()).removeValue();
         return  true;
 
     }
@@ -154,9 +156,21 @@ public class Administrator extends User{
     }
 
     //Create a new event
-    public void createEvent(){
-        Event event = new Event();
+    public static void createEvent(String name, String region, String type, String time, double duration){
+        String key = getEventDB().push().getKey();
+        Event newEvent=new Event(key, name, region, type, time , duration);
+        getEventDB().child(key).setValue(newEvent);
+
+        events.add(newEvent);
     }
+
+    public static void updateEvent(String key, String name, String region, String type, String time, double duration){
+        Event newEvent=new Event(key, name, region, type, time , duration);
+        getEventDB().child(key).setValue(newEvent);
+        //events.add(newEvent);
+    }
+
+
 
     public void manageContent(){
 
@@ -170,31 +184,34 @@ public class Administrator extends User{
         db.child(key).removeValue();
     }
 
-    public void setEventTypeDB(DatabaseReference db){
-        this.eventTypesDB=db;
-    }
 
-    public void createEventType(EventType et){
-        String id = eventTypesDB.push().getKey();
+    public static void createEventType(EventType et){
+        String id = getEventTypeDB().push().getKey();
         et.setId(id);
-        eventTypesDB.child(id).setValue(et);
+        getEventTypeDB().child(id).setValue(et);
     }
 
-    public void updateEventType(EventType et){
-        eventTypesDB.child(et.getId()).setValue(et);
+    public static void updateEventType(EventType et){
+        getEventTypeDB().child(et.getId()).setValue(et);
     }
 
     public List<EventType>   getEventTypes(){
         return eventTypes;
     }
 
-    public void deleteEventType(EventType et){
-        eventTypesDB.child(et.getId()).removeValue();
+    public static void deleteEventType(EventType et){
+        getEventTypeDB().child(et.getId()).removeValue();
     }
 
     public void viewEventType(EventType et){
 
     }
 
+    public static DatabaseReference getEventDB(){
+        return FirebaseDatabase.getInstance().getReference("Events1");
+    };
+    public static DatabaseReference getEventTypeDB(){
+        return FirebaseDatabase.getInstance().getReference("EventTypes1");
+    };
 
 }
