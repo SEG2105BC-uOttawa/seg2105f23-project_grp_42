@@ -4,7 +4,21 @@
             "outputFile": "com.example.cyclingclub.app-mergeDebugResources-49:/values-v24/values-v24.xml",
             "map": [
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-3\\8d6e805fb3c6c5bd0b1b27e104483289\\transformed\\material-1.10.0\\res\\values-v24\\values-v24.xml",
+=======
+                    "source": "C:\\Users\\bradl\\.gradle\\caches\\transforms-3\\986d40ec9e622783b8bb05f7a0a6d7a4\\transformed\\appcompat-1.6.1\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\bradl\\.gradle\\caches\\transforms-3\\8d6e805fb3c6c5bd0b1b27e104483289\\transformed\\material-1.10.0\\res\\values-v24\\values-v24.xml",
+>>>>>>> b6a30152b57b4cedc6daceed5889bec12f706567
                     "from": {
                         "startLines": "2,3,4,5,6,9,12,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -21,6 +35,7 @@
                         "endColumns": "84,98,86,100,10,10,10,10",
                         "endOffsets": "427,526,613,714,913,1126,1327,1542"
                     }
+<<<<<<< HEAD
                 },
                 {
                     "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-3\\986d40ec9e622783b8bb05f7a0a6d7a4\\transformed\\appcompat-1.6.1\\res\\values-v24\\values-v24.xml",
@@ -31,6 +46,8 @@
                         "endColumns": "156,134",
                         "endOffsets": "207,342"
                     }
+=======
+>>>>>>> b6a30152b57b4cedc6daceed5889bec12f706567
                 }
             ]
         }

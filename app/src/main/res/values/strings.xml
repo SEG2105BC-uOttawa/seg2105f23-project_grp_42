@@ -66,4 +66,10 @@
     <string name="userDetail">User Detail</string>
     <string name="btnBack">Back</string>
     <string name="btnDelete">Delete</string>
+    <string name="btnAddEvent">Add New Event</string>
+    <string name="btnEventManagement"> Event </string>
+    <string name="eventName">Event Name</string>
+    <string name="eventRegion">Event Location</string>
+    <string name="eventTime">Event Time</string>
+    <string name="eventDuration">Event Duration</string>
 </resources>

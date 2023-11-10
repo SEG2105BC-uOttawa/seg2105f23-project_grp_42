@@ -4,7 +4,11 @@
             "outputFile": "com.example.cyclingclub.app-mergeDebugResources-49:/values-w400dp-port-v13/values-w400dp-port-v13.xml",
             "map": [
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-3\\8d6e805fb3c6c5bd0b1b27e104483289\\transformed\\material-1.10.0\\res\\values-w400dp-port-v13\\values-w400dp-port-v13.xml",
+=======
+                    "source": "C:\\Users\\bradl\\.gradle\\caches\\transforms-3\\8d6e805fb3c6c5bd0b1b27e104483289\\transformed\\material-1.10.0\\res\\values-w400dp-port-v13\\values-w400dp-port-v13.xml",
+>>>>>>> b6a30152b57b4cedc6daceed5889bec12f706567
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

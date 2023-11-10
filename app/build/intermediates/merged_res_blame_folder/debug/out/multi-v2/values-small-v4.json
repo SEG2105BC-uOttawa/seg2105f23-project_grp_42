@@ -4,7 +4,11 @@
             "outputFile": "com.example.cyclingclub.app-mergeDebugResources-49:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-3\\8d6e805fb3c6c5bd0b1b27e104483289\\transformed\\material-1.10.0\\res\\values-small-v4\\values-small-v4.xml",
+=======
+                    "source": "C:\\Users\\bradl\\.gradle\\caches\\transforms-3\\8d6e805fb3c6c5bd0b1b27e104483289\\transformed\\material-1.10.0\\res\\values-small-v4\\values-small-v4.xml",
+>>>>>>> b6a30152b57b4cedc6daceed5889bec12f706567
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

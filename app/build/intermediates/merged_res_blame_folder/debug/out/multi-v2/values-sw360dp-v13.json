@@ -4,7 +4,11 @@
             "outputFile": "com.example.cyclingclub.app-mergeDebugResources-49:/values-sw360dp-v13/values-sw360dp-v13.xml",
             "map": [
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\lenovo\\.gradle\\caches\\transforms-3\\ffd01f60fc7496b11752271ad82be88e\\transformed\\preference-1.2.1\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
+=======
+                    "source": "C:\\Users\\bradl\\.gradle\\caches\\transforms-3\\ffd01f60fc7496b11752271ad82be88e\\transformed\\preference-1.2.1\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
+>>>>>>> b6a30152b57b4cedc6daceed5889bec12f706567
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
