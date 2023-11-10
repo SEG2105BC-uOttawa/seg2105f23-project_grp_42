@@ -26,43 +26,43 @@ public final class CreationScreenBinding implements ViewBinding {
   public final TextView CreationTitle;
 
   @NonNull
-  public final Button back;
+  public final Button btnBackCreate;
 
   @NonNull
-  public final Button confirm;
+  public final Button btnConfirmCreate;
 
   @NonNull
   public final RadioGroup eventTypesList;
 
   @NonNull
-  public final RadioButton groupRiding;
-
-  @NonNull
-  public final RadioButton hillClimb;
-
-  @NonNull
   public final LinearLayout linearLayout;
 
   @NonNull
-  public final RadioButton roadStageRace;
+  public final RadioButton selectGroupRiding;
+
+  @NonNull
+  public final RadioButton selectHillClimb;
+
+  @NonNull
+  public final RadioButton selectRoadStageRace;
 
   @NonNull
   public final TextView textView10;
 
   private CreationScreenBinding(@NonNull LinearLayout rootView, @NonNull TextView CreationTitle,
-      @NonNull Button back, @NonNull Button confirm, @NonNull RadioGroup eventTypesList,
-      @NonNull RadioButton groupRiding, @NonNull RadioButton hillClimb,
-      @NonNull LinearLayout linearLayout, @NonNull RadioButton roadStageRace,
-      @NonNull TextView textView10) {
+      @NonNull Button btnBackCreate, @NonNull Button btnConfirmCreate,
+      @NonNull RadioGroup eventTypesList, @NonNull LinearLayout linearLayout,
+      @NonNull RadioButton selectGroupRiding, @NonNull RadioButton selectHillClimb,
+      @NonNull RadioButton selectRoadStageRace, @NonNull TextView textView10) {
     this.rootView = rootView;
     this.CreationTitle = CreationTitle;
-    this.back = back;
-    this.confirm = confirm;
+    this.btnBackCreate = btnBackCreate;
+    this.btnConfirmCreate = btnConfirmCreate;
     this.eventTypesList = eventTypesList;
-    this.groupRiding = groupRiding;
-    this.hillClimb = hillClimb;
     this.linearLayout = linearLayout;
-    this.roadStageRace = roadStageRace;
+    this.selectGroupRiding = selectGroupRiding;
+    this.selectHillClimb = selectHillClimb;
+    this.selectRoadStageRace = selectRoadStageRace;
     this.textView10 = textView10;
   }
 
@@ -99,15 +99,15 @@ public final class CreationScreenBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.back;
-      Button back = ViewBindings.findChildViewById(rootView, id);
-      if (back == null) {
+      id = R.id.btn_back_create;
+      Button btnBackCreate = ViewBindings.findChildViewById(rootView, id);
+      if (btnBackCreate == null) {
         break missingId;
       }
 
-      id = R.id.confirm;
-      Button confirm = ViewBindings.findChildViewById(rootView, id);
-      if (confirm == null) {
+      id = R.id.btn_confirm_create;
+      Button btnConfirmCreate = ViewBindings.findChildViewById(rootView, id);
+      if (btnConfirmCreate == null) {
         break missingId;
       }
 
@@ -117,23 +117,23 @@ public final class CreationScreenBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.groupRiding;
-      RadioButton groupRiding = ViewBindings.findChildViewById(rootView, id);
-      if (groupRiding == null) {
-        break missingId;
-      }
-
-      id = R.id.hillClimb;
-      RadioButton hillClimb = ViewBindings.findChildViewById(rootView, id);
-      if (hillClimb == null) {
-        break missingId;
-      }
-
       LinearLayout linearLayout = (LinearLayout) rootView;
 
-      id = R.id.roadStageRace;
-      RadioButton roadStageRace = ViewBindings.findChildViewById(rootView, id);
-      if (roadStageRace == null) {
+      id = R.id.select_groupRiding;
+      RadioButton selectGroupRiding = ViewBindings.findChildViewById(rootView, id);
+      if (selectGroupRiding == null) {
+        break missingId;
+      }
+
+      id = R.id.select_hillClimb;
+      RadioButton selectHillClimb = ViewBindings.findChildViewById(rootView, id);
+      if (selectHillClimb == null) {
+        break missingId;
+      }
+
+      id = R.id.select_roadStageRace;
+      RadioButton selectRoadStageRace = ViewBindings.findChildViewById(rootView, id);
+      if (selectRoadStageRace == null) {
         break missingId;
       }
 
@@ -143,8 +143,9 @@ public final class CreationScreenBinding implements ViewBinding {
         break missingId;
       }
 
-      return new CreationScreenBinding((LinearLayout) rootView, CreationTitle, back, confirm,
-          eventTypesList, groupRiding, hillClimb, linearLayout, roadStageRace, textView10);
+      return new CreationScreenBinding((LinearLayout) rootView, CreationTitle, btnBackCreate,
+          btnConfirmCreate, eventTypesList, linearLayout, selectGroupRiding, selectHillClimb,
+          selectRoadStageRace, textView10);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

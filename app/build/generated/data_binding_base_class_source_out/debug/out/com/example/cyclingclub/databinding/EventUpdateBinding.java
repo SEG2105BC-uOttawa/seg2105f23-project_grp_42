@@ -28,6 +28,9 @@ public final class EventUpdateBinding implements ViewBinding {
   public final Button btnEventUpdate;
 
   @NonNull
+  public final Button btnUsernameRedirect;
+
+  @NonNull
   public final EditText editTextDuration;
 
   @NonNull
@@ -58,14 +61,15 @@ public final class EventUpdateBinding implements ViewBinding {
   public final TextView textview4;
 
   private EventUpdateBinding(@NonNull RelativeLayout rootView, @NonNull Button btnEventDelete,
-      @NonNull Button btnEventUpdate, @NonNull EditText editTextDuration,
-      @NonNull EditText editTextEventType, @NonNull EditText editTextLocation,
-      @NonNull EditText editTextName, @NonNull EditText editTextTime, @NonNull TextView textView10,
-      @NonNull TextView textview, @NonNull TextView textview11, @NonNull TextView textview3,
-      @NonNull TextView textview4) {
+      @NonNull Button btnEventUpdate, @NonNull Button btnUsernameRedirect,
+      @NonNull EditText editTextDuration, @NonNull EditText editTextEventType,
+      @NonNull EditText editTextLocation, @NonNull EditText editTextName,
+      @NonNull EditText editTextTime, @NonNull TextView textView10, @NonNull TextView textview,
+      @NonNull TextView textview11, @NonNull TextView textview3, @NonNull TextView textview4) {
     this.rootView = rootView;
     this.btnEventDelete = btnEventDelete;
     this.btnEventUpdate = btnEventUpdate;
+    this.btnUsernameRedirect = btnUsernameRedirect;
     this.editTextDuration = editTextDuration;
     this.editTextEventType = editTextEventType;
     this.editTextLocation = editTextLocation;
@@ -114,6 +118,12 @@ public final class EventUpdateBinding implements ViewBinding {
       id = R.id.btnEventUpdate;
       Button btnEventUpdate = ViewBindings.findChildViewById(rootView, id);
       if (btnEventUpdate == null) {
+        break missingId;
+      }
+
+      id = R.id.btnUsernameRedirect;
+      Button btnUsernameRedirect = ViewBindings.findChildViewById(rootView, id);
+      if (btnUsernameRedirect == null) {
         break missingId;
       }
 
@@ -178,8 +188,8 @@ public final class EventUpdateBinding implements ViewBinding {
       }
 
       return new EventUpdateBinding((RelativeLayout) rootView, btnEventDelete, btnEventUpdate,
-          editTextDuration, editTextEventType, editTextLocation, editTextName, editTextTime,
-          textView10, textview, textview11, textview3, textview4);
+          btnUsernameRedirect, editTextDuration, editTextEventType, editTextLocation, editTextName,
+          editTextTime, textView10, textview, textview11, textview3, textview4);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

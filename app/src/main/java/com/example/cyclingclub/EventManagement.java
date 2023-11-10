@@ -53,6 +53,8 @@ public class EventManagement extends AppCompatActivity {
 
    // private DatabaseReference databaseEvents;
 
+    private List<User> users;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -243,6 +245,7 @@ public class EventManagement extends AppCompatActivity {
         String type = dropdownType.getSelectedItem().toString();
         String time = eventTime.getText().toString().trim();
         String durationString= eventDuration.getText().toString().trim();
+
 
         String message=validateInput(name, region, time , durationString);
         if(message.equals("")){

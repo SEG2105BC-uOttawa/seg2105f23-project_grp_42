@@ -21,7 +21,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="95dp" />
+        android:layout_height="52dp" />
 
     <TextView
         android:id="@+id/textView10"
@@ -45,40 +45,52 @@
         android:layout_height="200dp">
 
         <RadioButton
-            android:id="@+id/hillClimb"
+            android:id="@+id/select_hillClimb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hill Climb" />
 
         <RadioButton
-            android:id="@+id/groupRiding"
+            android:id="@+id/select_groupRiding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Group Riding" />
 
         <RadioButton
-            android:id="@+id/roadStageRace"
+            android:id="@+id/select_roadStageRace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Road Stage Race" />
 
     </RadioGroup>
 
-    <Button
-        android:id="@+id/confirm"
-        android:layout_width="131dp"
-        android:layout_height="wrap_content"
-        android:rotation="0"
-        android:text="Confirm" />
-
     <Space
         android:layout_width="match_parent"
-        android:layout_height="52dp" />
+        android:layout_height="42dp" />
 
-    <Button
-        android:id="@+id/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_back_create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_confirm_create"
+            android:layout_width="109dp"
+            android:layout_height="wrap_content"
+            android:rotation="0"
+            android:text="Confirm" />
+
+    </LinearLayout>
 
 </LinearLayout>
