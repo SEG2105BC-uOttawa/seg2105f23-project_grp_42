@@ -14,18 +14,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/ButtonLayout">
 
-    </LinearLayout>
 
+        <Button
+            android:id="@+id/btnLogIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary_color"
+            android:onClick="onClickLogin"
+            android:text="Create Event"
+            android:textColor="@color/white" />
 
-
-    <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:padding="10dip"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary_color"
+            android:onClick="onClickSignup"
+            android:text="Delete Event"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <LinearLayout
@@ -36,16 +42,6 @@
         android:layout_marginHorizontal="15dp"
         android:gravity="center|bottom"
         app:layout_constraintBottom_toBottomOf="parent">
-
-        <Button
-            android:id="@+id/btnLogIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/primary_color"
-            android:onClick="onClickLogin"
-            android:text="Delete Event"
-            android:textColor="@color/white"/>
-
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
