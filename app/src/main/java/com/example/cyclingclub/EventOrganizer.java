@@ -25,6 +25,8 @@ public class EventOrganizer extends User {
         List<Event> newEvents = Collections.unmodifiableList(events);
         return newEvents;
     }
+
+
     public void createEvent(){
         Event aEvent = new Event();
         String eventType = Event.getType();

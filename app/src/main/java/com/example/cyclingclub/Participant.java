@@ -10,6 +10,7 @@ public class Participant extends User {
 
     }
 
+    /*
     public String searchByLocation(){
         return Event.getLocation();
     }
@@ -25,4 +26,7 @@ public class Participant extends User {
     public void viewEvents(){
 
     }
+
+
+     */
 }

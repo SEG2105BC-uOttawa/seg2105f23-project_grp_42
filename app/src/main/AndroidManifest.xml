@@ -13,6 +13,9 @@
         android:theme="@style/Theme.CyclingClub"
         tools:targetApi="34">
         <activity
+            android:name=".EventManagement"
+            android:exported="false" />
+        <activity
             android:name=".UserAccountManagement"
             android:exported="false" />
         <activity

@@ -31,6 +31,9 @@ public final class ActivityWelcomeScreenBinding implements ViewBinding {
   public final BottomNavigationView bottomNavigationView;
 
   @NonNull
+  public final Button button;
+
+  @NonNull
   public final FrameLayout fragmentContainer;
 
   @NonNull
@@ -38,12 +41,13 @@ public final class ActivityWelcomeScreenBinding implements ViewBinding {
 
   private ActivityWelcomeScreenBinding(@NonNull ConstraintLayout rootView,
       @NonNull Button adminBtnEventType, @NonNull Button adminBtnUser,
-      @NonNull BottomNavigationView bottomNavigationView, @NonNull FrameLayout fragmentContainer,
-      @NonNull ConstraintLayout welcomeScreen) {
+      @NonNull BottomNavigationView bottomNavigationView, @NonNull Button button,
+      @NonNull FrameLayout fragmentContainer, @NonNull ConstraintLayout welcomeScreen) {
     this.rootView = rootView;
     this.adminBtnEventType = adminBtnEventType;
     this.adminBtnUser = adminBtnUser;
     this.bottomNavigationView = bottomNavigationView;
+    this.button = button;
     this.fragmentContainer = fragmentContainer;
     this.welcomeScreen = welcomeScreen;
   }
@@ -93,6 +97,12 @@ public final class ActivityWelcomeScreenBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.button;
+      Button button = ViewBindings.findChildViewById(rootView, id);
+      if (button == null) {
+        break missingId;
+      }
+
       id = R.id.fragment_container;
       FrameLayout fragmentContainer = ViewBindings.findChildViewById(rootView, id);
       if (fragmentContainer == null) {
@@ -102,7 +112,7 @@ public final class ActivityWelcomeScreenBinding implements ViewBinding {
       ConstraintLayout welcomeScreen = (ConstraintLayout) rootView;
 
       return new ActivityWelcomeScreenBinding((ConstraintLayout) rootView, adminBtnEventType,
-          adminBtnUser, bottomNavigationView, fragmentContainer, welcomeScreen);
+          adminBtnUser, bottomNavigationView, button, fragmentContainer, welcomeScreen);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

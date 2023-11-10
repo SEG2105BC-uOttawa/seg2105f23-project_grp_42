@@ -4,60 +4,88 @@ import java.util.*;
 
 public class Event {
 
-    private static String name;
-    private static String type;
-    private static String date;
-    private static String location;
-    private static String rewards;
+    private String key;
 
-    public static Double duration;
+    private  String name;
+    private  String type;
+    private  String date;
+    private  String location;
+    private  String rewards;
+
+    private  Double duration;
 
     private final List<Administrator> admins;
+    private  List<Administrator> admins;
 
-    public Event()
-    {
-        admins = new ArrayList<Administrator>();
+    public Event() {}
+
+
+    public Event(String key, String name, String region, String type, String time , double duration){
+        this.key=key;
+        this.name=name;
+        this.type=type;
+        this.location=region;
+        this.date=time;
+        this.duration=duration;
+        //admins = new ArrayList<Administrator>();
     }
 
-    public static String getName() {
+    public  String getKey() {
+        return key;
+    }
+
+    public  void setKey(String key) {
+        this.key = key;
+    }
+
+    public  String getName() {
         return name;
     }
 
-    public static void setName(String name) {
-        Event.name = name;
+    public  void setName(String name) {
+        this.name = name;
     }
 
-    public static String getType() {
+    public String getType() {
         return type;
     }
 
-    public static void setType(String type) {
-        Event.type = type;
+    public  void setType(String type) {
+        this.type = type;
     }
 
-    public static String getDate() {
+    public  String getDate() {
         return date;
     }
 
-    public static void setDate(String date) {
-        Event.date = date;
+    public  void setDate(String date) {
+        this.date = date;
     }
 
-    public static String getLocation() {
+    public  String getLocation() {
         return location;
     }
 
-    public static void setLocation(String location) {
-        Event.location = location;
+    public  void setLocation(String location) {
+        this.location = location;
     }
 
-    public static String getRewards() {
+    public  String getRewards() {
         return rewards;
     }
 
-    public static void setRewards(String rewards) {
-        Event.rewards = rewards;
+    public  void setRewards(String rewards) {
+        this.rewards = rewards;
     }
+
+    public  double getDuration(){
+        return duration;
+    }
+    public  void setDuration(double duration) {
+        this.duration = duration;
+    }
+
+
 
     public Administrator getAdmin(int index)
     {
@@ -144,9 +172,7 @@ public class Event {
         return wasAdded;
     }
 
-    public static double getDuration(){
-        return this.duration;
-    }
+
 
     public boolean addOrMoveAdminAt(Administrator admin, int index)
     {
@@ -174,4 +200,8 @@ public class Event {
             admin.removeEvent(this);
         }
     }
+
+
+
+
 }

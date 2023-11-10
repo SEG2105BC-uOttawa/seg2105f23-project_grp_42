@@ -156,7 +156,7 @@ public class WelcomeScreen extends AppCompatActivity {
 		return iconResource;
 	}
 
-	public void onClickEventManagement(View view) {
+	public void onClickEventTypeManagement(View view) {
 		//Application Context and Activity
 		Intent intent = new Intent(getApplicationContext(), EventTypeManagement.class);
 		startActivity (intent);
@@ -166,6 +166,13 @@ public class WelcomeScreen extends AppCompatActivity {
 	public void onClickUserManagement(View view) {
 		//Application Context and Activity
 		Intent intent = new Intent(getApplicationContext(), UserAccountManagement.class);
+		startActivity (intent);
+	}
+
+
+	public void onClickEventManagement(View view) {
+		//Application Context and Activity
+		Intent intent = new Intent(getApplicationContext(), EventManagement.class);
 		startActivity (intent);
 	}
 

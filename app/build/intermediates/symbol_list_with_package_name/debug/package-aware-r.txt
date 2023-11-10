@@ -3359,11 +3359,15 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id btnAddEvent
 id btnBack
 id btnDeleteUser
+id btnEventDelete
+id btnEventUpdate
 id btnLogIn
 id btnLogin
 id btnSignUp
+id button
 id button2
 id buttonDelete
 id buttonPanel
@@ -3445,7 +3449,17 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editEventDuration
+id editEventName
 id editEventNumber
+id editEventRegion
+id editEventTime
+id editEventType
+id editTextDuration
+id editTextLocation
+id editTextName
+id editTextTime
+id editTextType
 id edit_query
 id edit_text_id
 id elastic
@@ -3525,6 +3539,7 @@ id light
 id line1
 id line3
 id linear
+id listEvents
 id listMode
 id list_item
 id locale
@@ -3762,6 +3777,7 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id textView
+id textView10
 id textView11
 id textView2
 id textView3
@@ -3771,6 +3787,7 @@ id textView6
 id textView7
 id textView8
 id textView9
+id textViewItem
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3780,6 +3797,10 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id textview
+id textview11
+id textview3
+id textview4
 id textview_first
 id textview_second
 id time
@@ -3946,6 +3967,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_event_management
 layout activity_event_type_management
 layout activity_login
 layout activity_main
@@ -3974,6 +3996,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout event_type_list
+layout event_update
 layout eventtype_update
 layout expand_button
 layout fragment_first
@@ -3983,6 +4006,7 @@ layout fragment_second
 layout image_frame
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_view
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -4111,8 +4135,10 @@ string bottomsheet_action_expand
 string bottomsheet_action_expand_halfway
 string bottomsheet_drag_handle_clicked
 string bottomsheet_drag_handle_content_description
+string btnAddEvent
 string btnBack
 string btnDelete
+string btnEventManagement
 string call_notification_answer_action
 string call_notification_answer_video_action
 string call_notification_decline_action
@@ -4149,6 +4175,10 @@ string cycling_club
 string email_hint
 string error_a11y_label
 string error_icon_content_description
+string eventDuration
+string eventName
+string eventRegion
+string eventTime
 string eventType
 string eventTypeDelete
 string eventTypeUpdate

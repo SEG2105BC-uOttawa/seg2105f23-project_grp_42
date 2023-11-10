@@ -63,6 +63,9 @@
         android:testOnly="true"
         android:theme="@style/Theme.CyclingClub" >
         <activity
+            android:name="com.example.cyclingclub.EventManagement"
+            android:exported="false" />
+        <activity
             android:name="com.example.cyclingclub.UserAccountManagement"
             android:exported="false" />
         <activity

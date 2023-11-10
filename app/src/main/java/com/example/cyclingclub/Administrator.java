@@ -62,6 +62,8 @@ public class Administrator extends User{
         return 0;
     }
 
+
+
     public boolean addEvent(Event event)
     //Checks if an event was added onto the array
     {
@@ -80,6 +82,8 @@ public class Administrator extends User{
         }
         return wasAdded;
     }
+
+
     public boolean removeEvent(Event event)
     //Checks if an event was removed from the array
     {
@@ -102,6 +106,8 @@ public class Administrator extends User{
         }
         return wasRemoved;
     }
+
+
 
     public boolean addEventAt(Event event, int index)
     //Add an event in the array at a given index
