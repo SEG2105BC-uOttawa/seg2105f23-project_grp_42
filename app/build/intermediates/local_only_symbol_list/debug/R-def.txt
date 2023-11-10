@@ -87,6 +87,7 @@ layout activity_signup
 layout activity_user_account_management
 layout activity_welcome_screen
 layout custom_preference_category_layout
+layout delete_event
 layout event_type_list
 layout eventtype_update
 layout fragment_first

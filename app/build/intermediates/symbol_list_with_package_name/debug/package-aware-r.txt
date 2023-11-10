@@ -3958,6 +3958,7 @@ layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog
 layout custom_preference_category_layout
+layout delete_event
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar

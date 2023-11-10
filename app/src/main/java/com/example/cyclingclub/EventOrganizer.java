@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 //EventOrganizer is merged with CyclingClub
-public class EventOrganizer extends User {
+public class  EventOrganizer extends User {
     private static List<Event> events;
     public String name;
     public String region;
