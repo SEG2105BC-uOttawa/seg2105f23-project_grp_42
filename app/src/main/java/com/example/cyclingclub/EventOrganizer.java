@@ -30,6 +30,7 @@ import java.util.List;
 public class  EventOrganizer extends User {
     private static List<Event> events;
     public String name;
+    private Event event;
     private EditText eventName;
     private EditText eventRegion;
     private EditText eventType;
@@ -55,7 +56,7 @@ public class  EventOrganizer extends User {
     }
 
 /*    BG, no usage and error message.
-
+    EventManager.showUpdateDeleteDialog(event);
     public List<Event> selectEvents(){
         events = Administrator.getEvents();
         List<Event> newEvents = Collections.unmodifiableList(events);
