@@ -65,6 +65,7 @@ public class Administrator extends User{
     public boolean addEvent(Event event)
     //Checks if an event was added onto the array
     {
+        /*
         boolean wasAdded = false;
         if (events.contains(event)) { return false; }
         events.add(event);
@@ -78,11 +79,13 @@ public class Administrator extends User{
                 events.remove(event);
             }
         }
-        return wasAdded;
+        return wasAdded; */
+        return true;
     }
     public boolean removeEvent(Event event)
     //Checks if an event was removed from the array
     {
+        /*
         boolean wasRemoved = false;
         if (!events.contains(event))
         {
@@ -101,6 +104,9 @@ public class Administrator extends User{
             }
         }
         return wasRemoved;
+        */
+        return  true;
+
     }
 
     public boolean addEventAt(Event event, int index)
@@ -137,11 +143,14 @@ public class Administrator extends User{
 
     //Clear the events' array
     public void delete() {
+        /*
         ArrayList<Event> copyOfEvents = new ArrayList<Event>(events);
         events.clear();
         for (Event aEvent : copyOfEvents) {
             aEvent.removeAdmin(this);
         }
+        */
+
     }
 
     //Create a new event

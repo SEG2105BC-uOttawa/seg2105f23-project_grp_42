@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "846284963831",
+    "firebase_url": "https://cyclingclubbackup-default-rtdb.firebaseio.com",
+    "project_id": "cyclingclubbackup",
+    "storage_bucket": "cyclingclubbackup.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846284963831:android:e3749d61d80c184b06b8f2",
+        "android_client_info": {
+          "package_name": "com.example.cyclingclub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlyaXgEpG36qtMxmydCWl3oG8WNAQOOIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

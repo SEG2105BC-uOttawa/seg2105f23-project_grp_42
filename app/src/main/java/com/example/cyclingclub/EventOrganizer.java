@@ -54,6 +54,8 @@ public class  EventOrganizer extends User {
         //Event.name = name;
     }
 
+/*    BG, no usage and error message.
+
     public List<Event> selectEvents(){
         events = Administrator.getEvents();
         List<Event> newEvents = Collections.unmodifiableList(events);
@@ -112,6 +114,7 @@ public class  EventOrganizer extends User {
             }
         });
     }
+*/
 
     public double distributeAwards(){
 

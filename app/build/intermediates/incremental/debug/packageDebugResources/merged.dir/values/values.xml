@@ -51,11 +51,12 @@
     <string name="eventType">Event Type</string>
     <string name="eventTypeDelete">Delete</string>
     <string name="eventTypeUpdate">Update</string>
-    <string name="gcm_defaultSenderId" translatable="false">418201989337</string>
-    <string name="google_api_key" translatable="false">AIzaSyCS06LYGcvH9UIaxshng2eR9ZPwLI8MDa4</string>
-    <string name="google_app_id" translatable="false">1:418201989337:android:a2ecacb238a8eb35534ec8</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCS06LYGcvH9UIaxshng2eR9ZPwLI8MDa4</string>
-    <string name="google_storage_bucket" translatable="false">seg2105-project-grp42.appspot.com</string>
+    <string name="firebase_database_url" translatable="false">https://cyclingclubbackup-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">846284963831</string>
+    <string name="google_api_key" translatable="false">AIzaSyAlyaXgEpG36qtMxmydCWl3oG8WNAQOOIo</string>
+    <string name="google_app_id" translatable="false">1:846284963831:android:e3749d61d80c184b06b8f2</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAlyaXgEpG36qtMxmydCWl3oG8WNAQOOIo</string>
+    <string name="google_storage_bucket" translatable="false">cyclingclubbackup.appspot.com</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_text">Home</string>
     <string name="log_in_text">Log In</string>
@@ -103,7 +104,7 @@
     <string name="previous">Previous</string>
     <string name="profile_text">Profile</string>
     <string name="project_app_name">GCC</string>
-    <string name="project_id" translatable="false">seg2105-project-grp42</string>
+    <string name="project_id" translatable="false">cyclingclubbackup</string>
     <string name="settings_text">Settings</string>
     <string name="sign_up_text">Sign Up</string>
     <string name="title_activity_event_type_management">EventTypeManagement</string>

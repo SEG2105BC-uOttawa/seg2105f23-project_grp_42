@@ -14,8 +14,8 @@ public class Event {
 
     private  Double duration;
 
-    private final List<Administrator> admins;
-    private  List<Administrator> admins;
+    //private final List<Administrator> admins;
+    //private  List<Administrator> admins;
 
     public Event() {}
 
@@ -86,7 +86,7 @@ public class Event {
     }
 
 
-
+/*
     public Administrator getAdmin(int index)
     {
         return admins.get(index);
@@ -207,7 +207,7 @@ public class Event {
         }
     }
 
-
+*/
 
 
 }

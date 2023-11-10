@@ -3343,6 +3343,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id back
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3398,6 +3399,7 @@ id clockwise
 id closest
 id collapseActionView
 id compress
+id confirm
 id confirm_button
 id constraint
 id container
@@ -3476,6 +3478,7 @@ id eventTypeID
 id eventTypeList
 id eventTypeName
 id eventTypeNameUpdate
+id event_types_list
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3502,12 +3505,14 @@ id ghost_view_holder
 id gone
 id graph
 id graph_wrap
+id groupRiding
 id group_divider
 id grouping
 id groups
 id header_title
 id hide_ime_id
 id hideable
+id hillClimb
 id home
 id homeAsUp
 id homeItem
@@ -3540,6 +3545,7 @@ id light
 id line1
 id line3
 id linear
+id linearLayout
 id listEvents
 id listMode
 id list_item
@@ -3680,6 +3686,7 @@ id right
 id rightToLeft
 id right_icon
 id right_side
+id roadStageRace
 id roleRadioGroup
 id roleTextField
 id rounded
@@ -3975,6 +3982,7 @@ layout activity_main
 layout activity_signup
 layout activity_user_account_management
 layout activity_welcome_screen
+layout admin_create_delete_event
 layout adt_layout_hint
 layout adt_layout_toast
 layout browser_actions_context_menu_page
@@ -3982,7 +3990,6 @@ layout browser_actions_context_menu_row
 layout creation_screen
 layout custom_dialog
 layout custom_preference_category_layout
-layout delete_event
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -4192,6 +4199,7 @@ string fab_transformation_sheet_behavior
 string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
+string firebase_database_url
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id

@@ -29,6 +29,7 @@ id Text5
 id accountType
 id adminBtnEventType
 id adminBtnUser
+id back
 id bottomNavigationView
 id btnAddEvent
 id btnBack
@@ -44,6 +45,7 @@ id buttonDelete
 id buttonUpdate
 id button_first
 id button_second
+id confirm
 id createAccount
 id cyclingClubRole
 id editEventDuration
@@ -64,14 +66,19 @@ id eventTypeID
 id eventTypeList
 id eventTypeName
 id eventTypeNameUpdate
+id event_types_list
 id fragment_container
+id groupRiding
+id hillClimb
 id homeItem
+id linearLayout
 id listEvents
 id memberLoginHeader
 id participantRole
 id passwordTextField
 id preferences_container
 id profileItem
+id roadStageRace
 id roleRadioGroup
 id roleTextField
 id settingsItem
@@ -109,9 +116,9 @@ layout activity_main
 layout activity_signup
 layout activity_user_account_management
 layout activity_welcome_screen
+layout admin_create_delete_event
 layout creation_screen
 layout custom_preference_category_layout
-layout delete_event
 layout event_type_list
 layout event_update
 layout eventtype_update
@@ -142,6 +149,7 @@ string eventTime
 string eventType
 string eventTypeDelete
 string eventTypeUpdate
+string firebase_database_url
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
