@@ -1,14 +1,46 @@
 package com.example.cyclingclub;
 
-import com.google.firebase.database.DatabaseReference;
 
 import java.util.Collections;
 import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.ArrayAdapter;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 //EventOrganizer is merged with CyclingClub
 public class  EventOrganizer extends User {
     private static List<Event> events;
     public String name;
+    private EditText eventName;
+    private EditText eventRegion;
+    private EditText eventType;
+    private EditText eventTime;
+    private EditText eventDuration;
+    private ListView listViewEvents;
+    private List<String> eventNames;
+
+    //private List<String> eventItems;
+
+    private DatabaseReference databaseEvents;
     public String region;
     public int levelOfDifficulty;
     public int numOfParticipants;
@@ -27,27 +59,58 @@ public class  EventOrganizer extends User {
         List<Event> newEvents = Collections.unmodifiableList(events);
         return newEvents;
     }
-    public void changeEvent(String name,DatabaseReference db){
-        int index = Administrator.getEvents().indexOf(name);
-        Event aEvent = Administrator.getEvents().get(index);
-        String eventType = String.valueOf(Administrator.getEventType(index));
-        double duration = Event.getDuration();
-        changeRoute(eventType, duration);
+    private void showUpdateDeleteDialog(Event event) {
 
-    }
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.event_update, null);
+        dialogBuilder.setView(dialogView);
 
-    public void changeRoute( String oldEventType, String newEventType, double duration ){
-        boolean ifChange = true;
-        while(ifChange == true){
+        EditText editTextName = (EditText) dialogView.findViewById(R.id.editTextName);
+        EditText editTextLocation = (EditText) dialogView.findViewById(R.id.editTextLocation);
+        EditText editTextType = (EditText) dialogView.findViewById(R.id.editTextType);
+        EditText editTextTime = (EditText) dialogView.findViewById(R.id.editTextTime);
+        EditText editTextDuration = (EditText) dialogView.findViewById(R.id.editTextDuration);
 
-        }
-        if(newEventType == "Hill Climb"){
-            HillClimb hillClimb = new HillClimb();
-        } else if (newEventType == "Group Riders") {
-            GroupRiders groupRiders= new GroupRiders();
-        } else if (newEventType == "Road Stage Race"){
-            RoadStageRace roadStageRace = new RoadStageRace();
-        }
+        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
+        final Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
+
+        dialogBuilder.setTitle("Selected Event Detail");
+        editTextName.setText(event.getName());
+        editTextLocation.setText(event.getLocation());
+        editTextType.setText(event.getType());
+        editTextTime.setText(event.getDate());
+        editTextDuration.setText(Double.toString(event.getDuration()));
+
+
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String  key=event.getKey();
+                String name = editTextName.getText().toString().trim();
+                String location = editTextLocation.getText().toString().trim();
+                String type = editTextType.getText().toString().trim();
+                String time = editTextTime.getText().toString().trim();
+                double duration = Double.parseDouble(editTextDuration.getText().toString().trim());
+
+
+                Event newEvent=new Event(key, name, location, type, time , duration);
+                databaseEvents.child(key).setValue(newEvent);
+                b.dismiss();
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//
+                databaseEvents.child(event.getKey()).removeValue();
+                b.dismiss();
+            }
+        });
     }
 
     public double distributeAwards(){
