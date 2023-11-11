@@ -35,11 +35,17 @@ public class WelcomeScreen extends AppCompatActivity {
 	    	Button btnEvent = findViewById(R.id.adminBtnEvents);
 
 
-		if(!user.getUsername().equals("admin")) {
+		if(!user.getRole().equals("Administrator")) {
 			//Disable admin button for other users
-			btnEventType.setVisibility(View.INVISIBLE);
-			btnUser.setVisibility(View.INVISIBLE);
-			btnEvent.setVisibility(View.INVISIBLE);
+			if (user.getRole().equals("cycling club")) {
+				btnEvent.setVisibility(View.VISIBLE);
+				btnEventType.setVisibility(View.INVISIBLE);
+				btnUser.setVisibility(View.INVISIBLE);
+			} else {
+				btnEventType.setVisibility(View.INVISIBLE);
+				btnUser.setVisibility(View.INVISIBLE);
+				btnEvent.setVisibility(View.INVISIBLE);
+			}
 		}
 
 
