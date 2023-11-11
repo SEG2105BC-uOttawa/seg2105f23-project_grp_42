@@ -1,6 +1,7 @@
 package com.example.cyclingclub;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -32,8 +33,7 @@ public class WelcomeScreen extends AppCompatActivity {
 		initFragments();
 		Button btnEventType=findViewById(R.id.adminBtnEventType);
 		Button btnUser=findViewById(R.id.adminBtnUser);
-	    	Button btnEvent = findViewById(R.id.adminBtnEvents);
-
+		Button btnEvent = findViewById(R.id.adminBtnEvents);
 
 		if(!user.getRole().equals("Administrator")) {
 			//Disable admin button for other users
@@ -47,8 +47,6 @@ public class WelcomeScreen extends AppCompatActivity {
 				btnEvent.setVisibility(View.INVISIBLE);
 			}
 		}
-
-
 
 		if (user != null) {
 			Bundle bundle = new Bundle(); /* Create a Bundle to pass user information */

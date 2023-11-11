@@ -25,11 +25,14 @@
             android:inputType="text"
             android:text="Name" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <Button
             android:id="@+id/button2"
-            android:layout_width="158dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:onClick="onClickAddEventType"
             android:text="@string/addNewEventType" />
 

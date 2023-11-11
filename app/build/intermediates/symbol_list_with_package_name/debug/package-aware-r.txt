@@ -3319,6 +3319,7 @@ id add
 id adjust_height
 id adjust_width
 id adminBtnEventType
+id adminBtnEvents
 id adminBtnUser
 id adt_hint
 id adt_hint_icon
@@ -3380,7 +3381,7 @@ id btn_apply_hillclimb
 id btn_back_create
 id btn_back_hillclimb
 id btn_confirm_create
-id button
+id btn_delete_update
 id button2
 id buttonDelete
 id buttonPanel

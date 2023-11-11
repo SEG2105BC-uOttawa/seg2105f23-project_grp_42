@@ -25,13 +25,16 @@ public final class ActivityWelcomeScreenBinding implements ViewBinding {
   public final Button adminBtnEventType;
 
   @NonNull
+  public final Button adminBtnEvents;
+
+  @NonNull
   public final Button adminBtnUser;
 
   @NonNull
   public final BottomNavigationView bottomNavigationView;
 
   @NonNull
-  public final Button button;
+  public final Button btnDeleteUpdate;
 
   @NonNull
   public final FrameLayout fragmentContainer;
@@ -40,14 +43,16 @@ public final class ActivityWelcomeScreenBinding implements ViewBinding {
   public final ConstraintLayout welcomeScreen;
 
   private ActivityWelcomeScreenBinding(@NonNull ConstraintLayout rootView,
-      @NonNull Button adminBtnEventType, @NonNull Button adminBtnUser,
-      @NonNull BottomNavigationView bottomNavigationView, @NonNull Button button,
-      @NonNull FrameLayout fragmentContainer, @NonNull ConstraintLayout welcomeScreen) {
+      @NonNull Button adminBtnEventType, @NonNull Button adminBtnEvents,
+      @NonNull Button adminBtnUser, @NonNull BottomNavigationView bottomNavigationView,
+      @NonNull Button btnDeleteUpdate, @NonNull FrameLayout fragmentContainer,
+      @NonNull ConstraintLayout welcomeScreen) {
     this.rootView = rootView;
     this.adminBtnEventType = adminBtnEventType;
+    this.adminBtnEvents = adminBtnEvents;
     this.adminBtnUser = adminBtnUser;
     this.bottomNavigationView = bottomNavigationView;
-    this.button = button;
+    this.btnDeleteUpdate = btnDeleteUpdate;
     this.fragmentContainer = fragmentContainer;
     this.welcomeScreen = welcomeScreen;
   }
@@ -85,6 +90,12 @@ public final class ActivityWelcomeScreenBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.adminBtnEvents;
+      Button adminBtnEvents = ViewBindings.findChildViewById(rootView, id);
+      if (adminBtnEvents == null) {
+        break missingId;
+      }
+
       id = R.id.adminBtnUser;
       Button adminBtnUser = ViewBindings.findChildViewById(rootView, id);
       if (adminBtnUser == null) {
@@ -97,9 +108,9 @@ public final class ActivityWelcomeScreenBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.button;
-      Button button = ViewBindings.findChildViewById(rootView, id);
-      if (button == null) {
+      id = R.id.btn_delete_update;
+      Button btnDeleteUpdate = ViewBindings.findChildViewById(rootView, id);
+      if (btnDeleteUpdate == null) {
         break missingId;
       }
 
@@ -112,7 +123,8 @@ public final class ActivityWelcomeScreenBinding implements ViewBinding {
       ConstraintLayout welcomeScreen = (ConstraintLayout) rootView;
 
       return new ActivityWelcomeScreenBinding((ConstraintLayout) rootView, adminBtnEventType,
-          adminBtnUser, bottomNavigationView, button, fragmentContainer, welcomeScreen);
+          adminBtnEvents, adminBtnUser, bottomNavigationView, btnDeleteUpdate, fragmentContainer,
+          welcomeScreen);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
