@@ -3365,7 +3365,10 @@ id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
 id btnAddEvent
+id btnAddEventUser
 id btnBack
+id btnBackToUpdate
+id btnDeleteEventUser
 id btnDeleteUser
 id btnEventDelete
 id btnEventUpdate
@@ -3377,8 +3380,6 @@ id btn_apply_hillclimb
 id btn_back_create
 id btn_back_hillclimb
 id btn_confirm_create
-id btn_delete
-id btn_update
 id button
 id button2
 id buttonDelete

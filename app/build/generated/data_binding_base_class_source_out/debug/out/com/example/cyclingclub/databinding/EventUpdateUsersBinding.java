@@ -22,10 +22,13 @@ public final class EventUpdateUsersBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final Button btnDelete;
+  public final Button btnAddEventUser;
 
   @NonNull
-  public final Button btnUpdate;
+  public final Button btnBackToUpdate;
+
+  @NonNull
+  public final Button btnDeleteEventUser;
 
   @NonNull
   public final EditText editTextUsername;
@@ -33,12 +36,13 @@ public final class EventUpdateUsersBinding implements ViewBinding {
   @NonNull
   public final ListView userListView;
 
-  private EventUpdateUsersBinding(@NonNull LinearLayout rootView, @NonNull Button btnDelete,
-      @NonNull Button btnUpdate, @NonNull EditText editTextUsername,
-      @NonNull ListView userListView) {
+  private EventUpdateUsersBinding(@NonNull LinearLayout rootView, @NonNull Button btnAddEventUser,
+      @NonNull Button btnBackToUpdate, @NonNull Button btnDeleteEventUser,
+      @NonNull EditText editTextUsername, @NonNull ListView userListView) {
     this.rootView = rootView;
-    this.btnDelete = btnDelete;
-    this.btnUpdate = btnUpdate;
+    this.btnAddEventUser = btnAddEventUser;
+    this.btnBackToUpdate = btnBackToUpdate;
+    this.btnDeleteEventUser = btnDeleteEventUser;
     this.editTextUsername = editTextUsername;
     this.userListView = userListView;
   }
@@ -70,15 +74,21 @@ public final class EventUpdateUsersBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btn_delete;
-      Button btnDelete = ViewBindings.findChildViewById(rootView, id);
-      if (btnDelete == null) {
+      id = R.id.btnAddEventUser;
+      Button btnAddEventUser = ViewBindings.findChildViewById(rootView, id);
+      if (btnAddEventUser == null) {
         break missingId;
       }
 
-      id = R.id.btn_update;
-      Button btnUpdate = ViewBindings.findChildViewById(rootView, id);
-      if (btnUpdate == null) {
+      id = R.id.btnBackToUpdate;
+      Button btnBackToUpdate = ViewBindings.findChildViewById(rootView, id);
+      if (btnBackToUpdate == null) {
+        break missingId;
+      }
+
+      id = R.id.btnDeleteEventUser;
+      Button btnDeleteEventUser = ViewBindings.findChildViewById(rootView, id);
+      if (btnDeleteEventUser == null) {
         break missingId;
       }
 
@@ -94,8 +104,8 @@ public final class EventUpdateUsersBinding implements ViewBinding {
         break missingId;
       }
 
-      return new EventUpdateUsersBinding((LinearLayout) rootView, btnDelete, btnUpdate,
-          editTextUsername, userListView);
+      return new EventUpdateUsersBinding((LinearLayout) rootView, btnAddEventUser, btnBackToUpdate,
+          btnDeleteEventUser, editTextUsername, userListView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
