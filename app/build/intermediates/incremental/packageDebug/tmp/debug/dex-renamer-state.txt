@@ -1,9 +1,9 @@
-#Fri Nov 10 21:58:24 EST 2023
-base.0=/Users/nick/Documents/seg2105f23-project_grp_42/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-base.1=/Users/nick/Documents/seg2105f23-project_grp_42/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.2=/Users/nick/Documents/seg2105f23-project_grp_42/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex
-base.3=/Users/nick/Documents/seg2105f23-project_grp_42/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
-base.4=/Users/nick/Documents/seg2105f23-project_grp_42/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
+#Fri Nov 10 23:11:49 EST 2023
+base.0=D\:\\SEG_PROJECT\\seg2105f23-project_grp_42\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=D\:\\SEG_PROJECT\\seg2105f23-project_grp_42\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=D\:\\SEG_PROJECT\\seg2105f23-project_grp_42\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
+base.3=D\:\\SEG_PROJECT\\seg2105f23-project_grp_42\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
+base.4=D\:\\SEG_PROJECT\\seg2105f23-project_grp_42\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=4/classes.dex

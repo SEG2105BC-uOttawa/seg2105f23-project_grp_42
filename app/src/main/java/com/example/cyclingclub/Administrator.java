@@ -12,6 +12,13 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Administrator extends User{
     /*
@@ -25,10 +32,18 @@ public class Administrator extends User{
     //create a constructor with the array list of the events
     public Administrator(String username, String password) {
         super(null, username, "Administrator", password, null);
-        events = new ArrayList<Event>();
 
+        //Initialize events;
+        events = new ArrayList<Event>();
         eventTypes=new ArrayList<EventType>();
+
+        //Read events and event types from database;
+        events=getEvents();
+        eventTypes=getEventTypes();
+
     }
+
+
 
     //Get the event index from the event array
     public Event getEvent(int index)
@@ -36,10 +51,10 @@ public class Administrator extends User{
         return events.get(index);
     }
     //Return the array with the events
-    public static List<Event> getEvents()
-    {
-        return Collections.unmodifiableList(events);
-    }
+    //public static List<Event> getEvents()
+    //{
+    //    return Collections.unmodifiableList(events);
+    //}
 
     //Create a counter to add and subtract events from the array
     public int numberOfEvents()
@@ -160,8 +175,7 @@ public class Administrator extends User{
         String key = getEventDB().push().getKey();
         Event newEvent=new Event(key, name, region, type, time , duration);
         getEventDB().child(key).setValue(newEvent);
-
-        events.add(newEvent);
+        updateEventCounts();
     }
 
     public static void updateEvent(String key, String name, String region, String type, String time, double duration){
@@ -195,8 +209,56 @@ public class Administrator extends User{
         getEventTypeDB().child(et.getId()).setValue(et);
     }
 
-    public List<EventType>   getEventTypes(){
+    public static List<EventType> getEventTypes(){
+        DatabaseReference   db=getEventTypeDB();
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                eventTypes.clear();
+                for(DataSnapshot postSnapShot:dataSnapshot.getChildren()){
+                    EventType et =  postSnapShot.getValue(EventType.class);
+                    eventTypes.add(et);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
         return eventTypes;
+    }
+
+
+    public static List<Event> getEvents(){
+        DatabaseReference   db=getEventDB();
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                events.clear();
+                for(DataSnapshot postSnapShot:dataSnapshot.getChildren()){
+                    Event event =  postSnapShot.getValue(Event.class);
+                    events.add(event);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+
+        return events;
+    }
+
+    public static void updateEventCounts(){
+        for(EventType et:getEventTypes()){
+            for(Event e:getEvents()){
+                if (e.getType().equals(et.getTypeName())){
+                    et.setNumberOfEvent(et.getNumberOfEvent()+1);
+                }
+            }
+            getEventTypeDB().child(et.getId()).setValue(et);
+        }
+
     }
 
     public static void deleteEventType(EventType et){
@@ -213,5 +275,13 @@ public class Administrator extends User{
     public static DatabaseReference getEventTypeDB(){
         return FirebaseDatabase.getInstance().getReference("EventTypes1");
     };
+    public static DatabaseReference getUserDB(){
+        return FirebaseDatabase.getInstance().getReference("users");
+    };
+
+    public static void deleteUser(String key){
+        getUserDB().child(key).removeValue();
+    }
+
 
 }

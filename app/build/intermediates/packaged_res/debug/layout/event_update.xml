@@ -136,13 +136,6 @@
                 android:text="@string/btnDelete" />
 
             <Button
-                android:id="@+id/btnUsernameRedirect"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Update Names" />
-
-            <Button
                 android:id="@+id/btnEventUpdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

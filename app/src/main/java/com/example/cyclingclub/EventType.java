@@ -30,7 +30,7 @@ public class EventType {
     public void setId(String id){
         this.id=id;
     }
-    public void updateNumberOfEvent(int num){
+    public void setNumberOfEvent(int num){
         //Need to count the number of events from event database, which is not available yet;
         numberOfEvent=num;
     }

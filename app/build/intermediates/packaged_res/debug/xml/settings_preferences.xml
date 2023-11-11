@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="Display" app:layout="@layout/custom_preference_category_layout">
+        <ListPreference
+            android:key="appearance_preference"
+            android:title="App Appearance"
+            android:defaultValue="system"
+            android:entries="@array/appearance_options"
+            android:entryValues="@array/appearance_values"
+            app:useSimpleSummaryProvider="true"
+            app:summary="%s" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

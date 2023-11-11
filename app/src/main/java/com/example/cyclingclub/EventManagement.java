@@ -180,28 +180,10 @@ public class EventManagement extends AppCompatActivity {
         //
         EditText editTextTime = (EditText) dialogView.findViewById(R.id.editTextTime);
         EditText editTextDuration = (EditText) dialogView.findViewById(R.id.editTextDuration);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) EditText editTextUsername = (EditText) dialogView.findViewById(R.id.editTextUsername);
 
-        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
-        final Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
-        final Button buttonRedirect = (Button) dialogView.findViewById(R.id.btnUsernameRedirect);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) final Button buttonUpdateUsers = (Button) dialogView.findViewById(R.id.btnAddEventUser);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) final Button buttonDeleteUsers = (Button) dialogView.findViewById(R.id.btnDeleteEventUser);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) final Button buttonBack = (Button) dialogView.findViewById(R.id.btnBackToUpdate);
+        Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
+        Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
 
-
-        String[] Types = {"Time Trial", "Hill Climb", "Road Stage Race", "Road Race", "Group Rides"};
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Types);
-        //editSpinnerType.setAdapter(adapter1);
-
-        String stringUsername = toString(editTextUsername);
-        int index = 0;
-
-        for(int i = 0; i < users.size(); i++){
-            if (users.get(i).getUsername() == stringUsername){
-                index = i;
-            }
-        }
 
         dialogBuilder.setTitle("Selected Event Detail");
         editTextName.setText(event.getName());
@@ -209,7 +191,6 @@ public class EventManagement extends AppCompatActivity {
         editTextType.setText(event.getType());
         editTextTime.setText(event.getDate());
         editTextDuration.setText(Double.toString(event.getDuration()));
-        editTextUsername.setText((CharSequence) users.get(index).getUsername());
 
 
 
@@ -249,10 +230,6 @@ public class EventManagement extends AppCompatActivity {
                 b.dismiss();
             }
         });
-    }
-
-    private String toString(EditText editTextUsername) {
-        return toString(editTextUsername);
     }
 
 

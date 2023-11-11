@@ -3376,12 +3376,10 @@ id btnEventUpdate
 id btnLogIn
 id btnLogin
 id btnSignUp
-id btnUsernameRedirect
 id btn_apply_hillclimb
 id btn_back_create
 id btn_back_hillclimb
 id btn_confirm_create
-id btn_delete_update
 id button2
 id buttonDelete
 id buttonPanel
