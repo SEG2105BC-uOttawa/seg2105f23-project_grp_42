@@ -32,12 +32,14 @@ public class WelcomeScreen extends AppCompatActivity {
 		initFragments();
 		Button btnEventType=findViewById(R.id.adminBtnEventType);
 		Button btnUser=findViewById(R.id.adminBtnUser);
+	    	Button btnEvent = findViewById(R.id.adminBtnEvents);
 
-		if(user.getUsername().equals("admin")) {
-		}else {
+
+		if(!user.getUsername().equals("admin")) {
 			//Disable admin button for other users
-			btnEventType.setEnabled(false);
-			btnUser.setEnabled(false);
+			btnEventType.setVisibility(View.INVISIBLE);
+			btnUser.setVisibility(View.INVISIBLE);
+			btnEvent.setVisibility(View.INVISIBLE);
 		}
 
 
