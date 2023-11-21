@@ -11,7 +11,7 @@ public class Event {
     private  String date;
     private  String location;
     private  String rewards;
-    private  List<User> users;
+    public  List<User> users;
 
     private  Double duration;
 
