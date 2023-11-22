@@ -5,15 +5,18 @@ import java.util.*;
 public class Event {
 
     private String key;
+    private  String eventId;
+    private  String eventType;
+    private String eventDetail;
+    private String eventRegion;
+    private  String eventDate;
+    private String eventRoute;
+    private  int eventLevel;
+    private  double eventFee;
+    private  int eventLimit;
+    private  int eventDistance;
+    private  int eventElevation;
 
-    private  String name;
-    private  String type;
-    private  String date;
-    private  String location;
-    private  String rewards;
-    private  List<User> users;
-
-    private  Double duration;
 
     //private final List<Administrator> admins;
     //private  List<Administrator> admins;
@@ -21,87 +24,92 @@ public class Event {
     public Event() {}
 
 
-    public Event(String key, String name, String region, String type, String time , double duration){
+    public Event(String key, String id, String type, String date){
         this.key=key;
-        this.name=name;
-        this.type=type;
-        this.location=region;
-        this.date=time;
-        this.duration=duration;
-        this.users = users;
-        //admins = new ArrayList<Administrator>();
+        this.eventId = id;
+        this.eventType = type;
+        this.eventDate=date;
     }
 
-
-    public Event(String key, String name, String region, String type, String time , double duration, List<User> users){
-        this.key=key;
-        this.name=name;
-        this.type=type;
-        this.location=region;
-        this.date=time;
-        this.duration=duration;
-        this.users = users;
-        //admins = new ArrayList<Administrator>();
-    }
 
     public  String getKey() {
         return key;
     }
+    public  String getId() {
+        return eventId;
+    }
+    public  String getType() {
+        return eventType;
+    }
+    public  String getDetail() {
+        return eventDetail;
+    }
+    public  String getRegion() {
+        return eventRegion;
+    }
+    public  String getRoute() {
+        return eventRoute;
+    }
+    public  String getDate() {
+        return eventDate;
+    }
+    public  int getLevel() {
+        return eventLevel;
+    }
+    public  double getFee() {
+        return eventFee;
+    }
+    public  int getLimit() {
+        return eventLimit;
+    }
+    public  int getDistance() {
+        return eventDistance;
+    }
+    public  int getElevation() {
+        return eventElevation;
+    }
+
+
 
     public  void setKey(String key) {
-        this.key = key;
+        this.key =  key;
     }
-
-    public  String getName() {
-        return name;
+    public  void setId(String id) {
+        this.eventId = id ;
     }
-
-    public  void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
     public  void setType(String type) {
-        this.type = type;
+        this.eventType = type  ;
     }
-
-    public  String getDate() {
-        return date;
+    public  void setDetail(String detail) {
+        this.eventDetail = detail ;
     }
-
+    public  void setRegion(String region) {
+        this.eventRegion = region ;
+    }
+    public  void setRoute(String route) {
+        this.eventRoute = route ;
+    }
     public  void setDate(String date) {
-        this.date = date;
+        this.eventDate =date  ;
+    }
+    public  void setLevel(int level) {
+        this.eventLevel =  level;
+    }
+    public  void setFee(double fee) {
+        this.eventFee =fee  ;
+    }
+    public  void setLimit(int limit) {
+        this.eventLimit = limit ;
+    }
+    public  void setDistance(int distance) {
+        this.eventDistance = distance ;
+    }
+    public  void setElevation(int elevation) {
+        this.eventElevation =elevation  ;
     }
 
-    public  String getLocation() {
-        return location;
-    }
 
-    public  void setLocation(String location) {
-        this.location = location;
-    }
 
-    public  String getRewards() {
-        return rewards;
-    }
-
-    public  void setRewards(String rewards) {
-        this.rewards = rewards;
-    }
-
-    public  double getDuration(){
-        return duration;
-    }
-    public  void setDuration(double duration) {
-        this.duration = duration;
-    }
-
-    public List<User> getUsers(){
-        return this.users;
-    }
 
 /*
     public Administrator getAdmin(int index)

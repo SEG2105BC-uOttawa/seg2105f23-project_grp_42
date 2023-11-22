@@ -2,7 +2,6 @@ package com.example.cyclingclub;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.graphics.Color;
@@ -34,22 +33,13 @@ import java.util.List;
 
 public class EventManagement extends AppCompatActivity {
 
-    private EditText eventName;
-    private EditText eventRegion;
 
-    private EditText eventTime;
-    private EditText eventDuration;
-
-
-    private Spinner dropdownType ;
+   // private Spinner dropdownType ;
 
     private ListView listViewEvents;
     private List<Event> events;
-    private ArrayList<String> eventNames;
 
-    //private List<String> eventItems;
-
-    private List<String>  eventTypeNames;
+    private List<String> eventsList;
 
 
    // private DatabaseReference databaseEvents;
@@ -61,29 +51,15 @@ public class EventManagement extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_management);
 
-
-        eventName=(EditText) findViewById(R.id.editEventName);
-        eventRegion=(EditText) findViewById(R.id.editEventRegion);
-        eventTime=(EditText) findViewById(R.id.editEventTime);
-        eventDuration=(EditText) findViewById(R.id.editEventDuration);
-
         listViewEvents = (ListView) findViewById(R.id.listEvents);
 
        // databaseEvents = FirebaseDatabase.getInstance().getReference("Events1");
 
-        dropdownType = findViewById(R.id.spinnerType);
+
 
 
         events = new ArrayList<Event>();
-        eventNames=new ArrayList<String>();
-        eventTypeNames=new ArrayList<String>();
-
-
-        eventName.setText("");
-        eventRegion.setText("");
-        eventTime.setText("");
-        eventDuration.setText("0");
-
+        eventsList = new ArrayList<String>();
 
         AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
@@ -95,41 +71,11 @@ public class EventManagement extends AppCompatActivity {
         };
         listViewEvents.setOnItemLongClickListener(longClickListener);
 
+        //dropdownType = findViewById(R.id.spinnerType);
+        //String[] Types = {"Time Trial", "Hill Climb", "Road Stage Race", "Road Race", "Group Rides"};
 
-
-
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("EventTypes1");
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //int i=0;
-                for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
-                    EventType et = postSnapShot.getValue(EventType.class);
-                    eventTypeNames.add(et.getTypeName());
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
-
-
-        //create a list of items for the spinner.
-        //String[] items = (String[]) eventNames.toArray();
-        //String items[] = eventNames.toArray(new String[eventNames.size()]);
-        //String[] str = new String[10];
-
-        //for (int i = 0; i < eventNames.size(); i++) {
-        //    str[i] = eventNames.get(i).toString();
-       // }
-
-
-        String[] Types = {"Time Trial", "Hill Climb", "Road Stage Race", "Road Race", "Group Rides"};
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Types);
-        dropdownType.setAdapter(adapter);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Types);
+        //dropdownType.setAdapter(adapter);
 
 
     }
@@ -143,15 +89,14 @@ public class EventManagement extends AppCompatActivity {
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                events.clear();
-                eventNames.clear();
+                eventsList.clear();
                 for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
                     Event event = postSnapShot.getValue(Event.class);
                     events.add(event);
-                    eventNames.add(event.getName());
+                    eventsList.add(event.getId()+ " : "+ event.getType()+" : "+event.getDate());
                 }
                 ArrayAdapter<String> itemsAdapter =
-                        new ArrayAdapter<String>(EventManagement.this, R.layout.item_view, R.id.textViewItem,eventNames);
+                        new ArrayAdapter<String>(EventManagement.this, R.layout.item_view, R.id.textViewItem,eventsList);
 
                 listViewEvents.setAdapter(itemsAdapter);
             }
@@ -168,10 +113,10 @@ public class EventManagement extends AppCompatActivity {
 
 
     private void showUpdateDeleteDialog(Event event) {
-
+/*
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.event_update, null);
+        final View dialogView = inflater.inflate(R.layout.event_detail, null);
         dialogBuilder.setView(dialogView);
 
         EditText editTextName = (EditText) dialogView.findViewById(R.id.editTextName);
@@ -179,7 +124,7 @@ public class EventManagement extends AppCompatActivity {
         EditText editTextType=(EditText) dialogView.findViewById(R.id.editTextEventType);
         //
         EditText editTextTime = (EditText) dialogView.findViewById(R.id.editTextTime);
-        EditText editTextDuration = (EditText) dialogView.findViewById(R.id.editTextDuration);
+        EditText editTextDuration = (EditText) dialogView.findViewById(R.id.editEventId);
 
         Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
         Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
@@ -230,18 +175,75 @@ public class EventManagement extends AppCompatActivity {
                 b.dismiss();
             }
         });
+
+
+ */
     }
 
 
     public void onClickAddEvent(View view) {
 
-        String name = eventName.getText().toString().trim();
-        String region = eventRegion.getText().toString().trim();
-        String type = dropdownType.getSelectedItem().toString();
-        String time = eventTime.getText().toString().trim();
-        String durationString= eventDuration.getText().toString().trim();
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.event_detail, null);
+        dialogBuilder.setView(dialogView);
+
+        EditText editEventId = (EditText) dialogView.findViewById(R.id.editEventId);
+        EditText editEventType = (EditText) dialogView.findViewById(R.id.editEventType);
+        EditText editEventRegion = (EditText) dialogView.findViewById(R.id.editEventRegion);
+        EditText editEventDate = (EditText) dialogView.findViewById(R.id.editEventDate);
+        EditText editEventRoute = (EditText) dialogView.findViewById(R.id.editEventRoute);
+        EditText editEventDistance = (EditText) dialogView.findViewById(R.id.editEventDistance);
+        EditText editEventElevation = (EditText) dialogView.findViewById(R.id.editEventElevation);
+        EditText editEventLevel = (EditText) dialogView.findViewById(R.id.editEventLevel);
+        EditText editEventFee = (EditText) dialogView.findViewById(R.id.editEventFee);
+        EditText editEventLimit = (EditText) dialogView.findViewById(R.id.editEventLimit);
 
 
+        Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
+        Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
+
+
+        dialogBuilder.setTitle("Selected Event Detail");
+        TextView eventTypeDetail = (TextView) dialogView.findViewById(R.id.eventTypeDetail);
+        eventTypeDetail.setText("Hello Text Type can not be edited");
+
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //String  key=event.getKey();
+                String id = editEventId.getText().toString().trim();
+                String type = editEventType.getText().toString().trim();
+                String region = editEventRegion.getText().toString().trim();
+                String date = editEventDate.getText().toString().trim();
+                String route = editEventRoute.getText().toString().trim();
+
+                int distance = Integer.parseInt(editEventDistance.getText().toString().trim());
+                int elevation = Integer.parseInt(editEventElevation.getText().toString().trim());
+                int level = Integer.parseInt(editEventLevel.getText().toString().trim());
+                double fee = Double.parseDouble(editEventFee.getText().toString().trim());
+                int limit = Integer.parseInt(editEventLimit.getText().toString().trim());
+
+
+               // String message=validateInput(name, location, time , durationString);
+               // if(message.equals("")){
+               //     double duration = Double.parseDouble(durationString);
+                    Event event=new Event("",id,type,date);
+                    Administrator.createEvent(event);
+                    b.dismiss();
+                //}
+                //else{
+                //    displayPopupMessage(message,view);
+
+                //}
+
+            }
+        });
+
+   /*
         String message=validateInput(name, region, time , durationString);
         if(message.equals("")){
             double duration = Double.parseDouble(durationString);
@@ -255,6 +257,8 @@ public class EventManagement extends AppCompatActivity {
             displayPopupMessage(message,view);
 
         }
+
+    */
 
     }
 

@@ -4,24 +4,7 @@
             "outputFile": "com.example.cyclingclub.app-mergeDebugResources-49:/values-pt/values-pt.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\bradl\\.gradle\\caches\\transforms-3\\9836dcc44fd29f0989c3e04bfcabcee2\\transformed\\browser-1.4.0\\res\\values-pt\\values-pt.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,170,269,381",
-                        "endColumns": "114,98,111,105",
-                        "endOffsets": "165,264,376,482"
-                    },
-                    "to": {
-                        "startLines": "39,41,42,43",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "3880,4082,4181,4293",
-                        "endColumns": "114,98,111,105",
-                        "endOffsets": "3990,4176,4288,4394"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\bradl\\.gradle\\caches\\transforms-3\\6c7349e2b65423ca6ca3cb7a26c6f73c\\transformed\\navigation-ui-2.5.3\\res\\values-pt\\values-pt.xml",
+                    "source": "C:\\Users\\gaoyo\\.gradle\\caches\\transforms-3\\6c7349e2b65423ca6ca3cb7a26c6f73c\\transformed\\navigation-ui-2.5.3\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -38,41 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\bradl\\.gradle\\caches\\transforms-3\\cc334bec536b2499fbbe204f671d7732\\transformed\\dynamic-utils-4.5.1\\res\\values-pt\\values-pt.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,228",
-                        "endColumns": "172,58",
-                        "endOffsets": "223,282"
-                    },
-                    "to": {
-                        "startLines": "29,30",
-                        "startColumns": "4,4",
-                        "startOffsets": "2843,3016",
-                        "endColumns": "172,58",
-                        "endOffsets": "3011,3070"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\bradl\\.gradle\\caches\\transforms-3\\daf366d1fd65980a30a14b6cb2ed9e32\\transformed\\core-1.12.0-alpha05\\res\\values-pt\\values-pt.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,152,254,353,453,560,670,790",
-                        "endColumns": "96,101,98,99,106,109,119,100",
-                        "endOffsets": "147,249,348,448,555,665,785,886"
-                    },
-                    "to": {
-                        "startLines": "31,32,33,34,35,36,37,49",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "3075,3172,3274,3373,3473,3580,3690,4947",
-                        "endColumns": "96,101,98,99,106,109,119,100",
-                        "endOffsets": "3167,3269,3368,3468,3575,3685,3805,5043"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\bradl\\.gradle\\caches\\transforms-3\\ff92050ab482929c4d0f044d21af76fb\\transformed\\appcompat-1.6.1\\res\\values-pt\\values-pt.xml",
+                    "source": "C:\\Users\\gaoyo\\.gradle\\caches\\transforms-3\\ff92050ab482929c4d0f044d21af76fb\\transformed\\appcompat-1.6.1\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -89,7 +38,41 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\bradl\\.gradle\\caches\\transforms-3\\cca54f931452eb9d985006b9c2df7f3d\\transformed\\preference-1.2.1\\res\\values-pt\\values-pt.xml",
+                    "source": "C:\\Users\\gaoyo\\.gradle\\caches\\transforms-3\\cc334bec536b2499fbbe204f671d7732\\transformed\\dynamic-utils-4.5.1\\res\\values-pt\\values-pt.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,228",
+                        "endColumns": "172,58",
+                        "endOffsets": "223,282"
+                    },
+                    "to": {
+                        "startLines": "29,30",
+                        "startColumns": "4,4",
+                        "startOffsets": "2843,3016",
+                        "endColumns": "172,58",
+                        "endOffsets": "3011,3070"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\gaoyo\\.gradle\\caches\\transforms-3\\9836dcc44fd29f0989c3e04bfcabcee2\\transformed\\browser-1.4.0\\res\\values-pt\\values-pt.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,170,269,381",
+                        "endColumns": "114,98,111,105",
+                        "endOffsets": "165,264,376,482"
+                    },
+                    "to": {
+                        "startLines": "39,41,42,43",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "3880,4082,4181,4293",
+                        "endColumns": "114,98,111,105",
+                        "endOffsets": "3990,4176,4288,4394"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\gaoyo\\.gradle\\caches\\transforms-3\\cca54f931452eb9d985006b9c2df7f3d\\transformed\\preference-1.2.1\\res\\values-pt\\values-pt.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",
@@ -103,6 +86,23 @@
                         "startOffsets": "3810,3995,4631,4710,5048,5217,5304",
                         "endColumns": "69,86,78,150,168,86,80",
                         "endOffsets": "3875,4077,4705,4856,5212,5299,5380"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\gaoyo\\.gradle\\caches\\transforms-3\\daf366d1fd65980a30a14b6cb2ed9e32\\transformed\\core-1.12.0-alpha05\\res\\values-pt\\values-pt.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,152,254,353,453,560,670,790",
+                        "endColumns": "96,101,98,99,106,109,119,100",
+                        "endOffsets": "147,249,348,448,555,665,785,886"
+                    },
+                    "to": {
+                        "startLines": "31,32,33,34,35,36,37,49",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "3075,3172,3274,3373,3473,3580,3690,4947",
+                        "endColumns": "96,101,98,99,106,109,119,100",
+                        "endOffsets": "3167,3269,3368,3468,3575,3685,3805,5043"
                     }
                 }
             ]

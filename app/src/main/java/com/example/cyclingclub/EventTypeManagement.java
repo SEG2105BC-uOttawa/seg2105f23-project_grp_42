@@ -13,11 +13,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,20 +27,19 @@ import android.widget.TextView;
 
 public class EventTypeManagement extends AppCompatActivity {
 
-    private EditText eventTypeName;
+
     private ListView listViewEventTypes;
     private List<EventType> eventTypes;
    // private DatabaseReference databaseProducts;
     //private Administrator admin;
 
+    private EventType selectedEventType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_type_management);
 
-        eventTypeName=(EditText) findViewById(R.id.eventTypeName);
-        eventTypeName.setText("");
         listViewEventTypes = (ListView) findViewById(R.id.eventTypeList);
         eventTypes = new ArrayList<>();
 
@@ -59,6 +55,20 @@ public class EventTypeManagement extends AppCompatActivity {
             }
         };
         listViewEventTypes.setOnItemLongClickListener(longClickListener);
+
+
+        listViewEventTypes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Clear the previous selection
+                listViewEventTypes.clearChoices();
+
+                // Set the current item as selected
+                listViewEventTypes.setItemChecked(position, true);
+                selectedEventType=eventTypes.get(position);
+            }
+        });
+
 
         //The administrator who can manage the event type database;
         //admin= new Administrator("admin","admin");
@@ -94,21 +104,19 @@ public class EventTypeManagement extends AppCompatActivity {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.eventtype_update, null);
+        final View dialogView = inflater.inflate(R.layout.eventtype_detail, null);
         dialogBuilder.setView(dialogView);
 
-         EditText editTextID = (EditText) dialogView.findViewById(R.id.eventTypeID);
-         editTextID.setEnabled(false);
-         editTextID.setFocusable(false);
+         //editTextID.setEnabled(false);
+         //editTextID.setFocusable(false);
          EditText editTextName = (EditText) dialogView.findViewById(R.id.eventTypeNameUpdate);
-         EditText editTextNumber = (EditText) dialogView.findViewById(R.id.editEventNumber);
+         EditText editTextDetail = (EditText) dialogView.findViewById(R.id.editEventTypeDetail);
         final Button buttonUpdate = (Button) dialogView.findViewById(R.id.buttonUpdate);
         final Button buttonDelete = (Button) dialogView.findViewById(R.id.buttonDelete);
 
-        dialogBuilder.setTitle("Event Time Detail");
-        editTextID.setText(et.getId());
+        dialogBuilder.setTitle("Event Types Detail");
         editTextName.setText(et.getTypeName());
-        editTextNumber.setText(Integer.toString(et.getNumberOfEvent()));
+        editTextDetail.setText(et.getDetail());
 
         final AlertDialog b = dialogBuilder.create();
         b.show();
@@ -116,11 +124,10 @@ public class EventTypeManagement extends AppCompatActivity {
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newId = editTextID.getText().toString().trim();
                 String newName = editTextName.getText().toString().trim();
-                int newNumber = Integer.parseInt(editTextNumber.getText().toString().trim());
+                String newDetail = editTextDetail.getText().toString().trim();
                 if (!TextUtils.isEmpty(newName)) {
-                    EventType updatedET = new EventType(newId, newName, newNumber);
+                    EventType updatedET = new EventType(et.getId(), newName, newDetail);
                     Administrator.updateEventType(updatedET);
                     b.dismiss();
                 }
@@ -139,10 +146,59 @@ public class EventTypeManagement extends AppCompatActivity {
                 }
             }
         });
+
+
+
     }
 
 
     public void onClickAddEventType(View view) {
+
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.eventtype_detail, null);
+        dialogBuilder.setView(dialogView);
+
+        //editTextID.setEnabled(false);
+        //editTextID.setFocusable(false);
+        EditText editTextName = (EditText) dialogView.findViewById(R.id.eventTypeNameUpdate);
+        EditText editTextDetail = (EditText) dialogView.findViewById(R.id.editEventTypeDetail);
+        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.buttonUpdate);
+        final Button buttonDelete = (Button) dialogView.findViewById(R.id.buttonDelete);
+
+        dialogBuilder.setTitle("Event Types Detail");
+        editTextName.setText("");
+        editTextDetail.setText("");
+
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newName = editTextName.getText().toString().trim();
+                String newDetail = editTextDetail.getText().toString().trim();
+                if (!TextUtils.isEmpty(newName)) {
+                    EventType newEventType = new EventType("", newName,newDetail);
+                    Administrator.createEventType(newEventType);
+                    b.dismiss();
+                }
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    b.dismiss();
+            }
+        });
+
+
+
+
+        /*
+
         String typeName = eventTypeName.getText().toString().trim();
 
        // InputValidator validator = InputValidator.getInstance();
@@ -159,9 +215,78 @@ public class EventTypeManagement extends AppCompatActivity {
             //show message says invalid type name;
             //Snackbar.make(view,"Error: Name cannot be empty",Snackbar.LENGTH_SHORT).show();
         }
+
+
+         */
     }
 
-    private void displayPopupMessage(String message, View anchorView) {
+
+    public void onClickAddEvent(View view) {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.event_detail, null);
+        dialogBuilder.setView(dialogView);
+
+        EditText editEventId = (EditText) dialogView.findViewById(R.id.editEventId);
+        EditText editEventType = (EditText) dialogView.findViewById(R.id.editEventType);
+        EditText editEventRegion = (EditText) dialogView.findViewById(R.id.editEventRegion);
+        EditText editEventDate = (EditText) dialogView.findViewById(R.id.editEventDate);
+        EditText editEventRoute = (EditText) dialogView.findViewById(R.id.editEventRoute);
+        EditText editEventDistance = (EditText) dialogView.findViewById(R.id.editEventDistance);
+        EditText editEventElevation = (EditText) dialogView.findViewById(R.id.editEventElevation);
+        EditText editEventLevel = (EditText) dialogView.findViewById(R.id.editEventLevel);
+        EditText editEventFee = (EditText) dialogView.findViewById(R.id.editEventFee);
+        EditText editEventLimit = (EditText) dialogView.findViewById(R.id.editEventLimit);
+
+
+        Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
+        Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
+
+
+        dialogBuilder.setTitle("Create New Event");
+        editEventType.setText(selectedEventType.getTypeName());
+        TextView eventTypeDetail = (TextView) dialogView.findViewById(R.id.eventTypeDetail);
+        eventTypeDetail.setText(selectedEventType.getDetail());
+
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //String  key=event.getKey();
+                String id = editEventId.getText().toString().trim();
+                String type = editEventType.getText().toString().trim();
+                String region = editEventRegion.getText().toString().trim();
+                String date = editEventDate.getText().toString().trim();
+                String route = editEventRoute.getText().toString().trim();
+
+                int distance = Integer.parseInt(editEventDistance.getText().toString().trim());
+                int elevation = Integer.parseInt(editEventElevation.getText().toString().trim());
+                int level = Integer.parseInt(editEventLevel.getText().toString().trim());
+                double fee = Double.parseDouble(editEventFee.getText().toString().trim());
+                int limit = Integer.parseInt(editEventLimit.getText().toString().trim());
+
+
+                // String message=validateInput(name, location, time , durationString);
+                // if(message.equals("")){
+                //     double duration = Double.parseDouble(durationString);
+                Event event = new Event("", id, type, date);
+                Administrator.createEvent(event);
+                b.dismiss();
+                //}
+                //else{
+                //    displayPopupMessage(message,view);
+
+                //}
+
+            }
+        });
+
+    }
+
+        private void displayPopupMessage(String message, View anchorView) {
         LinearLayout layout = new LinearLayout(this);
         layout.setLayoutParams(new ViewGroup.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT));
 

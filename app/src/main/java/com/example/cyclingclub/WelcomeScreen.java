@@ -94,6 +94,9 @@ public class WelcomeScreen extends AppCompatActivity {
 				}
 				return true;
 			} else if (item.getItemId() == R.id.profileItem) {
+				Bundle bundle = new Bundle(); /* Create a Bundle to pass user information */
+				bundle.putSerializable("user", user);
+				profileFragment.setArguments(bundle);
 				setFragment(profileFragment);
 				return true;
 			} else if (item.getItemId() == R.id.settingsItem) {

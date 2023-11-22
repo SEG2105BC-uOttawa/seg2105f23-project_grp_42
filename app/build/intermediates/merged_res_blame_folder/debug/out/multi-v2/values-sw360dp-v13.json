@@ -4,7 +4,7 @@
             "outputFile": "com.example.cyclingclub.app-mergeDebugResources-49:/values-sw360dp-v13/values-sw360dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\bradl\\.gradle\\caches\\transforms-3\\cca54f931452eb9d985006b9c2df7f3d\\transformed\\preference-1.2.1\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
+                    "source": "C:\\Users\\gaoyo\\.gradle\\caches\\transforms-3\\cca54f931452eb9d985006b9c2df7f3d\\transformed\\preference-1.2.1\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -14,7 +14,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -171,16 +170,17 @@ public class Administrator extends User{
     }
 
     //Create a new event
-    public static void createEvent(String name, String region, String type, String time, double duration){
+    public static void createEvent(Event event){
         String key = getEventDB().push().getKey();
-        Event newEvent=new Event(key, name, region, type, time , duration);
-        getEventDB().child(key).setValue(newEvent);
-        updateEventCounts();
+        //Event newEvent=new Event(key, name, region, type, time , duration);
+        event.setKey(key);
+        getEventDB().child(key).setValue(event);
+        //updateEventCounts();
     }
 
     public static void updateEvent(String key, String name, String region, String type, String time, double duration){
-        Event newEvent=new Event(key, name, region, type, time , duration);
-        getEventDB().child(key).setValue(newEvent);
+        //Event newEvent=new Event(key, name, region, type, time , duration);
+        //getEventDB().child(key).setValue(newEvent);
         //events.add(newEvent);
     }
 
@@ -273,7 +273,7 @@ public class Administrator extends User{
         return FirebaseDatabase.getInstance().getReference("Events1");
     };
     public static DatabaseReference getEventTypeDB(){
-        return FirebaseDatabase.getInstance().getReference("EventTypes1");
+        return FirebaseDatabase.getInstance().getReference("EventTypes");
     };
     public static DatabaseReference getUserDB(){
         return FirebaseDatabase.getInstance().getReference("users");

@@ -4,25 +4,83 @@ package com.example.cyclingclub.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
 import com.example.cyclingclub.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
+import java.lang.String;
 
 public final class FragmentProfileBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final LinearLayout rootView;
 
-  private FragmentProfileBinding(@NonNull FrameLayout rootView) {
+  @NonNull
+  public final Button btnProfileUpdate;
+
+  @NonNull
+  public final EditText editClubName;
+
+  @NonNull
+  public final EditText editClubRegion;
+
+  @NonNull
+  public final EditText editContact;
+
+  @NonNull
+  public final EditText editMediaLink;
+
+  @NonNull
+  public final EditText editPhoneNumber;
+
+  @NonNull
+  public final TextView profileTitle;
+
+  @NonNull
+  public final TextView textView12;
+
+  @NonNull
+  public final TextView textView13;
+
+  @NonNull
+  public final TextView textView14;
+
+  @NonNull
+  public final TextView textView15;
+
+  @NonNull
+  public final TextView textView4;
+
+  private FragmentProfileBinding(@NonNull LinearLayout rootView, @NonNull Button btnProfileUpdate,
+      @NonNull EditText editClubName, @NonNull EditText editClubRegion,
+      @NonNull EditText editContact, @NonNull EditText editMediaLink,
+      @NonNull EditText editPhoneNumber, @NonNull TextView profileTitle,
+      @NonNull TextView textView12, @NonNull TextView textView13, @NonNull TextView textView14,
+      @NonNull TextView textView15, @NonNull TextView textView4) {
     this.rootView = rootView;
+    this.btnProfileUpdate = btnProfileUpdate;
+    this.editClubName = editClubName;
+    this.editClubRegion = editClubRegion;
+    this.editContact = editContact;
+    this.editMediaLink = editMediaLink;
+    this.editPhoneNumber = editPhoneNumber;
+    this.profileTitle = profileTitle;
+    this.textView12 = textView12;
+    this.textView13 = textView13;
+    this.textView14 = textView14;
+    this.textView15 = textView15;
+    this.textView4 = textView4;
   }
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -43,10 +101,87 @@ public final class FragmentProfileBinding implements ViewBinding {
 
   @NonNull
   public static FragmentProfileBinding bind(@NonNull View rootView) {
-    if (rootView == null) {
-      throw new NullPointerException("rootView");
-    }
+    // The body of this method is generated in a way you would not otherwise write.
+    // This is done to optimize the compiled bytecode for size and performance.
+    int id;
+    missingId: {
+      id = R.id.btnProfileUpdate;
+      Button btnProfileUpdate = ViewBindings.findChildViewById(rootView, id);
+      if (btnProfileUpdate == null) {
+        break missingId;
+      }
 
-    return new FragmentProfileBinding((FrameLayout) rootView);
+      id = R.id.editClubName;
+      EditText editClubName = ViewBindings.findChildViewById(rootView, id);
+      if (editClubName == null) {
+        break missingId;
+      }
+
+      id = R.id.editClubRegion;
+      EditText editClubRegion = ViewBindings.findChildViewById(rootView, id);
+      if (editClubRegion == null) {
+        break missingId;
+      }
+
+      id = R.id.editContact;
+      EditText editContact = ViewBindings.findChildViewById(rootView, id);
+      if (editContact == null) {
+        break missingId;
+      }
+
+      id = R.id.editMediaLink;
+      EditText editMediaLink = ViewBindings.findChildViewById(rootView, id);
+      if (editMediaLink == null) {
+        break missingId;
+      }
+
+      id = R.id.editPhoneNumber;
+      EditText editPhoneNumber = ViewBindings.findChildViewById(rootView, id);
+      if (editPhoneNumber == null) {
+        break missingId;
+      }
+
+      id = R.id.profileTitle;
+      TextView profileTitle = ViewBindings.findChildViewById(rootView, id);
+      if (profileTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.textView12;
+      TextView textView12 = ViewBindings.findChildViewById(rootView, id);
+      if (textView12 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView13;
+      TextView textView13 = ViewBindings.findChildViewById(rootView, id);
+      if (textView13 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView14;
+      TextView textView14 = ViewBindings.findChildViewById(rootView, id);
+      if (textView14 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView15;
+      TextView textView15 = ViewBindings.findChildViewById(rootView, id);
+      if (textView15 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView4;
+      TextView textView4 = ViewBindings.findChildViewById(rootView, id);
+      if (textView4 == null) {
+        break missingId;
+      }
+
+      return new FragmentProfileBinding((LinearLayout) rootView, btnProfileUpdate, editClubName,
+          editClubRegion, editContact, editMediaLink, editPhoneNumber, profileTitle, textView12,
+          textView13, textView14, textView15, textView4);
+    }
+    String missingId = rootView.getResources().getResourceName(id);
+    throw new NullPointerException("Missing required view with ID: ".concat(missingId));
   }
 }

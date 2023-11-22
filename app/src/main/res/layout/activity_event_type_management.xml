@@ -15,35 +15,42 @@
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New Event Type" />
+            android:text="Event Type List" />
 
-        <EditText
-            android:id="@+id/eventTypeName"
+        <ListView
+            android:id="@+id/eventTypeList"
             android:layout_width="match_parent"
-            android:layout_height="95dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:layout_height="572dp" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/button2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onClickAddEventType"
-            android:text="@string/addNewEventType" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnNewEventType"
+                android:layout_width="183dp"
+                android:layout_height="wrap_content"
+                android:onClick="onClickAddEventType"
+                android:text="@string/addNewEventType" />
+
+            <Button
+                android:id="@+id/btnNewEvent"
+                android:layout_width="232dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClickAddEvent"
+                android:text="@string/btnAddEvent" />
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="66dp" />
 
-        <ListView
-            android:id="@+id/eventTypeList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </LinearLayout>
 
 </RelativeLayout>

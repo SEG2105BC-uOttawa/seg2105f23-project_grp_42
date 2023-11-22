@@ -35,21 +35,34 @@
     <color name="primary_color">#5698ed</color>
     <color name="white">#FFFFFFFF</color>
     <string name="account_hint">(account type)</string>
-    <string name="addNewEventType">Create New Event Type</string>
+    <string name="addNewEventType">New Event Type</string>
     <string name="app_name">CyclingClub</string>
     <string name="btnAddEvent">Add New Event</string>
     <string name="btnBack">Back</string>
     <string name="btnDelete">Delete</string>
     <string name="btnEventManagement"> Event </string>
+    <string name="clubName">Cycling Club Name</string>
+    <string name="contactPerson">Main Contact</string>
+    <string name="currentEvent">Current Event</string>
     <string name="currentUserList">Current User List</string>
+    <string name="cyclingClubProfile">Cycling Club Profile</string>
     <string name="cycling_club">Cycling Club</string>
     <string name="email_hint">Email</string>
+    <string name="eventDate">Event Date</string>
+    <string name="eventDistance">Route Distance</string>
     <string name="eventDuration">Event Duration</string>
+    <string name="eventFee">Registration Fee</string>
+    <string name="eventID">Event ID</string>
+    <string name="eventLevel">Difficulty Level</string>
+    <string name="eventLimit">Participant Limit</string>
+    <string name="eventList">List of Events</string>
     <string name="eventName">Event Name</string>
-    <string name="eventRegion">Event Location</string>
+    <string name="eventRegion">Event Region</string>
+    <string name="eventRoute">Event Route</string>
     <string name="eventTime">Event Date</string>
     <string name="eventType">Event Type</string>
     <string name="eventTypeDelete">Delete</string>
+    <string name="eventTypeName">Event Type</string>
     <string name="eventTypeUpdate">Update</string>
     <string name="firebase_database_url" translatable="false">https://cyclingclubbackup-default-rtdb.firebaseio.com</string>
     <string name="gcm_defaultSenderId" translatable="false">846284963831</string>
@@ -101,13 +114,18 @@
     <string name="next">Next</string>
     <string name="participant">Participant</string>
     <string name="password_hint">Password</string>
+    <string name="phoneNumber">Phone Number</string>
     <string name="previous">Previous</string>
     <string name="profile_text">Profile</string>
     <string name="project_app_name">GCC</string>
     <string name="project_id" translatable="false">cyclingclubbackup</string>
+    <string name="region">Region</string>
+    <string name="routeElevation">Route Elevation</string>
     <string name="settings_text">Settings</string>
     <string name="sign_up_text">Sign Up</string>
+    <string name="socialMediaLink">Social Media Link</string>
     <string name="title_activity_event_type_management">EventTypeManagement</string>
+    <string name="updateProfile">Update Profile</string>
     <string name="userDetail">User Detail</string>
     <string name="userManagement">Users</string>
     <string name="username_hint">Username</string>

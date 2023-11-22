@@ -8,21 +8,26 @@ import java.util.List;
 public class EventType {
     private String id;
     private String typeName;
+    private String detail;
     private int numberOfEvent;
 
     private EventType(){}
 
-    public EventType(String id, String typeName, int num){
+    public EventType(String id, String typeName, String detail){
         this.id=id;
         this.typeName=typeName;
-        this.numberOfEvent=num;
+        this.detail=detail;
+        this.numberOfEvent =0;
     }
+
     public String getId(){
         return id;
     }
     public String getTypeName(){
         return typeName;
     }
+    public String getDetail() {return detail;}
+    public void setDetail(String detail){this.detail=detail;}
     public int getNumberOfEvent(){
         return numberOfEvent;
     }
