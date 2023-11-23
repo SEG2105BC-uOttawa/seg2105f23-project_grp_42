@@ -10,17 +10,18 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="250dp" />
-
         <TextView
-                android:id="@+id/welcomeText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/welcome_message"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:id="@+id/welcomeText"
+            android:layout_width="match_parent"
+            android:layout_height="122dp"
+            android:gravity="center"
+            android:text="@string/welcome_message"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="50dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="160dp" />
 
         <TextView
                 android:id="@+id/showUsername"

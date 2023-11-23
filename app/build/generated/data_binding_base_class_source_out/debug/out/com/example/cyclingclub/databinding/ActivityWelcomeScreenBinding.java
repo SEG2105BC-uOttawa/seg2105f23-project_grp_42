@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -37,18 +38,23 @@ public final class ActivityWelcomeScreenBinding implements ViewBinding {
   public final FrameLayout fragmentContainer;
 
   @NonNull
+  public final LinearLayout linearLayout3;
+
+  @NonNull
   public final ConstraintLayout welcomeScreen;
 
   private ActivityWelcomeScreenBinding(@NonNull ConstraintLayout rootView,
       @NonNull Button adminBtnEventType, @NonNull Button adminBtnEvents,
       @NonNull Button adminBtnUser, @NonNull BottomNavigationView bottomNavigationView,
-      @NonNull FrameLayout fragmentContainer, @NonNull ConstraintLayout welcomeScreen) {
+      @NonNull FrameLayout fragmentContainer, @NonNull LinearLayout linearLayout3,
+      @NonNull ConstraintLayout welcomeScreen) {
     this.rootView = rootView;
     this.adminBtnEventType = adminBtnEventType;
     this.adminBtnEvents = adminBtnEvents;
     this.adminBtnUser = adminBtnUser;
     this.bottomNavigationView = bottomNavigationView;
     this.fragmentContainer = fragmentContainer;
+    this.linearLayout3 = linearLayout3;
     this.welcomeScreen = welcomeScreen;
   }
 
@@ -109,10 +115,17 @@ public final class ActivityWelcomeScreenBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.linearLayout3;
+      LinearLayout linearLayout3 = ViewBindings.findChildViewById(rootView, id);
+      if (linearLayout3 == null) {
+        break missingId;
+      }
+
       ConstraintLayout welcomeScreen = (ConstraintLayout) rootView;
 
       return new ActivityWelcomeScreenBinding((ConstraintLayout) rootView, adminBtnEventType,
-          adminBtnEvents, adminBtnUser, bottomNavigationView, fragmentContainer, welcomeScreen);
+          adminBtnEvents, adminBtnUser, bottomNavigationView, fragmentContainer, linearLayout3,
+          welcomeScreen);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

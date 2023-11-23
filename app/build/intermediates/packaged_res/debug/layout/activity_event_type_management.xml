@@ -20,15 +20,15 @@
         <ListView
             android:id="@+id/eventTypeList"
             android:layout_width="match_parent"
-            android:layout_height="572dp" />
+            android:layout_height="484dp" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="34dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="61dp"
             android:orientation="horizontal">
 
             <Button
@@ -38,26 +38,28 @@
                 android:onClick="onClickAddEventType"
                 android:text="@string/addNewEventType" />
 
+            <Space
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_weight="1" />
+
             <Button
                 android:id="@+id/btnNewEvent"
-                android:layout_width="131dp"
+                android:layout_width="228dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="onClickAddEvent"
                 android:text="@string/btnAddEvent" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="onClickBack"
-                android:text="@string/back" />
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="66dp" />
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClickBack"
+            android:text="@string/back" />
 
     </LinearLayout>
 

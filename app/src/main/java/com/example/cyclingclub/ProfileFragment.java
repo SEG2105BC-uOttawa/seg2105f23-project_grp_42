@@ -69,6 +69,39 @@ public class ProfileFragment extends Fragment {
 			mParam2 = getArguments().getString(ARG_PARAM2);
 		}
 		clubProfileFound=false;
+
+		Bundle bundle = getArguments();
+		User user;
+
+		user = (User) bundle.getSerializable("user");
+
+		DatabaseReference dRef=FirebaseDatabase.getInstance().getReference("ClubProfile");
+
+		dRef.addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(DataSnapshot dataSnapshot) {
+				for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+					CyclingClub club = snapshot.getValue(CyclingClub.class);
+
+					// Check if the category property matches the desired category
+					if (club != null && club.getUser().getUsername().equals(user.getUsername()) &&
+							club.getUser().getEmail().equals(user.getEmail())) {
+						clubProfileFound=true;
+						cyclingClub = club;
+						String clubKey = snapshot.getKey();
+
+						// Now 'clubKey' and 'club' contain the data for the found club(s)
+						Log.d("FirebaseData", "Club Key: " + clubKey + ", Name: " + club.getClubName() );
+					}
+				}
+			}
+
+			@Override
+			public void onCancelled(DatabaseError databaseError) {
+				// Handle error
+			}
+		});
+
 	}
 
 	@Override
@@ -104,32 +137,7 @@ public class ProfileFragment extends Fragment {
 		else {user=null;};
 
 		//Retrieve club profile is exist;
-		DatabaseReference dRef=FirebaseDatabase.getInstance().getReference("ClubProfile");
 
-		dRef.addListenerForSingleValueEvent(new ValueEventListener() {
-			@Override
-			public void onDataChange(DataSnapshot dataSnapshot) {
-				for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-					CyclingClub club = snapshot.getValue(CyclingClub.class);
-
-					// Check if the category property matches the desired category
-					if (club != null && club.getUser().getUsername().equals(user.getUsername()) &&
-							club.getUser().getEmail().equals(user.getEmail())) {
-							clubProfileFound=true;
-							cyclingClub = club;
-							String clubKey = snapshot.getKey();
-
-						// Now 'clubKey' and 'club' contain the data for the found club(s)
-						Log.d("FirebaseData", "Club Key: " + clubKey + ", Name: " + club.getClubName() );
-					}
-				}
-			}
-
-			@Override
-			public void onCancelled(DatabaseError databaseError) {
-				// Handle error
-			}
-		});
 
 		if(clubProfileFound) {
 			clubName.setText(cyclingClub.getClubName());
@@ -149,6 +157,8 @@ public class ProfileFragment extends Fragment {
 
 		final Button btnUpdate = (Button) rootView.findViewById(R.id.btnProfileUpdate);
 		btnUpdate.setOnClickListener(new View.OnClickListener() {
+
+			DatabaseReference dRef=FirebaseDatabase.getInstance().getReference("ClubProfile");
 			@Override
 			public void onClick(View view) {
 				//User user = (User) bundle.getSerializable("user");
@@ -162,6 +172,7 @@ public class ProfileFragment extends Fragment {
 					key=cyclingClub.getKey();
 				}
 
+				//cyclingClub.setKey(key);
 				cyclingClub.setUser(user);
 				cyclingClub.setClubName(clubName.getText().toString().trim());
 				cyclingClub.setMainContact(contact.getText().toString().trim());

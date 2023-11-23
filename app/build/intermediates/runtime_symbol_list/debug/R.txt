@@ -3348,6 +3348,7 @@ int id auto 0x7f0a0067
 int id autoComplete 0x7f0a0068
 int id autoCompleteToEnd 0x7f0a0069
 int id autoCompleteToStart 0x7f0a006a
+int id back_btn 0x7f0a0288
 int id barrier 0x7f0a006b
 int id baseline 0x7f0a006c
 int id beginOnFirstDraw 0x7f0a006d
@@ -3383,7 +3384,6 @@ int id btn_apply_hillclimb 0x7f0a008a
 int id btn_back_create 0x7f0a008b
 int id btn_back_hillclimb 0x7f0a008c
 int id btn_confirm_create 0x7f0a008d
-int id button 0x7f0a0287
 int id buttonDelete 0x7f0a008e
 int id buttonPanel 0x7f0a008f
 int id buttonUpdate 0x7f0a0090
@@ -3564,6 +3564,7 @@ int id line3 0x7f0a013e
 int id linear 0x7f0a013f
 int id linearLayout 0x7f0a0140
 int id linearLayout2 0x7f0a0141
+int id linearLayout3 0x7f0a0289
 int id listEvents 0x7f0a0142
 int id listMode 0x7f0a0143
 int id list_item 0x7f0a0144

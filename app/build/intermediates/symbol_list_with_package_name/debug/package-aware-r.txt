@@ -3349,6 +3349,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id back_btn
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3384,7 +3385,6 @@ id btn_apply_hillclimb
 id btn_back_create
 id btn_back_hillclimb
 id btn_confirm_create
-id button
 id buttonDelete
 id buttonPanel
 id buttonUpdate
@@ -3565,6 +3565,7 @@ id line3
 id linear
 id linearLayout
 id linearLayout2
+id linearLayout3
 id listEvents
 id listMode
 id list_item
