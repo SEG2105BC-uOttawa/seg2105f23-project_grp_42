@@ -12,7 +12,7 @@ public class Participant extends User {
 
     public void registerForEvent(){
         newRegistration = new Event();
-        newRegistration.users.add(newUser);
+        //newRegistration.users.add(newUser);
         registeredEvents.add(newRegistration);
     }
 

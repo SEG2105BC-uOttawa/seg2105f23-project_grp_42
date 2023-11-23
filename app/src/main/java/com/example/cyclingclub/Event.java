@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Event {
 
-    private String key;
+    private String key;   //The handle of this event in the database
     private  String eventId;
     private  String eventType;
     private String eventDetail;

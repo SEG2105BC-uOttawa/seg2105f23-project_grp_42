@@ -36,6 +36,8 @@ public class ProfileFragment extends Fragment {
 	// TODO: Rename and change types of parameters
 	private String mParam1;
 	private String mParam2;
+	private boolean clubProfileFound;
+	private CyclingClub cyclingClub;
 
 	public ProfileFragment() {
 		// Required empty public constructor
@@ -66,6 +68,7 @@ public class ProfileFragment extends Fragment {
 			mParam1 = getArguments().getString(ARG_PARAM1);
 			mParam2 = getArguments().getString(ARG_PARAM2);
 		}
+		clubProfileFound=false;
 	}
 
 	@Override
@@ -74,33 +77,51 @@ public class ProfileFragment extends Fragment {
 		// Inflate the layout for this fragment
 		View rootView  = inflater.inflate(R.layout.fragment_profile, container, false);
 
+		TextView showTitle = rootView.findViewById(R.id.profileTitle);
+		TextView clubName=rootView.findViewById(R.id.editClubName);
+		TextView contact=rootView.findViewById(R.id.editContact);
+		TextView region=rootView.findViewById(R.id.editClubRegion);
+		TextView phoneNumber=rootView.findViewById(R.id.editPhoneNumber);
+		TextView mediaLink=rootView.findViewById(R.id.editMediaLink);
+
+
+
+
+
 		/* Retrieve user information from arguments */
 		Bundle bundle = getArguments();
+		User user;
 		if (bundle != null) {
-			User user = (User) bundle.getSerializable("user");
+			   user = (User) bundle.getSerializable("user");
 
 			if (user != null) {
-				TextView showTitle = rootView.findViewById(R.id.profileTitle);
+
 				String username = user.getUsername();
 				showTitle.setText(String.format("Cycling Club Profile: %s", username));
 
 			}
 		}
+		else {user=null;};
+
+		//Retrieve club profile is exist;
 		DatabaseReference dRef=FirebaseDatabase.getInstance().getReference("ClubProfile");
 
-		/*
-		Query query = dRef.orderByChild("category").equalTo("Sports");
-
-		query.addListenerForSingleValueEvent(new ValueEventListener() {
+		dRef.addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
 			public void onDataChange(DataSnapshot dataSnapshot) {
 				for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-					// Access the data for the found club(s)
-					String clubName = snapshot.child("name").getValue(String.class);
-					String clubCategory = snapshot.child("category").getValue(String.class);
+					CyclingClub club = snapshot.getValue(CyclingClub.class);
 
-					// Now 'clubName' and 'clubCategory' contain the data for the found club(s)
-					Log.d("FirebaseData", "Club Name: " + clubName + ", Category: " + clubCategory);
+					// Check if the category property matches the desired category
+					if (club != null && club.getUser().getUsername().equals(user.getUsername()) &&
+							club.getUser().getEmail().equals(user.getEmail())) {
+							clubProfileFound=true;
+							cyclingClub = club;
+							String clubKey = snapshot.getKey();
+
+						// Now 'clubKey' and 'club' contain the data for the found club(s)
+						Log.d("FirebaseData", "Club Key: " + clubKey + ", Name: " + club.getClubName() );
+					}
 				}
 			}
 
@@ -110,24 +131,46 @@ public class ProfileFragment extends Fragment {
 			}
 		});
 
+		if(clubProfileFound) {
+			clubName.setText(cyclingClub.getClubName());
+			contact.setText(cyclingClub.getMainContact());
+			region.setText(cyclingClub.getRegion());
+			phoneNumber.setText(cyclingClub.getPhoneNumber());
+			mediaLink.setText(cyclingClub.getSocialMediaLink());
+		}
+		else{
+			clubName.setText("");
+			contact.setText("");
+			region.setText("");
+			phoneNumber.setText("");
+			mediaLink.setText("");
+		}
 
-		 */
 
 		final Button btnUpdate = (Button) rootView.findViewById(R.id.btnProfileUpdate);
 		btnUpdate.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				User user = (User) bundle.getSerializable("user");
+				//User user = (User) bundle.getSerializable("user");
+				String key;
+				if(!clubProfileFound) {
+					cyclingClub=new CyclingClub();
+					key=dRef.push().getKey();
+					cyclingClub.setKey(key);
+				}
+				else {
+					key=cyclingClub.getKey();
+				}
+
+				cyclingClub.setUser(user);
+				cyclingClub.setClubName(clubName.getText().toString().trim());
+				cyclingClub.setMainContact(contact.getText().toString().trim());
+				cyclingClub.setRegion(region.getText().toString().trim());
+				cyclingClub.setPhoneNumber(phoneNumber.getText().toString().trim());
+				cyclingClub.setSocialMediaLink(mediaLink.getText().toString().trim());
 
 
-				CyclingClub club=new CyclingClub();
-				club.setUserEmail(user.getEmail());
-				TextView tv1=rootView.findViewById(R.id.editClubName);
-				TextView tv2=rootView.findViewById(R.id.editContact);
-				club.setClubName(tv1.getText().toString().trim());
-				club.setMainContact(tv2.getText().toString().trim());
-				String key=dRef.push().getKey();
-				dRef.child(key).setValue(club);
+				dRef.child(key).setValue(cyclingClub);
 
 			}
 		});

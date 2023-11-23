@@ -1,22 +1,28 @@
 package com.example.cyclingclub;
 
 public class CyclingClub {
-    private String userEmail;
+    private String key;
+    private User user;
     private String clubName;
     private String socialMediaLink;
     private String mainContact;
     private String phoneNumber;
     private String region;
 
+
     // Constructors (if needed)
 
+    public String getKey(){return key;}
+    public void setKey(String key){this.key=key;}
+
+
     // Getter and Setter for 'user'
-    public String getUser() {
-        return userEmail;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getClubName() {
