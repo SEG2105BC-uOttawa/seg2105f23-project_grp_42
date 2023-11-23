@@ -61,9 +61,6 @@ public final class EventDetailBinding implements ViewBinding {
   public final TextView eventTypeDetail;
 
   @NonNull
-  public final TextView textView0;
-
-  @NonNull
   public final TextView textView10;
 
   @NonNull
@@ -100,10 +97,10 @@ public final class EventDetailBinding implements ViewBinding {
       @NonNull EditText editEventLevel, @NonNull EditText editEventLimit,
       @NonNull EditText editEventRegion, @NonNull EditText editEventRoute,
       @NonNull EditText editEventType, @NonNull TextView eventTypeDetail,
-      @NonNull TextView textView0, @NonNull TextView textView10, @NonNull TextView textView5,
-      @NonNull TextView textView6, @NonNull TextView textview, @NonNull TextView textview11,
-      @NonNull TextView textview12, @NonNull TextView textview13, @NonNull TextView textview3,
-      @NonNull TextView textview4, @NonNull TextView textview7) {
+      @NonNull TextView textView10, @NonNull TextView textView5, @NonNull TextView textView6,
+      @NonNull TextView textview, @NonNull TextView textview11, @NonNull TextView textview12,
+      @NonNull TextView textview13, @NonNull TextView textview3, @NonNull TextView textview4,
+      @NonNull TextView textview7) {
     this.rootView = rootView;
     this.btnEventDelete = btnEventDelete;
     this.btnEventUpdate = btnEventUpdate;
@@ -118,7 +115,6 @@ public final class EventDetailBinding implements ViewBinding {
     this.editEventRoute = editEventRoute;
     this.editEventType = editEventType;
     this.eventTypeDetail = eventTypeDetail;
-    this.textView0 = textView0;
     this.textView10 = textView10;
     this.textView5 = textView5;
     this.textView6 = textView6;
@@ -236,12 +232,6 @@ public final class EventDetailBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textView0;
-      TextView textView0 = ViewBindings.findChildViewById(rootView, id);
-      if (textView0 == null) {
-        break missingId;
-      }
-
       id = R.id.textView10;
       TextView textView10 = ViewBindings.findChildViewById(rootView, id);
       if (textView10 == null) {
@@ -305,8 +295,8 @@ public final class EventDetailBinding implements ViewBinding {
       return new EventDetailBinding((RelativeLayout) rootView, btnEventDelete, btnEventUpdate,
           editEventDate, editEventDistance, editEventElevation, editEventFee, editEventId,
           editEventLevel, editEventLimit, editEventRegion, editEventRoute, editEventType,
-          eventTypeDetail, textView0, textView10, textView5, textView6, textview, textview11,
-          textview12, textview13, textview3, textview4, textview7);
+          eventTypeDetail, textView10, textView5, textView6, textview, textview11, textview12,
+          textview13, textview3, textview4, textview7);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

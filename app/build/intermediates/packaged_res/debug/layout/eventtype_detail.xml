@@ -31,6 +31,10 @@
 
         </LinearLayout>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="18dp" />
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="363dp"
@@ -40,15 +44,16 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="27dp" />
+            android:layout_height="16dp" />
 
         <EditText
             android:id="@+id/editEventTypeDetail"
-            android:layout_width="464dp"
-            android:layout_height="459dp"
+            android:layout_width="364dp"
+            android:layout_height="400dp"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="textMultiLine"
+            android:gravity="start|top"/>
 
         <LinearLayout
             android:layout_width="310dp"

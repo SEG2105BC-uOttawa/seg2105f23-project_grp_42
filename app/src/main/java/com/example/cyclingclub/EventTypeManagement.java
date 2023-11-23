@@ -3,6 +3,7 @@ package com.example.cyclingclub;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -107,6 +108,8 @@ public class EventTypeManagement extends AppCompatActivity {
         final View dialogView = inflater.inflate(R.layout.eventtype_detail, null);
         dialogBuilder.setView(dialogView);
 
+
+
          //editTextID.setEnabled(false);
          //editTextID.setFocusable(false);
          EditText editTextName = (EditText) dialogView.findViewById(R.id.eventTypeNameUpdate);
@@ -124,13 +127,22 @@ public class EventTypeManagement extends AppCompatActivity {
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 String newName = editTextName.getText().toString().trim();
                 String newDetail = editTextDetail.getText().toString().trim();
-                if (!TextUtils.isEmpty(newName)) {
+
+                String message=validateTypeInput(newName,newDetail);
+                if(message.equals("")){
                     EventType updatedET = new EventType(et.getId(), newName, newDetail);
                     Administrator.updateEventType(updatedET);
                     b.dismiss();
+
                 }
+                else{
+                    displayPopupMessage(message,view);
+                }
+
             }
         });
 
@@ -171,6 +183,9 @@ public class EventTypeManagement extends AppCompatActivity {
         editTextName.setText("");
         editTextDetail.setText("");
 
+        buttonUpdate.setText("Add");
+        buttonDelete.setText("Discard");
+
         final AlertDialog b = dialogBuilder.create();
         b.show();
 
@@ -179,11 +194,20 @@ public class EventTypeManagement extends AppCompatActivity {
             public void onClick(View view) {
                 String newName = editTextName.getText().toString().trim();
                 String newDetail = editTextDetail.getText().toString().trim();
-                if (!TextUtils.isEmpty(newName)) {
+
+                String message=validateTypeInput(newName,newDetail);
+                if(message.equals("")){
+
                     EventType newEventType = new EventType("", newName,newDetail);
                     Administrator.createEventType(newEventType);
                     b.dismiss();
+
                 }
+                else{
+                    displayPopupMessage(message,view);
+                }
+
+
             }
         });
 
@@ -195,31 +219,12 @@ public class EventTypeManagement extends AppCompatActivity {
         });
 
 
-
-
-        /*
-
-        String typeName = eventTypeName.getText().toString().trim();
-
-       // InputValidator validator = InputValidator.getInstance();
-
-
-
-        if(validateInput(typeName)==null){
-            EventType newEventType = new EventType("", typeName,0);
-            Administrator.createEventType(newEventType);
-            eventTypeName.setText("");
-        }
-        else{
-            displayPopupMessage(validateInput(typeName),view);
-            //show message says invalid type name;
-            //Snackbar.make(view,"Error: Name cannot be empty",Snackbar.LENGTH_SHORT).show();
-        }
-
-
-         */
     }
 
+
+    private void onClickBack() {
+        onBackPressed();
+    }
 
     public void onClickAddEvent(View view) {
 
@@ -227,6 +232,8 @@ public class EventTypeManagement extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.event_detail, null);
         dialogBuilder.setView(dialogView);
+
+
 
         EditText editEventId = (EditText) dialogView.findViewById(R.id.editEventId);
         EditText editEventType = (EditText) dialogView.findViewById(R.id.editEventType);
@@ -239,9 +246,24 @@ public class EventTypeManagement extends AppCompatActivity {
         EditText editEventFee = (EditText) dialogView.findViewById(R.id.editEventFee);
         EditText editEventLimit = (EditText) dialogView.findViewById(R.id.editEventLimit);
 
+        editEventId.setText("");
+        editEventRegion.setText("");
+        editEventDate.setText("");
+        editEventRoute.setText("");
+
+
+        editEventDistance.setText("0");
+        editEventElevation.setText("0");
+        editEventLevel.setText("0");
+        editEventFee.setText("0");
+        editEventLimit.setText("0");
+
 
         Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
         Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
+
+        buttonUpdate.setText("Add");
+        buttonDelete.setText("Discard");
 
 
         dialogBuilder.setTitle("Create New Event");
@@ -262,24 +284,49 @@ public class EventTypeManagement extends AppCompatActivity {
                 String date = editEventDate.getText().toString().trim();
                 String route = editEventRoute.getText().toString().trim();
 
-                int distance = Integer.parseInt(editEventDistance.getText().toString().trim());
-                int elevation = Integer.parseInt(editEventElevation.getText().toString().trim());
-                int level = Integer.parseInt(editEventLevel.getText().toString().trim());
-                double fee = Double.parseDouble(editEventFee.getText().toString().trim());
-                int limit = Integer.parseInt(editEventLimit.getText().toString().trim());
+                String distance = editEventDistance.getText().toString().trim();
+                String elevation = editEventElevation.getText().toString().trim();
+                String level = editEventLevel.getText().toString().trim();
+                String fee = editEventFee.getText().toString().trim();
+                String limit = editEventLimit.getText().toString().trim();
 
 
-                // String message=validateInput(name, location, time , durationString);
-                // if(message.equals("")){
-                //     double duration = Double.parseDouble(durationString);
-                Event event = new Event("", id, type, date);
-                Administrator.createEvent(event);
+                String message=validateInput(id,route,region,date,distance,elevation,level,fee,limit);
+                if(message.equals("")){
+
+
+                    Event event = new Event("", id, type, date);
+                    event.setRegion(region);
+                    event.setRoute(route);
+                    event.setDistance(Integer.parseInt(distance));
+                    event.setElevation(Integer.parseInt(elevation));
+                    event.setLevel(Integer.parseInt(level));
+                    event.setFee(Double.parseDouble(fee));
+                    event.setLimit(Integer.parseInt(limit));
+
+                    event.setDetail(selectedEventType.getDetail());
+                    Administrator.createEvent(event);
+                    //b.dismiss();
+
+                    Intent intent = new Intent(getApplicationContext(), EventManagement.class);
+                    startActivity (intent);
+
+                }
+                else{
+                    displayPopupMessage(message,view);
+
+                }
+
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//
+                //administrator.removeEvent(event);
+
                 b.dismiss();
-                //}
-                //else{
-                //    displayPopupMessage(message,view);
-
-                //}
 
             }
         });
@@ -306,13 +353,33 @@ public class EventTypeManagement extends AppCompatActivity {
      * @param eventTypeName The event type name.
      * @return A validation message if there's an issue, or null if everything is valid.
      */
-    private String validateInput(String eventTypeName) {
+    private String validateTypeInput(String eventTypeName, String eventTypeDetail) {
         InputValidator validator = InputValidator.getInstance();
-
+        String message="";
         /* Validate event type */
         if (!validator.isValidName(eventTypeName)) { return "Event type name can not be blank or numbers";}
+        //if (!validator.isValidName(eventTypeDetail)) { return "Event type details can not be blank or special characters";}
 
-        return null;
+        return message;
+    }
+
+    private String validateInput(String id,String route,String region,String date,String distance,String elevation,String level,String fee,String limit ) {
+        InputValidator validator = InputValidator.getInstance();
+
+        String message="";
+
+        /* Validate event type */
+        if (!validator.isValidName(id)) { message= message+ "ID name can not be blank or special characters";}
+        if (!validator.isValidName(route)) { message= message+ "Route can not be blank or special characters";}
+        if (!validator.isValidName(region)) { message= message+ "Region name can not be blank or special characters";}
+        if (!validator.isValidDate(date)) { message= message+ "Date must be in format YYYY-MM-DD";}
+        if (!validator.isValidNumber(distance)) { message= message+ "Distance must be a number";}
+        if (!validator.isValidNumber(elevation)) { message= message+ "Elevation must be a number";}
+        if (!validator.isValidNumber(level)) { message= message+ "Level must be a number";}
+        if (!validator.isValidNumber(fee)) { message= message+ "Fee must be a number";}
+        if (!validator.isValidNumber(limit)) { message= message+ "Limit must be a number";}
+
+        return message;
     }
 
 }

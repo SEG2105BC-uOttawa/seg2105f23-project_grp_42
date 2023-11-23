@@ -54,6 +54,7 @@ id btn_apply_hillclimb
 id btn_back_create
 id btn_back_hillclimb
 id btn_confirm_create
+id button
 id buttonDelete
 id buttonUpdate
 id button_first
@@ -87,6 +88,7 @@ id event_types_list
 id fragment_container
 id hillClimbTitle
 id homeItem
+id imageView
 id linearLayout
 id linearLayout2
 id listEvents
@@ -109,7 +111,6 @@ id showUsername
 id text7
 id textAppNameView
 id textView
-id textView0
 id textView10
 id textView11
 id textView12
@@ -165,9 +166,11 @@ layout user_list
 menu bottom_nav_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
+string Description
 string account_hint
 string addNewEventType
 string app_name
+string back
 string btnAddEvent
 string btnBack
 string btnDelete

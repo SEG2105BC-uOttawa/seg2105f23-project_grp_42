@@ -1,7 +1,7 @@
 package com.example.cyclingclub;
 
 public class CyclingClub {
-    private User user;
+    private String userEmail;
     private String clubName;
     private String socialMediaLink;
     private String mainContact;
@@ -11,12 +11,12 @@ public class CyclingClub {
     // Constructors (if needed)
 
     // Getter and Setter for 'user'
-    public User getUser() {
-        return user;
+    public String getUser() {
+        return userEmail;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getClubName() {

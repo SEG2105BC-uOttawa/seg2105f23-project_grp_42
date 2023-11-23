@@ -90,4 +90,6 @@
     <string name="phoneNumber">Phone Number</string>
     <string name="region">Region</string>
     <string name="updateProfile">Update Profile</string>
+    <string name="back">Back</string>
+    <string name="Description">Description</string>
 </resources>

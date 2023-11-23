@@ -29,7 +29,7 @@ public class EventTypeList extends ArrayAdapter<EventType> {
 
         EventType eventType = eventTypes.get(position);
         textViewName.setText(eventType.getTypeName());
-        textViewNumber.setText(Integer.toString(eventType.getNumberOfEvent()));
+        textViewNumber.setText(eventType.getDetail());
         return listViewItem;
     }
 }

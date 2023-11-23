@@ -1,7 +1,11 @@
 package com.example.cyclingclub;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.Query;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,6 +86,32 @@ public class ProfileFragment extends Fragment {
 
 			}
 		}
+		DatabaseReference dRef=FirebaseDatabase.getInstance().getReference("ClubProfile");
+
+		/*
+		Query query = dRef.orderByChild("category").equalTo("Sports");
+
+		query.addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(DataSnapshot dataSnapshot) {
+				for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+					// Access the data for the found club(s)
+					String clubName = snapshot.child("name").getValue(String.class);
+					String clubCategory = snapshot.child("category").getValue(String.class);
+
+					// Now 'clubName' and 'clubCategory' contain the data for the found club(s)
+					Log.d("FirebaseData", "Club Name: " + clubName + ", Category: " + clubCategory);
+				}
+			}
+
+			@Override
+			public void onCancelled(DatabaseError databaseError) {
+				// Handle error
+			}
+		});
+
+
+		 */
 
 		final Button btnUpdate = (Button) rootView.findViewById(R.id.btnProfileUpdate);
 		btnUpdate.setOnClickListener(new View.OnClickListener() {
@@ -88,9 +119,9 @@ public class ProfileFragment extends Fragment {
 			public void onClick(View view) {
 				User user = (User) bundle.getSerializable("user");
 
-				DatabaseReference dRef=FirebaseDatabase.getInstance().getReference("ClubProfile");
+
 				CyclingClub club=new CyclingClub();
-				club.setUser(user);
+				club.setUserEmail(user.getEmail());
 				TextView tv1=rootView.findViewById(R.id.editClubName);
 				TextView tv2=rootView.findViewById(R.id.editContact);
 				club.setClubName(tv1.getText().toString().trim());

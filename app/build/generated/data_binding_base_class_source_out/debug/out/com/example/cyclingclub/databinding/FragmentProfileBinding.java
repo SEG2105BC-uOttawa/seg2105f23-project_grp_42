@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -40,6 +41,9 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final EditText editPhoneNumber;
 
   @NonNull
+  public final ImageView imageView;
+
+  @NonNull
   public final TextView profileTitle;
 
   @NonNull
@@ -60,9 +64,9 @@ public final class FragmentProfileBinding implements ViewBinding {
   private FragmentProfileBinding(@NonNull LinearLayout rootView, @NonNull Button btnProfileUpdate,
       @NonNull EditText editClubName, @NonNull EditText editClubRegion,
       @NonNull EditText editContact, @NonNull EditText editMediaLink,
-      @NonNull EditText editPhoneNumber, @NonNull TextView profileTitle,
-      @NonNull TextView textView12, @NonNull TextView textView13, @NonNull TextView textView14,
-      @NonNull TextView textView15, @NonNull TextView textView4) {
+      @NonNull EditText editPhoneNumber, @NonNull ImageView imageView,
+      @NonNull TextView profileTitle, @NonNull TextView textView12, @NonNull TextView textView13,
+      @NonNull TextView textView14, @NonNull TextView textView15, @NonNull TextView textView4) {
     this.rootView = rootView;
     this.btnProfileUpdate = btnProfileUpdate;
     this.editClubName = editClubName;
@@ -70,6 +74,7 @@ public final class FragmentProfileBinding implements ViewBinding {
     this.editContact = editContact;
     this.editMediaLink = editMediaLink;
     this.editPhoneNumber = editPhoneNumber;
+    this.imageView = imageView;
     this.profileTitle = profileTitle;
     this.textView12 = textView12;
     this.textView13 = textView13;
@@ -141,6 +146,12 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.imageView;
+      ImageView imageView = ViewBindings.findChildViewById(rootView, id);
+      if (imageView == null) {
+        break missingId;
+      }
+
       id = R.id.profileTitle;
       TextView profileTitle = ViewBindings.findChildViewById(rootView, id);
       if (profileTitle == null) {
@@ -178,8 +189,8 @@ public final class FragmentProfileBinding implements ViewBinding {
       }
 
       return new FragmentProfileBinding((LinearLayout) rootView, btnProfileUpdate, editClubName,
-          editClubRegion, editContact, editMediaLink, editPhoneNumber, profileTitle, textView12,
-          textView13, textView14, textView15, textView4);
+          editClubRegion, editContact, editMediaLink, editPhoneNumber, imageView, profileTitle,
+          textView12, textView13, textView14, textView15, textView4);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

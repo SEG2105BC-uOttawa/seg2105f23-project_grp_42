@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -38,13 +39,12 @@ public class EventManagement extends AppCompatActivity {
 
     private ListView listViewEvents;
     private List<Event> events;
-
     private List<String> eventsList;
 
 
    // private DatabaseReference databaseEvents;
 
-    private List<User> users;
+    //private List<User> users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,7 @@ public class EventManagement extends AppCompatActivity {
 
         events = new ArrayList<Event>();
         eventsList = new ArrayList<String>();
+
 
         AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
@@ -89,6 +90,7 @@ public class EventManagement extends AppCompatActivity {
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                events.clear();
                 eventsList.clear();
                 for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
                     Event event = postSnapShot.getValue(Event.class);
@@ -113,75 +115,6 @@ public class EventManagement extends AppCompatActivity {
 
 
     private void showUpdateDeleteDialog(Event event) {
-/*
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.event_detail, null);
-        dialogBuilder.setView(dialogView);
-
-        EditText editTextName = (EditText) dialogView.findViewById(R.id.editTextName);
-        EditText editTextLocation = (EditText) dialogView.findViewById(R.id.editTextLocation);
-        EditText editTextType=(EditText) dialogView.findViewById(R.id.editTextEventType);
-        //
-        EditText editTextTime = (EditText) dialogView.findViewById(R.id.editTextTime);
-        EditText editTextDuration = (EditText) dialogView.findViewById(R.id.editEventId);
-
-        Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
-        Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
-
-
-        dialogBuilder.setTitle("Selected Event Detail");
-        editTextName.setText(event.getName());
-        editTextLocation.setText(event.getLocation());
-        editTextType.setText(event.getType());
-        editTextTime.setText(event.getDate());
-        editTextDuration.setText(Double.toString(event.getDuration()));
-
-
-
-        final AlertDialog b = dialogBuilder.create();
-        b.show();
-
-        buttonUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //String  key=event.getKey();
-                String name = editTextName.getText().toString().trim();
-                String location = editTextLocation.getText().toString().trim();
-                String type = editTextType.getText().toString().trim();
-                String time = editTextTime.getText().toString().trim();
-                String durationString = editTextDuration.getText().toString().trim();
-
-                String message=validateInput(name, location, time , durationString);
-                if(message.equals("")){
-                    double duration = Double.parseDouble(durationString);
-                    Administrator.updateEvent(event.getKey(), name, location, type, time , duration);
-                    b.dismiss();
-                }
-                else{
-                    displayPopupMessage(message,view);
-
-                }
-
-            }
-        });
-
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//
-                Administrator.removeEvent(event);
-
-                b.dismiss();
-            }
-        });
-
-
- */
-    }
-
-
-    public void onClickAddEvent(View view) {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -199,14 +132,26 @@ public class EventManagement extends AppCompatActivity {
         EditText editEventFee = (EditText) dialogView.findViewById(R.id.editEventFee);
         EditText editEventLimit = (EditText) dialogView.findViewById(R.id.editEventLimit);
 
+        editEventId.setText(event.getId());
+        editEventRegion.setText(event.getRegion());
+        editEventDate.setText(event.getDate());
+        editEventRoute.setText(event.getRoute());
+
+
+        editEventDistance.setText(Integer.toString(event.getDistance()));
+        editEventElevation.setText(Integer.toString(event.getElevation()));
+        editEventLevel.setText(Integer.toString(event.getLevel()));
+        editEventFee.setText(Double.toString(event.getFee()));
+        editEventLimit.setText(Integer.toString(event.getLimit()));
+
 
         Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
         Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
 
-
-        dialogBuilder.setTitle("Selected Event Detail");
+        dialogBuilder.setTitle("Update current Event");
+        editEventType.setText(event.getType());
         TextView eventTypeDetail = (TextView) dialogView.findViewById(R.id.eventTypeDetail);
-        eventTypeDetail.setText("Hello Text Type can not be edited");
+        eventTypeDetail.setText(event.getDetail());
 
         final AlertDialog b = dialogBuilder.create();
         b.show();
@@ -221,44 +166,56 @@ public class EventManagement extends AppCompatActivity {
                 String date = editEventDate.getText().toString().trim();
                 String route = editEventRoute.getText().toString().trim();
 
-                int distance = Integer.parseInt(editEventDistance.getText().toString().trim());
-                int elevation = Integer.parseInt(editEventElevation.getText().toString().trim());
-                int level = Integer.parseInt(editEventLevel.getText().toString().trim());
-                double fee = Double.parseDouble(editEventFee.getText().toString().trim());
-                int limit = Integer.parseInt(editEventLimit.getText().toString().trim());
+                String distance = editEventDistance.getText().toString().trim();
+                String elevation = editEventElevation.getText().toString().trim();
+                String level = editEventLevel.getText().toString().trim();
+                String fee = editEventFee.getText().toString().trim();
+                String limit = editEventLimit.getText().toString().trim();
 
 
-               // String message=validateInput(name, location, time , durationString);
-               // if(message.equals("")){
-               //     double duration = Double.parseDouble(durationString);
-                    Event event=new Event("",id,type,date);
-                    Administrator.createEvent(event);
+                 String message=validateInput(id,route,region,date,distance,elevation,level,fee,limit);
+                 if(message.equals("")){
+
+
+                     event.setId(id);
+                    event.setType(type);
+                    event.setRegion(region);
+                    event.setRoute(route);
+                    event.setDate(date);
+                    event.setDistance(Integer.parseInt(distance));
+                    event.setElevation(Integer.parseInt(elevation));
+                    event.setLevel(Integer.parseInt(level));
+                    event.setFee(Double.parseDouble(fee));
+                    event.setLimit(Integer.parseInt(limit));
+
+                    event.setDetail(event.getDetail());
+                    Administrator.updateEvent(event);
                     b.dismiss();
-                //}
-                //else{
-                //    displayPopupMessage(message,view);
 
-                //}
+                }
+                else{
+                   displayPopupMessage(message,view);
+                }
 
             }
         });
 
-   /*
-        String message=validateInput(name, region, time , durationString);
-        if(message.equals("")){
-            double duration = Double.parseDouble(durationString);
-            Administrator.createEvent( name, region, type, time , duration);
-            eventName.setText("");
-            eventRegion.setText("");
-            eventTime.setText("");
-            eventDuration.setText("0");
-        }
-        else{
-            displayPopupMessage(message,view);
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//
+                Administrator.removeEvent(event);
 
-        }
+                b.dismiss();
+            }
+        });
+    }
 
-    */
+
+    public void onClickAddEvent(View view) {
+
+            Intent intent = new Intent(getApplicationContext(), EventTypeManagement.class);
+            startActivity (intent);
 
     }
 
@@ -279,16 +236,21 @@ public class EventManagement extends AppCompatActivity {
     }
 
 
-    private String validateInput(String name, String region, String time, String durationString ) {
+    private String validateInput(String id,String route,String region,String date,String distance,String elevation,String level,String fee,String limit ) {
         InputValidator validator = InputValidator.getInstance();
 
         String message="";
 
         /* Validate event type */
-        if (!validator.isValidName(name)) { message= message+ "Event name can not be blank or special characters";}
-        if (!validator.isValidName(region)) { message= message+ "Location/Region can not be blank or special characters";}
-        if (!validator.isValidDate(time)) { message= message+ "Event Time must be in format YYYY-MM-DD";}
-        if (!validator.isValidNumber(durationString)) { message= message+ "Duration must be a number";}
+        if (!validator.isValidName(id)) { message= message+ "ID name can not be blank or special characters";}
+        if (!validator.isValidName(route)) { message= message+ "Route can not be blank or special characters";}
+        if (!validator.isValidName(region)) { message= message+ "Region name can not be blank or special characters";}
+        if (!validator.isValidDate(date)) { message= message+ "Date must be in format YYYY-MM-DD";}
+        if (!validator.isValidNumber(distance)) { message= message+ "Distance must be a number";}
+        if (!validator.isValidNumber(elevation)) { message= message+ "Elevation must be a number";}
+        if (!validator.isValidNumber(level)) { message= message+ "Level must be a number";}
+        if (!validator.isValidNumber(fee)) { message= message+ "Fee must be a number";}
+        if (!validator.isValidNumber(limit)) { message= message+ "Limit must be a number";}
 
         return message;
     }

@@ -3384,6 +3384,7 @@ id btn_apply_hillclimb
 id btn_back_create
 id btn_back_hillclimb
 id btn_confirm_create
+id button
 id buttonDelete
 id buttonPanel
 id buttonUpdate
@@ -3542,6 +3543,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageView
 id immediateStop
 id included
 id indeterminate
@@ -3808,7 +3810,6 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id textView
-id textView0
 id textView10
 id textView11
 id textView12
@@ -4134,6 +4135,7 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 raw firebase_common_keep
+string Description
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -4172,6 +4174,7 @@ string adu_share_to
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
+string back
 string bottom_sheet_behavior
 string bottomsheet_action_collapse
 string bottomsheet_action_expand

@@ -28,17 +28,21 @@ public final class ActivityEventTypeManagementBinding implements ViewBinding {
   public final Button btnNewEventType;
 
   @NonNull
+  public final Button button;
+
+  @NonNull
   public final ListView eventTypeList;
 
   @NonNull
   public final TextView textView6;
 
   private ActivityEventTypeManagementBinding(@NonNull RelativeLayout rootView,
-      @NonNull Button btnNewEvent, @NonNull Button btnNewEventType, @NonNull ListView eventTypeList,
-      @NonNull TextView textView6) {
+      @NonNull Button btnNewEvent, @NonNull Button btnNewEventType, @NonNull Button button,
+      @NonNull ListView eventTypeList, @NonNull TextView textView6) {
     this.rootView = rootView;
     this.btnNewEvent = btnNewEvent;
     this.btnNewEventType = btnNewEventType;
+    this.button = button;
     this.eventTypeList = eventTypeList;
     this.textView6 = textView6;
   }
@@ -82,6 +86,12 @@ public final class ActivityEventTypeManagementBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.button;
+      Button button = ViewBindings.findChildViewById(rootView, id);
+      if (button == null) {
+        break missingId;
+      }
+
       id = R.id.eventTypeList;
       ListView eventTypeList = ViewBindings.findChildViewById(rootView, id);
       if (eventTypeList == null) {
@@ -95,7 +105,7 @@ public final class ActivityEventTypeManagementBinding implements ViewBinding {
       }
 
       return new ActivityEventTypeManagementBinding((RelativeLayout) rootView, btnNewEvent,
-          btnNewEventType, eventTypeList, textView6);
+          btnNewEventType, button, eventTypeList, textView6);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

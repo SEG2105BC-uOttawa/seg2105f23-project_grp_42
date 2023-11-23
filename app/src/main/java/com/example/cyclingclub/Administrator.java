@@ -100,26 +100,6 @@ public class Administrator extends User{
     public static boolean removeEvent(Event event)
     //Checks if an event was removed from the array
     {
-        /*
-        boolean wasRemoved = false;
-        if (!events.contains(event))
-        {
-            return wasRemoved;
-        }
-        int oldIndex = events.indexOf(event);
-        events.remove(oldIndex);
-        if (event.indexOfAdmin(this) == -1)
-        {
-            wasRemoved = true;
-        } else {
-            wasRemoved = event.removeAdmin(this);
-            if (!wasRemoved)
-            {
-                events.add(oldIndex,event);
-            }
-        }
-        return wasRemoved;
-        */
         getEventDB().child(event.getKey()).removeValue();
         return  true;
 
@@ -178,9 +158,8 @@ public class Administrator extends User{
         //updateEventCounts();
     }
 
-    public static void updateEvent(String key, String name, String region, String type, String time, double duration){
-        //Event newEvent=new Event(key, name, region, type, time , duration);
-        //getEventDB().child(key).setValue(newEvent);
+    public static void updateEvent(Event event){
+        getEventDB().child(event.getKey()).setValue(event);
         //events.add(newEvent);
     }
 
