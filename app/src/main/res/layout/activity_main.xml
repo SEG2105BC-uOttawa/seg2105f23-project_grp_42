@@ -5,22 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/ButtonLayout">
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/ButtonLayout"
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
-                android:id="@+id/textAppNameView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/project_app_name"
-                android:gravity="center"
-                android:layout_marginBottom="10dp" android:textStyle="bold" android:fontFamily="@font/atomic_age"
-                android:textSize="24sp"/>
+            android:id="@+id/textAppNameView"
+            android:layout_width="281dp"
+            android:layout_height="202dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/atomic_age"
+            android:gravity="center"
+            android:text="Grimpeurs Cycling Club"
+            android:textSize="50sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -39,7 +43,7 @@
             android:backgroundTint="@color/primary_color"
             android:onClick="onClickLogin"
             android:text="@string/log_in_text"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnSignUp"

@@ -14,12 +14,13 @@
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
-            android:layout_height="39dp"
-            android:text="@string/currentUserList" />
+            android:layout_height="wrap_content"
+            android:text="@string/currentUserList"
+            android:textSize="40dp" />
 
         <ListView
             android:id="@+id/userListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="530dp" />
     </LinearLayout>
 </RelativeLayout>
