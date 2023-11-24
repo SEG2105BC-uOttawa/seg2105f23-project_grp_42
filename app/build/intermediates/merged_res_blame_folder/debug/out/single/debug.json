@@ -28,6 +28,10 @@
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_fragment_home.xml.flat",
+        "source": "com.example.cyclingclub.app-main-53:/layout/fragment_home.xml"
+    },
+    {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-xxhdpi_baseline_home_outline.png.flat",
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable-xxhdpi\\baseline_home_outline.png"
     },
@@ -52,12 +56,12 @@
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_activity_user_account_management.xml.flat",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_user_account_management.xml"
-    },
-    {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_activity_user_account_management.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_user_account_management.xml"
     },
     {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-hdpi_baseline_home_outline.png.flat",
@@ -94,6 +98,10 @@
     {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_activity_event_management.xml.flat",
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_event_management.xml"
+    },
+    {
+        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_fragment_profile.xml.flat",
+        "source": "com.example.cyclingclub.app-main-53:/layout/fragment_profile.xml"
     },
     {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-xhdpi_baseline_home_outline.png.flat",

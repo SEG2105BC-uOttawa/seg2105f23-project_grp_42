@@ -31,22 +31,6 @@ public class WelcomeScreen extends AppCompatActivity {
 		Animation btnAnimation = AnimationUtils.loadAnimation(this, R.anim.button_click);
 
 		initFragments();
-		Button btnEventType=findViewById(R.id.adminBtnEventType);
-		Button btnUser=findViewById(R.id.adminBtnUser);
-		Button btnEvent = findViewById(R.id.adminBtnEvents);
-
-		if(!user.getRole().equals("Administrator")) {
-			//Disable admin button for other users
-			if (user.getRole().equals("cycling club")) {
-				btnEvent.setVisibility(View.VISIBLE);
-				btnEventType.setVisibility(View.INVISIBLE);
-				btnUser.setVisibility(View.INVISIBLE);
-			} else {
-				btnEventType.setVisibility(View.INVISIBLE);
-				btnUser.setVisibility(View.INVISIBLE);
-				btnEvent.setVisibility(View.INVISIBLE);
-			}
-		}
 
 		if (user != null) {
 			Bundle bundle = new Bundle(); /* Create a Bundle to pass user information */
@@ -165,24 +149,5 @@ public class WelcomeScreen extends AppCompatActivity {
 		return iconResource;
 	}
 
-	public void onClickEventTypeManagement(View view) {
-		//Application Context and Activity
-		Intent intent = new Intent(getApplicationContext(), EventTypeManagement.class);
-		startActivity (intent);
-	}
-
-
-	public void onClickUserManagement(View view) {
-		//Application Context and Activity
-		Intent intent = new Intent(getApplicationContext(), UserAccountManagement.class);
-		startActivity (intent);
-	}
-
-
-	public void onClickEventManagement(View view) {
-		//Application Context and Activity
-		Intent intent = new Intent(getApplicationContext(), EventManagement.class);
-		startActivity (intent);
-	}
 
 }

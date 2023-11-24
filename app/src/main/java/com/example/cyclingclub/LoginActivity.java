@@ -46,7 +46,14 @@ public class LoginActivity extends AppCompatActivity {
             if (enteredUsername.equals(HARDCODED_USERNAME) && enteredPassword.equals(HARDCODED_PASSWORD)) {
                 User admin = new Administrator(HARDCODED_USERNAME, HARDCODED_PASSWORD);
                 sendToWelcomeScreen(admin);
-            } else { /* Sign them in like a regular user if not the hardcoded values */
+            }else if(enteredUsername.equals("gccadmin") && enteredPassword.equals("GCCRocks!")){
+                User cyclingClub = new User(null,"gccadmin","cycling club","GCCRocks!",null);
+                sendToWelcomeScreen(cyclingClub);
+            }else if(enteredUsername.equals("cyclingaddict") && enteredPassword.equals("cyclingIsLife!")){
+                User user = new User(null,"cyclingaddict","participant","cyclingIsLife!",null);
+                sendToWelcomeScreen(user);
+            }
+            else { /* Sign them in like a regular user if not the hardcoded values */
                 signInWithEmailAndPassword(enteredUsername, enteredPassword, view);
             }
         });

@@ -44,6 +44,38 @@
                 android:text="@string/account_hint"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnEventType"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/btnEventType" />
+
+        <Button
+            android:id="@+id/btnUsers"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/userManagement" />
+
+        <Button
+            android:id="@+id/btnEvent"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/btnEventManagement" />
+
+        <Button
+            android:id="@+id/btnRegistration"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/btnRegistration" />
+
     </LinearLayout>
 
 </FrameLayout>

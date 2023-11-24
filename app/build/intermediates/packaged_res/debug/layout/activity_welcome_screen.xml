@@ -8,42 +8,6 @@
     tools:context=".WelcomeScreen"
     >
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="359dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="12dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.653"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-        <Button
-            android:id="@+id/adminBtnEventType"
-            android:layout_width="126dp"
-            android:layout_height="45dp"
-            android:onClick="onClickEventTypeManagement"
-            android:text="@string/eventType" />
-
-        <Button
-            android:id="@+id/adminBtnUser"
-            android:layout_width="134dp"
-            android:layout_height="45dp"
-            android:onClick="onClickUserManagement"
-            android:text="@string/userManagement" />
-
-        <Button
-            android:id="@+id/adminBtnEvents"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickEventManagement"
-            android:text="@string/btnEventManagement" />
-
-    </LinearLayout>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
@@ -61,10 +25,10 @@
 
     <FrameLayout
         android:id="@+id/fragment_container"
-        android:layout_width="350dp"
-        android:layout_height="519dp"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="7dp">
+        android:layout_width="385dp"
+        android:layout_height="594dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp">
 
     </FrameLayout>
 

@@ -4,6 +4,7 @@ package com.example.cyclingclub.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -23,15 +24,32 @@ public final class FragmentHomeBinding implements ViewBinding {
   public final TextView accountType;
 
   @NonNull
+  public final Button btnEvent;
+
+  @NonNull
+  public final Button btnEventType;
+
+  @NonNull
+  public final Button btnRegistration;
+
+  @NonNull
+  public final Button btnUsers;
+
+  @NonNull
   public final TextView showUsername;
 
   @NonNull
   public final TextView welcomeText;
 
   private FragmentHomeBinding(@NonNull FrameLayout rootView, @NonNull TextView accountType,
-      @NonNull TextView showUsername, @NonNull TextView welcomeText) {
+      @NonNull Button btnEvent, @NonNull Button btnEventType, @NonNull Button btnRegistration,
+      @NonNull Button btnUsers, @NonNull TextView showUsername, @NonNull TextView welcomeText) {
     this.rootView = rootView;
     this.accountType = accountType;
+    this.btnEvent = btnEvent;
+    this.btnEventType = btnEventType;
+    this.btnRegistration = btnRegistration;
+    this.btnUsers = btnUsers;
     this.showUsername = showUsername;
     this.welcomeText = welcomeText;
   }
@@ -69,6 +87,30 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnEvent;
+      Button btnEvent = ViewBindings.findChildViewById(rootView, id);
+      if (btnEvent == null) {
+        break missingId;
+      }
+
+      id = R.id.btnEventType;
+      Button btnEventType = ViewBindings.findChildViewById(rootView, id);
+      if (btnEventType == null) {
+        break missingId;
+      }
+
+      id = R.id.btnRegistration;
+      Button btnRegistration = ViewBindings.findChildViewById(rootView, id);
+      if (btnRegistration == null) {
+        break missingId;
+      }
+
+      id = R.id.btnUsers;
+      Button btnUsers = ViewBindings.findChildViewById(rootView, id);
+      if (btnUsers == null) {
+        break missingId;
+      }
+
       id = R.id.showUsername;
       TextView showUsername = ViewBindings.findChildViewById(rootView, id);
       if (showUsername == null) {
@@ -81,8 +123,8 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentHomeBinding((FrameLayout) rootView, accountType, showUsername,
-          welcomeText);
+      return new FragmentHomeBinding((FrameLayout) rootView, accountType, btnEvent, btnEventType,
+          btnRegistration, btnUsers, showUsername, welcomeText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

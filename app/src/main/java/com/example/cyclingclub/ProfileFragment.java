@@ -1,5 +1,6 @@
 package com.example.cyclingclub;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -102,6 +103,8 @@ public class ProfileFragment extends Fragment {
 
 
 		final Button btnUpdate = (Button) rootView.findViewById(R.id.btnProfileUpdate);
+
+
 
 		btnUpdate.setOnClickListener(new View.OnClickListener() {
 

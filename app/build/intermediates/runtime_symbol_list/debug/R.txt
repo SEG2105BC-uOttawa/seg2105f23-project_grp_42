@@ -3318,9 +3318,6 @@ int id activity_chooser_view_content 0x7f0a0049
 int id add 0x7f0a004a
 int id adjust_height 0x7f0a004b
 int id adjust_width 0x7f0a004c
-int id adminBtnEventType 0x7f0a004d
-int id adminBtnEvents 0x7f0a004e
-int id adminBtnUser 0x7f0a004f
 int id adt_hint 0x7f0a0050
 int id adt_hint_icon 0x7f0a0051
 int id adt_hint_text 0x7f0a0052
@@ -3372,14 +3369,18 @@ int id btnBack 0x7f0a007e
 int id btnBackToUpdate 0x7f0a007f
 int id btnDeleteEventUser 0x7f0a0080
 int id btnDeleteUser 0x7f0a0081
+int id btnEvent 0x7f0a028b
 int id btnEventDelete 0x7f0a0082
+int id btnEventType 0x7f0a028c
 int id btnEventUpdate 0x7f0a0083
 int id btnLogIn 0x7f0a0084
 int id btnLogin 0x7f0a0085
 int id btnNewEvent 0x7f0a0086
 int id btnNewEventType 0x7f0a0087
 int id btnProfileUpdate 0x7f0a0088
+int id btnRegistration 0x7f0a028d
 int id btnSignUp 0x7f0a0089
+int id btnUsers 0x7f0a028e
 int id btn_apply_hillclimb 0x7f0a008a
 int id btn_back_create 0x7f0a008b
 int id btn_back_hillclimb 0x7f0a008c
@@ -3564,7 +3565,6 @@ int id line3 0x7f0a013e
 int id linear 0x7f0a013f
 int id linearLayout 0x7f0a0140
 int id linearLayout2 0x7f0a0141
-int id linearLayout3 0x7f0a0289
 int id listEvents 0x7f0a0142
 int id listMode 0x7f0a0143
 int id list_item 0x7f0a0144
@@ -4185,6 +4185,8 @@ int string btnAddEvent 0x7f13002c
 int string btnBack 0x7f13002d
 int string btnDelete 0x7f13002e
 int string btnEventManagement 0x7f13002f
+int string btnEventType 0x7f13010a
+int string btnRegistration 0x7f13010b
 int string call_notification_answer_action 0x7f130030
 int string call_notification_answer_video_action 0x7f130031
 int string call_notification_decline_action 0x7f130032

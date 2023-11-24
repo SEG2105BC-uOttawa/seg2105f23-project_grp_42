@@ -1,6 +1,8 @@
 package com.example.cyclingclub;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -61,18 +63,64 @@ public class HomeFragment extends Fragment {
 
 		/* Retrieve user information from arguments */
 		Bundle bundle = getArguments();
-		if (bundle != null) {
-			User user = (User) bundle.getSerializable("user");
+		if (bundle == null) {return rootView;}
 
-			if (user != null) {
-				TextView showUsername = rootView.findViewById(R.id.showUsername);
-				TextView accountType = rootView.findViewById(R.id.accountType);
-				String username = user.getUsername();
+		User user = (User) bundle.getSerializable("user");
+		if (user != null) {
+			TextView showUsername = rootView.findViewById(R.id.showUsername);
+			TextView accountType = rootView.findViewById(R.id.accountType);
+			String username = user.getUsername();
 
-				showUsername.setText(String.format("Username: %s", username));
-				accountType.setText(String.format("You are logged in as %s", user.getRole()));
+			showUsername.setText(String.format("Username: %s", username));
+			accountType.setText(String.format("You are logged in as %s", user.getRole()));
+
+			Button btnEventType = (Button) rootView.findViewById(R.id.btnEventType);
+			Button btnUsers = (Button) rootView.findViewById(R.id.btnUsers);
+			Button btnEvents = (Button) rootView.findViewById(R.id.btnEvent);
+			Button btnRegistration = (Button) rootView.findViewById(R.id.btnRegistration);
+
+			if (user.getRole().equals("Administrator")) {
+				btnRegistration.setEnabled(false);
 			}
+			if (user.getRole().equals("cycling club") || user.getRole().equals("participant")) {
+				btnEventType.setEnabled(false);
+				btnUsers.setEnabled(false);
+			}
+
+			btnEvents.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					Intent intent = new Intent(getContext(), EventManagement.class);
+					intent.putExtra("user", user);
+					startActivity(intent);
+				}
+			});
+			btnEventType.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					Intent intent = new Intent(getContext(), EventTypeManagement.class);
+					intent.putExtra("user", user);
+					startActivity(intent);
+				}
+			});
+			btnUsers.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						Intent intent = new Intent(getContext(), UserAccountManagement.class);
+						intent.putExtra("user", user);
+						startActivity(intent);
+					}
+			});
+			btnRegistration.setOnClickListener(new View.OnClickListener() {
+						@Override
+						public void onClick(View view) {
+
+						}
+			});
 		}
+
+
+
 
 		return rootView;
 	}

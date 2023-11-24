@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 //import java.util.Collections;
 
@@ -40,6 +41,7 @@ public class EventManagement extends AppCompatActivity {
     private ListView listViewEvents;
     public static List<Event> events;
     public static List<String> eventsList;
+    private User user;
 
 
    // private DatabaseReference databaseEvents;
@@ -49,6 +51,8 @@ public class EventManagement extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        user = (User) getIntent().getSerializableExtra("user");
+
         setContentView(R.layout.activity_event_management);
 
         listViewEvents = (ListView) findViewById(R.id.listEvents);
@@ -147,6 +151,11 @@ public class EventManagement extends AppCompatActivity {
 
         Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
         Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
+
+        if(!(user.getRole().equals("cycling club"))){
+            buttonUpdate.setEnabled(false);
+        }
+
 
         dialogBuilder.setTitle("Update current Event");
         editEventType.setText(event.getType());

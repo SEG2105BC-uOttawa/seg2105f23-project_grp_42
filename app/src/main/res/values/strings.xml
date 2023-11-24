@@ -92,4 +92,6 @@
     <string name="updateProfile">Update Profile</string>
     <string name="back">Back</string>
     <string name="Description">Description</string>
+    <string name="btnEventType">Event Type</string>
+    <string name="btnRegistration">Registration</string>
 </resources>

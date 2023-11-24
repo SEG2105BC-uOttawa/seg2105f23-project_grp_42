@@ -3319,9 +3319,6 @@ id activity_chooser_view_content
 id add
 id adjust_height
 id adjust_width
-id adminBtnEventType
-id adminBtnEvents
-id adminBtnUser
 id adt_hint
 id adt_hint_icon
 id adt_hint_text
@@ -3373,14 +3370,18 @@ id btnBack
 id btnBackToUpdate
 id btnDeleteEventUser
 id btnDeleteUser
+id btnEvent
 id btnEventDelete
+id btnEventType
 id btnEventUpdate
 id btnLogIn
 id btnLogin
 id btnNewEvent
 id btnNewEventType
 id btnProfileUpdate
+id btnRegistration
 id btnSignUp
+id btnUsers
 id btn_apply_hillclimb
 id btn_back_create
 id btn_back_hillclimb
@@ -3565,7 +3566,6 @@ id line3
 id linear
 id linearLayout
 id linearLayout2
-id linearLayout3
 id listEvents
 id listMode
 id list_item
@@ -4186,6 +4186,8 @@ string btnAddEvent
 string btnBack
 string btnDelete
 string btnEventManagement
+string btnEventType
+string btnRegistration
 string call_notification_answer_action
 string call_notification_answer_video_action
 string call_notification_decline_action

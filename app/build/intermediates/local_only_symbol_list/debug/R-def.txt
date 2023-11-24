@@ -28,9 +28,6 @@ id ButtonLayout
 id CreationTitle
 id Text5
 id accountType
-id adminBtnEventType
-id adminBtnEvents
-id adminBtnUser
 id attribute_1_hillclimb
 id attribute_2_hillclimb
 id attribute_3_hillclimb
@@ -43,14 +40,18 @@ id btnBack
 id btnBackToUpdate
 id btnDeleteEventUser
 id btnDeleteUser
+id btnEvent
 id btnEventDelete
+id btnEventType
 id btnEventUpdate
 id btnLogIn
 id btnLogin
 id btnNewEvent
 id btnNewEventType
 id btnProfileUpdate
+id btnRegistration
 id btnSignUp
+id btnUsers
 id btn_apply_hillclimb
 id btn_back_create
 id btn_back_hillclimb
@@ -91,7 +92,6 @@ id homeItem
 id imageView
 id linearLayout
 id linearLayout2
-id linearLayout3
 id listEvents
 id memberLoginHeader
 id number_2_hillclimb
@@ -176,6 +176,8 @@ string btnAddEvent
 string btnBack
 string btnDelete
 string btnEventManagement
+string btnEventType
+string btnRegistration
 string clubName
 string contactPerson
 string currentEvent
