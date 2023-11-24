@@ -44,6 +44,7 @@ public class EventTypeManagement extends AppCompatActivity {
         listViewEventTypes = (ListView) findViewById(R.id.eventTypeList);
         eventTypes = new ArrayList<>();
 
+        listViewEventTypes.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         //AdapterView.OnItemSelectedListener;
         AdapterView.OnItemLongClickListener longClickListener= new AdapterView.OnItemLongClickListener() {

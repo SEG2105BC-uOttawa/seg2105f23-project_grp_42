@@ -1,5 +1,13 @@
 package com.example.cyclingclub;
 
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class CyclingClub {
     private String key;
     private User user;
@@ -8,9 +16,13 @@ public class CyclingClub {
     private String mainContact;
     private String phoneNumber;
     private String region;
+    private String username;
+
 
 
     // Constructors (if needed)
+
+
 
     public String getKey(){return key;}
     public void setKey(String key){this.key=key;}
@@ -22,8 +34,11 @@ public class CyclingClub {
     }
 
     public void setUser(User user) {
+        //this.username = user.getUsername();
         this.user = user;
     }
+
+
 
     public String getClubName() {
         return clubName;
@@ -71,5 +86,8 @@ public class CyclingClub {
     }
 
 
+    public String getUsername() {     return username;}
+
+    public void setUsername(String username) {this.username = username;}
 
 }

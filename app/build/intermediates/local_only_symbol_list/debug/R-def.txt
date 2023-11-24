@@ -22,6 +22,7 @@ drawable baseline_settings
 drawable baseline_settings_outline
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable list_item_selector
 drawable logo
 font atomic_age
 id ButtonLayout

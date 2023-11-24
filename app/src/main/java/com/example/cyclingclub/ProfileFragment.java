@@ -114,8 +114,8 @@ public class ProfileFragment extends Fragment {
 				DatabaseReference dRef=FirebaseDatabase.getInstance().getReference("ClubProfile");
 				String key;
 				if(!clubProfileFound) {
-					cyclingClub=new CyclingClub();
 					key=dRef.push().getKey();
+					cyclingClub=new CyclingClub();
 					cyclingClub.setKey(key);
 				}
 				else {
@@ -124,6 +124,8 @@ public class ProfileFragment extends Fragment {
 
 				//cyclingClub.setKey(key);
 				cyclingClub.setUser(user);
+				cyclingClub.setUsername(user.getUsername());
+
 
 				TextView clubName=getView().findViewById(R.id.editClubName);
 				TextView contact=getView().findViewById(R.id.editContact);
@@ -155,8 +157,7 @@ public class ProfileFragment extends Fragment {
 					CyclingClub club = snapshot.getValue(CyclingClub.class);
 
 					// Check if the category property matches the desired category
-					if (club != null && club.getUser().getUsername().equals(user.getUsername()) &&
-							club.getUser().getEmail().equals(user.getEmail())) {
+					if (club != null && club.getUser().getUsername().equals(user.getUsername()) ){
 						clubProfileFound=true;
 						cyclingClub = club;
 						//String clubKey = snapshot.getKey();
