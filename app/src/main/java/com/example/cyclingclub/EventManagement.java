@@ -38,8 +38,8 @@ public class EventManagement extends AppCompatActivity {
    // private Spinner dropdownType ;
 
     private ListView listViewEvents;
-    private List<Event> events;
-    private List<String> eventsList;
+    public static List<Event> events;
+    public static List<String> eventsList;
 
 
    // private DatabaseReference databaseEvents;
@@ -253,6 +253,14 @@ public class EventManagement extends AppCompatActivity {
         if (!validator.isValidNumber(limit)) { message= message+ "Limit must be a number";}
 
         return message;
+    }
+
+    public static List<Event> getEvents(){
+        return events;
+    }
+
+    public static List<String> getEventsList(){
+        return eventsList;
     }
 
 }
