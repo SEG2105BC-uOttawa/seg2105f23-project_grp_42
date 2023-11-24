@@ -224,6 +224,7 @@ public class EventManagement extends AppCompatActivity {
     public void onClickAddEvent(View view) {
 
             Intent intent = new Intent(getApplicationContext(), EventTypeManagement.class);
+            intent.putExtra("user", user);
             startActivity (intent);
 
     }

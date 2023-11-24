@@ -17,6 +17,8 @@ public class Event {
     private  int eventDistance;
     private  int eventElevation;
 
+    private String username;
+
 
     //private final List<Administrator> admins;
     //private  List<Administrator> admins;
@@ -110,6 +112,9 @@ public class Event {
 
 
 
+    public String getUsername() {     return username;}
+
+    public void setUsername(String username) {this.username = username;}
 
 /*
     public Administrator getAdmin(int index)

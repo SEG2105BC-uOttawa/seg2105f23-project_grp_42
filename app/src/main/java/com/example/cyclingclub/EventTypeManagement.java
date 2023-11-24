@@ -35,13 +35,22 @@ public class EventTypeManagement extends AppCompatActivity {
     //private Administrator admin;
 
     private EventType selectedEventType;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        user = (User) getIntent().getSerializableExtra("user");
+
         setContentView(R.layout.activity_event_type_management);
 
         listViewEventTypes = (ListView) findViewById(R.id.eventTypeList);
+
+        Button btnAddEventType = (Button) findViewById(R.id.btnNewEventType);
+        if(!(user.getRole().equals("Administrator"))){
+            btnAddEventType.setEnabled(false);
+        }
+
         eventTypes = new ArrayList<>();
 
         listViewEventTypes.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -306,6 +315,8 @@ public class EventTypeManagement extends AppCompatActivity {
                     event.setLimit(Integer.parseInt(limit));
 
                     event.setDetail(selectedEventType.getDetail());
+                    event.setUsername(user.getUsername());
+
                     Administrator.createEvent(event);
                     //b.dismiss();
 
