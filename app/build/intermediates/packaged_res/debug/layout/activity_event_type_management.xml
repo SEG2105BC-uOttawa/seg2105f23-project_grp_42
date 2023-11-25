@@ -20,8 +20,7 @@
         <ListView
             android:id="@+id/eventTypeList"
             android:layout_width="match_parent"
-            android:layout_height="484dp"
-            android:background="@drawable/list_item_selector"/>
+            android:layout_height="484dp" />
 
         <Space
             android:layout_width="match_parent"

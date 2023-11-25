@@ -88,6 +88,11 @@ public class EventManagement extends AppCompatActivity {
         //ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Types);
         //dropdownType.setAdapter(adapter);
 
+        Button buttonNewEvent = (Button) findViewById(R.id.btnAddEvent);
+        if (user.getRole().equals("Administrator") || user.getRole().equals("participant")) {
+            buttonNewEvent.setEnabled(false);
+        }
+
 
     }
 
@@ -130,33 +135,6 @@ public class EventManagement extends AppCompatActivity {
 
 
 
-        /*
-
-
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                events.clear();
-                eventsList.clear();
-                for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
-                    Event event = postSnapShot.getValue(Event.class);
-                    events.add(event);
-                    eventsList.add(event.getId()+ " : "+ event.getType()+" : "+event.getDate());
-                }
-                ArrayAdapter<String> itemsAdapter =
-                        new ArrayAdapter<String>(EventManagement.this, R.layout.item_view, R.id.textViewItem,eventsList);
-
-                listViewEvents.setAdapter(itemsAdapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        };
-
-        databaseEvents.addValueEventListener(postListener);
-
-         */
     }
 
 
@@ -195,8 +173,13 @@ public class EventManagement extends AppCompatActivity {
         Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
         Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
 
-        if(!(user.getRole().equals("cycling club"))){
+        if (user.getRole().equals("Administrator") ) {
             buttonUpdate.setEnabled(false);
+        }
+
+        if (user.getRole().equals("participant")) {
+            buttonUpdate.setEnabled(false);
+            buttonDelete.setEnabled(false);
         }
 
 
@@ -306,16 +289,18 @@ public class EventManagement extends AppCompatActivity {
 
         String message="";
 
+
         /* Validate event type */
-        if (!validator.isValidName(id)) { message= message+ "ID name can not be blank or special characters";}
-        if (!validator.isValidName(route)) { message= message+ "Route can not be blank or special characters";}
-        if (!validator.isValidName(region)) { message= message+ "Region name can not be blank or special characters";}
-        if (!validator.isValidDate(date)) { message= message+ "Date must be in format YYYY-MM-DD";}
-        if (!validator.isValidNumber(distance)) { message= message+ "Distance must be a number";}
-        if (!validator.isValidNumber(elevation)) { message= message+ "Elevation must be a number";}
-        //if (!validator.isValidNumber(level)) { message= message+ "Level must be a number";}
-        if (!validator.isValidNumber(fee)) { message= message+ "Fee must be a number";}
-        if (!validator.isValidNumber(limit)) { message= message+ "Limit must be a number";}
+        if (!validator.isValidString(id)) { message= message+ "ID must start with letter and can not be blank.";}
+        if (!validator.isValidString(route)) { message= message+ "Route must start with letter and can not be blank.";}
+        if (!validator.isValidString(region)) { message= message+ "Region must start with letter and can not be blank.";}
+        if (!validator.isValidDate(date)) { message= message+ "Date must be in format YYYY-MM-DD.";}
+        if (!validator.isValidNumber(distance)) { message= message+ "Distance must be a number.";}
+        if (!validator.isValidNumber(elevation)) { message= message+ "Elevation must be a number.";}
+        // if (!validator.isValidNumber(level)) { message= message+ "Level must be a number";}
+        if (!validator.isValidNumber(fee)) { message= message+ "Fee must be a number.";}
+        if (!validator.isValidNumber(limit)) { message= message+ "Limit must be a number.";}
+
 
         return message;
     }

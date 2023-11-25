@@ -15,6 +15,13 @@ public class InputValidator {
     private static final String PASSWORD_PATTERN = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&+=!])(?!.*\\s).{8,}$";
     private static final String NUMBER_PATTERN = "^[0-9]+(\\.[0-9]+)?$";
     private static final String DATE_PATTERN = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$";
+    private static final String STRING_PATTERN = "^[A-Za-z][A-Za-z0-9 ]*$";
+    private static final String SOCIAL_MEDIA_PATTERN =  "^(https?://)?(www\\.)?[a-zA-Z0-9-]+(\\.[a-zA-Z]{2,})$";
+
+    private static final String PHONE_NUMBER_PATTERN = "^\\d{10}$";
+
+
+
 
     private InputValidator() {
     }
@@ -102,5 +109,22 @@ public class InputValidator {
         Matcher matcher = pattern.matcher(date);
         return matcher.matches();
     }
+    public boolean isValidString(String s) {
+        Pattern pattern = Pattern.compile(STRING_PATTERN);
+        Matcher matcher = pattern.matcher(s);
+        return matcher.matches();
+    }
+
+    public boolean isValidSocialMediaLink(String s) {
+        Pattern pattern = Pattern.compile(SOCIAL_MEDIA_PATTERN);
+        Matcher matcher = pattern.matcher(s);
+        return matcher.matches();
+    }
+    public boolean isValidPhoneNumber(String s) {
+        Pattern pattern = Pattern.compile(PHONE_NUMBER_PATTERN);
+        Matcher matcher = pattern.matcher(s);
+        return matcher.matches();
+    }
+
 
 }

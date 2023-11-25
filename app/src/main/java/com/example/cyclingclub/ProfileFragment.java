@@ -1,16 +1,22 @@
 package com.example.cyclingclub;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -104,42 +110,57 @@ public class ProfileFragment extends Fragment {
 
 		final Button btnUpdate = (Button) rootView.findViewById(R.id.btnProfileUpdate);
 
-
+		if (user.getRole().equals("Administrator") || user.getRole().equals("participant")) {
+			btnUpdate.setEnabled(false);
+		}
 
 		btnUpdate.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View view) {
 				//User user = (User) bundle.getSerializable("user");
-				DatabaseReference dRef=FirebaseDatabase.getInstance().getReference("ClubProfile");
-				String key;
-				if(!clubProfileFound) {
-					key=dRef.push().getKey();
-					cyclingClub=new CyclingClub();
-					cyclingClub.setKey(key);
+
+				EditText clubNameEdit =(EditText) getView().findViewById(R.id.editClubName);
+				EditText contactEdit =(EditText) getView().findViewById(R.id.editContact);
+				EditText regionEdit =(EditText) getView().findViewById(R.id.editClubRegion);
+				EditText phoneNumberEdit =(EditText) getView().findViewById(R.id.editPhoneNumber);
+				EditText mediaLinkEdit =(EditText) getView().findViewById(R.id.editMediaLink);
+
+				String clubName= clubNameEdit.getText().toString().trim();
+				String contact= contactEdit.getText().toString().trim();
+				String region= regionEdit.getText().toString().trim();
+				String phoneNumber= phoneNumberEdit.getText().toString().trim();
+				String mediaLink= mediaLinkEdit.getText().toString().trim();
+
+				String message=validateInput(clubName,contact,region,phoneNumber,mediaLink);
+				if (!message.equals("")){
+					displayPopupMessage(message, getView());
+				}else{
+
+					DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("ClubProfile");
+					String key;
+					if (!clubProfileFound) {
+						key = dRef.push().getKey();
+						cyclingClub = new CyclingClub();
+						cyclingClub.setKey(key);
+					} else {
+						key = cyclingClub.getKey();
+					}
+
+					//cyclingClub.setKey(key);
+					cyclingClub.setUser(user);
+					cyclingClub.setUsername(user.getUsername());
+
+
+					cyclingClub.setClubName(clubName);
+					cyclingClub.setMainContact(contact);
+					cyclingClub.setRegion(region);
+					cyclingClub.setPhoneNumber(phoneNumber);
+					cyclingClub.setSocialMediaLink(mediaLink);
+
+
+					dRef.child(key).setValue(cyclingClub);
 				}
-				else {
-					key=cyclingClub.getKey();
-				}
-
-				//cyclingClub.setKey(key);
-				cyclingClub.setUser(user);
-				cyclingClub.setUsername(user.getUsername());
-
-
-				TextView clubName=getView().findViewById(R.id.editClubName);
-				TextView contact=getView().findViewById(R.id.editContact);
-				TextView region=getView().findViewById(R.id.editClubRegion);
-				TextView phoneNumber=getView().findViewById(R.id.editPhoneNumber);
-				TextView mediaLink=getView().findViewById(R.id.editMediaLink);
-				cyclingClub.setClubName(clubName.getText().toString().trim());
-				cyclingClub.setMainContact(contact.getText().toString().trim());
-				cyclingClub.setRegion(region.getText().toString().trim());
-				cyclingClub.setPhoneNumber(phoneNumber.getText().toString().trim());
-				cyclingClub.setSocialMediaLink(mediaLink.getText().toString().trim());
-
-
-				dRef.child(key).setValue(cyclingClub);
 
 			}
 		});
@@ -166,26 +187,26 @@ public class ProfileFragment extends Fragment {
 					}
 				}
 
-				TextView clubName=getView().findViewById(R.id.editClubName);
-				TextView contact=getView().findViewById(R.id.editContact);
-				TextView region=getView().findViewById(R.id.editClubRegion);
-				TextView phoneNumber=getView().findViewById(R.id.editPhoneNumber);
-				TextView mediaLink=getView().findViewById(R.id.editMediaLink);
+				EditText clubNameEdit =(EditText) getView().findViewById(R.id.editClubName);
+				EditText contactEdit =(EditText) getView().findViewById(R.id.editContact);
+				EditText regionEdit =(EditText) getView().findViewById(R.id.editClubRegion);
+				EditText phoneNumberEdit =(EditText) getView().findViewById(R.id.editPhoneNumber);
+				EditText mediaLinkEdit =(EditText) getView().findViewById(R.id.editMediaLink);
 
 				if(clubProfileFound) {
 					//TextView clubName=getView().findViewById(R.id.editClubName);
-					clubName.setText(cyclingClub.getClubName());
-					contact.setText(cyclingClub.getMainContact());
-					region.setText(cyclingClub.getRegion());
-					phoneNumber.setText(cyclingClub.getPhoneNumber());
-					mediaLink.setText(cyclingClub.getSocialMediaLink());
+					clubNameEdit.setText(cyclingClub.getClubName());
+					contactEdit.setText(cyclingClub.getMainContact());
+					regionEdit.setText(cyclingClub.getRegion());
+					phoneNumberEdit.setText(cyclingClub.getPhoneNumber());
+					mediaLinkEdit.setText(cyclingClub.getSocialMediaLink());
 				}
 				else{
-					clubName.setText("");
-					contact.setText("");
-					region.setText("");
-					phoneNumber.setText("");
-					mediaLink.setText("");
+					clubNameEdit.setText("");
+					contactEdit.setText("");
+					regionEdit.setText("");
+					phoneNumberEdit.setText("");
+					mediaLinkEdit.setText("");
 				}
 
 
@@ -200,6 +221,36 @@ public class ProfileFragment extends Fragment {
 	}
 
 
+	private void displayPopupMessage(String message, View anchorView) {
+		LinearLayout layout = new LinearLayout(getContext());
+		layout.setLayoutParams(new ViewGroup.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT));
+
+		layout.setOrientation(LinearLayout.VERTICAL);
+		layout.setGravity(Gravity.CENTER);
+		TextView textView = new TextView(getContext());
+		textView.setText(message);
+		textView.setTextColor(Color.RED);
+
+		PopupWindow popupWindow = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
+		popupWindow.setContentView(textView);
+		popupWindow.showAsDropDown(anchorView, 10, 0);
+	}
+
+
+	private String validateInput(String clubName,String contact,String region,String phoneNumber,String mediaLink ) {
+		InputValidator validator = InputValidator.getInstance();
+
+		String message="";
+
+		/* Validate event type */
+		if (!validator.isValidString(clubName)) { message= message+ "Club name must start with letter and can not be blank,";}
+		if (!validator.isValidString(contact)) { message= message+ "Contact must start with letter and can not be blank,";}
+		if (!validator.isValidString(region)) { message= message+ "Region must start with letter and can not be blank,";}
+		if (!validator.isValidPhoneNumber(phoneNumber)) { message= message+ "10 digit phone number required,";}
+		if (!validator.isValidSocialMediaLink(mediaLink)) { message= message+ "Invalid social media link.";}
+
+		return message;
+	}
 
 
 }

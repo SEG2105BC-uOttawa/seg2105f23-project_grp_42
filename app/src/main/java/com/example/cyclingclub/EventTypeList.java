@@ -12,6 +12,7 @@ import java.util.List;
 public class EventTypeList extends ArrayAdapter<EventType> {
     private Activity context;
     List<EventType> eventTypes;
+    private int selectedPosition = -1;
 
     public EventTypeList(Activity context, List<EventType> eventTypes) {
             super(context, R.layout.event_type_list, eventTypes);
@@ -30,6 +31,22 @@ public class EventTypeList extends ArrayAdapter<EventType> {
         EventType eventType = eventTypes.get(position);
         textViewName.setText(eventType.getTypeName());
         textViewNumber.setText(eventType.getDetail());
+
+        if (position == selectedPosition) {
+            textViewName.setTextColor(getContext().getResources().getColor(android.R.color.holo_blue_dark));
+            textViewNumber.setTextColor(getContext().getResources().getColor(android.R.color.holo_blue_dark));
+        } else {
+            textViewName.setTextColor(getContext().getResources().getColor(android.R.color.black));
+            textViewNumber.setTextColor(getContext().getResources().getColor(android.R.color.black));
+        }
+
+
         return listViewItem;
     }
+
+    public void setSelectedPosition(int position) {
+        selectedPosition = position;
+        notifyDataSetChanged();
+    }
+
 }

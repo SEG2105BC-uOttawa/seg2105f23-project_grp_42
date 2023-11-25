@@ -50,6 +50,9 @@ public class EventTypeManagement extends AppCompatActivity {
         setContentView(R.layout.activity_event_type_management);
 
         listViewEventTypes = (ListView) findViewById(R.id.eventTypeList);
+        //EventTypeList eventTypeAdapter= new EventTypeList(EventTypeManagement.this, eventTypes);
+        //listViewEventTypes.setAdapter(eventTypeAdapter);
+
 
         Button btnAddEventType = (Button) findViewById(R.id.btnNewEventType);
         if(!(user.getRole().equals("Administrator"))){
@@ -58,7 +61,7 @@ public class EventTypeManagement extends AppCompatActivity {
 
         eventTypes = new ArrayList<>();
 
-        listViewEventTypes.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        //listViewEventTypes.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         //AdapterView.OnItemSelectedListener;
         AdapterView.OnItemLongClickListener longClickListener= new AdapterView.OnItemLongClickListener() {
@@ -73,19 +76,14 @@ public class EventTypeManagement extends AppCompatActivity {
         listViewEventTypes.setOnItemLongClickListener(longClickListener);
 
 
-        listViewEventTypes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Clear the previous selection
-                listViewEventTypes.clearChoices();
-
-                // Set the current item as selected
-                listViewEventTypes.setItemChecked(position, true);
-                selectedEventType=eventTypes.get(position);
-            }
-        });
-
-
+        Button buttonNewEventType = (Button) findViewById(R.id.btnNewEventType);
+        if (!user.getRole().equals("Administrator")) {
+            buttonNewEventType.setEnabled(false);
+        }
+        Button buttonNewEvent = (Button) findViewById(R.id.btnNewEvent);
+        if (!user.getRole().equals("cycling club")) {
+            buttonNewEvent.setEnabled(false);
+        }
         //The administrator who can manage the event type database;
         //admin= new Administrator("admin","admin");
 
@@ -106,6 +104,17 @@ public class EventTypeManagement extends AppCompatActivity {
 
                 EventTypeList eventTypeAdapter= new EventTypeList(EventTypeManagement.this, eventTypes);
                 listViewEventTypes.setAdapter(eventTypeAdapter);
+
+                listViewEventTypes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        eventTypeAdapter.setSelectedPosition(position);
+
+                        selectedEventType=eventTypes.get(position);
+
+                        // view.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_dark));
+                    }
+                });
             }
 
             @Override
@@ -131,7 +140,10 @@ public class EventTypeManagement extends AppCompatActivity {
          EditText editTextDetail = (EditText) dialogView.findViewById(R.id.editEventTypeDetail);
         final Button buttonUpdate = (Button) dialogView.findViewById(R.id.buttonUpdate);
         final Button buttonDelete = (Button) dialogView.findViewById(R.id.buttonDelete);
-
+        if (!user.getRole().equals("Administrator")) {
+            buttonUpdate.setEnabled(false);
+            buttonDelete.setEnabled(false);
+        }
         dialogBuilder.setTitle("Event Types Detail");
         editTextName.setText(et.getTypeName());
         editTextDetail.setText(et.getDetail());
@@ -193,7 +205,10 @@ public class EventTypeManagement extends AppCompatActivity {
         EditText editTextDetail = (EditText) dialogView.findViewById(R.id.editEventTypeDetail);
         final Button buttonUpdate = (Button) dialogView.findViewById(R.id.buttonUpdate);
         final Button buttonDelete = (Button) dialogView.findViewById(R.id.buttonDelete);
-
+        if (!user.getRole().equals("Administrator")) {
+            buttonUpdate.setEnabled(false);
+            buttonDelete.setEnabled(false);
+        }
         dialogBuilder.setTitle("Event Types Detail");
         editTextName.setText("");
         editTextDetail.setText("");
@@ -276,7 +291,10 @@ public class EventTypeManagement extends AppCompatActivity {
 
         Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
         Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
-
+        if (!user.getRole().equals("cycling club")) {
+            buttonUpdate.setEnabled(false);
+            buttonDelete.setEnabled(false);
+        }
         buttonUpdate.setText("Add");
         buttonDelete.setText("Discard");
 
@@ -389,9 +407,8 @@ public class EventTypeManagement extends AppCompatActivity {
         InputValidator validator = InputValidator.getInstance();
         String message="";
         /* Validate event type */
-        if (!validator.isValidName(eventTypeName)) { return "Event type name can not be blank or numbers";}
-        //if (!validator.isValidName(eventTypeDetail)) { return "Event type details can not be blank or special characters";}
-
+        if (!validator.isValidString(eventTypeName)) { message = "Event type must start with letter and can not be blank.";}
+        if (eventTypeDetail.length()<1) { message = message + "Event description can not be blank";}
         return message;
     }
 
@@ -401,15 +418,15 @@ public class EventTypeManagement extends AppCompatActivity {
         String message="";
 
         /* Validate event type */
-        if (!validator.isValidName(id)) { message= message+ "ID name can not be blank or special characters";}
-        if (!validator.isValidName(route)) { message= message+ "Route can not be blank or special characters";}
-        if (!validator.isValidName(region)) { message= message+ "Region name can not be blank or special characters";}
-        if (!validator.isValidDate(date)) { message= message+ "Date must be in format YYYY-MM-DD";}
-        if (!validator.isValidNumber(distance)) { message= message+ "Distance must be a number";}
-        if (!validator.isValidNumber(elevation)) { message= message+ "Elevation must be a number";}
+        if (!validator.isValidString(id)) { message= message+ "ID name must start with letter and can not be blank.";}
+        if (!validator.isValidString(route)) { message= message+ "Route must start with letter and can not be blank.";}
+        if (!validator.isValidString(region)) { message= message+ "Region must start with letter and can not be blank.";}
+        if (!validator.isValidDate(date)) { message= message+ "Date must be in format YYYY-MM-DD.";}
+        if (!validator.isValidNumber(distance)) { message= message+ "Distance must be a number.";}
+        if (!validator.isValidNumber(elevation)) { message= message+ "Elevation must be a number.";}
        // if (!validator.isValidNumber(level)) { message= message+ "Level must be a number";}
-        if (!validator.isValidNumber(fee)) { message= message+ "Fee must be a number";}
-        if (!validator.isValidNumber(limit)) { message= message+ "Limit must be a number";}
+        if (!validator.isValidNumber(fee)) { message= message+ "Fee must be a number.";}
+        if (!validator.isValidNumber(limit)) { message= message+ "Limit must be a number.";}
 
         return message;
     }
