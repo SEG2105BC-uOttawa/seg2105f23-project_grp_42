@@ -3347,7 +3347,6 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
-id back_btn
 id barrier
 id baseline
 id beginOnFirstDraw

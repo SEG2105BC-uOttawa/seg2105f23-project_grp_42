@@ -318,10 +318,7 @@ public class EventTypeManagement extends AppCompatActivity {
                     event.setUsername(user.getUsername());
 
                     Administrator.createEvent(event);
-                    //b.dismiss();
-
-                    Intent intent = new Intent(getApplicationContext(), EventManagement.class);
-                    startActivity (intent);
+                    b.dismiss();
 
                 }
                 else{

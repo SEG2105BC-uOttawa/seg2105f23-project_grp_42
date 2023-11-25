@@ -33,7 +33,6 @@ id attribute_1_hillclimb
 id attribute_2_hillclimb
 id attribute_3_hillclimb
 id attributes_hillclimb
-id back_btn
 id bottomNavigationView
 id btnAddEvent
 id btnAddEventUser

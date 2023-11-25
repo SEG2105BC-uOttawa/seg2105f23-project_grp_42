@@ -30,6 +30,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 //import java.util.Collections;
 
@@ -91,6 +97,43 @@ public class EventManagement extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         DatabaseReference  databaseEvents=Administrator.getEventDB();
+
+        Query query;
+
+        if(user.getRole().equals("Cycling Club")){
+             query = databaseEvents.orderByChild("username").equalTo(user.getUsername());
+        }else{
+             query = databaseEvents;
+        }
+
+
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                events.clear();
+                eventsList.clear();
+                for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
+                    Event event = postSnapShot.getValue(Event.class);
+                    events.add(event);
+                    eventsList.add(event.getId()+ " : "+ event.getType()+" : "+event.getDate());
+                }
+                ArrayAdapter<String> itemsAdapter =
+                        new ArrayAdapter<String>(EventManagement.this, R.layout.item_view, R.id.textViewItem,eventsList);
+
+                listViewEvents.setAdapter(itemsAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("Error querying the database: " + databaseError.getMessage());
+            }
+        });
+
+
+
+        /*
+
+
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -113,6 +156,8 @@ public class EventManagement extends AppCompatActivity {
         };
 
         databaseEvents.addValueEventListener(postListener);
+
+         */
     }
 
 

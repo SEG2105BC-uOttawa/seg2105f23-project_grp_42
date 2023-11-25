@@ -22,9 +22,6 @@ public final class ActivityEventTypeManagementBinding implements ViewBinding {
   private final RelativeLayout rootView;
 
   @NonNull
-  public final Button backBtn;
-
-  @NonNull
   public final Button btnNewEvent;
 
   @NonNull
@@ -37,10 +34,9 @@ public final class ActivityEventTypeManagementBinding implements ViewBinding {
   public final TextView textView6;
 
   private ActivityEventTypeManagementBinding(@NonNull RelativeLayout rootView,
-      @NonNull Button backBtn, @NonNull Button btnNewEvent, @NonNull Button btnNewEventType,
-      @NonNull ListView eventTypeList, @NonNull TextView textView6) {
+      @NonNull Button btnNewEvent, @NonNull Button btnNewEventType, @NonNull ListView eventTypeList,
+      @NonNull TextView textView6) {
     this.rootView = rootView;
-    this.backBtn = backBtn;
     this.btnNewEvent = btnNewEvent;
     this.btnNewEventType = btnNewEventType;
     this.eventTypeList = eventTypeList;
@@ -74,12 +70,6 @@ public final class ActivityEventTypeManagementBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.back_btn;
-      Button backBtn = ViewBindings.findChildViewById(rootView, id);
-      if (backBtn == null) {
-        break missingId;
-      }
-
       id = R.id.btnNewEvent;
       Button btnNewEvent = ViewBindings.findChildViewById(rootView, id);
       if (btnNewEvent == null) {
@@ -104,7 +94,7 @@ public final class ActivityEventTypeManagementBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityEventTypeManagementBinding((RelativeLayout) rootView, backBtn, btnNewEvent,
+      return new ActivityEventTypeManagementBinding((RelativeLayout) rootView, btnNewEvent,
           btnNewEventType, eventTypeList, textView6);
     }
     String missingId = rootView.getResources().getResourceName(id);
