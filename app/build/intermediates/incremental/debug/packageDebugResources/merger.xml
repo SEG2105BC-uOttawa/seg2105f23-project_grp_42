@@ -7,6 +7,12 @@
         <item>system</item>
         <item>dark</item>
         <item>light</item>
+    </string-array><string-array name="number_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
     </string-array></file><file path="C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\res\values\attrs.xml" qualifiers=""><attr format="color" name="icon_tint"/></file><file path="C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\res\values\colors.xml" qualifiers=""><color name="black">#FF000000</color><color name="white">#FFFFFFFF</color><color name="custom_text_color">@color/black</color><color name="primary_color">#5698ed</color><color name="icon_tint_light">@color/black</color><color name="icon_tint_dark">@color/white</color></file><file path="C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\res\values\dimens.xml" qualifiers=""/><file path="C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\res\values\font_certs.xml" qualifiers=""><array name="com_google_android_gms_fonts_certs">
         <item>@array/com_google_android_gms_fonts_certs_dev</item>
         <item>@array/com_google_android_gms_fonts_certs_prod</item>

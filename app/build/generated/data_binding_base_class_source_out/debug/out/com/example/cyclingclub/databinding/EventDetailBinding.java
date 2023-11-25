@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,9 +44,6 @@ public final class EventDetailBinding implements ViewBinding {
   public final EditText editEventId;
 
   @NonNull
-  public final EditText editEventLevel;
-
-  @NonNull
   public final EditText editEventLimit;
 
   @NonNull
@@ -59,6 +57,9 @@ public final class EventDetailBinding implements ViewBinding {
 
   @NonNull
   public final TextView eventTypeDetail;
+
+  @NonNull
+  public final Spinner spinnerLevel;
 
   @NonNull
   public final TextView textView10;
@@ -94,9 +95,9 @@ public final class EventDetailBinding implements ViewBinding {
       @NonNull Button btnEventUpdate, @NonNull EditText editEventDate,
       @NonNull EditText editEventDistance, @NonNull EditText editEventElevation,
       @NonNull EditText editEventFee, @NonNull EditText editEventId,
-      @NonNull EditText editEventLevel, @NonNull EditText editEventLimit,
-      @NonNull EditText editEventRegion, @NonNull EditText editEventRoute,
-      @NonNull EditText editEventType, @NonNull TextView eventTypeDetail,
+      @NonNull EditText editEventLimit, @NonNull EditText editEventRegion,
+      @NonNull EditText editEventRoute, @NonNull EditText editEventType,
+      @NonNull TextView eventTypeDetail, @NonNull Spinner spinnerLevel,
       @NonNull TextView textView10, @NonNull TextView textView5, @NonNull TextView textView6,
       @NonNull TextView textview, @NonNull TextView textview11, @NonNull TextView textview12,
       @NonNull TextView textview13, @NonNull TextView textview3, @NonNull TextView textview4,
@@ -109,12 +110,12 @@ public final class EventDetailBinding implements ViewBinding {
     this.editEventElevation = editEventElevation;
     this.editEventFee = editEventFee;
     this.editEventId = editEventId;
-    this.editEventLevel = editEventLevel;
     this.editEventLimit = editEventLimit;
     this.editEventRegion = editEventRegion;
     this.editEventRoute = editEventRoute;
     this.editEventType = editEventType;
     this.eventTypeDetail = eventTypeDetail;
+    this.spinnerLevel = spinnerLevel;
     this.textView10 = textView10;
     this.textView5 = textView5;
     this.textView6 = textView6;
@@ -196,12 +197,6 @@ public final class EventDetailBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.editEventLevel;
-      EditText editEventLevel = ViewBindings.findChildViewById(rootView, id);
-      if (editEventLevel == null) {
-        break missingId;
-      }
-
       id = R.id.editEventLimit;
       EditText editEventLimit = ViewBindings.findChildViewById(rootView, id);
       if (editEventLimit == null) {
@@ -229,6 +224,12 @@ public final class EventDetailBinding implements ViewBinding {
       id = R.id.eventTypeDetail;
       TextView eventTypeDetail = ViewBindings.findChildViewById(rootView, id);
       if (eventTypeDetail == null) {
+        break missingId;
+      }
+
+      id = R.id.spinnerLevel;
+      Spinner spinnerLevel = ViewBindings.findChildViewById(rootView, id);
+      if (spinnerLevel == null) {
         break missingId;
       }
 
@@ -294,8 +295,8 @@ public final class EventDetailBinding implements ViewBinding {
 
       return new EventDetailBinding((RelativeLayout) rootView, btnEventDelete, btnEventUpdate,
           editEventDate, editEventDistance, editEventElevation, editEventFee, editEventId,
-          editEventLevel, editEventLimit, editEventRegion, editEventRoute, editEventType,
-          eventTypeDetail, textView10, textView5, textView6, textview, textview11, textview12,
+          editEventLimit, editEventRegion, editEventRoute, editEventType, eventTypeDetail,
+          spinnerLevel, textView10, textView5, textView6, textview, textview11, textview12,
           textview13, textview3, textview4, textview7);
     }
     String missingId = rootView.getResources().getResourceName(id);

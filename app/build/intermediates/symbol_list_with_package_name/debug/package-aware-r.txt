@@ -91,6 +91,7 @@ array appearance_values
 array com_google_android_gms_fonts_certs
 array com_google_android_gms_fonts_certs_dev
 array com_google_android_gms_fonts_certs_prod
+array number_array
 array preloaded_fonts
 attr SharedValue
 attr SharedValueId
@@ -3474,7 +3475,6 @@ id editEventDistance
 id editEventElevation
 id editEventFee
 id editEventId
-id editEventLevel
 id editEventLimit
 id editEventRegion
 id editEventRoute
@@ -3765,6 +3765,7 @@ id south
 id spacer
 id special_effects_controller_view_tag
 id spinner
+id spinnerLevel
 id spline
 id split_action_bar
 id spread

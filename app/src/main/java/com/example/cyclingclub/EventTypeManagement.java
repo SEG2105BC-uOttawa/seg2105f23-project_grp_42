@@ -25,6 +25,10 @@ import android.widget.Button;
 import android.text.TextUtils;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Spinner;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+
 
 public class EventTypeManagement extends AppCompatActivity {
 
@@ -36,6 +40,7 @@ public class EventTypeManagement extends AppCompatActivity {
 
     private EventType selectedEventType;
     private User user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -232,11 +237,12 @@ public class EventTypeManagement extends AppCompatActivity {
     }
 
 
-    private void onClickBack() {
-        onBackPressed();
-    }
-
     public void onClickAddEvent(View view) {
+
+        if(selectedEventType == null) {
+            displayPopupMessage("Must select event type first!", view);
+            return;
+        }
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -252,7 +258,7 @@ public class EventTypeManagement extends AppCompatActivity {
         EditText editEventRoute = (EditText) dialogView.findViewById(R.id.editEventRoute);
         EditText editEventDistance = (EditText) dialogView.findViewById(R.id.editEventDistance);
         EditText editEventElevation = (EditText) dialogView.findViewById(R.id.editEventElevation);
-        EditText editEventLevel = (EditText) dialogView.findViewById(R.id.editEventLevel);
+        Spinner spinner = (Spinner) dialogView.findViewById(R.id.spinnerLevel);
         EditText editEventFee = (EditText) dialogView.findViewById(R.id.editEventFee);
         EditText editEventLimit = (EditText) dialogView.findViewById(R.id.editEventLimit);
 
@@ -260,13 +266,12 @@ public class EventTypeManagement extends AppCompatActivity {
         editEventRegion.setText("");
         editEventDate.setText("");
         editEventRoute.setText("");
-
-
         editEventDistance.setText("0");
         editEventElevation.setText("0");
-        editEventLevel.setText("0");
         editEventFee.setText("0");
         editEventLimit.setText("0");
+
+
 
 
         Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
@@ -281,8 +286,26 @@ public class EventTypeManagement extends AppCompatActivity {
         TextView eventTypeDetail = (TextView) dialogView.findViewById(R.id.eventTypeDetail);
         eventTypeDetail.setText(selectedEventType.getDetail());
 
+
+
+
         final AlertDialog b = dialogBuilder.create();
+
+
+        // Create an ArrayAdapter with numeric values from 1 to 5
+        if (spinner != null) {
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                    b.getContext(),
+                    R.array.number_array,
+                    android.R.layout.simple_spinner_item
+            );
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+            spinner.setSelection(0);
+        }
+
         b.show();
+
 
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -296,12 +319,12 @@ public class EventTypeManagement extends AppCompatActivity {
 
                 String distance = editEventDistance.getText().toString().trim();
                 String elevation = editEventElevation.getText().toString().trim();
-                String level = editEventLevel.getText().toString().trim();
+                int level = Integer.parseInt( spinner.getSelectedItem().toString());
                 String fee = editEventFee.getText().toString().trim();
                 String limit = editEventLimit.getText().toString().trim();
 
 
-                String message=validateInput(id,route,region,date,distance,elevation,level,fee,limit);
+                String message=validateInput(id,route,region,date,distance,elevation,fee,limit);
                 if(message.equals("")){
 
 
@@ -310,7 +333,7 @@ public class EventTypeManagement extends AppCompatActivity {
                     event.setRoute(route);
                     event.setDistance(Integer.parseInt(distance));
                     event.setElevation(Integer.parseInt(elevation));
-                    event.setLevel(Integer.parseInt(level));
+                    event.setLevel(level);
                     event.setFee(Double.parseDouble(fee));
                     event.setLimit(Integer.parseInt(limit));
 
@@ -372,7 +395,7 @@ public class EventTypeManagement extends AppCompatActivity {
         return message;
     }
 
-    private String validateInput(String id,String route,String region,String date,String distance,String elevation,String level,String fee,String limit ) {
+    private String validateInput(String id,String route,String region,String date,String distance,String elevation,String fee,String limit ) {
         InputValidator validator = InputValidator.getInstance();
 
         String message="";
@@ -384,7 +407,7 @@ public class EventTypeManagement extends AppCompatActivity {
         if (!validator.isValidDate(date)) { message= message+ "Date must be in format YYYY-MM-DD";}
         if (!validator.isValidNumber(distance)) { message= message+ "Distance must be a number";}
         if (!validator.isValidNumber(elevation)) { message= message+ "Elevation must be a number";}
-        if (!validator.isValidNumber(level)) { message= message+ "Level must be a number";}
+       // if (!validator.isValidNumber(level)) { message= message+ "Level must be a number";}
         if (!validator.isValidNumber(fee)) { message= message+ "Fee must be a number";}
         if (!validator.isValidNumber(limit)) { message= message+ "Limit must be a number";}
 

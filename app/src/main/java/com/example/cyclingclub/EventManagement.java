@@ -100,12 +100,11 @@ public class EventManagement extends AppCompatActivity {
 
         Query query;
 
-        if(user.getRole().equals("Cycling Club")){
+        if(user.getRole().equals("cycling club")){
              query = databaseEvents.orderByChild("username").equalTo(user.getUsername());
         }else{
              query = databaseEvents;
         }
-
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -177,7 +176,7 @@ public class EventManagement extends AppCompatActivity {
         EditText editEventRoute = (EditText) dialogView.findViewById(R.id.editEventRoute);
         EditText editEventDistance = (EditText) dialogView.findViewById(R.id.editEventDistance);
         EditText editEventElevation = (EditText) dialogView.findViewById(R.id.editEventElevation);
-        EditText editEventLevel = (EditText) dialogView.findViewById(R.id.editEventLevel);
+        Spinner spinner = (Spinner) dialogView.findViewById(R.id.spinnerLevel);
         EditText editEventFee = (EditText) dialogView.findViewById(R.id.editEventFee);
         EditText editEventLimit = (EditText) dialogView.findViewById(R.id.editEventLimit);
 
@@ -189,7 +188,6 @@ public class EventManagement extends AppCompatActivity {
 
         editEventDistance.setText(Integer.toString(event.getDistance()));
         editEventElevation.setText(Integer.toString(event.getElevation()));
-        editEventLevel.setText(Integer.toString(event.getLevel()));
         editEventFee.setText(Double.toString(event.getFee()));
         editEventLimit.setText(Integer.toString(event.getLimit()));
 
@@ -208,6 +206,18 @@ public class EventManagement extends AppCompatActivity {
         eventTypeDetail.setText(event.getDetail());
 
         final AlertDialog b = dialogBuilder.create();
+        // Create an ArrayAdapter with numeric values from 1 to 5
+        if (spinner != null) {
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                    b.getContext(),
+                    R.array.number_array,
+                    android.R.layout.simple_spinner_item
+            );
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+            spinner.setSelection(event.getLevel()-1);
+        }
+
         b.show();
 
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
@@ -222,12 +232,12 @@ public class EventManagement extends AppCompatActivity {
 
                 String distance = editEventDistance.getText().toString().trim();
                 String elevation = editEventElevation.getText().toString().trim();
-                String level = editEventLevel.getText().toString().trim();
+                int level = Integer.parseInt( spinner.getSelectedItem().toString());
                 String fee = editEventFee.getText().toString().trim();
                 String limit = editEventLimit.getText().toString().trim();
 
 
-                 String message=validateInput(id,route,region,date,distance,elevation,level,fee,limit);
+                 String message=validateInput(id,route,region,date,distance,elevation,fee,limit);
                  if(message.equals("")){
 
 
@@ -238,7 +248,7 @@ public class EventManagement extends AppCompatActivity {
                     event.setDate(date);
                     event.setDistance(Integer.parseInt(distance));
                     event.setElevation(Integer.parseInt(elevation));
-                    event.setLevel(Integer.parseInt(level));
+                    event.setLevel(level);
                     event.setFee(Double.parseDouble(fee));
                     event.setLimit(Integer.parseInt(limit));
 
@@ -291,7 +301,7 @@ public class EventManagement extends AppCompatActivity {
     }
 
 
-    private String validateInput(String id,String route,String region,String date,String distance,String elevation,String level,String fee,String limit ) {
+    private String validateInput(String id,String route,String region,String date,String distance,String elevation,String fee,String limit ) {
         InputValidator validator = InputValidator.getInstance();
 
         String message="";
@@ -303,7 +313,7 @@ public class EventManagement extends AppCompatActivity {
         if (!validator.isValidDate(date)) { message= message+ "Date must be in format YYYY-MM-DD";}
         if (!validator.isValidNumber(distance)) { message= message+ "Distance must be a number";}
         if (!validator.isValidNumber(elevation)) { message= message+ "Elevation must be a number";}
-        if (!validator.isValidNumber(level)) { message= message+ "Level must be a number";}
+        //if (!validator.isValidNumber(level)) { message= message+ "Level must be a number";}
         if (!validator.isValidNumber(fee)) { message= message+ "Fee must be a number";}
         if (!validator.isValidNumber(limit)) { message= message+ "Limit must be a number";}
 

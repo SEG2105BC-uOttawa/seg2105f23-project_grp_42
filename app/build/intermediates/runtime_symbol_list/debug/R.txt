@@ -90,6 +90,7 @@ int array appearance_values 0x7f030001
 int array com_google_android_gms_fonts_certs 0x7f030002
 int array com_google_android_gms_fonts_certs_dev 0x7f030003
 int array com_google_android_gms_fonts_certs_prod 0x7f030004
+int array number_array 0x7f030006
 int array preloaded_fonts 0x7f030005
 int attr SharedValue 0x7f040000
 int attr SharedValueId 0x7f040001
@@ -3473,7 +3474,6 @@ int id editEventDistance 0x7f0a00e4
 int id editEventElevation 0x7f0a00e5
 int id editEventFee 0x7f0a00e6
 int id editEventId 0x7f0a00e7
-int id editEventLevel 0x7f0a00e8
 int id editEventLimit 0x7f0a00e9
 int id editEventRegion 0x7f0a00ea
 int id editEventRoute 0x7f0a00eb
@@ -3764,6 +3764,7 @@ int id south 0x7f0a0207
 int id spacer 0x7f0a0208
 int id special_effects_controller_view_tag 0x7f0a0209
 int id spinner 0x7f0a020a
+int id spinnerLevel 0x7f0a0288
 int id spline 0x7f0a020b
 int id split_action_bar 0x7f0a020c
 int id spread 0x7f0a020d

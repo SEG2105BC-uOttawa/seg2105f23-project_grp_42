@@ -118,14 +118,12 @@
                 android:layout_weight="1"
                 android:text="@string/eventLevel" />
 
-            <EditText
-                android:id="@+id/editEventLevel"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/spinnerLevel"
+                android:layout_width="175dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+                android:entries="@array/number_array"/>
 
         </LinearLayout>
 
