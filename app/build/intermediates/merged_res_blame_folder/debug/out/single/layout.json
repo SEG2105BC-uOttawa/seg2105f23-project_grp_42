@@ -1,102 +1,90 @@
 [
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\event_detail.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\event_detail.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/user_list.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/user_list.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\fragment_profile.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\fragment_profile.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/activity_user_account_management.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/activity_user_account_management.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\activity_user_account_management.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_user_account_management.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/admin_create_delete_event.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/admin_create_delete_event.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_main.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/event_detail.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/event_detail.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\activity_welcome_screen.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_welcome_screen.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/creation_screen.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/creation_screen.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\activity_signup.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_signup.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/event_type_list.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/event_type_list.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\fragment_first.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\fragment_first.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/fragment_home.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/fragment_home.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\creation_screen.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\creation_screen.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/activity_event_type_management.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/activity_event_type_management.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\event_type_list.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\event_type_list.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/fragment_first.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/fragment_first.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\activity_login.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_login.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/item_view.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/item_view.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\event_update.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\event_update.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/activity_welcome_screen.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/activity_welcome_screen.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\user_list.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\user_list.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/hill_climb_attributes.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/hill_climb_attributes.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\hill_climb_attributes.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\hill_climb_attributes.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/activity_signup.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/activity_signup.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\activity_event_management.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_event_management.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/fragment_profile.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/fragment_profile.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\item_view.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\item_view.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/eventtype_detail.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/eventtype_detail.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\event_update_users.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\event_update_users.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/user_detail.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/user_detail.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\fragment_home.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\fragment_home.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/custom_preference_category_layout.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/custom_preference_category_layout.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-mergeDebugResources-50:/layout/fragment_profile.xml",
-        "source": "com.example.cyclingclub.app-main-53:/layout/fragment_profile.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/fragment_second.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/fragment_second.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\admin_create_delete_event.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\admin_create_delete_event.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/activity_main.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\user_detail.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\user_detail.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/activity_event_management.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/activity_event_management.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\custom_preference_category_layout.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\custom_preference_category_layout.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/event_update_users.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/event_update_users.xml"
     },
     {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\eventtype_update.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\eventtype_update.xml"
-    },
-    {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\activity_event_type_management.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_event_type_management.xml"
-    },
-    {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\fragment_second.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\fragment_second.xml"
-    },
-    {
-        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\eventtype_detail.xml",
-        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\eventtype_detail.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-4:/layout/activity_login.xml",
+        "source": "com.example.cyclingclub.app-main-7:/layout/activity_login.xml"
     }
 ]

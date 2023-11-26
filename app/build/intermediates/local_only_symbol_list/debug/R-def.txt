@@ -89,10 +89,10 @@ id event_types_list
 id fragment_container
 id hillClimbTitle
 id homeItem
-id imageView
 id linearLayout
 id linearLayout2
 id listEvents
+id logoView
 id memberLoginHeader
 id number_2_hillclimb
 id number_3_hillclimb

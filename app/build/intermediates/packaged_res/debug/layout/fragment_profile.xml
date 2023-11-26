@@ -21,7 +21,7 @@
             android:text="@string/cyclingClubProfile" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/logoView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
