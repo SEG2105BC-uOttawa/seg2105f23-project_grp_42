@@ -252,5 +252,33 @@ public class ProfileFragment extends Fragment {
 		return message;
 	}
 
+	private void selectFromPhone(){
+
+	}
+
+	private void checkCameraPerms(){
+
+	}
+
+	private void requestCameraPerms(){
+
+	}
+	private void checkStoragePerms(){
+
+	}
+
+	private void requestStoragePerms(){
+
+	}
+	private void selectFromCamera(){
+
+	}
+
+	private void selectFromGallery(){
+
+	}
+
+
+
 
 }
