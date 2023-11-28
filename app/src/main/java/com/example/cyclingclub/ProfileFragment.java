@@ -122,6 +122,14 @@ public class ProfileFragment extends Fragment {
 		pd = new ProgressDialog(this.getContext());
 		clubPicture = pd.findViewById(R.id.logoView);
 		Object storageReference = FirebaseStorage.getInstance().getReference();
+		clubPicture.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				pd.setMessage("Updating Profile Picture");
+				profileOrCoverPhoto = "image";
+				selectFromPhone();
+			}
+		});
 
 		//Bundle bundle = getArguments();
 		//User user = (User) bundle.getSerializable("user");;
@@ -169,6 +177,7 @@ public class ProfileFragment extends Fragment {
 				EditText regionEdit =(EditText) getView().findViewById(R.id.editClubRegion);
 				EditText phoneNumberEdit =(EditText) getView().findViewById(R.id.editPhoneNumber);
 				EditText mediaLinkEdit =(EditText) getView().findViewById(R.id.editMediaLink);
+				ImageView pfpEdit = (ImageView) getView().findViewById(R.id.logoView);
 
 				String clubName= clubNameEdit.getText().toString().trim();
 				String contact= contactEdit.getText().toString().trim();
