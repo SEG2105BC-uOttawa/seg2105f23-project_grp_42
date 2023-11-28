@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -75,6 +76,7 @@ public class ProfileFragment extends Fragment {
 	DatabaseReference databaseReference;
 	FirebaseUser firebaseUser;
 	Uri imageuri;
+	ImageView clubPicture;
 	private static final int STORAGE_REQUEST = 200;
 	private static final int IMAGEPICK_GALLERY_REQUEST = 300;
 	private static final int IMAGE_PICKCAMERA_REQUEST = 400;
@@ -117,6 +119,8 @@ public class ProfileFragment extends Fragment {
 
 		cameraPerms = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 		storagePerms = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+		pd = new ProgressDialog(this.getContext());
+		clubPicture = pd.findViewById(R.id.logoView);
 		Object storageReference = FirebaseStorage.getInstance().getReference();
 
 		//Bundle bundle = getArguments();
