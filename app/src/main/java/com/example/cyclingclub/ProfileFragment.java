@@ -410,22 +410,6 @@ public class ProfileFragment extends Fragment {
 
 	}
 
-	private void pickFromCamera() {
-		ContentValues contentValues = new ContentValues();
-		contentValues.put(MediaStore.Images.Media.TITLE, "Temp_pic");
-		contentValues.put(MediaStore.Images.Media.DESCRIPTION, "Temp Description");
-		imageuri = this.getContext().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-		Intent camerIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		camerIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageuri);
-		startActivityForResult(camerIntent, IMAGE_PICKCAMERA_REQUEST);
-	}
-
-	private void pickFromGallery() {
-		Intent galleryIntent = new Intent(Intent.ACTION_PICK);
-		galleryIntent.setType("image/*");
-		startActivityForResult(galleryIntent, IMAGEPICK_GALLERY_REQUEST);
-	}
-
 	private void uploadProfileCoverPhoto(final Uri uri) {
 		pd.show();
 
