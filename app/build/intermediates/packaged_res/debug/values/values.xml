@@ -42,6 +42,7 @@
     <color name="primary_color">#5698ed</color>
     <color name="white">#FFFFFFFF</color>
     <string name="Description">Description</string>
+    <string name="Search">Search Club</string>
     <string name="account_hint">(account type)</string>
     <string name="addNewEventType">New Event Type</string>
     <string name="app_name">CyclingClub</string>
@@ -63,7 +64,7 @@
     <string name="eventDistance">Route Distance</string>
     <string name="eventDuration">Event Duration</string>
     <string name="eventFee">Registration Fee</string>
-    <string name="eventID">Event ID</string>
+    <string name="eventID">Event Name</string>
     <string name="eventLevel">Difficulty Level</string>
     <string name="eventLimit">Participant Limit</string>
     <string name="eventList">List of Events</string>
@@ -130,8 +131,10 @@
     <string name="profile_text">Profile</string>
     <string name="project_app_name">GCC</string>
     <string name="project_id" translatable="false">cyclingclubbackup</string>
+    <string name="rateClub">Rate Club</string>
     <string name="region">Region</string>
     <string name="routeElevation">Route Elevation</string>
+    <string name="searchBy">Search by</string>
     <string name="settings_text">Settings</string>
     <string name="sign_up_text">Sign Up</string>
     <string name="socialMediaLink">Social Media Link</string>

@@ -50,7 +50,9 @@ id btnLogin
 id btnNewEvent
 id btnNewEventType
 id btnProfileUpdate
+id btnRateClub
 id btnRegistration
+id btnSearchClub
 id btnSignUp
 id btnUsers
 id btn_apply_hillclimb
@@ -78,6 +80,9 @@ id editEventType
 id editEventTypeDetail
 id editMediaLink
 id editPhoneNumber
+id editSearchClubName
+id editSearchEventName
+id editSearchEventType
 id editTextUsername
 id emailTextField
 id eventName
@@ -92,6 +97,7 @@ id homeItem
 id linearLayout
 id linearLayout2
 id listEvents
+id listViewClubs
 id logoView
 id memberLoginHeader
 id number_2_hillclimb
@@ -119,7 +125,11 @@ id textView12
 id textView13
 id textView14
 id textView15
+id textView17
+id textView18
+id textView19
 id textView2
+id textView20
 id textView3
 id textView4
 id textView5
@@ -147,6 +157,7 @@ layout activity_event_management
 layout activity_event_type_management
 layout activity_login
 layout activity_main
+layout activity_search_for_club
 layout activity_signup
 layout activity_user_account_management
 layout activity_welcome_screen
@@ -169,6 +180,7 @@ menu bottom_nav_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 string Description
+string Search
 string account_hint
 string addNewEventType
 string app_name
@@ -222,8 +234,10 @@ string previous
 string profile_text
 string project_app_name
 string project_id
+string rateClub
 string region
 string routeElevation
+string searchBy
 string settings_text
 string sign_up_text
 string socialMediaLink

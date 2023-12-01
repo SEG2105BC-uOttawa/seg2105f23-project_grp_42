@@ -114,7 +114,9 @@ public class HomeFragment extends Fragment {
 			btnRegistration.setOnClickListener(new View.OnClickListener() {
 						@Override
 						public void onClick(View view) {
-
+							Intent intent = new Intent(getContext(), SearchForClub.class);
+							intent.putExtra("user", user);
+							startActivity(intent);
 						}
 			});
 		}

@@ -251,6 +251,12 @@ public class Administrator extends User{
     public static DatabaseReference getEventDB(){
         return FirebaseDatabase.getInstance().getReference("Events1");
     };
+
+
+    public static DatabaseReference getClubDB(){
+        return FirebaseDatabase.getInstance().getReference("ClubProfile");
+    };
+
     public static DatabaseReference getEventTypeDB(){
         return FirebaseDatabase.getInstance().getReference("EventTypes");
     };

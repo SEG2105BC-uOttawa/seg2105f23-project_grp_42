@@ -3379,7 +3379,9 @@ int id btnLogin 0x7f0a0084
 int id btnNewEvent 0x7f0a0085
 int id btnNewEventType 0x7f0a0086
 int id btnProfileUpdate 0x7f0a0087
+int id btnRateClub 0x7f0a0287
 int id btnRegistration 0x7f0a0088
+int id btnSearchClub 0x7f0a0288
 int id btnSignUp 0x7f0a0089
 int id btnUsers 0x7f0a008a
 int id btn_apply_hillclimb 0x7f0a008b
@@ -3481,6 +3483,9 @@ int id editEventType 0x7f0a00ea
 int id editEventTypeDetail 0x7f0a00eb
 int id editMediaLink 0x7f0a00ec
 int id editPhoneNumber 0x7f0a00ed
+int id editSearchClubName 0x7f0a0291
+int id editSearchEventName 0x7f0a0292
+int id editSearchEventType 0x7f0a0293
 int id editTextUsername 0x7f0a00ee
 int id edit_query 0x7f0a00ef
 int id edit_text_id 0x7f0a00f0
@@ -3566,6 +3571,7 @@ int id linearLayout 0x7f0a013f
 int id linearLayout2 0x7f0a0140
 int id listEvents 0x7f0a0141
 int id listMode 0x7f0a0142
+int id listViewClubs 0x7f0a028c
 int id list_item 0x7f0a0143
 int id locale 0x7f0a0144
 int id logoView 0x7f0a0145
@@ -3817,7 +3823,11 @@ int id textView12 0x7f0a023a
 int id textView13 0x7f0a023b
 int id textView14 0x7f0a023c
 int id textView15 0x7f0a023d
+int id textView17 0x7f0a028d
+int id textView18 0x7f0a028e
+int id textView19 0x7f0a028f
 int id textView2 0x7f0a023e
+int id textView20 0x7f0a0290
 int id textView3 0x7f0a023f
 int id textView4 0x7f0a0240
 int id textView5 0x7f0a0241
@@ -4012,6 +4022,7 @@ int layout activity_event_management 0x7f0d001c
 int layout activity_event_type_management 0x7f0d001d
 int layout activity_login 0x7f0d001e
 int layout activity_main 0x7f0d001f
+int layout activity_search_for_club 0x7f0d0097
 int layout activity_signup 0x7f0d0020
 int layout activity_user_account_management 0x7f0d0021
 int layout activity_welcome_screen 0x7f0d0022
@@ -4137,6 +4148,7 @@ int mipmap ic_launcher_round 0x7f100001
 int plurals mtrl_badge_content_description 0x7f110000
 int raw firebase_common_keep 0x7f120000
 int string Description 0x7f130000
+int string Search 0x7f13010c
 int string abc_action_bar_home_description 0x7f130001
 int string abc_action_bar_up_description 0x7f130002
 int string abc_action_menu_overflow_description 0x7f130003
@@ -4383,8 +4395,10 @@ int string previous 0x7f1300f3
 int string profile_text 0x7f1300f4
 int string project_app_name 0x7f1300f5
 int string project_id 0x7f1300f6
+int string rateClub 0x7f13010d
 int string region 0x7f1300f7
 int string routeElevation 0x7f1300f8
+int string searchBy 0x7f13010e
 int string search_menu_title 0x7f1300f9
 int string searchbar_scrolling_view_behavior 0x7f1300fa
 int string searchview_clear_text_content_description 0x7f1300fb
