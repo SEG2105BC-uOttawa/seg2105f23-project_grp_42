@@ -78,6 +78,8 @@ public class HomeFragment extends Fragment {
 			Button btnUsers = (Button) rootView.findViewById(R.id.btnUsers);
 			Button btnEvents = (Button) rootView.findViewById(R.id.btnEvent);
 			Button btnRegistration = (Button) rootView.findViewById(R.id.btnRegistration);
+			Button btnToClubFunction = (Button) rootView.findViewById(R.id.btnToClubFunction);
+
 
 			if (user.getRole().equals("Administrator")) {
 				btnRegistration.setEnabled(false);
@@ -119,6 +121,16 @@ public class HomeFragment extends Fragment {
 							intent.putExtra("user", user);
 							startActivity(intent);
 						}
+			});
+
+			btnToClubFunction.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					Intent intent = new Intent(getContext(), SearchForClub.class);
+					//Intent intent = new Intent(getContext(), RegistrationManagement.class);
+					intent.putExtra("user", user);
+					startActivity(intent);
+				}
 			});
 		}
 

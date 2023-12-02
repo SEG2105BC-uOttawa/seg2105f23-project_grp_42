@@ -72,6 +72,69 @@ public class EventManagement extends AppCompatActivity {
         eventsList = new ArrayList<String>();
 
 
+        ArrayAdapter<Event> eventAdapter = new ArrayAdapter<Event>(
+                this,
+                android.R.layout.simple_list_item_2, // Built-in layout for a two-line list itemme
+                android.R.id.text1, // ID of the TextView for the name
+                events
+        ) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                // Customize the appearance of the list item
+                View view = super.getView(position, convertView, parent);
+
+                // Get the Person object for this position
+                Event ev = events.get(position);
+
+                // Find the TextViews in the layout
+                TextView TextView1 = view.findViewById(android.R.id.text1);
+                TextView TextView2 = view.findViewById(android.R.id.text2);
+
+                // Set the name and age in the TextViews
+                TextView1.setText("Name:"+ev.getId()+ "     Type:"+ev.getType());
+                TextView2.setText("Region:"+ev.getRegion()+"    Date:"+ev.getDate());
+
+                return view;
+            }
+        };
+
+        listViewEvents.setAdapter(eventAdapter);
+
+        DatabaseReference  databaseEvents=Administrator.getEventDB();
+
+        Query query;
+
+        if(user.getRole().equals("cycling club")){
+            query = databaseEvents.orderByChild("username").equalTo(user.getUsername());
+        }else{
+            query = databaseEvents;
+        }
+
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                events.clear();
+                eventsList.clear();
+                for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
+                    Event event = postSnapShot.getValue(Event.class);
+                    events.add(event);
+                    eventsList.add(event.getId()+ " : "+ event.getType()+" : "+event.getDate());
+                }
+                //ArrayAdapter<String> itemsAdapter =
+                //        new ArrayAdapter<String>(EventManagement.this, R.layout.item_view, R.id.textViewItem,eventsList);
+
+                eventAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("Error querying the database: " + databaseError.getMessage());
+            }
+        });
+
+
+
+
         AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -82,11 +145,6 @@ public class EventManagement extends AppCompatActivity {
         };
         listViewEvents.setOnItemLongClickListener(longClickListener);
 
-        //dropdownType = findViewById(R.id.spinnerType);
-        //String[] Types = {"Time Trial", "Hill Climb", "Road Stage Race", "Road Race", "Group Rides"};
-
-        //ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Types);
-        //dropdownType.setAdapter(adapter);
 
         Button buttonNewEvent = (Button) findViewById(R.id.btnAddEvent);
         if (user.getRole().equals("Administrator") || user.getRole().equals("participant")) {
@@ -101,38 +159,6 @@ public class EventManagement extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        DatabaseReference  databaseEvents=Administrator.getEventDB();
-
-        Query query;
-
-        if(user.getRole().equals("cycling club")){
-             query = databaseEvents.orderByChild("username").equalTo(user.getUsername());
-        }else{
-             query = databaseEvents;
-        }
-
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                events.clear();
-                eventsList.clear();
-                for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
-                    Event event = postSnapShot.getValue(Event.class);
-                    events.add(event);
-                    eventsList.add(event.getId()+ " : "+ event.getType()+" : "+event.getDate());
-                }
-                ArrayAdapter<String> itemsAdapter =
-                        new ArrayAdapter<String>(EventManagement.this, R.layout.item_view, R.id.textViewItem,eventsList);
-
-                listViewEvents.setAdapter(itemsAdapter);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("Error querying the database: " + databaseError.getMessage());
-            }
-        });
-
 
 
     }

@@ -5,8 +5,8 @@ public class Registration {
     private Event event;
     private User participant;
     private String date;
-    private boolean isAccepted;
-    private boolean isAwarded;
+    private boolean Accepted;
+    private boolean Awarded;
 
 
     // Constructor (if needed)
@@ -15,8 +15,8 @@ public class Registration {
         this.event=event;
         this.participant=participant;
         this.date="2023-12-01";
-        this.isAccepted=false;
-        this.isAwarded=false;
+        this.Accepted=false;
+        this.Awarded=false;
     }
 
 
@@ -57,21 +57,21 @@ public class Registration {
     }
 
     // Getter and Setter methods for 'accepted'
-    public boolean isAccepted() {
-        return isAccepted;
+    public boolean getAccepted() {
+        return Accepted;
     }
 
-    public void setIsAccepted(boolean isAccepted) {
-        this.isAccepted = isAccepted;
+    public void setAccepted(boolean Accepted) {
+        this.Accepted = Accepted;
     }
 
     // Getter and Setter methods for 'award'
-    public boolean isAwarded() {
-        return isAwarded;
+    public boolean getAwarded() {
+        return Awarded;
     }
 
-    public void setIsAward(boolean isAwarded) {
-        this.isAwarded = isAwarded;
+    public void setAwarded(boolean Awarded) {
+        this.Awarded = Awarded;
     }
 
 }

@@ -76,6 +76,12 @@
             android:layout_gravity="center"
             android:text="@string/btnRegistration" />
 
+        <Button
+            android:id="@+id/btnToClubFunction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rateaClub" />
+
     </LinearLayout>
 
 </FrameLayout>

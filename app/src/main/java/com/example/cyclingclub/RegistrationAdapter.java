@@ -36,17 +36,18 @@ public class RegistrationAdapter extends ArrayAdapter<Registration> {
         // Set up the Switch
         Switch switchAccept = itemView.findViewById(R.id.switchAccept);
         Switch switchAward = itemView.findViewById(R.id.switchAward);
-        switchAccept.setChecked(reg.isAccepted());
-        switchAward.setChecked(reg.isAwarded());
+
+        switchAccept.setChecked(reg.getAccepted());
+        switchAward.setChecked(reg.getAwarded());
 
         // Handle Switch state changes if needed
         switchAccept.setOnCheckedChangeListener((buttonView, isChecked) -> {
             // Update your boolean variable in the data model when the Switch state changes
-            reg.setIsAccepted(isChecked);
+            reg.setAccepted(isChecked);
         });
         switchAward.setOnCheckedChangeListener((buttonView, isChecked) -> {
             // Update your boolean variable in the data model when the Switch state changes
-            reg.setIsAward(isChecked);
+            reg.setAwarded(isChecked);
         });
 
         return itemView;

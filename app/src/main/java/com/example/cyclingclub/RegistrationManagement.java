@@ -34,19 +34,13 @@ public class RegistrationManagement extends AppCompatActivity {
 
         Button btnUpdate = (Button) findViewById(R.id.btnRegistrationUpdate);
 
-        if((user.getRole().equals("Administrator"))){
+        if(user.getRole().equals("Administrator")){
             btnUpdate.setEnabled(false);
         }
 
         registrations = new ArrayList<>();
+        RegistrationAdapter regAdapter= new RegistrationAdapter(RegistrationManagement.this, registrations);
 
-
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -56,7 +50,6 @@ public class RegistrationManagement extends AppCompatActivity {
                     registrations.add(reg);
                 }
 
-                RegistrationAdapter regAdapter= new RegistrationAdapter(RegistrationManagement.this, registrations);
                 listViewRegistration.setAdapter(regAdapter);
 
             }
@@ -67,6 +60,26 @@ public class RegistrationManagement extends AppCompatActivity {
         };
         DatabaseReference dref = FirebaseDatabase.getInstance().getReference("Registration");
         dref.addValueEventListener(postListener);
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //DatabaseReference dref = FirebaseDatabase.getInstance().getReference("Registration");
+                for(Registration reg:registrations){
+                    dref.child(reg.getKey()).setValue(reg);
+                }
+                regAdapter.notifyDataSetChanged();
+            }
+        });
+
+
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
     }
 
 

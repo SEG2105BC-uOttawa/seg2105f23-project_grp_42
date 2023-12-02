@@ -33,6 +33,9 @@ public final class FragmentHomeBinding implements ViewBinding {
   public final Button btnRegistration;
 
   @NonNull
+  public final Button btnToClubFunction;
+
+  @NonNull
   public final Button btnUsers;
 
   @NonNull
@@ -43,12 +46,14 @@ public final class FragmentHomeBinding implements ViewBinding {
 
   private FragmentHomeBinding(@NonNull FrameLayout rootView, @NonNull TextView accountType,
       @NonNull Button btnEvent, @NonNull Button btnEventType, @NonNull Button btnRegistration,
-      @NonNull Button btnUsers, @NonNull TextView showUsername, @NonNull TextView welcomeText) {
+      @NonNull Button btnToClubFunction, @NonNull Button btnUsers, @NonNull TextView showUsername,
+      @NonNull TextView welcomeText) {
     this.rootView = rootView;
     this.accountType = accountType;
     this.btnEvent = btnEvent;
     this.btnEventType = btnEventType;
     this.btnRegistration = btnRegistration;
+    this.btnToClubFunction = btnToClubFunction;
     this.btnUsers = btnUsers;
     this.showUsername = showUsername;
     this.welcomeText = welcomeText;
@@ -105,6 +110,12 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnToClubFunction;
+      Button btnToClubFunction = ViewBindings.findChildViewById(rootView, id);
+      if (btnToClubFunction == null) {
+        break missingId;
+      }
+
       id = R.id.btnUsers;
       Button btnUsers = ViewBindings.findChildViewById(rootView, id);
       if (btnUsers == null) {
@@ -124,7 +135,7 @@ public final class FragmentHomeBinding implements ViewBinding {
       }
 
       return new FragmentHomeBinding((FrameLayout) rootView, accountType, btnEvent, btnEventType,
-          btnRegistration, btnUsers, showUsername, welcomeText);
+          btnRegistration, btnToClubFunction, btnUsers, showUsername, welcomeText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

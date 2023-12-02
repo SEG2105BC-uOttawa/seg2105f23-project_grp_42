@@ -42,9 +42,11 @@
     <color name="primary_color">#5698ed</color>
     <color name="white">#FFFFFFFF</color>
     <string name="Description">Description</string>
+    <string name="From">From</string>
     <string name="Rate">Rate</string>
     <string name="Retister">Register</string>
     <string name="Search">Search Club</string>
+    <string name="To">To</string>
     <string name="accepted">Accepted</string>
     <string name="account_hint">(account type)</string>
     <string name="addNewEventType">New Event Type</string>
@@ -139,10 +141,13 @@
     <string name="project_id" translatable="false">cyclingclubbackup</string>
     <string name="rateCLub">Rate Club</string>
     <string name="rateClub">Rate Club</string>
+    <string name="rateaClub">Rate Club</string>
     <string name="region">Region</string>
     <string name="registrationTitle">Registration management</string>
     <string name="routeElevation">Route Elevation</string>
     <string name="searchBy">Search by</string>
+    <string name="searchEvent">Search Events</string>
+    <string name="searchEventBy">Search Events By</string>
     <string name="settings_text">Settings</string>
     <string name="sign_up_text">Sign Up</string>
     <string name="socialMediaLink">Social Media Link</string>

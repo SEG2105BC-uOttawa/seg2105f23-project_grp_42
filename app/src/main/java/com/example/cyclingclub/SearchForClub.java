@@ -78,6 +78,8 @@ public class SearchForClub extends AppCompatActivity {
             }
         };
 
+        ListView listView = findViewById(R.id.listViewClubs);
+        listView.setAdapter(adapter);
 
         DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("ClubProfile");
 
@@ -89,8 +91,7 @@ public class SearchForClub extends AppCompatActivity {
                     CyclingClub club = snapshot.getValue(CyclingClub.class);
                     clubs.add(club);
                 }
-                ListView listView = findViewById(R.id.listViewClubs);
-                listView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -112,7 +113,7 @@ public class SearchForClub extends AppCompatActivity {
             }
         });
 
-        ListView listView = findViewById(R.id.listViewClubs);
+        //ListView listView = findViewById(R.id.listViewClubs);
         AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {

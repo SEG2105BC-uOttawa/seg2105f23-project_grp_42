@@ -5,8 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,28 +20,72 @@ import java.lang.String;
 
 public final class ActivityEventManagementBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final LinearLayout rootView;
 
   @NonNull
   public final Button btnAddEvent;
 
   @NonNull
+  public final Button btnSearchEvent;
+
+  @NonNull
+  public final EditText editSearchFrom;
+
+  @NonNull
+  public final EditText editSearchRegion;
+
+  @NonNull
+  public final EditText editSearchTo;
+
+  @NonNull
+  public final EditText editSearchType;
+
+  @NonNull
   public final ListView listEvents;
+
+  @NonNull
+  public final TextView textView25;
+
+  @NonNull
+  public final TextView textView29;
 
   @NonNull
   public final TextView textView3;
 
-  private ActivityEventManagementBinding(@NonNull RelativeLayout rootView,
-      @NonNull Button btnAddEvent, @NonNull ListView listEvents, @NonNull TextView textView3) {
+  @NonNull
+  public final TextView textView30;
+
+  @NonNull
+  public final TextView textView32;
+
+  @NonNull
+  public final TextView textView33;
+
+  private ActivityEventManagementBinding(@NonNull LinearLayout rootView,
+      @NonNull Button btnAddEvent, @NonNull Button btnSearchEvent, @NonNull EditText editSearchFrom,
+      @NonNull EditText editSearchRegion, @NonNull EditText editSearchTo,
+      @NonNull EditText editSearchType, @NonNull ListView listEvents, @NonNull TextView textView25,
+      @NonNull TextView textView29, @NonNull TextView textView3, @NonNull TextView textView30,
+      @NonNull TextView textView32, @NonNull TextView textView33) {
     this.rootView = rootView;
     this.btnAddEvent = btnAddEvent;
+    this.btnSearchEvent = btnSearchEvent;
+    this.editSearchFrom = editSearchFrom;
+    this.editSearchRegion = editSearchRegion;
+    this.editSearchTo = editSearchTo;
+    this.editSearchType = editSearchType;
     this.listEvents = listEvents;
+    this.textView25 = textView25;
+    this.textView29 = textView29;
     this.textView3 = textView3;
+    this.textView30 = textView30;
+    this.textView32 = textView32;
+    this.textView33 = textView33;
   }
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -71,9 +116,51 @@ public final class ActivityEventManagementBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnSearchEvent;
+      Button btnSearchEvent = ViewBindings.findChildViewById(rootView, id);
+      if (btnSearchEvent == null) {
+        break missingId;
+      }
+
+      id = R.id.editSearchFrom;
+      EditText editSearchFrom = ViewBindings.findChildViewById(rootView, id);
+      if (editSearchFrom == null) {
+        break missingId;
+      }
+
+      id = R.id.editSearchRegion;
+      EditText editSearchRegion = ViewBindings.findChildViewById(rootView, id);
+      if (editSearchRegion == null) {
+        break missingId;
+      }
+
+      id = R.id.editSearchTo;
+      EditText editSearchTo = ViewBindings.findChildViewById(rootView, id);
+      if (editSearchTo == null) {
+        break missingId;
+      }
+
+      id = R.id.editSearchType;
+      EditText editSearchType = ViewBindings.findChildViewById(rootView, id);
+      if (editSearchType == null) {
+        break missingId;
+      }
+
       id = R.id.listEvents;
       ListView listEvents = ViewBindings.findChildViewById(rootView, id);
       if (listEvents == null) {
+        break missingId;
+      }
+
+      id = R.id.textView25;
+      TextView textView25 = ViewBindings.findChildViewById(rootView, id);
+      if (textView25 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView29;
+      TextView textView29 = ViewBindings.findChildViewById(rootView, id);
+      if (textView29 == null) {
         break missingId;
       }
 
@@ -83,8 +170,27 @@ public final class ActivityEventManagementBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityEventManagementBinding((RelativeLayout) rootView, btnAddEvent, listEvents,
-          textView3);
+      id = R.id.textView30;
+      TextView textView30 = ViewBindings.findChildViewById(rootView, id);
+      if (textView30 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView32;
+      TextView textView32 = ViewBindings.findChildViewById(rootView, id);
+      if (textView32 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView33;
+      TextView textView33 = ViewBindings.findChildViewById(rootView, id);
+      if (textView33 == null) {
+        break missingId;
+      }
+
+      return new ActivityEventManagementBinding((LinearLayout) rootView, btnAddEvent,
+          btnSearchEvent, editSearchFrom, editSearchRegion, editSearchTo, editSearchType,
+          listEvents, textView25, textView29, textView3, textView30, textView32, textView33);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

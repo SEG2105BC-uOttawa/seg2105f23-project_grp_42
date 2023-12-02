@@ -105,4 +105,9 @@
     <string name="accepted">Accepted</string>
     <string name="giveAward">Award</string>
     <string name="registrationTitle">Registration management</string>
+    <string name="searchEvent">Search Events</string>
+    <string name="searchEventBy">Search Events By</string>
+    <string name="From">From</string>
+    <string name="To">To</string>
+    <string name="rateaClub">Rate Club</string>
 </resources>

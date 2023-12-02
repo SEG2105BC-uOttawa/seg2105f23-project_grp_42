@@ -2031,9 +2031,11 @@
     <item quantity="other"><ns2:g id="count">%d</ns2:g> new notifications</item>
   </plurals>
     <string name="Description">Description</string>
+    <string name="From">From</string>
     <string name="Rate">Rate</string>
     <string name="Retister">Register</string>
     <string name="Search">Search Club</string>
+    <string name="To">To</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
     <string name="abc_action_menu_overflow_description">More options</string>
@@ -2331,10 +2333,13 @@
     <string name="project_id" translatable="false">cyclingclubbackup</string>
     <string name="rateCLub">Rate Club</string>
     <string name="rateClub">Rate Club</string>
+    <string name="rateaClub">Rate Club</string>
     <string name="region">Region</string>
     <string name="registrationTitle">Registration management</string>
     <string name="routeElevation">Route Elevation</string>
     <string name="searchBy">Search by</string>
+    <string name="searchEvent">Search Events</string>
+    <string name="searchEventBy">Search Events By</string>
     <string name="search_menu_title">Search</string>
     <string name="searchbar_scrolling_view_behavior" translatable="false">
     com.google.android.material.search.SearchBar$ScrollingViewBehavior
