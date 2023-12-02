@@ -172,9 +172,15 @@ public class EventManagement extends AppCompatActivity {
 
         Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
         Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
+        Button buttonRegister = (Button) dialogView.findViewById(R.id.btnRegister);
 
         if (user.getRole().equals("Administrator") ) {
             buttonUpdate.setEnabled(false);
+            buttonRegister.setEnabled(false);
+        }
+
+        if (user.getRole().equals("cycling club") ) {
+            buttonRegister.setEnabled(false);
         }
 
         if (user.getRole().equals("participant")) {
@@ -256,6 +262,21 @@ public class EventManagement extends AppCompatActivity {
                 b.dismiss();
             }
         });
+
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference dref = FirebaseDatabase.getInstance().getReference("Registration");
+                Registration reg = new Registration(event,user);
+
+                String key = dref.push().getKey();
+                reg.setKey(key);
+                dref.child(key).setValue(reg);
+
+                b.dismiss();
+            }
+        });
+
     }
 
 

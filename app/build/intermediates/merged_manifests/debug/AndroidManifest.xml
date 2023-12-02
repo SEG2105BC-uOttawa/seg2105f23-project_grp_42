@@ -75,6 +75,9 @@
         android:testOnly="true"
         android:theme="@style/Theme.CyclingClub" >
         <activity
+            android:name="com.example.cyclingclub.RegistrationManagement"
+            android:exported="false" />
+        <activity
             android:name="com.example.cyclingclub.SearchForClub"
             android:exported="false" />
         <activity

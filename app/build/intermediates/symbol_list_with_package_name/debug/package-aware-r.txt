@@ -3383,7 +3383,9 @@ id btnNewEventType
 id btnProfileUpdate
 id btnRateClub
 id btnRateCyclingClub
+id btnRegister
 id btnRegistration
+id btnRegistrationUpdate
 id btnSearchClub
 id btnSignUp
 id btnUsers
@@ -3576,6 +3578,7 @@ id linearLayout
 id linearLayout2
 id listEvents
 id listMode
+id listRegistration
 id listViewClubs
 id list_item
 id locale
@@ -3798,6 +3801,8 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id switchAccept
+id switchAward
 id switchWidget
 id tabMode
 id tag_accessibility_actions
@@ -3820,6 +3825,8 @@ id textAppNameView
 id textClubName
 id textClubName1
 id textEnd
+id textEventName
+id textParticipant
 id textPhoneNumber
 id textRegion
 id textSpacerNoButtons
@@ -3839,10 +3846,13 @@ id textView18
 id textView19
 id textView2
 id textView20
+id textView21
 id textView22
+id textView23
 id textView24
 id textView26
 id textView27
+id textView28
 id textView3
 id textView4
 id textView5
@@ -4037,6 +4047,7 @@ layout activity_event_management
 layout activity_event_type_management
 layout activity_login
 layout activity_main
+layout activity_registration_management
 layout activity_search_for_club
 layout activity_signup
 layout activity_user_account_management
@@ -4152,6 +4163,7 @@ layout preference_widget_seekbar_material
 layout preference_widget_switch
 layout preference_widget_switch_compat
 layout rate_club
+layout registration_list
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -4165,6 +4177,7 @@ plurals mtrl_badge_content_description
 raw firebase_common_keep
 string Description
 string Rate
+string Retister
 string Search
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -4193,6 +4206,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string accepted
 string account_hint
 string addNewEventType
 string adu_bug_desc
@@ -4284,6 +4298,7 @@ string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
 string firebase_database_url
 string gcm_defaultSenderId
+string giveAward
 string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
@@ -4417,6 +4432,7 @@ string project_id
 string rateCLub
 string rateClub
 string region
+string registrationTitle
 string routeElevation
 string searchBy
 string search_menu_title

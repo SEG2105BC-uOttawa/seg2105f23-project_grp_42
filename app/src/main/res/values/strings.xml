@@ -101,4 +101,8 @@
     <string name="discard">Discard</string>
     <string name="Rate">Rate</string>
     <string name="commen">Comment</string>
+    <string name="Retister">Register</string>
+    <string name="accepted">Accepted</string>
+    <string name="giveAward">Award</string>
+    <string name="registrationTitle">Registration management</string>
 </resources>

@@ -29,6 +29,9 @@ public final class EventDetailBinding implements ViewBinding {
   public final Button btnEventUpdate;
 
   @NonNull
+  public final Button btnRegister;
+
+  @NonNull
   public final EditText editEventDate;
 
   @NonNull
@@ -92,7 +95,7 @@ public final class EventDetailBinding implements ViewBinding {
   public final TextView textview7;
 
   private EventDetailBinding(@NonNull RelativeLayout rootView, @NonNull Button btnEventDelete,
-      @NonNull Button btnEventUpdate, @NonNull EditText editEventDate,
+      @NonNull Button btnEventUpdate, @NonNull Button btnRegister, @NonNull EditText editEventDate,
       @NonNull EditText editEventDistance, @NonNull EditText editEventElevation,
       @NonNull EditText editEventFee, @NonNull EditText editEventId,
       @NonNull EditText editEventLimit, @NonNull EditText editEventRegion,
@@ -105,6 +108,7 @@ public final class EventDetailBinding implements ViewBinding {
     this.rootView = rootView;
     this.btnEventDelete = btnEventDelete;
     this.btnEventUpdate = btnEventUpdate;
+    this.btnRegister = btnRegister;
     this.editEventDate = editEventDate;
     this.editEventDistance = editEventDistance;
     this.editEventElevation = editEventElevation;
@@ -164,6 +168,12 @@ public final class EventDetailBinding implements ViewBinding {
       id = R.id.btnEventUpdate;
       Button btnEventUpdate = ViewBindings.findChildViewById(rootView, id);
       if (btnEventUpdate == null) {
+        break missingId;
+      }
+
+      id = R.id.btnRegister;
+      Button btnRegister = ViewBindings.findChildViewById(rootView, id);
+      if (btnRegister == null) {
         break missingId;
       }
 
@@ -294,10 +304,10 @@ public final class EventDetailBinding implements ViewBinding {
       }
 
       return new EventDetailBinding((RelativeLayout) rootView, btnEventDelete, btnEventUpdate,
-          editEventDate, editEventDistance, editEventElevation, editEventFee, editEventId,
-          editEventLimit, editEventRegion, editEventRoute, editEventType, eventTypeDetail,
-          spinnerLevel, textView10, textView5, textView6, textview, textview11, textview12,
-          textview13, textview3, textview4, textview7);
+          btnRegister, editEventDate, editEventDistance, editEventElevation, editEventFee,
+          editEventId, editEventLimit, editEventRegion, editEventRoute, editEventType,
+          eventTypeDetail, spinnerLevel, textView10, textView5, textView6, textview, textview11,
+          textview12, textview13, textview3, textview4, textview7);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

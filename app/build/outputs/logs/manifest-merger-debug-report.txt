@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:2:1-65:12
-INJECTED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:2:1-65:12
-INJECTED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:2:1-65:12
-INJECTED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:2:1-65:12
+ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:2:1-68:12
+INJECTED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:2:1-68:12
+INJECTED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:2:1-68:12
+INJECTED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:2:1-68:12
 MERGED from [androidx.databinding:viewbinding:8.1.2] C:\Users\gaoyo\.gradle\caches\transforms-3\c67a35c69da12863408aa1ebb6d6a59c\transformed\viewbinding-8.1.2\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.preference:preference:1.2.1] C:\Users\gaoyo\.gradle\caches\transforms-3\cca54f931452eb9d985006b9c2df7f3d\transformed\preference-1.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.pranavpandey.android:dynamic-toasts:4.2.1] C:\Users\gaoyo\.gradle\caches\transforms-3\a315605974836c29df68b676f345b2d3\transformed\dynamic-toasts-4.2.1\AndroidManifest.xml:17:1-22:12
@@ -124,8 +124,8 @@ ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManif
 	android:name
 		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:14:9-64
 application
-ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:17:5-63:19
-INJECTED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:17:5-63:19
+ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:17:5-66:19
+INJECTED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:17:5-66:19
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\gaoyo\.gradle\caches\transforms-3\d49ec510c338e4b25b77263b6d755eb1\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\gaoyo\.gradle\caches\transforms-3\d49ec510c338e4b25b77263b6d755eb1\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\gaoyo\.gradle\caches\transforms-3\afb5814eccbd68069e5bd6389ce2ce7a\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -212,74 +212,80 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\gaoyo\.gradle\cach
 		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:25:9-49
 	android:dataExtractionRules
 		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:19:9-65
-activity#com.example.cyclingclub.SearchForClub
+activity#com.example.cyclingclub.RegistrationManagement
 ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:27:9-29:40
 	android:exported
 		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:29:13-37
 	android:name
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:28:13-42
-activity#com.example.cyclingclub.EventManagement
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:28:13-51
+activity#com.example.cyclingclub.SearchForClub
 ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:30:9-32:40
 	android:exported
 		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:32:13-37
 	android:name
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:31:13-44
-activity#com.example.cyclingclub.UserAccountManagement
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:31:13-42
+activity#com.example.cyclingclub.EventManagement
 ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:33:9-35:40
 	android:exported
 		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:35:13-37
 	android:name
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:34:13-50
-activity#com.example.cyclingclub.EventTypeManagement
-ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:36:9-40:56
-	android:label
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:39:13-73
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:34:13-44
+activity#com.example.cyclingclub.UserAccountManagement
+ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:36:9-38:40
 	android:exported
 		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:38:13-37
-	android:theme
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:40:13-53
 	android:name
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:37:13-48
-activity#com.example.cyclingclub.WelcomeScreen
-ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:41:9-43:40
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:37:13-50
+activity#com.example.cyclingclub.EventTypeManagement
+ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:39:9-43:56
+	android:label
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:42:13-73
 	android:exported
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:43:13-37
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:41:13-37
+	android:theme
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:43:13-53
 	android:name
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:42:13-42
-activity#com.example.cyclingclub.SignupActivity
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:40:13-48
+activity#com.example.cyclingclub.WelcomeScreen
 ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:44:9-46:40
 	android:exported
 		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:46:13-37
 	android:name
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:45:13-43
-activity#com.example.cyclingclub.LoginActivity
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:45:13-42
+activity#com.example.cyclingclub.SignupActivity
 ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:47:9-49:40
 	android:exported
 		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:49:13-37
 	android:name
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:48:13-42
-activity#com.example.cyclingclub.MainActivity
-ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:50:9-58:20
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:48:13-43
+activity#com.example.cyclingclub.LoginActivity
+ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:50:9-52:40
 	android:exported
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:52:13-36
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:52:13-37
 	android:name
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:51:13-41
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:51:13-42
+activity#com.example.cyclingclub.MainActivity
+ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:53:9-61:20
+	android:exported
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:55:13-36
+	android:name
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:54:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:53:13-57:29
+ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:56:13-60:29
 action#android.intent.action.MAIN
-ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:54:17-69
+ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:57:17-69
 	android:name
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:54:25-66
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:57:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:56:17-77
+ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:59:17-77
 	android:name
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:56:27-74
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:59:27-74
 meta-data#preloaded_fonts
-ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:60:9-62:57
+ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:63:9-65:57
 	android:resource
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:62:13-54
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:65:13-54
 	android:name
-		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:61:13-43
+		ADDED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml:64:13-43
 uses-sdk
 INJECTED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Yong\SEG2105D2\seg2105f23-project_grp_42\app\src\main\AndroidManifest.xml

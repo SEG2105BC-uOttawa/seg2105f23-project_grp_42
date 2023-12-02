@@ -253,16 +253,23 @@
 
             <Button
                 android:id="@+id/btnEventUpdate"
-                android:layout_width="169dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/eventTypeUpdate" />
 
             <Button
                 android:id="@+id/btnEventDelete"
-                android:layout_width="170dp"
+                android:layout_width="117dp"
                 android:layout_height="wrap_content"
                 android:text="@string/btnDelete" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Retister" />
         </LinearLayout>
 
     </LinearLayout>

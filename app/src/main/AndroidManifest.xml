@@ -25,6 +25,9 @@
         android:theme="@style/Theme.CyclingClub"
         tools:targetApi="34">
         <activity
+            android:name=".RegistrationManagement"
+            android:exported="false" />
+        <activity
             android:name=".SearchForClub"
             android:exported="false" />
         <activity

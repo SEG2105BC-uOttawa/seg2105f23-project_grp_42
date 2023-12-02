@@ -32,6 +32,10 @@
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_signup.xml"
     },
     {
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-50:/layout/event_type_list.xml",
+        "source": "com.example.cyclingclub.app-main-53:/layout/event_type_list.xml"
+    },
+    {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\creation_screen.xml",
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\creation_screen.xml"
     },
@@ -64,6 +68,10 @@
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\item_view.xml"
     },
     {
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\activity_registration_management.xml",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_registration_management.xml"
+    },
+    {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\event_update_users.xml",
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\event_update_users.xml"
     },
@@ -84,12 +92,16 @@
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\custom_preference_category_layout.xml"
     },
     {
-        "merged": "com.example.cyclingclub.app-mergeDebugResources-50:/layout/fragment_home.xml",
-        "source": "com.example.cyclingclub.app-main-53:/layout/fragment_home.xml"
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-50:/layout/activity_registration_management.xml",
+        "source": "com.example.cyclingclub.app-main-53:/layout/activity_registration_management.xml"
     },
     {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\activity_event_type_management.xml",
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\activity_event_type_management.xml"
+    },
+    {
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-50:/layout/registration_list.xml",
+        "source": "com.example.cyclingclub.app-main-53:/layout/registration_list.xml"
     },
     {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-mergeDebugResources-50:\\layout\\fragment_second.xml",

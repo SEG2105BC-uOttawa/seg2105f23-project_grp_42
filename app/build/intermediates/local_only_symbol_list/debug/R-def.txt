@@ -53,7 +53,9 @@ id btnNewEventType
 id btnProfileUpdate
 id btnRateClub
 id btnRateCyclingClub
+id btnRegister
 id btnRegistration
+id btnRegistrationUpdate
 id btnSearchClub
 id btnSignUp
 id btnUsers
@@ -101,6 +103,7 @@ id homeItem
 id linearLayout
 id linearLayout2
 id listEvents
+id listRegistration
 id listViewClubs
 id logoView
 id memberLoginHeader
@@ -121,10 +124,14 @@ id settingsItem
 id showUsername
 id spinnerLevel
 id spinnerRate
+id switchAccept
+id switchAward
 id text7
 id textAppNameView
 id textClubName
 id textClubName1
+id textEventName
+id textParticipant
 id textPhoneNumber
 id textRegion
 id textView
@@ -140,10 +147,13 @@ id textView18
 id textView19
 id textView2
 id textView20
+id textView21
 id textView22
+id textView23
 id textView24
 id textView26
 id textView27
+id textView28
 id textView3
 id textView4
 id textView5
@@ -171,6 +181,7 @@ layout activity_event_management
 layout activity_event_type_management
 layout activity_login
 layout activity_main
+layout activity_registration_management
 layout activity_search_for_club
 layout activity_signup
 layout activity_user_account_management
@@ -189,6 +200,7 @@ layout fragment_second
 layout hill_climb_attributes
 layout item_view
 layout rate_club
+layout registration_list
 layout user_detail
 layout user_list
 menu bottom_nav_menu
@@ -196,7 +208,9 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 string Description
 string Rate
+string Retister
 string Search
+string accepted
 string account_hint
 string addNewEventType
 string app_name
@@ -234,6 +248,7 @@ string eventTypeName
 string eventTypeUpdate
 string firebase_database_url
 string gcm_defaultSenderId
+string giveAward
 string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
@@ -255,6 +270,7 @@ string project_id
 string rateCLub
 string rateClub
 string region
+string registrationTitle
 string routeElevation
 string searchBy
 string settings_text
