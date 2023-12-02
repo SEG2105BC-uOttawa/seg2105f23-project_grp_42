@@ -1,9 +1,5 @@
 [
     {
-        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_rate_club.xml.flat",
-        "source": "com.example.cyclingclub.app-main-53:/layout/rate_club.xml"
-    },
-    {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\menu_bottom_nav_menu.xml.flat",
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\menu\\bottom_nav_menu.xml"
     },
@@ -26,6 +22,10 @@
     {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\mipmap-mdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.cyclingclub.app-merged_res-51:/layout_fragment_home.xml.flat",
+        "source": "com.example.cyclingclub.app-main-53:/layout/fragment_home.xml"
     },
     {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\drawable-xxhdpi_baseline_home_outline.png.flat",
@@ -178,6 +178,10 @@
     {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_event_update_users.xml.flat",
         "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\event_update_users.xml"
+    },
+    {
+        "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_rate_club.xml.flat",
+        "source": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-main-53:\\layout\\rate_club.xml"
     },
     {
         "merged": "C:\\Users\\gaoyo\\.gradle\\daemon\\8.0\\com.example.cyclingclub.app-merged_res-51:\\layout_fragment_first.xml.flat",

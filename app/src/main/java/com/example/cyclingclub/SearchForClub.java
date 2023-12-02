@@ -123,7 +123,13 @@ public class SearchForClub extends AppCompatActivity {
         };
         listView.setOnItemLongClickListener(longClickListener);
 
+        EditText searchClubName = findViewById(R.id.editSearchClubName);
+        EditText searchEventName = findViewById(R.id.editSearchEventName);
+        EditText searchEventType = findViewById(R.id.editSearchEventType);
 
+        searchClubName.setText("");
+        searchEventName.setText("");
+        searchEventType.setText("");
 
 
     }
@@ -132,6 +138,7 @@ public class SearchForClub extends AppCompatActivity {
         EditText searchClubName = findViewById(R.id.editSearchClubName);
         String clubName=searchClubName.getText().toString().trim();
 
+
         Iterator<CyclingClub> iterator = clubs.iterator();
         while (iterator.hasNext()) {
             CyclingClub club = iterator.next();
@@ -139,6 +146,40 @@ public class SearchForClub extends AppCompatActivity {
                 iterator.remove();
             }
         }
+
+        EditText searchEventName = findViewById(R.id.editSearchEventName);
+        String eventName=searchEventName.getText().toString().trim();
+        EditText searchEventType = findViewById(R.id.editSearchEventType);
+        String eventType=searchEventType.getText().toString().trim();
+
+        List<String> userNames=new ArrayList<>();
+        DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("events1");
+        dRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Event ev = snapshot.getValue(Event.class);
+                    if (ev.getId().contains(eventName)  && ev.getType().contains(eventType)){
+                        userNames.add(ev.getUsername());
+                    }
+                }
+                // Iterate through clubs and remove clubs whose username does not contain any string usernames
+                Iterator<CyclingClub> iterator = clubs.iterator();
+                while (iterator.hasNext()) {
+                    CyclingClub club = iterator.next();
+                    boolean containsAny = userNames.stream().anyMatch(club.getUsername()::contains);
+                    if (!containsAny) {
+                        iterator.remove();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle potential errors here.
+            }
+        });
+
 
     }
 
@@ -198,13 +239,6 @@ public class SearchForClub extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                int rate = Integer.parseInt(spinner.getSelectedItem().toString());
-                EditText editComment = dialogView.findViewById(R.id.editComment);
-                String comment =  editComment.getText().toString().trim();
-                club.addRateComment(user.getUsername(), comment, rate);
-
-                DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("ClubProfile");
-                dRef.child(club.getKey()).setValue(club);
 
                 b.dismiss();
             }
@@ -215,6 +249,17 @@ public class SearchForClub extends AppCompatActivity {
         buttonRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                int rate = Integer.parseInt(spinner.getSelectedItem().toString());
+                EditText editComment = dialogView.findViewById(R.id.editComment);
+                String comment =  editComment.getText().toString().trim();
+                club.addRateComment(user.getUsername(), comment, rate);
+
+                DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("ClubProfile");
+                dRef.child(club.getKey()).setValue(club);
+
+
+
                 b.dismiss();
             }
         });

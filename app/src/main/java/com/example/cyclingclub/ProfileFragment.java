@@ -67,6 +67,9 @@ public class ProfileFragment extends Fragment {
 	// TODO: Rename and change types of parameters
 	private String mParam1;
 	private String mParam2;
+
+
+	/*
 	String storagepath = "Users_Profile_Cover_image/";
 	String profileOrCoverPhoto;
 	ProgressDialog pd;
@@ -81,6 +84,8 @@ public class ProfileFragment extends Fragment {
 	private static final int IMAGEPICK_GALLERY_REQUEST = 300;
 	private static final int IMAGE_PICKCAMERA_REQUEST = 400;
 	private static final int CAMERA_REQUEST = 100;
+
+	 */
 	private boolean clubProfileFound;
 	private CyclingClub cyclingClub;
 
@@ -117,6 +122,8 @@ public class ProfileFragment extends Fragment {
 		}
 		clubProfileFound=false;
 
+
+		/*
 		cameraPerms = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 		storagePerms = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 		pd = new ProgressDialog(this.getContext());
@@ -130,6 +137,10 @@ public class ProfileFragment extends Fragment {
 				selectFromPhone();
 			}
 		});
+
+
+		 */
+
 
 		//Bundle bundle = getArguments();
 		//User user = (User) bundle.getSerializable("user");;
@@ -304,7 +315,7 @@ public class ProfileFragment extends Fragment {
 
 		return message;
 	}
-
+/*
 	private void selectFromPhone(){
 		String options[] = {"Camera","Gallery"};
 		AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
@@ -346,7 +357,7 @@ public class ProfileFragment extends Fragment {
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 
-	/*
+
 	@Override
 	public void onRequestPermissionResult(int requestCode, @NonNull String[] perms, @NonNull int[] grantResults){
 		switch (requestCode){
@@ -375,8 +386,8 @@ public class ProfileFragment extends Fragment {
 			break;
 		}
 	}
-	
-	 */
+
+
 
 	private Boolean checkCameraPerms(){
 		boolean result = ContextCompat.checkSelfPermission(this.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
@@ -456,5 +467,7 @@ public class ProfileFragment extends Fragment {
 		});
 	}
 
+
+ */
 
 }
