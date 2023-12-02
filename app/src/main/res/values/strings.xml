@@ -97,4 +97,8 @@
     <string name="searchBy">Search by</string>
     <string name="Search">Search Club</string>
     <string name="rateClub">Rate Club</string>
+    <string name="rateCLub">Rate Club</string>
+    <string name="discard">Discard</string>
+    <string name="Rate">Rate</string>
+    <string name="commen">Comment</string>
 </resources>

@@ -3370,6 +3370,7 @@ int id btnBack 0x7f0a007b
 int id btnBackToUpdate 0x7f0a007c
 int id btnDeleteEventUser 0x7f0a007d
 int id btnDeleteUser 0x7f0a007e
+int id btnDiscardRating 0x7f0a0294
 int id btnEvent 0x7f0a007f
 int id btnEventDelete 0x7f0a0080
 int id btnEventType 0x7f0a0081
@@ -3380,6 +3381,7 @@ int id btnNewEvent 0x7f0a0085
 int id btnNewEventType 0x7f0a0086
 int id btnProfileUpdate 0x7f0a0087
 int id btnRateClub 0x7f0a0287
+int id btnRateCyclingClub 0x7f0a0295
 int id btnRegistration 0x7f0a0088
 int id btnSearchClub 0x7f0a0288
 int id btnSignUp 0x7f0a0089
@@ -3468,8 +3470,10 @@ int id easeInOut 0x7f0a00db
 int id easeOut 0x7f0a00dc
 int id east 0x7f0a00dd
 int id edge 0x7f0a00de
+int id editClubComment 0x7f0a0296
 int id editClubName 0x7f0a00df
 int id editClubRegion 0x7f0a00e0
+int id editComment 0x7f0a0297
 int id editContact 0x7f0a00e1
 int id editEventDate 0x7f0a00e2
 int id editEventDistance 0x7f0a00e3
@@ -3771,6 +3775,7 @@ int id spacer 0x7f0a0206
 int id special_effects_controller_view_tag 0x7f0a0207
 int id spinner 0x7f0a0208
 int id spinnerLevel 0x7f0a0209
+int id spinnerRate 0x7f0a0298
 int id spline 0x7f0a020a
 int id split_action_bar 0x7f0a020b
 int id spread 0x7f0a020c
@@ -3811,7 +3816,11 @@ int id text 0x7f0a022e
 int id text2 0x7f0a022f
 int id text7 0x7f0a0230
 int id textAppNameView 0x7f0a0231
+int id textClubName 0x7f0a0299
+int id textClubName1 0x7f0a029a
 int id textEnd 0x7f0a0232
+int id textPhoneNumber 0x7f0a029b
+int id textRegion 0x7f0a029c
 int id textSpacerNoButtons 0x7f0a0233
 int id textSpacerNoTitle 0x7f0a0234
 int id textStart 0x7f0a0235
@@ -3823,11 +3832,16 @@ int id textView12 0x7f0a023a
 int id textView13 0x7f0a023b
 int id textView14 0x7f0a023c
 int id textView15 0x7f0a023d
+int id textView16 0x7f0a029d
 int id textView17 0x7f0a028d
 int id textView18 0x7f0a028e
 int id textView19 0x7f0a028f
 int id textView2 0x7f0a023e
 int id textView20 0x7f0a0290
+int id textView22 0x7f0a029e
+int id textView24 0x7f0a029f
+int id textView26 0x7f0a02a0
+int id textView27 0x7f0a02a1
 int id textView3 0x7f0a023f
 int id textView4 0x7f0a0240
 int id textView5 0x7f0a0241
@@ -4136,6 +4150,7 @@ int layout preference_widget_seekbar 0x7f0d008d
 int layout preference_widget_seekbar_material 0x7f0d008e
 int layout preference_widget_switch 0x7f0d008f
 int layout preference_widget_switch_compat 0x7f0d0090
+int layout rate_club 0x7f0d0098
 int layout select_dialog_item_material 0x7f0d0091
 int layout select_dialog_multichoice_material 0x7f0d0092
 int layout select_dialog_singlechoice_material 0x7f0d0093
@@ -4148,6 +4163,7 @@ int mipmap ic_launcher_round 0x7f100001
 int plurals mtrl_badge_content_description 0x7f110000
 int raw firebase_common_keep 0x7f120000
 int string Description 0x7f130000
+int string Rate 0x7f13010f
 int string Search 0x7f13010c
 int string abc_action_bar_home_description 0x7f130001
 int string abc_action_bar_up_description 0x7f130002
@@ -4212,6 +4228,7 @@ int string character_counter_overflowed_content_description 0x7f13003c
 int string character_counter_pattern 0x7f13003d
 int string clear_text_end_icon_content_description 0x7f13003e
 int string clubName 0x7f13003f
+int string commen 0x7f130110
 int string common_google_play_services_enable_button 0x7f130040
 int string common_google_play_services_enable_text 0x7f130041
 int string common_google_play_services_enable_title 0x7f130042
@@ -4237,6 +4254,7 @@ int string currentEvent 0x7f130055
 int string currentUserList 0x7f130056
 int string cyclingClubProfile 0x7f130057
 int string cycling_club 0x7f130058
+int string discard 0x7f130111
 int string email_hint 0x7f130059
 int string error_a11y_label 0x7f13005a
 int string error_icon_content_description 0x7f13005b
@@ -4395,6 +4413,7 @@ int string previous 0x7f1300f3
 int string profile_text 0x7f1300f4
 int string project_app_name 0x7f1300f5
 int string project_id 0x7f1300f6
+int string rateCLub 0x7f130112
 int string rateClub 0x7f13010d
 int string region 0x7f1300f7
 int string routeElevation 0x7f1300f8

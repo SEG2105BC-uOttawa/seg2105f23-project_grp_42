@@ -3371,6 +3371,7 @@ id btnBack
 id btnBackToUpdate
 id btnDeleteEventUser
 id btnDeleteUser
+id btnDiscardRating
 id btnEvent
 id btnEventDelete
 id btnEventType
@@ -3381,6 +3382,7 @@ id btnNewEvent
 id btnNewEventType
 id btnProfileUpdate
 id btnRateClub
+id btnRateCyclingClub
 id btnRegistration
 id btnSearchClub
 id btnSignUp
@@ -3469,8 +3471,10 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editClubComment
 id editClubName
 id editClubRegion
+id editComment
 id editContact
 id editEventDate
 id editEventDistance
@@ -3772,6 +3776,7 @@ id spacer
 id special_effects_controller_view_tag
 id spinner
 id spinnerLevel
+id spinnerRate
 id spline
 id split_action_bar
 id spread
@@ -3812,7 +3817,11 @@ id text
 id text2
 id text7
 id textAppNameView
+id textClubName
+id textClubName1
 id textEnd
+id textPhoneNumber
+id textRegion
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
@@ -3824,11 +3833,16 @@ id textView12
 id textView13
 id textView14
 id textView15
+id textView16
 id textView17
 id textView18
 id textView19
 id textView2
 id textView20
+id textView22
+id textView24
+id textView26
+id textView27
 id textView3
 id textView4
 id textView5
@@ -4137,6 +4151,7 @@ layout preference_widget_seekbar
 layout preference_widget_seekbar_material
 layout preference_widget_switch
 layout preference_widget_switch_compat
+layout rate_club
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -4149,6 +4164,7 @@ mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 raw firebase_common_keep
 string Description
+string Rate
 string Search
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -4213,6 +4229,7 @@ string character_counter_overflowed_content_description
 string character_counter_pattern
 string clear_text_end_icon_content_description
 string clubName
+string commen
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
 string common_google_play_services_enable_title
@@ -4238,6 +4255,7 @@ string currentEvent
 string currentUserList
 string cyclingClubProfile
 string cycling_club
+string discard
 string email_hint
 string error_a11y_label
 string error_icon_content_description
@@ -4396,6 +4414,7 @@ string previous
 string profile_text
 string project_app_name
 string project_id
+string rateCLub
 string rateClub
 string region
 string routeElevation

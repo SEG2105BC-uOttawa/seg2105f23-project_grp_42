@@ -7,6 +7,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import java.util.*;
+
 
 public class CyclingClub {
     private String key;
@@ -18,10 +20,15 @@ public class CyclingClub {
     private String region;
     private String username;
 
+    private List<Map<String, Object>> rateComments;
 
 
     // Constructors (if needed)
 
+    // Constructor
+    public CyclingClub() {
+        this.rateComments = new ArrayList<>();
+    }
 
 
     public String getKey(){return key;}
@@ -89,5 +96,33 @@ public class CyclingClub {
     public String getUsername() {     return username;}
 
     public void setUsername(String username) {this.username = username;}
+
+
+    // Getter for the rateComments
+    public List<Map<String, Object>> getRateComments() {
+        return rateComments;
+    }
+
+    // Method to add a comment to the list or update comment from a user already exists
+    public void addRateComment(String userName, String comment, int rate) {
+        for (Map<String, Object> rateComment : rateComments) {
+            if (rateComment.get("userName").equals(userName)) {
+                // Comment with the same username already exists, update the comment and rate
+                rateComment.put("comment", comment);
+                rateComment.put("rate", rate);
+                return;
+            }
+        }
+
+        // Person with the given name doesn't exist, add a new person to the list
+        Map<String, Object> newComment = new HashMap<>();
+        newComment.put("userName", userName);
+        newComment.put("comment", comment);
+        newComment.put("rate", rate);
+        rateComments.add(newComment);
+    }
+
+
+
 
 }

@@ -32,6 +32,7 @@ import android.widget.Spinner;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import java.util.Iterator;
+import java.util.Map;
 
 
 public class SearchForClub extends AppCompatActivity {
@@ -46,6 +47,8 @@ public class SearchForClub extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_for_club);
+
+        user = (User) getIntent().getSerializableExtra("user");
 
         List<CyclingClub> clubs = new ArrayList<>();
 
@@ -109,6 +112,19 @@ public class SearchForClub extends AppCompatActivity {
             }
         });
 
+        ListView listView = findViewById(R.id.listViewClubs);
+        AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                CyclingClub club = clubs.get(i);
+                showRateClubDialog(club, user);
+                return true;
+            }
+        };
+        listView.setOnItemLongClickListener(longClickListener);
+
+
+
 
     }
 
@@ -125,4 +141,87 @@ public class SearchForClub extends AppCompatActivity {
         }
 
     }
+
+
+    private void  showRateClubDialog(CyclingClub club, User user){
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.rate_club, null);
+        dialogBuilder.setView(dialogView);
+
+        TextView textName=(TextView) dialogView.findViewById(R.id.textClubName1);
+        TextView textPhone=(TextView) dialogView.findViewById(R.id.textPhoneNumber);
+        TextView textRegion=(TextView) dialogView.findViewById(R.id.textRegion);
+
+        textName.setText(club.getClubName());
+        textPhone.setText(club.getPhoneNumber());
+        textRegion.setText(club.getRegion());
+
+        int rate=1;
+        String comment="";
+
+        for (Map<String, Object> rateComment : club.getRateComments() ) {
+            if (rateComment.get("userName").equals(user.getUsername())) {
+                // Comment with the same username already exists, update the comment and rate
+                rate = (int) rateComment.get("rate");
+                comment = (String) rateComment.get("comment");
+            }
+        }
+
+        EditText editComment= (EditText) dialogView.findViewById(R.id.editComment);
+        editComment.setText(comment);
+
+        Spinner spinner=dialogView.findViewById(R.id.spinnerRate);
+
+        final AlertDialog b = dialogBuilder.create();
+        // Create an ArrayAdapter with numeric values from 1 to 5
+        if (spinner != null) {
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                    b.getContext(),
+                    R.array.number_array,
+                    android.R.layout.simple_spinner_item
+            );
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+            if(rate>=1){
+                spinner.setSelection(rate-1);
+            }
+        }
+
+        b.show();
+
+
+
+        Button buttonDiscard = dialogView.findViewById(R.id.btnDiscardRating);
+        buttonDiscard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int rate = Integer.parseInt(spinner.getSelectedItem().toString());
+                EditText editComment = dialogView.findViewById(R.id.editComment);
+                String comment =  editComment.getText().toString().trim();
+                club.addRateComment(user.getUsername(), comment, rate);
+
+                DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("ClubProfile");
+                dRef.child(club.getKey()).setValue(club);
+
+                b.dismiss();
+            }
+        });
+
+
+        Button buttonRate = dialogView.findViewById(R.id.btnRateCyclingClub);
+        buttonRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.dismiss();
+            }
+        });
+
+    }
+
+
+
+
 }
