@@ -102,16 +102,6 @@ public class SearchForClub extends AppCompatActivity {
 
         Button btnSearchClub = findViewById(R.id.btnSearchClub);
 
-        // Using an anonymous inner class
-        btnSearchClub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getSearchResult(clubs);
-
-               // int x=1;
-                adapter.notifyDataSetChanged();
-            }
-        });
 
         //ListView listView = findViewById(R.id.listViewClubs);
         AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
@@ -132,27 +122,20 @@ public class SearchForClub extends AppCompatActivity {
         searchEventName.setText("");
         searchEventType.setText("");
 
+        btnSearchClub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchClub(clubs,  user,  adapter,  "",  "","BG");
+            }
+        });
 
     }
 
-    private void getSearchResult(List<CyclingClub> clubs){
-        EditText searchClubName = findViewById(R.id.editSearchClubName);
-        String clubName=searchClubName.getText().toString().trim();
 
 
-        Iterator<CyclingClub> iterator = clubs.iterator();
-        while (iterator.hasNext()) {
-            CyclingClub club = iterator.next();
-            if (!club.getClubName().contains(clubName)) {
-                iterator.remove();
-            }
-        }
+    private void searchClub(List<CyclingClub> clubs, User user, ArrayAdapter<CyclingClub> clubAdapter, String type, String eventName, String clubName){
 
-        EditText searchEventName = findViewById(R.id.editSearchEventName);
-        String eventName=searchEventName.getText().toString().trim();
-        EditText searchEventType = findViewById(R.id.editSearchEventType);
-        String eventType=searchEventType.getText().toString().trim();
-
+        //Find username of the events with specified event type and event name
         List<String> userNames=new ArrayList<>();
         DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("events1");
         dRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -160,19 +143,33 @@ public class SearchForClub extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Event ev = snapshot.getValue(Event.class);
-                    if (ev.getId().contains(eventName)  && ev.getType().contains(eventType)){
+                    if ((ev.getId().contains(eventName) || eventName.equals("")) &&
+                            (ev.getType().contains(type) || type.equals(""))){
                         userNames.add(ev.getUsername());
                     }
                 }
-                // Iterate through clubs and remove clubs whose username does not contain any string usernames
-                Iterator<CyclingClub> iterator = clubs.iterator();
-                while (iterator.hasNext()) {
-                    CyclingClub club = iterator.next();
-                    boolean containsAny = userNames.stream().anyMatch(club.getUsername()::contains);
-                    if (!containsAny) {
-                        iterator.remove();
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle potential errors here.
+            }
+        });
+
+        DatabaseReference dRefClub = FirebaseDatabase.getInstance().getReference("ClubProfile");
+
+        dRefClub.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                clubs.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    CyclingClub club = snapshot.getValue(CyclingClub.class);
+                    if((club.getClubName().contains(clubName) || clubName.equals(""))||
+                         userNames.contains(club.getUsername())){
+                        clubs.add(club);
                     }
                 }
+                clubAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -181,8 +178,8 @@ public class SearchForClub extends AppCompatActivity {
             }
         });
 
-
     }
+
 
 
     private void  showRateClubDialog(CyclingClub club, User user){

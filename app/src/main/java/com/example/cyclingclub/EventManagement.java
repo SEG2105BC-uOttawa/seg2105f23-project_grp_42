@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.io.Serializable;
 import com.google.firebase.database.DatabaseError;
@@ -151,7 +152,22 @@ public class EventManagement extends AppCompatActivity {
             buttonNewEvent.setEnabled(false);
         }
 
+        Button buttonSearch = (Button) findViewById(R.id.btnSearchEvent);
 
+        EditText editSearchType = findViewById(R.id.editSearchType);
+        EditText editSearchRegion = findViewById(R.id.editSearchRegion);
+        EditText editSearchFrom = findViewById(R.id.editSearchFrom);
+        EditText editSearchTo = findViewById(R.id.editSearchTo);
+        editSearchType.setText("");
+        editSearchRegion.setText("");
+        editSearchFrom.setText("");
+        editSearchTo.setText("");
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchEvent(events,user,eventAdapter,editSearchType.getText().toString().trim(),editSearchRegion.getText().toString().trim(),editSearchFrom.getText().toString().trim(),editSearchTo.getText().toString().trim() );
+            }
+        });
     }
 
 
@@ -159,11 +175,35 @@ public class EventManagement extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-
     }
 
 
+    private void searchEvent(List<Event> events, User user, ArrayAdapter<Event> eventAdapter, String type, String region, String dateFrom, String dateTo){
+        DatabaseReference  databaseEvents=Administrator.getEventDB();
+        databaseEvents.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                events.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Event ev = snapshot.getValue(Event.class);
+                    if((ev.getType().contains(type) || type.equals("")) &&
+                            (ev.getRegion().contains(region) || region.equals("")) &&
+                            (ev.getDate().compareTo( dateFrom) >=0 || dateFrom.equals("")) &&
+                            (ev.getDate().compareTo(dateTo) <= 0 || dateTo.equals("")) ){
+                        events.add(ev);
+                    }
+                }
+                eventAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle potential errors here.
+            }
+        });
+
+    }
 
 
     private void showUpdateDeleteDialog(Event event) {
