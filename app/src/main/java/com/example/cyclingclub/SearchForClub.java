@@ -156,7 +156,14 @@ public class SearchForClub extends AppCompatActivity {
     }
 
 
-
+    /**
+    * Implement the functionality to allow the user to search for a club
+    * @param clubs Search from a list of clubs
+     * @param clubAdapter Change the data of the club
+     * @param type Get the event type from the user
+     * @param clubName Search for the club's name
+     * @param eventName Search event name through its ID
+     */
     private void searchClub(List<CyclingClub> clubs, User user, ArrayAdapter<CyclingClub> clubAdapter, String type, String eventName, String clubName){
 
         //Find username of the events with specified event type and event name
@@ -216,7 +223,11 @@ public class SearchForClub extends AppCompatActivity {
 
     }
 
-
+    /**
+    * Allow the user to rate a club using a dropdown menu
+    * @param club The club being rated
+    * @param user The user who does the rating
+    */
     private void  showRateClubDialog(CyclingClub club, User user){
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
