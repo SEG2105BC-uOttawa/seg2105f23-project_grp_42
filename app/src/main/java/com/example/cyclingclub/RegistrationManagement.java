@@ -31,6 +31,14 @@ public class RegistrationManagement extends AppCompatActivity {
     private List<Registration> registrations;
     private Registration selectedRegistration;
     private User user;
+
+    RegistrationManagement(){
+
+    }
+
+    RegistrationManagement(List<Registration> registrations){
+        this.registrations = registrations;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

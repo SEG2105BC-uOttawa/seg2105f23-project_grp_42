@@ -4,27 +4,53 @@ import static org.junit.Assert.*;
 
 import static org.junit.Assert.assertThat;
 
+import android.widget.ArrayAdapter;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import java.util.List;
 
 
 @RunWith(JUnit4.class)
 
     public class RegisterTest {
-    private Participant participant;
-    private User user;
+    private User testUser;
+    private RegistrationAdapter registrationAdapter;
+    private RegistrationManagement registrationManager;
+    private List<Registration> registrations;
+    private Event testEvent;
+
+    private Registration register;
+
+    private List<CyclingClub> clubs;
+
+    private ArrayAdapter<CyclingClub> clubAdapter;
+    private String type;
+    private String eventName;
+    private String clubName;
+    private SearchForClub searcher;
+
 
     public void setUp() {
         // Initialize Participant object or mock it as needed
-        participant = new Participant("admin",);
+        testUser = new User();
+        register = new Registration(testEvent,testUser);
+        registrations.add(register);
         //user=new User();
+        searcher = new SearchForClub(clubs,testUser,clubAdapter,type,eventName,clubName);
     }
     @Test
     public void testParticipantRegistration() {
-        assertThat(participant.registerForEvent);
+        assertNotNull(registrations);
+
     }
+    @Test
+    public void testEventDiscovery(){
+        assertNotNull(searcher);
     }
+}
   // rough code for reference// @Nick please see this if it makes sense ==>Ketan
 
 
