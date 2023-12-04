@@ -100,11 +100,5 @@
             android:layout_weight="1"
             android:text="@string/Search" />
 
-        <Button
-            android:id="@+id/btnRateClub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/rateClub" />
     </LinearLayout>
 </LinearLayout>

@@ -40,6 +40,7 @@ id btnAddEventUser
 id btnBack
 id btnBackToUpdate
 id btnDeleteEventUser
+id btnDeleteRegistration
 id btnDeleteUser
 id btnDiscardRating
 id btnEvent
@@ -51,7 +52,6 @@ id btnLogin
 id btnNewEvent
 id btnNewEventType
 id btnProfileUpdate
-id btnRateClub
 id btnRateCyclingClub
 id btnRegister
 id btnRegistration
@@ -109,6 +109,7 @@ id homeItem
 id linearLayout
 id linearLayout2
 id listEvents
+id listRateAndReview
 id listRegistration
 id listViewClubs
 id logoView
@@ -136,6 +137,7 @@ id text7
 id textAppNameView
 id textClubName
 id textClubName1
+id textClubNameReview
 id textEventName
 id textParticipant
 id textPhoneNumber
@@ -164,6 +166,7 @@ id textView28
 id textView29
 id textView3
 id textView30
+id textView31
 id textView32
 id textView33
 id textView4
@@ -198,6 +201,7 @@ layout activity_signup
 layout activity_user_account_management
 layout activity_welcome_screen
 layout admin_create_delete_event
+layout club_reviews
 layout creation_screen
 layout custom_preference_category_layout
 layout event_detail

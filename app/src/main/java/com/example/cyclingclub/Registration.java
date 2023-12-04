@@ -1,4 +1,8 @@
 package com.example.cyclingclub;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 
 public class Registration {
     private String key;
@@ -14,9 +18,13 @@ public class Registration {
     public Registration(Event event, User participant){
         this.event=event;
         this.participant=participant;
-        this.date="2023-12-01";
+        //this.date="2023-12-01";
         this.Accepted=false;
         this.Awarded=false;
+
+        Date currentDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        this.date = dateFormat.format(currentDate);
     }
 
 

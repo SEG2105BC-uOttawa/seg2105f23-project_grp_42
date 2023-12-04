@@ -3370,6 +3370,7 @@ id btnAddEventUser
 id btnBack
 id btnBackToUpdate
 id btnDeleteEventUser
+id btnDeleteRegistration
 id btnDeleteUser
 id btnDiscardRating
 id btnEvent
@@ -3381,7 +3382,6 @@ id btnLogin
 id btnNewEvent
 id btnNewEventType
 id btnProfileUpdate
-id btnRateClub
 id btnRateCyclingClub
 id btnRegister
 id btnRegistration
@@ -3584,6 +3584,7 @@ id linearLayout
 id linearLayout2
 id listEvents
 id listMode
+id listRateAndReview
 id listRegistration
 id listViewClubs
 id list_item
@@ -3830,6 +3831,7 @@ id text7
 id textAppNameView
 id textClubName
 id textClubName1
+id textClubNameReview
 id textEnd
 id textEventName
 id textParticipant
@@ -3863,6 +3865,7 @@ id textView28
 id textView29
 id textView3
 id textView30
+id textView31
 id textView32
 id textView33
 id textView4
@@ -4068,6 +4071,7 @@ layout adt_layout_hint
 layout adt_layout_toast
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
+layout club_reviews
 layout creation_screen
 layout custom_dialog
 layout custom_preference_category_layout

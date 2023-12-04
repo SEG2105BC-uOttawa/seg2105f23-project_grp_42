@@ -291,10 +291,13 @@ public class EventTypeManagement extends AppCompatActivity {
 
         Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
         Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
+        Button buttonRegister = (Button) dialogView.findViewById(R.id.btnRegister);
         if (!user.getRole().equals("cycling club")) {
             buttonUpdate.setEnabled(false);
             buttonDelete.setEnabled(false);
         }
+        buttonRegister.setVisibility(View.INVISIBLE);
+
         buttonUpdate.setText("Add");
         buttonDelete.setText("Discard");
 

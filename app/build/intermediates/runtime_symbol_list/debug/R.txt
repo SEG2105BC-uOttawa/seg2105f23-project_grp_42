@@ -3369,6 +3369,7 @@ int id btnAddEventUser 0x7f0a007a
 int id btnBack 0x7f0a007b
 int id btnBackToUpdate 0x7f0a007c
 int id btnDeleteEventUser 0x7f0a007d
+int id btnDeleteRegistration 0x7f0a02ba
 int id btnDeleteUser 0x7f0a007e
 int id btnDiscardRating 0x7f0a0294
 int id btnEvent 0x7f0a007f
@@ -3380,7 +3381,6 @@ int id btnLogin 0x7f0a0084
 int id btnNewEvent 0x7f0a0085
 int id btnNewEventType 0x7f0a0086
 int id btnProfileUpdate 0x7f0a0087
-int id btnRateClub 0x7f0a0287
 int id btnRateCyclingClub 0x7f0a0295
 int id btnRegister 0x7f0a02a2
 int id btnRegistration 0x7f0a0088
@@ -3583,6 +3583,7 @@ int id linearLayout 0x7f0a013f
 int id linearLayout2 0x7f0a0140
 int id listEvents 0x7f0a0141
 int id listMode 0x7f0a0142
+int id listRateAndReview 0x7f0a02b9
 int id listRegistration 0x7f0a02a4
 int id listViewClubs 0x7f0a028c
 int id list_item 0x7f0a0143
@@ -3829,6 +3830,7 @@ int id text7 0x7f0a0230
 int id textAppNameView 0x7f0a0231
 int id textClubName 0x7f0a0299
 int id textClubName1 0x7f0a029a
+int id textClubNameReview 0x7f0a02b7
 int id textEnd 0x7f0a0232
 int id textEventName 0x7f0a02a7
 int id textParticipant 0x7f0a02a8
@@ -3862,6 +3864,7 @@ int id textView28 0x7f0a02ab
 int id textView29 0x7f0a02b2
 int id textView3 0x7f0a023f
 int id textView30 0x7f0a02b3
+int id textView31 0x7f0a02b8
 int id textView32 0x7f0a02b4
 int id textView33 0x7f0a02b5
 int id textView4 0x7f0a0240
@@ -4067,6 +4070,7 @@ int layout adt_layout_hint 0x7f0d0024
 int layout adt_layout_toast 0x7f0d0025
 int layout browser_actions_context_menu_page 0x7f0d0026
 int layout browser_actions_context_menu_row 0x7f0d0027
+int layout club_reviews 0x7f0d009b
 int layout creation_screen 0x7f0d0028
 int layout custom_dialog 0x7f0d0029
 int layout custom_preference_category_layout 0x7f0d002a

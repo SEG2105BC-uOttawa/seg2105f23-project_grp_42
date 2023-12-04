@@ -23,9 +23,6 @@ public final class ActivitySearchForClubBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final Button btnRateClub;
-
-  @NonNull
   public final Button btnSearchClub;
 
   @NonNull
@@ -52,13 +49,12 @@ public final class ActivitySearchForClubBinding implements ViewBinding {
   @NonNull
   public final TextView textView20;
 
-  private ActivitySearchForClubBinding(@NonNull LinearLayout rootView, @NonNull Button btnRateClub,
+  private ActivitySearchForClubBinding(@NonNull LinearLayout rootView,
       @NonNull Button btnSearchClub, @NonNull EditText editSearchClubName,
       @NonNull EditText editSearchEventName, @NonNull EditText editSearchEventType,
       @NonNull ListView listViewClubs, @NonNull TextView textView17, @NonNull TextView textView18,
       @NonNull TextView textView19, @NonNull TextView textView20) {
     this.rootView = rootView;
-    this.btnRateClub = btnRateClub;
     this.btnSearchClub = btnSearchClub;
     this.editSearchClubName = editSearchClubName;
     this.editSearchEventName = editSearchEventName;
@@ -97,12 +93,6 @@ public final class ActivitySearchForClubBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btnRateClub;
-      Button btnRateClub = ViewBindings.findChildViewById(rootView, id);
-      if (btnRateClub == null) {
-        break missingId;
-      }
-
       id = R.id.btnSearchClub;
       Button btnSearchClub = ViewBindings.findChildViewById(rootView, id);
       if (btnSearchClub == null) {
@@ -157,7 +147,7 @@ public final class ActivitySearchForClubBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivitySearchForClubBinding((LinearLayout) rootView, btnRateClub, btnSearchClub,
+      return new ActivitySearchForClubBinding((LinearLayout) rootView, btnSearchClub,
           editSearchClubName, editSearchEventName, editSearchEventType, listViewClubs, textView17,
           textView18, textView19, textView20);
     }

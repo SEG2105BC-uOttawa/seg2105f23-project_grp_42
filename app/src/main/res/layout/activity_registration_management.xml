@@ -16,11 +16,17 @@
     <ListView
         android:id="@+id/listRegistration"
         android:layout_width="match_parent"
-        android:layout_height="580dp" />
+        android:layout_height="512dp" />
 
     <Button
         android:id="@+id/btnRegistrationUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/eventTypeUpdate" />
+
+    <Button
+        android:id="@+id/btnDeleteRegistration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnDelete" />
 </LinearLayout>

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,21 +12,21 @@
 
         <TextView
             android:id="@+id/textView21"
-            android:layout_width="1dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/eventID" />
 
         <TextView
             android:id="@+id/textEventName"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView" />
 
         <Switch
             android:id="@+id/switchAccept"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/accepted" />
@@ -38,21 +39,21 @@
 
         <TextView
             android:id="@+id/textView28"
-            android:layout_width="5dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/participant" />
 
         <TextView
             android:id="@+id/textParticipant"
-            android:layout_width="69dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView" />
 
         <Switch
             android:id="@+id/switchAward"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/giveAward" />

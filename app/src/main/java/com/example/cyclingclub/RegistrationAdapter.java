@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 public class RegistrationAdapter extends ArrayAdapter<Registration> {
-
+    private int selectedPosition = -1;
     public RegistrationAdapter(Context context, List<Registration> data) {
         super(context, 0, data);
     }
@@ -50,6 +50,21 @@ public class RegistrationAdapter extends ArrayAdapter<Registration> {
             reg.setAwarded(isChecked);
         });
 
+
+
+        if (position == selectedPosition) {
+            eventName.setTextColor(getContext().getResources().getColor(android.R.color.holo_blue_dark));
+            participant.setTextColor(getContext().getResources().getColor(android.R.color.holo_blue_dark));
+        } else {
+            eventName.setTextColor(getContext().getResources().getColor(android.R.color.black));
+            participant.setTextColor(getContext().getResources().getColor(android.R.color.black));
+        }
+
         return itemView;
     }
+    public void setSelectedPosition(int position) {
+        selectedPosition = position;
+        notifyDataSetChanged();
+    }
+
 }

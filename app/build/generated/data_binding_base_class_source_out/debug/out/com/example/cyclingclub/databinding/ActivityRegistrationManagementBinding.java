@@ -22,6 +22,9 @@ public final class ActivityRegistrationManagementBinding implements ViewBinding 
   private final LinearLayout rootView;
 
   @NonNull
+  public final Button btnDeleteRegistration;
+
+  @NonNull
   public final Button btnRegistrationUpdate;
 
   @NonNull
@@ -31,9 +34,10 @@ public final class ActivityRegistrationManagementBinding implements ViewBinding 
   public final TextView textView23;
 
   private ActivityRegistrationManagementBinding(@NonNull LinearLayout rootView,
-      @NonNull Button btnRegistrationUpdate, @NonNull ListView listRegistration,
-      @NonNull TextView textView23) {
+      @NonNull Button btnDeleteRegistration, @NonNull Button btnRegistrationUpdate,
+      @NonNull ListView listRegistration, @NonNull TextView textView23) {
     this.rootView = rootView;
+    this.btnDeleteRegistration = btnDeleteRegistration;
     this.btnRegistrationUpdate = btnRegistrationUpdate;
     this.listRegistration = listRegistration;
     this.textView23 = textView23;
@@ -66,6 +70,12 @@ public final class ActivityRegistrationManagementBinding implements ViewBinding 
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnDeleteRegistration;
+      Button btnDeleteRegistration = ViewBindings.findChildViewById(rootView, id);
+      if (btnDeleteRegistration == null) {
+        break missingId;
+      }
+
       id = R.id.btnRegistrationUpdate;
       Button btnRegistrationUpdate = ViewBindings.findChildViewById(rootView, id);
       if (btnRegistrationUpdate == null) {
@@ -85,7 +95,7 @@ public final class ActivityRegistrationManagementBinding implements ViewBinding 
       }
 
       return new ActivityRegistrationManagementBinding((LinearLayout) rootView,
-          btnRegistrationUpdate, listRegistration, textView23);
+          btnDeleteRegistration, btnRegistrationUpdate, listRegistration, textView23);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

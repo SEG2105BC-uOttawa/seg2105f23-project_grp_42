@@ -162,6 +162,15 @@ public class EventManagement extends AppCompatActivity {
         editSearchRegion.setText("");
         editSearchFrom.setText("");
         editSearchTo.setText("");
+
+        if (user.getRole().equals("cycling club") ) {
+            buttonSearch.setEnabled(false);
+            editSearchType.setEnabled(false);
+            editSearchRegion.setEnabled(false);
+            editSearchFrom.setEnabled(false);
+            editSearchTo.setEnabled(false);
+        }
+
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -333,13 +342,37 @@ public class EventManagement extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DatabaseReference dref = FirebaseDatabase.getInstance().getReference("Registration");
-                Registration reg = new Registration(event,user);
 
-                String key = dref.push().getKey();
-                reg.setKey(key);
-                dref.child(key).setValue(reg);
+                dref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        boolean registered=false;
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Registration reg = snapshot.getValue(Registration.class);
+                            if (reg.getEvent().getId().equals(event.getId()) &&
+                                reg.getParticipant().getUsername().equals(user.getUsername())){
+                                registered=true;
+                            }
+                        }
+                        if(registered){
+                            displayPopupMessage("Registration exists, operation ignored",view);
+                        }else{
+                            Registration reg = new Registration(event,user);
 
-                b.dismiss();
+                            String key = dref.push().getKey();
+                            reg.setKey(key);
+                            dref.child(key).setValue(reg);
+                            displayPopupMessage("Registration successful",view);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Handle potential errors here.
+                    }
+                });
+
             }
         });
 
@@ -391,7 +424,7 @@ public class EventManagement extends AppCompatActivity {
 
         return message;
     }
-
+/*
     public static List<Event> getEvents(){
         return events;
     }
@@ -400,4 +433,6 @@ public class EventManagement extends AppCompatActivity {
         return eventsList;
     }
 
+
+ */
 }
