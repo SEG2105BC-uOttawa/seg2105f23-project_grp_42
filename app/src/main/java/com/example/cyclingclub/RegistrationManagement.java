@@ -32,23 +32,12 @@ public class RegistrationManagement extends AppCompatActivity {
     private Registration selectedRegistration;
     private User user;
 
-    RegistrationManagement(){
-
-    }
-
-    RegistrationManagement(List<Registration> registrations){
-        this.registrations = registrations;
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_management);
-
         user = (User) getIntent().getSerializableExtra("user");
-
-
         listViewRegistration = (ListView) findViewById(R.id.listRegistration);
-
         Button btnUpdate = (Button) findViewById(R.id.btnRegistrationUpdate);
         Button btnDelete = (Button) findViewById(R.id.btnDeleteRegistration);
 

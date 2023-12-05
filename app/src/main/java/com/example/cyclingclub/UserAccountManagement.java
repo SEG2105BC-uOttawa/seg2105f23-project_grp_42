@@ -31,21 +31,15 @@ public class UserAccountManagement extends AppCompatActivity {
     private List<User> users;
     private List<String> userKeys;
     private DatabaseReference databaseUser;
-
     private Administrator admin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_account_management);
-
         users = new ArrayList<>();
         userKeys = new ArrayList<String>();
-
         listViewUser = (ListView) findViewById(R.id.userListView);
-        //admin= new Administrator("admin","admin");
-        //admin.setEventTypeDB(databaseUser);
 
-        //AdapterView.OnItemSelectedListener;
         AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -57,7 +51,6 @@ public class UserAccountManagement extends AppCompatActivity {
             }
         };
         listViewUser.setOnItemLongClickListener(longClickListener);
-
     }
 
     @Override
@@ -75,62 +68,47 @@ public class UserAccountManagement extends AppCompatActivity {
                     users.add(user);
                     userKeys.add(key);
                 }
-
                 UserList userAdapter = new UserList(UserAccountManagement.this, users);
                 listViewUser.setAdapter(userAdapter);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         };
-
         databaseUser.addValueEventListener(postListener);
     }
 
 
     private void showUpdateDeleteDialog(User user, String key) {
-
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.user_detail, null);
         dialogBuilder.setView(dialogView);
-
-        //editTextID.setEnabled(false);
-        //editTextID.setFocusable(false);
         EditText editTextName = (EditText) dialogView.findViewById(R.id.usernameTextField);
         EditText editTextEmail = (EditText) dialogView.findViewById(R.id.emailTextField);
         EditText editTextPassword = (EditText) dialogView.findViewById(R.id.passwordTextField);
         EditText editTextRole = (EditText) dialogView.findViewById(R.id.roleTextField);
         final Button buttonBack = (Button) dialogView.findViewById(R.id.btnBack);
         final Button buttonDelete = (Button) dialogView.findViewById(R.id.btnDeleteUser);
-
         dialogBuilder.setTitle("Selected User Detail");
         editTextName.setText(user.getUsername());
         editTextEmail.setText(user.getEmail());
         editTextPassword.setText(user.getPassword());
         editTextRole.setText(user.getRole());
-
         final AlertDialog b = dialogBuilder.create();
         b.show();
-
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 b.dismiss();
             }
         });
-
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                     admin.deleteUser(databaseUser,key);
                     b.dismiss();
-
             }
         });
     }
-
-
-
 }

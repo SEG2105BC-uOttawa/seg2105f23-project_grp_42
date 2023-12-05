@@ -43,32 +43,17 @@ import com.google.firebase.database.ValueEventListener;
 public class EventManagement extends AppCompatActivity {
 
 
-   // private Spinner dropdownType ;
-
     private ListView listViewEvents;
     public static List<Event> events;
     public static List<String> eventsList;
     private User user;
 
-
-   // private DatabaseReference databaseEvents;
-
-    //private List<User> users;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         user = (User) getIntent().getSerializableExtra("user");
-
         setContentView(R.layout.activity_event_management);
-
         listViewEvents = (ListView) findViewById(R.id.listEvents);
-
-       // databaseEvents = FirebaseDatabase.getInstance().getReference("Events1");
-
-
-
-
         events = new ArrayList<Event>();
         eventsList = new ArrayList<String>();
 
@@ -94,15 +79,12 @@ public class EventManagement extends AppCompatActivity {
                 // Set the name and age in the TextViews
                 TextView1.setText("Name:"+ev.getId()+ "     Type:"+ev.getType());
                 TextView2.setText("Region:"+ev.getRegion()+"    Date:"+ev.getDate());
-
                 return view;
             }
         };
 
         listViewEvents.setAdapter(eventAdapter);
-
         DatabaseReference  databaseEvents=Administrator.getEventDB();
-
         Query query;
 
         if(user.getRole().equals("cycling club")){
@@ -132,9 +114,6 @@ public class EventManagement extends AppCompatActivity {
                 System.out.println("Error querying the database: " + databaseError.getMessage());
             }
         });
-
-
-
 
         AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
@@ -179,13 +158,10 @@ public class EventManagement extends AppCompatActivity {
         });
     }
 
-
-
     @Override
     protected void onStart() {
         super.onStart();
     }
-
 
     private void searchEvent(List<Event> events, User user, ArrayAdapter<Event> eventAdapter, String type, String region, String dateFrom, String dateTo){
         DatabaseReference  databaseEvents=Administrator.getEventDB();
@@ -203,7 +179,6 @@ public class EventManagement extends AppCompatActivity {
                     }
                 }
                 eventAdapter.notifyDataSetChanged();
-
             }
 
             @Override
@@ -211,9 +186,7 @@ public class EventManagement extends AppCompatActivity {
                 // Handle potential errors here.
             }
         });
-
     }
-
 
     private void showUpdateDeleteDialog(Event event) {
 
@@ -232,19 +205,14 @@ public class EventManagement extends AppCompatActivity {
         Spinner spinner = (Spinner) dialogView.findViewById(R.id.spinnerLevel);
         EditText editEventFee = (EditText) dialogView.findViewById(R.id.editEventFee);
         EditText editEventLimit = (EditText) dialogView.findViewById(R.id.editEventLimit);
-
         editEventId.setText(event.getId());
         editEventRegion.setText(event.getRegion());
         editEventDate.setText(event.getDate());
         editEventRoute.setText(event.getRoute());
-
-
         editEventDistance.setText(Integer.toString(event.getDistance()));
         editEventElevation.setText(Integer.toString(event.getElevation()));
         editEventFee.setText(Double.toString(event.getFee()));
         editEventLimit.setText(Integer.toString(event.getLimit()));
-
-
         Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
         Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
         Button buttonRegister = (Button) dialogView.findViewById(R.id.btnRegister);
@@ -281,7 +249,6 @@ public class EventManagement extends AppCompatActivity {
             spinner.setAdapter(adapter);
             spinner.setSelection(event.getLevel()-1);
         }
-
         b.show();
 
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
@@ -293,7 +260,6 @@ public class EventManagement extends AppCompatActivity {
                 String region = editEventRegion.getText().toString().trim();
                 String date = editEventDate.getText().toString().trim();
                 String route = editEventRoute.getText().toString().trim();
-
                 String distance = editEventDistance.getText().toString().trim();
                 String elevation = editEventElevation.getText().toString().trim();
                 int level = Integer.parseInt( spinner.getSelectedItem().toString());
@@ -303,7 +269,6 @@ public class EventManagement extends AppCompatActivity {
 
                  String message=validateInput(id,route,region,date,distance,elevation,fee,limit);
                  if(message.equals("")){
-
 
                      event.setId(id);
                     event.setType(type);
@@ -324,7 +289,6 @@ public class EventManagement extends AppCompatActivity {
                 else{
                    displayPopupMessage(message,view);
                 }
-
             }
         });
 
@@ -364,7 +328,6 @@ public class EventManagement extends AppCompatActivity {
                             dref.child(key).setValue(reg);
                             displayPopupMessage("Registration successful",view);
                         }
-
                     }
 
                     @Override
@@ -372,32 +335,25 @@ public class EventManagement extends AppCompatActivity {
                         // Handle potential errors here.
                     }
                 });
-
             }
         });
-
     }
-
 
     public void onClickAddEvent(View view) {
 
             Intent intent = new Intent(getApplicationContext(), EventTypeManagement.class);
             intent.putExtra("user", user);
             startActivity (intent);
-
     }
-
 
     private void displayPopupMessage(String message, View anchorView) {
         LinearLayout layout = new LinearLayout(this);
         layout.setLayoutParams(new ViewGroup.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT));
-
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setGravity(Gravity.CENTER);
         TextView textView = new TextView(this);
         textView.setText(message);
         textView.setTextColor(Color.RED);
-
         PopupWindow popupWindow = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
         popupWindow.setContentView(textView);
         popupWindow.showAsDropDown(anchorView, 10, 0);
@@ -406,10 +362,7 @@ public class EventManagement extends AppCompatActivity {
 
     private String validateInput(String id,String route,String region,String date,String distance,String elevation,String fee,String limit ) {
         InputValidator validator = InputValidator.getInstance();
-
         String message="";
-
-
         /* Validate event type */
         if (!validator.isValidString(id)) { message= message+ "ID must start with letter and can not be blank.";}
         if (!validator.isValidString(route)) { message= message+ "Route must start with letter and can not be blank.";}
@@ -420,19 +373,6 @@ public class EventManagement extends AppCompatActivity {
         // if (!validator.isValidNumber(level)) { message= message+ "Level must be a number";}
         if (!validator.isValidNumber(fee)) { message= message+ "Fee must be a number.";}
         if (!validator.isValidNumber(limit)) { message= message+ "Limit must be a number.";}
-
-
         return message;
     }
-/*
-    public static List<Event> getEvents(){
-        return events;
-    }
-
-    public static List<String> getEventsList(){
-        return eventsList;
-    }
-
-
- */
 }

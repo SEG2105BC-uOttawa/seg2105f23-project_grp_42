@@ -55,68 +55,6 @@ public class  EventOrganizer extends User {
         //Event.name = name;
     }
 
-/*    BG, no usage and error message.
-    EventManager.showUpdateDeleteDialog(event);
-    public List<Event> selectEvents(){
-        events = Administrator.getEvents();
-        List<Event> newEvents = Collections.unmodifiableList(events);
-        return newEvents;
-    }
-    private void showUpdateDeleteDialog(Event event) {
-
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.event_update, null);
-        dialogBuilder.setView(dialogView);
-
-        EditText editTextName = (EditText) dialogView.findViewById(R.id.editTextName);
-        EditText editTextLocation = (EditText) dialogView.findViewById(R.id.editTextLocation);
-        EditText editTextType = (EditText) dialogView.findViewById(R.id.editTextType);
-        EditText editTextTime = (EditText) dialogView.findViewById(R.id.editTextTime);
-        EditText editTextDuration = (EditText) dialogView.findViewById(R.id.editTextDuration);
-
-        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
-        final Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
-
-        dialogBuilder.setTitle("Selected Event Detail");
-        editTextName.setText(event.getName());
-        editTextLocation.setText(event.getLocation());
-        editTextType.setText(event.getType());
-        editTextTime.setText(event.getDate());
-        editTextDuration.setText(Double.toString(event.getDuration()));
-
-
-        final AlertDialog b = dialogBuilder.create();
-        b.show();
-
-        buttonUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String  key=event.getKey();
-                String name = editTextName.getText().toString().trim();
-                String location = editTextLocation.getText().toString().trim();
-                String type = editTextType.getText().toString().trim();
-                String time = editTextTime.getText().toString().trim();
-                double duration = Double.parseDouble(editTextDuration.getText().toString().trim());
-
-
-                Event newEvent=new Event(key, name, location, type, time , duration);
-                databaseEvents.child(key).setValue(newEvent);
-                b.dismiss();
-            }
-        });
-
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//
-                databaseEvents.child(event.getKey()).removeValue();
-                b.dismiss();
-            }
-        });
-    }
-*/
-
     public double distributeAwards(){
 
         return 0;
