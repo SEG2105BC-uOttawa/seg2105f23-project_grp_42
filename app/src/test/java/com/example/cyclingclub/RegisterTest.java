@@ -25,6 +25,7 @@ import java.util.List;
     private Registration register;
 
     private List<CyclingClub> clubs;
+    private CyclingClub club;
 
     private ArrayAdapter<CyclingClub> clubAdapter;
     private String type;
@@ -49,6 +50,19 @@ import java.util.List;
     @Test
     public void testEventDiscovery(){
         assertNotNull(searcher);
+    }
+
+    @Test
+    public void testEventDetails(){assertNotNull(testEvent.getDetail());}
+
+    @Test
+    public void testReviews(){assertNotNull(searcher.returnReview(club));}
+
+    @Test
+    public void searchClubByEventName(){assertNotNull(searcher.returnClubByName(club.getClubName()));}
+    @Test
+    public void testSearchCyclingClubByEventType() {
+        assertNotNull(searcher.returnEventByType(type));
     }
 }
   // rough code for reference// @Nick please see this if it makes sense ==>Ketan

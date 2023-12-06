@@ -57,7 +57,20 @@ public class SearchForClub extends AppCompatActivity {
         this.eventName = eventName;
         this.clubName = clubName;
     }
-
+    public CyclingClub returnClubByName(String eventName){
+        CyclingClub testClub = new CyclingClub();
+        if(eventName == testClub.getClubName()){
+            return testClub;
+        }
+        return null;
+    }
+    public Event returnEventByType(String eventType){
+        Event testEvent = new Event();
+        if(eventType == testEvent.getType()){
+            return testEvent;
+        }
+        return null;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -312,6 +325,11 @@ public class SearchForClub extends AppCompatActivity {
         listView.setAdapter(adapter);
         final AlertDialog b = dialogBuilder.create();
         b.show();
+    }
+
+    public List returnReview(CyclingClub club){
+        List<Map<String, Object>> reviews = club.getRateComments();
+        return reviews;
     }
     private void displayPopupMessage(String message, View anchorView) {
         LinearLayout layout = new LinearLayout(this);

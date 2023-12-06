@@ -74,9 +74,11 @@ public class UserAccountManagement extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
+
         };
         databaseUser.addValueEventListener(postListener);
     }
+
 
 
     private void showUpdateDeleteDialog(User user, String key) {

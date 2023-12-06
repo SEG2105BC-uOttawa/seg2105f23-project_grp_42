@@ -61,7 +61,6 @@ public class RegistrationManagement extends AppCompatActivity {
                     registrations.add(reg);
                 }
                 regAdapter.notifyDataSetChanged();
-
             }
 
             @Override
@@ -77,10 +76,8 @@ public class RegistrationManagement extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 regAdapter.setSelectedPosition(position);
                 selectedRegistration=registrations.get(position);
-
             }
         });
-
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,18 +98,15 @@ public class RegistrationManagement extends AppCompatActivity {
                 }else{
                     dref.child(selectedRegistration.getKey()).removeValue();
                 }
-
             }
         });
     }
-
 
     @Override
     protected void onStart() {
         super.onStart();
 
     }
-
 
     private void displayPopupMessage(String message, View anchorView) {
         LinearLayout layout = new LinearLayout(this);
@@ -128,6 +122,4 @@ public class RegistrationManagement extends AppCompatActivity {
         popupWindow.setContentView(textView);
         popupWindow.showAsDropDown(anchorView, 10, 0);
     }
-
-
 }
