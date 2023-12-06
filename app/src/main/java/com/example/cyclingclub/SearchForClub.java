@@ -41,7 +41,22 @@ public class SearchForClub extends AppCompatActivity {
     private List<CyclingClub> clubs;
     private CyclingClub selectedClub;
     private User user;
+    private ArrayAdapter<CyclingClub> clubAdapter;
+    private String type;
 
+    private String eventName;
+    private String clubName;
+
+    SearchForClub(){}
+
+    SearchForClub(List<CyclingClub> clubs, User user, ArrayAdapter<CyclingClub> clubAdapter, String type, String eventName, String clubName){
+        this.clubs = clubs;
+        this.user = user;
+        this.clubAdapter = clubAdapter;
+        this.type = type;
+        this.eventName = eventName;
+        this.clubName = clubName;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,11 +95,15 @@ public class SearchForClub extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.listViewClubs);
         listView.setAdapter(adapter);
+<<<<<<< HEAD
 
       //  searchClub(clubs,  user,  adapter,  "",  "","");
 
 
         DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("clubProfiles");
+=======
+        DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("ClubProfile");
+>>>>>>> ffbefac830ee375163570b73837d42ecf654fee0
 
         dRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -103,15 +122,7 @@ public class SearchForClub extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
         Button btnSearchClub = findViewById(R.id.btnSearchClub);
-
-
-        //ListView listView = findViewById(R.id.listViewClubs);
         AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -121,12 +132,10 @@ public class SearchForClub extends AppCompatActivity {
                 }else{
                     displayPopupMessage("Log in as participants to rate a club!", view);
                 }
-
                 return true;
             }
         };
         listView.setOnItemLongClickListener(longClickListener);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -141,11 +150,9 @@ public class SearchForClub extends AppCompatActivity {
         EditText searchClubName = findViewById(R.id.editSearchClubName);
         EditText searchEventName = findViewById(R.id.editSearchEventName);
         EditText searchEventType = findViewById(R.id.editSearchEventType);
-
         searchClubName.setText("");
         searchEventName.setText("");
         searchEventType.setText("");
-
         btnSearchClub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,8 +161,6 @@ public class SearchForClub extends AppCompatActivity {
         });
 
     }
-
-
     /**
     * Implement the functionality to allow the user to search for a club
     * @param clubs Search from a list of clubs
@@ -164,12 +169,15 @@ public class SearchForClub extends AppCompatActivity {
      * @param clubName Search for the club's name
      * @param eventName Search event name through its ID
      */
-    private void searchClub(List<CyclingClub> clubs, User user, ArrayAdapter<CyclingClub> clubAdapter, String type, String eventName, String clubName){
-
+    public void searchClub(List<CyclingClub> clubs, User user, ArrayAdapter<CyclingClub> clubAdapter, String type, String eventName, String clubName){
         //Find username of the events with specified event type and event name
         List<String> userNames=new ArrayList<>();
+<<<<<<< HEAD
         DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("events");
 
+=======
+        DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("Events1");
+>>>>>>> ffbefac830ee375163570b73837d42ecf654fee0
         dRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -179,12 +187,9 @@ public class SearchForClub extends AppCompatActivity {
                     if ((ev.getId().contains(eventName) || eventName.equals("")) &&
                             (ev.getType().contains(type) || type.equals(""))){
                         userNames.add(ev.getUsername());
-
                     }
                 }
-
                 querySecondDatabase( clubs,clubAdapter, userNames, clubName);
-
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -192,15 +197,15 @@ public class SearchForClub extends AppCompatActivity {
             }
         });
 
-
-
-
-
     }
     private void querySecondDatabase(List<CyclingClub> clubs,ArrayAdapter<CyclingClub> clubAdapter, List<String> userNames, String clubName){
+<<<<<<< HEAD
 
         DatabaseReference dRefClub = FirebaseDatabase.getInstance().getReference("clubProfiles");
 
+=======
+        DatabaseReference dRefClub = FirebaseDatabase.getInstance().getReference("ClubProfile");
+>>>>>>> ffbefac830ee375163570b73837d42ecf654fee0
         dRefClub.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -214,15 +219,12 @@ public class SearchForClub extends AppCompatActivity {
                 }
                 clubAdapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Handle potential errors here.
             }
         });
-
     }
-
     /**
     * Allow the user to rate a club using a dropdown menu
     * @param club The club being rated
@@ -234,18 +236,14 @@ public class SearchForClub extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.rate_club, null);
         dialogBuilder.setView(dialogView);
-
         TextView textName=(TextView) dialogView.findViewById(R.id.textClubName1);
         TextView textPhone=(TextView) dialogView.findViewById(R.id.textPhoneNumber);
         TextView textRegion=(TextView) dialogView.findViewById(R.id.textRegion);
-
         textName.setText(club.getClubName());
         textPhone.setText(club.getPhoneNumber());
         textRegion.setText(club.getRegion());
-
         int rate=1;
         String comment="";
-
         for (Map<String, Object> rateComment : club.getRateComments() ) {
             if (rateComment.get("userName").toString().equals(user.getUsername())) {
                 // Comment with the same username already exists, update the comment and rate
@@ -253,12 +251,9 @@ public class SearchForClub extends AppCompatActivity {
                 comment = rateComment.get("comment").toString();
             }
         }
-
         EditText editComment= (EditText) dialogView.findViewById(R.id.editComment);
         editComment.setText(comment);
-
         Spinner spinner=dialogView.findViewById(R.id.spinnerRate);
-
         final AlertDialog b = dialogBuilder.create();
         // Create an ArrayAdapter with numeric values from 1 to 5
         if (spinner != null) {
@@ -273,58 +268,42 @@ public class SearchForClub extends AppCompatActivity {
                 spinner.setSelection(rate-1);
             }
         }
-
         b.show();
-
-
-
         Button buttonDiscard = dialogView.findViewById(R.id.btnDiscardRating);
         buttonDiscard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 b.dismiss();
             }
         });
-
 
         Button buttonRate = dialogView.findViewById(R.id.btnRateCyclingClub);
         buttonRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 int rate = Integer.parseInt(spinner.getSelectedItem().toString());
                 EditText editComment = dialogView.findViewById(R.id.editComment);
                 String comment =  editComment.getText().toString().trim();
                 club.addRateComment(user.getUsername(), comment, rate);
+<<<<<<< HEAD
 
                 DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("clubProfiles");
+=======
+                DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("ClubProfile");
+>>>>>>> ffbefac830ee375163570b73837d42ecf654fee0
                 dRef.child(club.getKey()).setValue(club);
-
-
-
                 b.dismiss();
             }
         });
-
     }
 
-
-
-
     private void  showReviewDialog(CyclingClub club){
-
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.club_reviews, null);
         dialogBuilder.setView(dialogView);
-
         TextView textName=(TextView) dialogView.findViewById(R.id.textClubNameReview);
-
         textName.setText(club.getClubName());
-
-
         //List<Map<String, Object>> reviews= new ArrayList<>();
         List<Map<String, Object>> reviews=club.getRateComments();
        // int x=1;
@@ -338,59 +317,36 @@ public class SearchForClub extends AppCompatActivity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 // Customize the appearance of the list item
                 View view = super.getView(position, convertView, parent);
-
                 // Get the Person object for this position
                 Map<String, Object> review = reviews.get(position);
-
                 // Find the TextViews in the layout
                 TextView text1 = view.findViewById(android.R.id.text1);
                 TextView text2 = view.findViewById(android.R.id.text2);
-
                 // Set the name and age in the TextViews
-               // text1.setText(Integer.toString((int) review.get("rate")));
-               // text2.setText((String) review.get("comment"));
-
                 String t0=review.get("userName").toString();
                 String t1=review.get("rate").toString();
                 String t2=review.get("comment").toString();
-
                 text1.setText("Reviewed By:"+t0+"     Rate:"+t1);
                 text2.setText("Comments:" +t2);
-
                 return view;
             }
         };
 
         ListView listView = dialogView.findViewById(R.id.listRateAndReview);
         listView.setAdapter(adapter);
-
-
-
         final AlertDialog b = dialogBuilder.create();
         b.show();
-
-
-
-
     }
-
-
-
     private void displayPopupMessage(String message, View anchorView) {
         LinearLayout layout = new LinearLayout(this);
         layout.setLayoutParams(new ViewGroup.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT));
-
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setGravity(Gravity.CENTER);
         TextView textView = new TextView(this);
         textView.setText(message);
         textView.setTextColor(Color.RED);
-
         PopupWindow popupWindow = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
         popupWindow.setContentView(textView);
         popupWindow.showAsDropDown(anchorView, 10, 0);
     }
-
-
-
 }

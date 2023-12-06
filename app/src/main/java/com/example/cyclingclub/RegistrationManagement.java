@@ -33,16 +33,20 @@ public class RegistrationManagement extends AppCompatActivity {
     private Registration selectedRegistration;
     private User user;
 
+<<<<<<< HEAD
     /**
      * Called when the activity is starting.
      * Initializes the activity and sets up the registration list view.
      *
      * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle).
      */
+=======
+>>>>>>> ffbefac830ee375163570b73837d42ecf654fee0
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_management);
+<<<<<<< HEAD
 
         // Get the user passed from the previous activity
         user = (User) getIntent().getSerializableExtra("user");
@@ -56,6 +60,12 @@ public class RegistrationManagement extends AppCompatActivity {
         // Create a RegistrationAdapter with the list of registrations and set it on the ListView
         RegistrationAdapter regAdapter = new RegistrationAdapter(RegistrationManagement.this, registrations);
         listViewRegistration.setAdapter(regAdapter);
+=======
+        user = (User) getIntent().getSerializableExtra("user");
+        listViewRegistration = (ListView) findViewById(R.id.listRegistration);
+        Button btnUpdate = (Button) findViewById(R.id.btnRegistrationUpdate);
+        Button btnDelete = (Button) findViewById(R.id.btnDeleteRegistration);
+>>>>>>> ffbefac830ee375163570b73837d42ecf654fee0
 
         // Set up a ValueEventListener to listen for changes in the registrations node in the Firebase database
         ValueEventListener postListener = new ValueEventListener() {

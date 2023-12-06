@@ -31,7 +31,6 @@ public class WelcomeScreen extends AppCompatActivity {
 		if (user != null) {
 			Bundle bundle = new Bundle(); /* Create a Bundle to pass user information */
 			bundle.putSerializable("user", user);
-
 			homeFragment.setArguments(bundle);
 		}
 
@@ -87,19 +86,6 @@ public class WelcomeScreen extends AppCompatActivity {
 
 			return false;
 		});
-
-//        bottomNavigationView.setOnItemReselectedListener(item -> {
-//            /* Handle reselection behavior here for the selected item */
-//            switch (item.getItemId()) {
-//                case R.id.nav_item1:
-//                    scrollToTopOfList();
-//                    break;
-//                case R.id.nav_item2:
-//                    break;
-//                case R.id.nav_item3:
-//                    break;
-//            }
-//        });
 	}
 
 	private void initFragments() {
@@ -144,6 +130,4 @@ public class WelcomeScreen extends AppCompatActivity {
 
 		return iconResource;
 	}
-
-
 }
