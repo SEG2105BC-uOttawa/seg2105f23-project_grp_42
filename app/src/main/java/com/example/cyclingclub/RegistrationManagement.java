@@ -32,6 +32,14 @@ public class RegistrationManagement extends AppCompatActivity {
     private Registration selectedRegistration;
     private User user;
 
+    public boolean ifEventFull(Registration selectedRegistration){
+        Event testEvent = selectedRegistration.getEvent();
+        int limit = selectedRegistration.getEvent().getLimit();
+        if(registrations.size() == limit ){
+            return true;
+        }
+        return false;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

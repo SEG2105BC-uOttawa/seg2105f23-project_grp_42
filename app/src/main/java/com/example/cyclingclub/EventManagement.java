@@ -375,4 +375,11 @@ public class EventManagement extends AppCompatActivity {
         if (!validator.isValidNumber(limit)) { message= message+ "Limit must be a number.";}
         return message;
     }
+
+    public boolean ifValidated(String id,String route,String region,String date,String distance,String elevation,String fee,String limit){
+        if(validateInput(id, route, region, date, distance, elevation, fee, limit) == null){
+            return false;
+        }
+        return true;
+    }
 }

@@ -134,7 +134,7 @@ public class SignupActivity extends AppCompatActivity {
      * @param password The user's password.
      * @return A validation message if there's an issue, or null if everything is valid.
      */
-    private String validateInput(String email, String username, String password) {
+    public String validateInput(String email, String username, String password) {
         InputValidator validator = InputValidator.getInstance();
 
         /* Validate email */

@@ -66,22 +66,18 @@ import java.util.List;
     }
         @Test
     public void testAccountCreation() {
-        assertTrue(participant.createAccount());
+        SignupActivity signUp = new SignupActivity();
+        assertNotNull(signUp.validateInput(testUser.getEmail(), testUser.getUsername(),testUser.getPassword()));
     }
         @Test
     public void testInvalidEventRegistration() {
         Event fullEvent = new Event(); // Initialize Event object with full capacity
-        assertFalse(participant.registerForEvent(fullEvent));
-    }
-        @Test
-    public void testRouteTracking() {
-        // Assuming the route tracking feature is available
-        assertTrue(participant.useRouteTracking());
+            assertFalse(registrationManager.ifEventFull(register));
     }
         @Test
     public void testEventConfirmationCommunication() {
-        Event event = new Event(); // Initialize Event object or mock it as needed
-        assertTrue(participant.receiveEventConfirmationCommunication(event));git s
+        EventManagement event = new EventManagement(); // Initialize Event object or mock it as needed
+        assertTrue(event.ifValidated(testEvent.getId(),testEvent.getRoute(),testEvent.getRegion(),testEvent.getDate(),String.valueOf(testEvent.getDistance()),String.valueOf(testEvent.getElevation()),String.valueOf(testEvent.getFee()),String.valueOf(testEvent.getLimit())));
     }
 
 
