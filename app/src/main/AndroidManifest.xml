@@ -25,33 +25,33 @@
         android:theme="@style/Theme.CyclingClub"
         tools:targetApi="34">
         <activity
-            android:name=".RegistrationManagement"
+            android:name=".activities.RegistrationManagementActivity"
             android:exported="false" />
         <activity
-            android:name=".SearchForClub"
+            android:name=".utils.SearchForClub"
             android:exported="false" />
         <activity
-            android:name=".EventManagement"
+            android:name=".activities.EventManagementActivity"
             android:exported="false" />
         <activity
-            android:name=".UserAccountManagement"
+            android:name=".activities.UserAccountManagementActivity"
             android:exported="false" />
         <activity
-            android:name=".EventTypeManagementActivity"
+            android:name=".activities.EventTypeManagementActivity"
             android:exported="false"
             android:label="@string/title_activity_event_type_management"
             android:theme="@style/Theme.CyclingClub" />
         <activity
-            android:name=".WelcomeScreen"
+            android:name=".activities.WelcomeScreenActivity"
             android:exported="false" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".activities.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

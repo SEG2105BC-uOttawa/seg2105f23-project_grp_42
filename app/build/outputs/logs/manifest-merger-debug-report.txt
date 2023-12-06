@@ -212,31 +212,31 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /home/nick/.gradle/caches/t
 		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:25:9-49
 	android:dataExtractionRules
 		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:19:9-65
-activity#com.example.cyclingclub.RegistrationManagement
+activity#com.example.cyclingclub.activities.RegistrationManagementActivity
 ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:27:9-29:40
 	android:exported
 		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:29:13-37
 	android:name
-		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:28:13-51
-activity#com.example.cyclingclub.SearchForClub
+		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:28:13-70
+activity#com.example.cyclingclub.utils.SearchForClub
 ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:30:9-32:40
 	android:exported
 		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:32:13-37
 	android:name
-		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:31:13-42
-activity#com.example.cyclingclub.EventManagement
+		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:31:13-48
+activity#com.example.cyclingclub.activities.EventManagementActivity
 ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:33:9-35:40
 	android:exported
 		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:35:13-37
 	android:name
-		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:34:13-44
-activity#com.example.cyclingclub.UserAccountManagement
+		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:34:13-63
+activity#com.example.cyclingclub.activities.UserAccountManagementActivity
 ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:36:9-38:40
 	android:exported
 		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:38:13-37
 	android:name
-		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:37:13-50
-activity#com.example.cyclingclub.EventTypeManagementActivity
+		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:37:13-69
+activity#com.example.cyclingclub.activities.EventTypeManagementActivity
 ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:39:9-43:56
 	android:label
 		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:42:13-73
@@ -245,31 +245,31 @@ ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-p
 	android:theme
 		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:43:13-53
 	android:name
-		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:40:13-56
-activity#com.example.cyclingclub.WelcomeScreen
+		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:40:13-67
+activity#com.example.cyclingclub.activities.WelcomeScreenActivity
 ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:44:9-46:40
 	android:exported
 		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:46:13-37
 	android:name
-		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:45:13-42
-activity#com.example.cyclingclub.SignupActivity
+		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:45:13-61
+activity#com.example.cyclingclub.activities.SignupActivity
 ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:47:9-49:40
 	android:exported
 		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:49:13-37
 	android:name
-		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:48:13-43
-activity#com.example.cyclingclub.LoginActivity
+		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:48:13-54
+activity#com.example.cyclingclub.activities.LoginActivity
 ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:50:9-52:40
 	android:exported
 		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:52:13-37
 	android:name
-		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:51:13-42
-activity#com.example.cyclingclub.MainActivity
+		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:51:13-53
+activity#com.example.cyclingclub.activities.MainActivity
 ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:53:9-61:20
 	android:exported
 		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:55:13-36
 	android:name
-		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:54:13-41
+		ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:54:13-52
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /home/nick/Documents/labs-assignments/2023-fall/SEG_2105/seg2105f23-project_grp_42/app/src/main/AndroidManifest.xml:56:13-60:29
 action#android.intent.action.MAIN

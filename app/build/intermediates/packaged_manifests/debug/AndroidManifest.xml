@@ -72,33 +72,33 @@
         android:testOnly="true"
         android:theme="@style/Theme.CyclingClub" >
         <activity
-            android:name="com.example.cyclingclub.RegistrationManagement"
+            android:name="com.example.cyclingclub.activities.RegistrationManagementActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.cyclingclub.SearchForClub"
+            android:name="com.example.cyclingclub.utils.SearchForClub"
             android:exported="false" />
         <activity
-            android:name="com.example.cyclingclub.EventManagement"
+            android:name="com.example.cyclingclub.activities.EventManagementActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.cyclingclub.UserAccountManagement"
+            android:name="com.example.cyclingclub.activities.UserAccountManagementActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.cyclingclub.EventTypeManagementActivity"
+            android:name="com.example.cyclingclub.activities.EventTypeManagementActivity"
             android:exported="false"
             android:label="@string/title_activity_event_type_management"
             android:theme="@style/Theme.CyclingClub" />
         <activity
-            android:name="com.example.cyclingclub.WelcomeScreen"
+            android:name="com.example.cyclingclub.activities.WelcomeScreenActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.cyclingclub.SignupActivity"
+            android:name="com.example.cyclingclub.activities.SignupActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.cyclingclub.LoginActivity"
+            android:name="com.example.cyclingclub.activities.LoginActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.cyclingclub.MainActivity"
+            android:name="com.example.cyclingclub.activities.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -6,6 +6,9 @@ import static org.junit.Assert.assertThat;
 
 import android.widget.ArrayAdapter;
 
+import com.example.cyclingclub.activities.RegistrationManagementActivity;
+import com.example.cyclingclub.adapters.RegistrationAdapter;
+import com.example.cyclingclub.utils.SearchForClub;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -18,7 +21,7 @@ import java.util.List;
     public class RegisterTest {
     private User testUser;
     private RegistrationAdapter registrationAdapter;
-    private RegistrationManagement registrationManager;
+    private RegistrationManagementActivity registrationManager;
     private List<Registration> registrations;
     private Event testEvent;
 

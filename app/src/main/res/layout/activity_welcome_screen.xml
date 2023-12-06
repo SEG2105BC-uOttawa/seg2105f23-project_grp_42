@@ -5,7 +5,7 @@
     android:id="@+id/welcomeScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WelcomeScreen"
+    tools:context=".activities.WelcomeScreenActivity"
     >
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
