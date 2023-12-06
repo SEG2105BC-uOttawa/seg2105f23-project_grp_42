@@ -64,7 +64,30 @@ import java.util.List;
     public void testSearchCyclingClubByEventType() {
         assertNotNull(searcher.returnEventByType(type));
     }
+        @Test
+    public void testAccountCreation() {
+        assertTrue(participant.createAccount());
+    }
+        @Test
+    public void testInvalidEventRegistration() {
+        Event fullEvent = new Event(); // Initialize Event object with full capacity
+        assertFalse(participant.registerForEvent(fullEvent));
+    }
+        @Test
+    public void testRouteTracking() {
+        // Assuming the route tracking feature is available
+        assertTrue(participant.useRouteTracking());
+    }
+        @Test
+    public void testEventConfirmationCommunication() {
+        Event event = new Event(); // Initialize Event object or mock it as needed
+        assertTrue(participant.receiveEventConfirmationCommunication(event));git s
+    }
+
+
 }
+
+
   // rough code for reference// @Nick please see this if it makes sense ==>Ketan
 
 
