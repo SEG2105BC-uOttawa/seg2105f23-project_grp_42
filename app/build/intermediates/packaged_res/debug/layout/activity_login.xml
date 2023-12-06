@@ -36,15 +36,15 @@
             android:inputType="textPassword" android:layout_marginHorizontal="15dp" android:layout_weight="1"
             android:autofillHints=""/>
         <Button
-            android:id="@+id/btnLogin"
-            android:backgroundTint="@color/primary_color"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/login_final"
-            android:textColor="@color/white"
-            android:layout_marginTop="24dp" android:layout_marginBottom="350dp" android:layout_weight="1"
-            android:layout_marginHorizontal="15dp"/>
+                android:id="@+id/btnLogin"
+                android:layout_width="164dp"
+                android:layout_height="23dp"
+                android:text="@string/login_final"
+                android:textColor="@color/white"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="350dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="15dp"/>
     </LinearLayout>
 
 

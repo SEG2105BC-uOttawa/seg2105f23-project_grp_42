@@ -1,6 +1,7 @@
 package com.example.cyclingclub;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +16,9 @@ import com.google.firebase.database.*;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.pranavpandey.android.dynamic.toasts.DynamicToast;
+
+import java.util.Objects;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -97,8 +101,14 @@ public class SignupActivity extends AppCompatActivity {
                                 }
                             } else {
                                 /* Account creation failed */
+                                if (Objects.requireNonNull(task.getException()).toString().contains("The email address is already in use by another account.")) {
+                                    DynamicToast.makeError(this, "The email address is already in use by another account.");
+                                } else if (task.getException().toString().contains("Password should be at least 6 characters")) {
+                                    DynamicToast.makeError(this, "Password should be at least 6 characters");
+                                } else {
+                                    DynamicToast.makeError(this, "Failed to create an account.");
+                                }
                                 Log.e("createFirebaseAccount", "Authentication failed.", task.getException());
-                                displayPopupMessage("Account creation failed", view);
                             }
                         });
             } catch (Exception e) {
@@ -135,16 +145,16 @@ public class SignupActivity extends AppCompatActivity {
      * @return A validation message if there's an issue, or null if everything is valid.
      */
     private String validateInput(String email, String username, String password) {
-        InputValidator validator = InputValidator.getInstance();
+        Utils utils = Utils.getInstance();
 
         /* Validate email */
-        if (!validator.isValidEmail(email)) { return "Email is not valid.";}
+        if (!utils.isValidEmail(email)) { return "Email is not valid.";}
 
         /* Validate username */
-        if (!validator.isValidUsername(username)) { return "Username must have at least 2 characters, no spaces, and no special characters."; }
+        if (!utils.isValidUsername(username)) { return "Username must have at least 2 characters, no spaces, and no special characters."; }
 
         /* Validate password */
-        if (!validator.isStrongPassword(password)) { return "Password must have at least 1 lowercase and uppercase letter, 1 digit, 1 special character, no spaces, and a minimum of 8 characters"; }
+//        if (!utils.isStrongPassword(password)) { return "Password must have at least 1 lowercase and uppercase letter, 1 digit, 1 special character, no spaces, and a minimum of 8 characters"; }
 
         return null;
     }

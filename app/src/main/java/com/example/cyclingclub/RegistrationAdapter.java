@@ -37,8 +37,8 @@ public class RegistrationAdapter extends ArrayAdapter<Registration> {
         Switch switchAccept = itemView.findViewById(R.id.switchAccept);
         Switch switchAward = itemView.findViewById(R.id.switchAward);
 
-        switchAccept.setChecked(reg.getAccepted());
-        switchAward.setChecked(reg.getAwarded());
+        switchAccept.setChecked(reg.isAccepted());
+        switchAward.setChecked(reg.isAwarded());
 
         // Handle Switch state changes if needed
         switchAccept.setOnCheckedChangeListener((buttonView, isChecked) -> {

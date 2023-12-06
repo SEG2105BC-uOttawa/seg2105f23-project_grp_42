@@ -46,6 +46,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.firebase:firebase-database-ktx:20.3.0")
     implementation("androidx.navigation:navigation-fragment:2.5.3")
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.3.1")
     implementation("androidx.navigation:navigation-ui:2.5.3")
     implementation("com.google.firebase:firebase-storage:20.3.0")
     testImplementation("junit:junit:4.13.2")

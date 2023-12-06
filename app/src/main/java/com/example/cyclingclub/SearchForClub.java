@@ -84,7 +84,7 @@ public class SearchForClub extends AppCompatActivity {
       //  searchClub(clubs,  user,  adapter,  "",  "","");
 
 
-        DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("ClubProfile");
+        DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("clubProfiles");
 
         dRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -168,7 +168,7 @@ public class SearchForClub extends AppCompatActivity {
 
         //Find username of the events with specified event type and event name
         List<String> userNames=new ArrayList<>();
-        DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("Events1");
+        DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("events");
 
         dRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -199,7 +199,7 @@ public class SearchForClub extends AppCompatActivity {
     }
     private void querySecondDatabase(List<CyclingClub> clubs,ArrayAdapter<CyclingClub> clubAdapter, List<String> userNames, String clubName){
 
-        DatabaseReference dRefClub = FirebaseDatabase.getInstance().getReference("ClubProfile");
+        DatabaseReference dRefClub = FirebaseDatabase.getInstance().getReference("clubProfiles");
 
         dRefClub.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -299,7 +299,7 @@ public class SearchForClub extends AppCompatActivity {
                 String comment =  editComment.getText().toString().trim();
                 club.addRateComment(user.getUsername(), comment, rate);
 
-                DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("ClubProfile");
+                DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("clubProfiles");
                 dRef.child(club.getKey()).setValue(club);
 
 

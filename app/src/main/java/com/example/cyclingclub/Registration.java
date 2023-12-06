@@ -1,86 +1,149 @@
 package com.example.cyclingclub;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-
+/**
+ * The Registration class represents a registration in the system.
+ * A Registration has an event, a participant, a date, and flags for acceptance and award.
+ */
 public class Registration {
     private String key;
     private Event event;
     private User participant;
     private String date;
-    private boolean Accepted;
-    private boolean Awarded;
+    private boolean accepted;
+    private boolean awarded;
 
+    /**
+     * No-argument constructor for Firebase.
+     */
+    public Registration() {}
 
-    // Constructor (if needed)
-    private Registration(){}
-    public Registration(Event event, User participant){
-        this.event=event;
-        this.participant=participant;
-        //this.date="2023-12-01";
-        this.Accepted=false;
-        this.Awarded=false;
+    /**
+     * Full constructor for the Registration class.
+     *
+     * @param event The event of the registration.
+     * @param participant The participant of the registration.
+     */
+    public Registration(Event event, User participant) {
+        this.event = event;
+        this.participant = participant;
+        this.accepted = false;
+        this.awarded = false;
 
+        // Set the date to the current date
         Date currentDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         this.date = dateFormat.format(currentDate);
     }
 
-
-    // Getter and Setter methods for 'key'
+    /**
+     * Returns the key of the registration in the database.
+     *
+     * @return The key of the registration in the database.
+     */
     public String getKey() {
         return key;
     }
 
+    /**
+     * Sets the key of the registration in the database.
+     *
+     * @param key The key of the registration in the database.
+     */
     public void setKey(String key) {
         this.key = key;
     }
 
-    // Getter and Setter methods for 'event'
+    /**
+     * Returns the event of the registration.
+     *
+     * @return The event of the registration.
+     */
     public Event getEvent() {
         return event;
     }
 
+    /**
+     * Sets the event of the registration.
+     *
+     * @param event The event of the registration.
+     */
     public void setEvent(Event event) {
         this.event = event;
     }
 
-    // Getter and Setter methods for 'participant'
+    /**
+     * Returns the participant of the registration.
+     *
+     * @return The participant of the registration.
+     */
     public User getParticipant() {
         return participant;
     }
 
+    /**
+     * Sets the participant of the registration.
+     *
+     * @param participant The participant of the registration.
+     */
     public void setParticipant(User participant) {
         this.participant = participant;
     }
 
-    // Getter and Setter methods for 'date'
+    /**
+     * Returns the date of the registration.
+     *
+     * @return The date of the registration.
+     */
     public String getDate() {
         return date;
     }
 
+    /**
+     * Sets the date of the registration.
+     *
+     * @param date The date of the registration.
+     */
     public void setDate(String date) {
         this.date = date;
     }
 
-    // Getter and Setter methods for 'accepted'
-    public boolean getAccepted() {
-        return Accepted;
+    /**
+     * Returns whether the registration is accepted.
+     *
+     * @return True if the registration is accepted, false otherwise.
+     */
+    public boolean isAccepted() {
+        return accepted;
     }
 
-    public void setAccepted(boolean Accepted) {
-        this.Accepted = Accepted;
+    /**
+     * Sets whether the registration is accepted.
+     *
+     * @param accepted True if the registration is accepted, false otherwise.
+     */
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
     }
 
-    // Getter and Setter methods for 'award'
-    public boolean getAwarded() {
-        return Awarded;
+    /**
+     * Returns whether the registration is awarded.
+     *
+     * @return True if the registration is awarded, false otherwise.
+     */
+    public boolean isAwarded() {
+        return awarded;
     }
 
-    public void setAwarded(boolean Awarded) {
-        this.Awarded = Awarded;
+    /**
+     * Sets whether the registration is awarded.
+     *
+     * @param awarded True if the registration is awarded, false otherwise.
+     */
+    public void setAwarded(boolean awarded) {
+        this.awarded = awarded;
     }
-
 }
-

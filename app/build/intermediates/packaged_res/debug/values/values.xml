@@ -65,8 +65,11 @@
     <string name="currentUserList">Current User List</string>
     <string name="cyclingClubProfile">Cycling Club Profile</string>
     <string name="cycling_club">Cycling Club</string>
+    <string name="delete">Delete</string>
+    <string name="delete_account">Delete Account</string>
     <string name="discard">Discard</string>
     <string name="email_hint">Email</string>
+    <string name="email_text">Email</string>
     <string name="eventDate">Event Date</string>
     <string name="eventDistance">Route Distance</string>
     <string name="eventDuration">Event Duration</string>
@@ -83,13 +86,15 @@
     <string name="eventTypeDelete">Delete</string>
     <string name="eventTypeName">Event Type</string>
     <string name="eventTypeUpdate">Update</string>
-    <string name="firebase_database_url" translatable="false">https://cyclingclubbackup-default-rtdb.firebaseio.com</string>
-    <string name="gcm_defaultSenderId" translatable="false">846284963831</string>
+    <string name="event_type_name">Event Type Name</string>
+    <string name="full_name">Full Name</string>
+    <string name="full_name_user">Name</string>
+    <string name="gcm_defaultSenderId" translatable="false">418201989337</string>
     <string name="giveAward">Award</string>
-    <string name="google_api_key" translatable="false">AIzaSyAlyaXgEpG36qtMxmydCWl3oG8WNAQOOIo</string>
-    <string name="google_app_id" translatable="false">1:846284963831:android:e3749d61d80c184b06b8f2</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAlyaXgEpG36qtMxmydCWl3oG8WNAQOOIo</string>
-    <string name="google_storage_bucket" translatable="false">cyclingclubbackup.appspot.com</string>
+    <string name="google_api_key" translatable="false">AIzaSyCS06LYGcvH9UIaxshng2eR9ZPwLI8MDa4</string>
+    <string name="google_app_id" translatable="false">1:418201989337:android:a2ecacb238a8eb35534ec8</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCS06LYGcvH9UIaxshng2eR9ZPwLI8MDa4</string>
+    <string name="google_storage_bucket" translatable="false">seg2105-project-grp42.appspot.com</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_text">Home</string>
     <string name="log_in_text">Log In</string>
@@ -131,14 +136,17 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="member_login">Member Login</string>
+    <string name="modify">Modify</string>
+    <string name="name">Name</string>
     <string name="next">Next</string>
     <string name="participant">Participant</string>
     <string name="password_hint">Password</string>
+    <string name="password_text">Password</string>
     <string name="phoneNumber">Phone Number</string>
     <string name="previous">Previous</string>
     <string name="profile_text">Profile</string>
     <string name="project_app_name">GCC</string>
-    <string name="project_id" translatable="false">cyclingclubbackup</string>
+    <string name="project_id" translatable="false">seg2105-project-grp42</string>
     <string name="rateCLub">Rate Club</string>
     <string name="rateClub">Rate Club</string>
     <string name="rateaClub">Rate Club</string>
@@ -148,14 +156,19 @@
     <string name="searchBy">Search by</string>
     <string name="searchEvent">Search Events</string>
     <string name="searchEventBy">Search Events By</string>
+    <string name="search_user">Search User</string>
     <string name="settings_text">Settings</string>
     <string name="sign_up_text">Sign Up</string>
     <string name="socialMediaLink">Social Media Link</string>
-    <string name="title_activity_event_type_management">EventTypeManagement</string>
+    <string name="title_activity_event_type_management">EventTypeManagementActivity</string>
     <string name="updateProfile">Update Profile</string>
+    <string name="update_user_information">Update User Information</string>
     <string name="userDetail">User Detail</string>
     <string name="userManagement">Users</string>
+    <string name="username">Username</string>
     <string name="username_hint">Username</string>
+    <string name="username_text">Username</string>
+    <string name="users">Users</string>
     <string name="welcome_message">Welcome!</string>
     <style name="Base.Theme.CyclingClub" parent="Theme.Material3.DayNight.NoActionBar">
         

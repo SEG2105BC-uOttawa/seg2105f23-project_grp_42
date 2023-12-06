@@ -1,243 +1,293 @@
 package com.example.cyclingclub;
 
-import java.util.*;
-
+/**
+ * The Event class represents an event in the system.
+ * An Event has an id, type, detail, region, date, route, level, fee, limit, distance, and elevation.
+ */
 public class Event {
 
     private String key;   //The handle of this event in the database
-    private  String eventId;
-    private  String eventType;
+    private String eventId;
+    private String eventType;
     private String eventDetail;
     private String eventRegion;
-    private  String eventDate;
+    private String eventDate;
     private String eventRoute;
-    private  int eventLevel;
-    private  double eventFee;
-    private  int eventLimit;
-    private  int eventDistance;
-    private  int eventElevation;
+    private int eventLevel;
+    private double eventFee;
+    private int eventLimit;
+    private int eventDistance;
+    private int eventElevation;
 
     private String username;
 
-
-    //private final List<Administrator> admins;
-    //private  List<Administrator> admins;
-
+    /**
+     * No-argument constructor for Firebase.
+     */
     public Event() {}
 
-
-    public Event(String key, String id, String type, String date){
-        this.key=key;
-        this.eventId = id;
-        this.eventType = type;
-        this.eventDate=date;
+    /**
+     * Full constructor for the Event class.
+     *
+     * @param key The handle of this event in the database.
+     * @param eventId The id of the event.
+     * @param eventType The type of the event.
+     * @param eventDetail The detail of the event.
+     * @param eventRegion The region of the event.
+     * @param eventDate The date of the event.
+     * @param eventRoute The route of the event.
+     * @param eventLevel The level of the event.
+     * @param eventFee The fee of the event.
+     * @param eventLimit The limit of the event.
+     * @param eventDistance The distance of the event.
+     * @param eventElevation The elevation of the event.
+     */
+    public Event(String key, String eventId, String eventType, String eventDetail, String eventRegion, String eventDate, String eventRoute, int eventLevel, double eventFee, int eventLimit, int eventDistance, int eventElevation) {
+        this.key = key;
+        this.eventId = eventId;
+        this.eventType = eventType;
+        this.eventDetail = eventDetail;
+        this.eventRegion = eventRegion;
+        this.eventDate = eventDate;
+        this.eventRoute = eventRoute;
+        this.eventLevel = eventLevel;
+        this.eventFee = eventFee;
+        this.eventLimit = eventLimit;
+        this.eventDistance = eventDistance;
+        this.eventElevation = eventElevation;
     }
 
-
-    public  String getKey() {
+    /**
+     * Returns the handle of this event in the database.
+     *
+     * @return The handle of this event in the database.
+     */
+    public String getKey() {
         return key;
     }
-    public  String getId() {
+
+    /**
+     * Returns the Cycling Club account's username
+     *
+     * @return The username that created this event
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * Returns the id of the event.
+     *
+     * @return The id of the event.
+     */
+    public String getId() {
         return eventId;
     }
-    public  String getType() {
+
+    /**
+     * Returns the type of the event.
+     *
+     * @return The type of the event.
+     */
+    public String getType() {
         return eventType;
     }
-    public  String getDetail() {
+
+    /**
+     * Returns the detail of the event.
+     *
+     * @return The detail of the event.
+     */
+    public String getDetail() {
         return eventDetail;
     }
-    public  String getRegion() {
+
+    /**
+     * Returns the region of the event.
+     *
+     * @return The region of the event.
+     */
+    public String getRegion() {
         return eventRegion;
     }
-    public  String getRoute() {
+
+    /**
+     * Returns the route of the event.
+     *
+     * @return The route of the event.
+     */
+    public String getRoute() {
         return eventRoute;
     }
-    public  String getDate() {
+
+    /**
+     * Returns the date of the event.
+     *
+     * @return The date of the event.
+     */
+    public String getDate() {
         return eventDate;
     }
-    public  int getLevel() {
+
+    /**
+     * Returns the level of the event.
+     *
+     * @return The level of the event.
+     */
+    public int getLevel() {
         return eventLevel;
     }
-    public  double getFee() {
+
+    /**
+     * Returns the fee of the event.
+     *
+     * @return The fee of the event.
+     */
+    public double getFee() {
         return eventFee;
     }
-    public  int getLimit() {
+
+    /**
+     * Returns the limit of the event.
+     *
+     * @return The limit of the event.
+     */
+    public int getLimit() {
         return eventLimit;
     }
-    public  int getDistance() {
+
+    /**
+     * Returns the distance of the event.
+     *
+     * @return The distance of the event.
+     */
+    public int getDistance() {
         return eventDistance;
     }
-    public  int getElevation() {
+
+    /**
+     * Returns the elevation of the event.
+     *
+     * @return The elevation of the event.
+     */
+    public int getElevation() {
         return eventElevation;
     }
 
-
-
-    public  void setKey(String key) {
-        this.key =  key;
-    }
-    public  void setId(String id) {
-        this.eventId = id ;
-    }
-    public  void setType(String type) {
-        this.eventType = type  ;
-    }
-    public  void setDetail(String detail) {
-        this.eventDetail = detail ;
-    }
-    public  void setRegion(String region) {
-        this.eventRegion = region ;
-    }
-    public  void setRoute(String route) {
-        this.eventRoute = route ;
-    }
-    public  void setDate(String date) {
-        this.eventDate =date  ;
-    }
-    public  void setLevel(int level) {
-        this.eventLevel =  level;
-    }
-    public  void setFee(double fee) {
-        this.eventFee =fee  ;
-    }
-    public  void setLimit(int limit) {
-        this.eventLimit = limit ;
-    }
-    public  void setDistance(int distance) {
-        this.eventDistance = distance ;
-    }
-    public  void setElevation(int elevation) {
-        this.eventElevation =elevation  ;
+    /**
+     * Sets the handle of this event in the database.
+     *
+     * @param key The handle of this event in the database.
+     */
+    public void setKey(String key) {
+        this.key = key;
     }
 
-
-
-    public String getUsername() {     return username;}
-
-    public void setUsername(String username) {this.username = username;}
-
-/*
-    public Administrator getAdmin(int index)
-    {
-        return admins.get(index);
-    }
-    public List<Administrator> getAdmins()
-    {
-        return Collections.unmodifiableList(admins);
+    /**
+     * Sets the id of the event.
+     *
+     * @param id The id of the event.
+     */
+    public void setId(String id) {
+        this.eventId = id;
     }
 
-    public int numberOfAdmins()
-    {
-        return admins.size();
+    /**
+     * Sets the type of the event.
+     *
+     * @param type The type of the event.
+     */
+    public void setType(String type) {
+        this.eventType = type;
     }
 
-    public boolean hasAdmins()
-    {
-        return !admins.isEmpty();
+    /**
+     * Sets the detail of the event.
+     *
+     * @param detail The detail of the event.
+     */
+    public void setDetail(String detail) {
+        this.eventDetail = detail;
     }
 
-    public int indexOfAdmin(Administrator admin)
-    {
-        return admins.indexOf(admin);
+    /**
+     * Sets the region of the event.
+     *
+     * @param region The region of the event.
+     */
+    public void setRegion(String region) {
+        this.eventRegion = region;
     }
 
-    public static int minimumNumberOfAdmins()
-    {
-        return 0;
+    /**
+     * Sets the route of the event.
+     *
+     * @param route The route of the event.
+     */
+    public void setRoute(String route) {
+        this.eventRoute = route;
     }
 
-    public boolean addAdmin(Administrator admin)
-    {
-        boolean wasAdded = false;
-        if (admins.contains(admin)) { return false; }
-        admins.add(admin);
-        if (admin.indexOfEvent(this) != -1)
-        {
-            wasAdded = true;
-        } else
-        {
-            wasAdded = admin.addEvent(this);
-            if (!wasAdded)
-            {
-                admins.remove(admin);
-            }
-        }
-        return wasAdded;
+    /**
+     * Sets the date of the event.
+     *
+     * @param date The date of the event.
+     */
+    public void setDate(String date) {
+        this.eventDate = date;
     }
 
-    public boolean removeAdmin(Administrator admin)
-    {
-        boolean wasRemoved = false;
-        if (!admins.contains(admin))
-        {
-            return wasRemoved;
-        }
-        int oldIndex = admins.indexOf(admin);
-        admins.remove(oldIndex);
-        if (admin.indexOfEvent(this) == -1)
-        {
-            wasRemoved = true;
-        } else
-        {
-            wasRemoved = admin.removeEvent(this);
-            if (!wasRemoved)
-            {
-                admins.add(oldIndex,admin);
-            }
-        }
-        return wasRemoved;
+    /**
+     * Sets the level of the event.
+     *
+     * @param level The level of the event.
+     */
+    public void setLevel(int level) {
+        this.eventLevel = level;
     }
 
-    public boolean addAdminAt(Administrator admin, int index)
-    {
-        boolean wasAdded = false;
-        if(addAdmin(admin))
-        {
-            if(index < 0 ) { index = 0; }
-            if(index > numberOfAdmins()) { index = numberOfAdmins() - 1; }
-            admins.remove(admin);
-            admins.add(index, admin);
-            wasAdded = true;
-        }
-        return wasAdded;
+    /**
+     * Sets the fee of the event.
+     *
+     * @param fee The fee of the event.
+     */
+    public void setFee(double fee) {
+        this.eventFee = fee;
     }
 
-<<<<<<< Updated upstream
-
-=======
-    public static double getDuration(){
-        return this.duration;
-    }
->>>>>>> Stashed changes
-
-    public boolean addOrMoveAdminAt(Administrator admin, int index)
-    {
-        boolean wasAdded = false;
-        if(admins.contains(admin))
-        {
-            if(index < 0 ) { index = 0; }
-            if(index > numberOfAdmins()) { index = numberOfAdmins() - 1; }
-            admins.remove(admin);
-            admins.add(index, admin);
-            wasAdded = true;
-        }else
-        {
-            wasAdded = addAdminAt(admin, index);
-        }
-        return wasAdded;
+    /**
+     * Sets the limit of the event.
+     *
+     * @param limit The limit of the event.
+     */
+    public void setLimit(int limit) {
+        this.eventLimit = limit;
     }
 
-    public void delete()
-    {
-        ArrayList<Administrator> copyOfAdmins = new ArrayList<>(admins);
-        admins.clear();
-        for(Administrator admin : copyOfAdmins)
-        {
-            admin.removeEvent(this);
-        }
+    /**
+     * Sets the distance of the event.
+     *
+     * @param distance The distance of the event.
+     */
+    public void setDistance(int distance) {
+        this.eventDistance = distance;
     }
 
-*/
+    /**
+     * Sets the elevation of the event.
+     *
+     * @param elevation The elevation of the event.
+     */
+    public void setElevation(int elevation) {
+        this.eventElevation = elevation;
+    }
 
-
+    /**
+     * Sets the username associated with the event.
+     *
+     * @param username The updated username.
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

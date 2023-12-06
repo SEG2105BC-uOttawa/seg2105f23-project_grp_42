@@ -22,100 +22,101 @@
 
         <ImageView
             android:id="@+id/logoView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/logo" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/clubName" />
-
-    <EditText
-        android:id="@+id/editClubName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/contactPerson" />
-
-    <EditText
-        android:id="@+id/editContact"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/socialMediaLink" />
-
-    <EditText
-        android:id="@+id/editMediaLink"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/phoneNumber" />
-
-    <EditText
-        android:id="@+id/editPhoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/region" />
-
-    <EditText
-        android:id="@+id/editClubRegion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="53dp" />
-
     <LinearLayout
-        android:layout_width="320dp"
-        android:layout_height="59dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_text_name"
+            android:hint="@string/clubName"
+            android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_person_24"
+                    android:drawablePadding="10dp"
+                    android:id="@+id/editClubName"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_text_contact"
+                android:hint="@string/contactPerson"
+                android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_contact_emergency_24"
+                    android:drawablePadding="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_text_link"
+                android:hint="@string/socialMediaLink"
+                android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editMediaLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_insert_link_24"
+                    android:drawablePadding="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_text_phone_number"
+                android:hint="@string/phoneNumber"
+                android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_phone_24"
+                    android:drawablePadding="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_text_region"
+                android:hint="@string/region"
+                android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editRegion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_my_location_24"
+                    android:drawablePadding="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnProfileUpdate"
-            android:layout_width="202dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/updateProfile" />
+                android:id="@+id/btnProfileUpdate"
+                android:layout_width="202dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/updateProfile"
+                android:layout_marginTop="25dp"/>
 
     </LinearLayout>
 

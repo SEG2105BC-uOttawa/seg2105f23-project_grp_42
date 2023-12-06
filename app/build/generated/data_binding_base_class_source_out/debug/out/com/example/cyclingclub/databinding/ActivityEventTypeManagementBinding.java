@@ -5,11 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.cyclingclub.R;
@@ -19,7 +18,7 @@ import java.lang.String;
 
 public final class ActivityEventTypeManagementBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final FrameLayout rootView;
 
   @NonNull
   public final Button btnNewEvent;
@@ -28,24 +27,24 @@ public final class ActivityEventTypeManagementBinding implements ViewBinding {
   public final Button btnNewEventType;
 
   @NonNull
-  public final ListView eventTypeList;
+  public final FrameLayout fragmentContainer;
 
   @NonNull
-  public final TextView textView6;
+  public final RecyclerView recyclerView;
 
-  private ActivityEventTypeManagementBinding(@NonNull RelativeLayout rootView,
-      @NonNull Button btnNewEvent, @NonNull Button btnNewEventType, @NonNull ListView eventTypeList,
-      @NonNull TextView textView6) {
+  private ActivityEventTypeManagementBinding(@NonNull FrameLayout rootView,
+      @NonNull Button btnNewEvent, @NonNull Button btnNewEventType,
+      @NonNull FrameLayout fragmentContainer, @NonNull RecyclerView recyclerView) {
     this.rootView = rootView;
     this.btnNewEvent = btnNewEvent;
     this.btnNewEventType = btnNewEventType;
-    this.eventTypeList = eventTypeList;
-    this.textView6 = textView6;
+    this.fragmentContainer = fragmentContainer;
+    this.recyclerView = recyclerView;
   }
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public FrameLayout getRoot() {
     return rootView;
   }
 
@@ -82,20 +81,16 @@ public final class ActivityEventTypeManagementBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.eventTypeList;
-      ListView eventTypeList = ViewBindings.findChildViewById(rootView, id);
-      if (eventTypeList == null) {
+      FrameLayout fragmentContainer = (FrameLayout) rootView;
+
+      id = R.id.recycler_view;
+      RecyclerView recyclerView = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerView == null) {
         break missingId;
       }
 
-      id = R.id.textView6;
-      TextView textView6 = ViewBindings.findChildViewById(rootView, id);
-      if (textView6 == null) {
-        break missingId;
-      }
-
-      return new ActivityEventTypeManagementBinding((RelativeLayout) rootView, btnNewEvent,
-          btnNewEventType, eventTypeList, textView6);
+      return new ActivityEventTypeManagementBinding((FrameLayout) rootView, btnNewEvent,
+          btnNewEventType, fragmentContainer, recyclerView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

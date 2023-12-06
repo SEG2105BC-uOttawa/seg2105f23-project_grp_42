@@ -16,7 +16,7 @@
     <string name="profile_text">Profile</string>
     <string name="settings_text">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_event_type_management">EventTypeManagement</string>
+    <string name="title_activity_event_type_management">EventTypeManagementActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -110,4 +110,18 @@
     <string name="From">From</string>
     <string name="To">To</string>
     <string name="rateaClub">Rate Club</string>
+    <string name="full_name">Full Name</string>
+    <string name="full_name_user">Name</string>
+    <string name="username_text">Username</string>
+    <string name="email_text">Email</string>
+    <string name="search_user">Search User</string>
+    <string name="username">Username</string>
+    <string name="users">Users</string>
+    <string name="update_user_information">Update User Information</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="modify">Modify</string>
+    <string name="delete">Delete</string>
+    <string name="password_text">Password</string>
+    <string name="event_type_name">Event Type Name</string>
+    <string name="name">Name</string>
 </resources>

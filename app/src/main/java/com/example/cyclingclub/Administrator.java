@@ -1,272 +1,193 @@
 package com.example.cyclingclub;
 
-import static java.security.AccessController.getContext;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-public class Administrator extends User{
-    /*
-    Methods to establish an association with Events
-    */
-    //The cardinality is many to many, both classes have a list of the other class
+/**
+ * The Administrator class extends the User class and represents an administrator in the system.
+ * An Administrator has the ability to manage events and event types.
+ */
+public class Administrator extends User {
+    // List of events managed by the administrator
     private static List<Event> events;
+    // List of event types managed by the administrator
     public static List<EventType> eventTypes;
-    //private DatabaseReference eventTypesDB;
 
-    //create a constructor with the array list of the events
+    /**
+     * Constructor for the Administrator class.
+     * Initializes the events and eventTypes lists and fetches their current state from the database.
+     *
+     * @param username The username of the administrator.
+     * @param password The password of the administrator.
+     */
     public Administrator(String username, String password) {
-        super(null, username, "Administrator", password, null);
+        super("admin@gcc.ca", username, "Administrator", password, "yxgR8rdVb9q6P4NPvexREQ==");
 
-        //Initialize events;
+        // Initialize events and eventTypes lists
         events = new ArrayList<Event>();
-        eventTypes=new ArrayList<EventType>();
+        eventTypes = new ArrayList<EventType>();
 
-        //Read events and event types from database;
-        events=getEvents();
-        eventTypes=getEventTypes();
-
+        // Fetch current state of events and eventTypes from the database
+        events = getEvents();
+        eventTypes = getEventTypes();
     }
 
-
-
-    //Get the event index from the event array
-    public Event getEvent(int index)
-    {
-        return events.get(index);
-    }
-    //Return the array with the events
-    //public static List<Event> getEvents()
-    //{
-    //    return Collections.unmodifiableList(events);
-    //}
-
-    //Create a counter to add and subtract events from the array
-    public int numberOfEvents()
-    {
-        return events.size();
-    }
-    //Check if cardinality is > 0
-    public boolean hasEvents()
-    {
-        return !events.isEmpty();
-    }
-    //Return the index of any given event
-    public int indexOfEvent(Event event)
-    {
-        return events.indexOf(event);
-    }
-
-    //Minimum cardinality is 0
-    public static int minimumNumberOfEvents()
-    {
-        return 0;
-    }
-
-    public boolean addEvent(Event event)
-    //Checks if an event was added onto the array
-    {
-        /*
-        boolean wasAdded = false;
-        if (events.contains(event)) { return false; }
-        events.add(event);
-        if (event.indexOfAdmin(this) != -1)
-        {
-            wasAdded = true;
-        } else {
-            wasAdded = event.addAdmin(this);
-            if (!wasAdded)
-            {
-                events.remove(event);
-            }
-        }
-        return wasAdded; */
-        return true;
-    }
-    public static boolean removeEvent(Event event)
-    //Checks if an event was removed from the array
-    {
-        getEventDB().child(event.getKey()).removeValue();
-        return  true;
-
-    }
-
-    public boolean addEventAt(Event event, int index)
-    //Add an event in the array at a given index
-    {
-        boolean wasAdded = false;
-        if(addEvent(event))
-        {
-            if(index < 0 ) { index = 0; }
-            if(index > numberOfEvents()) { index = numberOfEvents() - 1; }
-            events.remove(event);
-            events.add(index, event);
-            wasAdded = true;
-        }
-        return wasAdded;
-    }
-    public boolean addOrMoveEventAt(Event event, int index)
-    //Move or add any event at any given index
-    {
-        boolean wasAdded = false;
-        if(events.contains(event))
-        {
-            if(index < 0 ) { index = 0; }
-            if(index > numberOfEvents()) { index = numberOfEvents() - 1; }
-            events.remove(event);
-            events.add(index, event);
-            wasAdded = true;
-        } else
-        {
-            wasAdded = addEventAt(event, index);
-        }
-        return wasAdded;
-    }
-
-    //Clear the events' array
-    public void delete() {
-        /*
-        ArrayList<Event> copyOfEvents = new ArrayList<Event>(events);
-        events.clear();
-        for (Event aEvent : copyOfEvents) {
-            aEvent.removeAdmin(this);
-        }
-        */
-
-    }
-
-    //Create a new event
-    public static void createEvent(Event event){
+    /**
+     * Creates a new event and adds it to the database.
+     *
+     * @param event The event to be created.
+     */
+    public static void createEvent(Event event) {
         String key = getEventDB().push().getKey();
-        //Event newEvent=new Event(key, name, region, type, time , duration);
         event.setKey(key);
+        assert key != null;
         getEventDB().child(key).setValue(event);
-        //updateEventCounts();
     }
 
-    public static void updateEvent(Event event){
+    /**
+     * Updates an existing event in the database.
+     *
+     * @param event The event to be updated.
+     */
+    public static void updateEvent(Event event) {
         getEventDB().child(event.getKey()).setValue(event);
-        //events.add(newEvent);
     }
 
-
-
-    public void manageContent(){
-
-    }
-
-    public void viewUsers(){
-
-    }
-
-    public void deleteUser(DatabaseReference db, String key){
-        db.child(key).removeValue();
-    }
-
-
-    public static void createEventType(EventType et){
+    /**
+     * Creates a new event type and adds it to the database.
+     *
+     * @param et The event type to be created.
+     */
+    public static void createEventType(EventType et) {
         String id = getEventTypeDB().push().getKey();
         et.setId(id);
+        assert id != null;
         getEventTypeDB().child(id).setValue(et);
     }
 
-    public static void updateEventType(EventType et){
+    /**
+     * Updates an existing event type in the database.
+     *
+     * @param et The event type to be updated.
+     */
+    public static void updateEventType(EventType et) {
         getEventTypeDB().child(et.getId()).setValue(et);
     }
 
-    public static List<EventType> getEventTypes(){
-        DatabaseReference   db=getEventTypeDB();
+    /**
+     * Fetches the list of event types from the database.
+     *
+     * @return The list of event types.
+     */
+    public static List<EventType> getEventTypes() {
+        DatabaseReference db = getEventTypeDB();
         db.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                 eventTypes.clear();
-                for(DataSnapshot postSnapShot:dataSnapshot.getChildren()){
-                    EventType et =  postSnapShot.getValue(EventType.class);
+                for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
+                    EventType et = postSnapShot.getValue(EventType.class);
                     eventTypes.add(et);
                 }
             }
+
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NotNull DatabaseError databaseError) {
             }
         });
 
         return eventTypes;
     }
 
-
-    public static List<Event> getEvents(){
-        DatabaseReference   db=getEventDB();
+    /**
+     * Fetches the list of events from the database.
+     *
+     * @return The list of events.
+     */
+    public static List<Event> getEvents() {
+        DatabaseReference db = getEventDB();
         db.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                 events.clear();
-                for(DataSnapshot postSnapShot:dataSnapshot.getChildren()){
-                    Event event =  postSnapShot.getValue(Event.class);
+                for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
+                    Event event = postSnapShot.getValue(Event.class);
                     events.add(event);
                 }
             }
+
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NotNull DatabaseError databaseError) {
             }
         });
-
 
         return events;
     }
 
-    public static void updateEventCounts(){
-        for(EventType et:getEventTypes()){
-            for(Event e:getEvents()){
-                if (e.getType().equals(et.getTypeName())){
-                    et.setNumberOfEvent(et.getNumberOfEvent()+1);
-                }
-            }
-            getEventTypeDB().child(et.getId()).setValue(et);
-        }
-
+    /**
+     * Deletes an event type from the database.
+     *
+     * @param et The event type to be deleted.
+     */
+    public static Task<Void> deleteEventType(EventType et) {
+        return getEventTypeDB().child(et.getId()).removeValue();
     }
 
-    public static void deleteEventType(EventType et){
-        getEventTypeDB().child(et.getId()).removeValue();
+    /**
+     * Deletes a user from the database.
+     *
+     * @param key The key of the user to be deleted.
+     */
+    public static Task<Void> deleteUser(String key) {
+        return getUserDB().child(key).removeValue();
     }
 
-    public void viewEventType(EventType et){
-
+    /**
+     * Removes an existing event from the database.
+     *
+     * @param event The event to be removed.
+     */
+    public static void removeEvent(Event event) {
+        getEventDB().child(event.getKey()).removeValue();
     }
 
-    public static DatabaseReference getEventDB(){
-        return FirebaseDatabase.getInstance().getReference("Events1");
-    };
+    /**
+     * Returns a reference to the `events` node in the Firebase database.
+     *
+     * @return A DatabaseReference pointing to the `events` node.
+     */
+    public static DatabaseReference getEventDB() {
+        return FirebaseDatabase.getInstance().getReference("events");
+    }
 
+    /**
+     * Returns a reference to the `clubProfiles` node in the Firebase database.
+     *
+     * @return A DatabaseReference pointing to the `clubProfiles` node.
+     */
+    public static DatabaseReference getClubDB() {
+        return FirebaseDatabase.getInstance().getReference("clubProfiles");
+    }
 
-    public static DatabaseReference getClubDB(){
-        return FirebaseDatabase.getInstance().getReference("ClubProfile");
-    };
+    /**
+     * Returns a reference to the `eventTypes` node in the Firebase database.
+     *
+     * @return A DatabaseReference pointing to the `eventTypes` node.
+     */
+    public static DatabaseReference getEventTypeDB() {
+        return FirebaseDatabase.getInstance().getReference("eventTypes");
+    }
 
-    public static DatabaseReference getEventTypeDB(){
-        return FirebaseDatabase.getInstance().getReference("EventTypes");
-    };
-    public static DatabaseReference getUserDB(){
+    /**
+     * Returns a reference to the users node in the Firebase database.
+     *
+     * @return A DatabaseReference pointing to the users node.
+     */
+    public static DatabaseReference getUserDB() {
         return FirebaseDatabase.getInstance().getReference("users");
-    };
-
-    public static void deleteUser(String key){
-        getUserDB().child(key).removeValue();
     }
-
-
 }

@@ -89,49 +89,34 @@ public class HomeFragment extends Fragment {
 				btnUsers.setEnabled(false);
 			}
 
-			btnEvents.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					Intent intent = new Intent(getContext(), EventManagement.class);
-					intent.putExtra("user", user);
-					startActivity(intent);
-				}
-			});
-			btnEventType.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					Intent intent = new Intent(getContext(), EventTypeManagement.class);
-					intent.putExtra("user", user);
-					startActivity(intent);
-				}
-			});
-			btnUsers.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						Intent intent = new Intent(getContext(), UserAccountManagement.class);
-						intent.putExtra("user", user);
-						startActivity(intent);
-					}
-			});
-			btnRegistration.setOnClickListener(new View.OnClickListener() {
-						@Override
-						public void onClick(View view) {
-							//Intent intent = new Intent(getContext(), SearchForClub.class);
-							Intent intent = new Intent(getContext(), RegistrationManagement.class);
-							intent.putExtra("user", user);
-							startActivity(intent);
-						}
-			});
+			btnEvents.setOnClickListener(view -> {
+                Intent intent = new Intent(getContext(), EventManagement.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            });
+			btnEventType.setOnClickListener(view -> {
+                Intent intent = new Intent(getContext(), EventTypeManagementActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            });
+			btnUsers.setOnClickListener(view -> {
+                Intent intent = new Intent(getContext(), UserAccountManagement.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            });
+			btnRegistration.setOnClickListener(view -> {
+                //Intent intent = new Intent(getContext(), SearchForClub.class);
+                Intent intent = new Intent(getContext(), RegistrationManagement.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            });
 
-			btnToClubFunction.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					Intent intent = new Intent(getContext(), SearchForClub.class);
-					//Intent intent = new Intent(getContext(), RegistrationManagement.class);
-					intent.putExtra("user", user);
-					startActivity(intent);
-				}
-			});
+			btnToClubFunction.setOnClickListener(view -> {
+                Intent intent = new Intent(getContext(), SearchForClub.class);
+                //Intent intent = new Intent(getContext(), RegistrationManagement.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+            });
 		}
 
 

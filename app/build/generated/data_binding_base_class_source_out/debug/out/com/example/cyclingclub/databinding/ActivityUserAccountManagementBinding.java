@@ -4,11 +4,13 @@ package com.example.cyclingclub.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.cyclingclub.R;
@@ -18,24 +20,42 @@ import java.lang.String;
 
 public final class ActivityUserAccountManagementBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final FrameLayout rootView;
 
   @NonNull
-  public final TextView textView5;
+  public final FrameLayout fragmentContainer;
 
   @NonNull
-  public final ListView userListView;
+  public final RecyclerView recyclerView;
 
-  private ActivityUserAccountManagementBinding(@NonNull RelativeLayout rootView,
-      @NonNull TextView textView5, @NonNull ListView userListView) {
+  @NonNull
+  public final EditText seachUsernameInput;
+
+  @NonNull
+  public final ImageButton searchUserBtn;
+
+  @NonNull
+  public final LinearLayout searchUserLayout;
+
+  @NonNull
+  public final LinearLayout toolbar;
+
+  private ActivityUserAccountManagementBinding(@NonNull FrameLayout rootView,
+      @NonNull FrameLayout fragmentContainer, @NonNull RecyclerView recyclerView,
+      @NonNull EditText seachUsernameInput, @NonNull ImageButton searchUserBtn,
+      @NonNull LinearLayout searchUserLayout, @NonNull LinearLayout toolbar) {
     this.rootView = rootView;
-    this.textView5 = textView5;
-    this.userListView = userListView;
+    this.fragmentContainer = fragmentContainer;
+    this.recyclerView = recyclerView;
+    this.seachUsernameInput = seachUsernameInput;
+    this.searchUserBtn = searchUserBtn;
+    this.searchUserLayout = searchUserLayout;
+    this.toolbar = toolbar;
   }
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public FrameLayout getRoot() {
     return rootView;
   }
 
@@ -60,20 +80,40 @@ public final class ActivityUserAccountManagementBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.textView5;
-      TextView textView5 = ViewBindings.findChildViewById(rootView, id);
-      if (textView5 == null) {
+      FrameLayout fragmentContainer = (FrameLayout) rootView;
+
+      id = R.id.recycler_view;
+      RecyclerView recyclerView = ViewBindings.findChildViewById(rootView, id);
+      if (recyclerView == null) {
         break missingId;
       }
 
-      id = R.id.userListView;
-      ListView userListView = ViewBindings.findChildViewById(rootView, id);
-      if (userListView == null) {
+      id = R.id.seach_username_input;
+      EditText seachUsernameInput = ViewBindings.findChildViewById(rootView, id);
+      if (seachUsernameInput == null) {
         break missingId;
       }
 
-      return new ActivityUserAccountManagementBinding((RelativeLayout) rootView, textView5,
-          userListView);
+      id = R.id.search_user_btn;
+      ImageButton searchUserBtn = ViewBindings.findChildViewById(rootView, id);
+      if (searchUserBtn == null) {
+        break missingId;
+      }
+
+      id = R.id.search_user_layout;
+      LinearLayout searchUserLayout = ViewBindings.findChildViewById(rootView, id);
+      if (searchUserLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.toolbar;
+      LinearLayout toolbar = ViewBindings.findChildViewById(rootView, id);
+      if (toolbar == null) {
+        break missingId;
+      }
+
+      return new ActivityUserAccountManagementBinding((FrameLayout) rootView, fragmentContainer,
+          recyclerView, seachUsernameInput, searchUserBtn, searchUserLayout, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

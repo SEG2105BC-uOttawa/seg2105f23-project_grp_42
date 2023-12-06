@@ -37,7 +37,7 @@
             android:name=".UserAccountManagement"
             android:exported="false" />
         <activity
-            android:name=".EventTypeManagement"
+            android:name=".EventTypeManagementActivity"
             android:exported="false"
             android:label="@string/title_activity_event_type_management"
             android:theme="@style/Theme.CyclingClub" />

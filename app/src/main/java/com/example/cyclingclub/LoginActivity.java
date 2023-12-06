@@ -13,10 +13,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
 import com.pranavpandey.android.dynamic.toasts.DynamicToast;
+
+import java.util.Objects;
 
 /**
  * Represents the login activity where users can sign in.
@@ -46,55 +49,68 @@ public class LoginActivity extends AppCompatActivity {
             if (enteredUsername.equals(HARDCODED_USERNAME) && enteredPassword.equals(HARDCODED_PASSWORD)) {
                 User admin = new Administrator(HARDCODED_USERNAME, HARDCODED_PASSWORD);
                 sendToWelcomeScreen(admin);
-            }else if(enteredUsername.equals("gccadmin") && enteredPassword.equals("GCCRocks!")){
-                User cyclingClub = new User(null,"gccadmin","cycling club","GCCRocks!",null);
-                sendToWelcomeScreen(cyclingClub);
-            }else if(enteredUsername.equals("cyclingaddict") && enteredPassword.equals("cyclingIsLife!")){
-                User user = new User(null,"cyclingaddict","participant","cyclingIsLife!",null);
-                sendToWelcomeScreen(user);
-            }
-            else { /* Sign them in like a regular user if not the hardcoded values */
-                signInWithEmailAndPassword(enteredUsername, enteredPassword, view);
+            } else {
+                signInWithUsernameAndPassword(enteredUsername, enteredPassword, view);
             }
         });
     }
 
     /**
      * Sign in the user with the provided email and password.
-     * @param email The user's email.
+     * @param username The username.
      * @param password The user's password.
      * @param view The current view.
      */
-    private void signInWithEmailAndPassword(String email, String password, View view) {
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        /* Sign in success, update UI with the signed-in user's information */
-                        FirebaseUser user = firebaseAuth.getCurrentUser();
+    private void signInWithUsernameAndPassword(String username, String password, View view) {
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users");
+        dbRef.orderByChild("username").equalTo(username).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                        User user = userSnapshot.getValue(User.class);
                         if (user != null) {
-                            /* User is signed in, we can now fetch additional user data from the database */
-                            getUserDataFromDatabase(user.getUid(), password, view);
-                        }
-                    } else {
-                        /* If sign in fails, display a message to the user based on the specific error. */
-                        Log.e("signInWithEmailAndPassword", "Authentication failed.", task.getException());
-                        String errorMessage = task.getException().getMessage();
-                        int tintColor = Color.WHITE;
-                        int backgroundColor = Color.parseColor(String.valueOf(R.color.primary_color));
+                            firebaseAuth.signInWithEmailAndPassword(user.getEmail(), password)
+                                    .addOnCompleteListener(LoginActivity.this, task -> {
+                                        if (task.isSuccessful()) {
+                                            /* Sign in success, update UI with the signed-in user's information */
+                                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                                            if (firebaseUser != null) {
+                                                Log.e("signInWithUsernameAndPassword", "Firebase User is not null.");
+                                                /* User is signed in, we can now fetch additional user data from the database */
+                                                getUserDataFromDatabase(firebaseUser.getUid(), password, view);
+                                            }
+                                        } else {
+                                            /* If sign in fails, display a message to the user based on the specific error. */
+                                            Log.e("signInWithEmailAndPassword", "Authentication failed.", task.getException());
+                                            String errorMessage = Objects.requireNonNull(task.getException()).getMessage();
 
-                        if (errorMessage != null) {
-                            if (errorMessage.contains("INVALID_LOGIN_CREDENTIALS")) {
-                                DynamicToast.make(this, "Password is incorrect!", tintColor, backgroundColor).show();
-                            } else if (errorMessage.contains("USER_NOT_FOUND")) {
-                                DynamicToast.make(this, "User not found. Please register first.", tintColor, backgroundColor).show();
-                            } else if (errorMessage.contains("NETWORK_ERROR")) {
-                                DynamicToast.make(this, "Network error. Please check your internet connection.", tintColor, backgroundColor).show();
-                            } else if (errorMessage.contains("We have blocked all requests from this device due to unusual activity. Try again later.")) {
-                                DynamicToast.make(this, "Account temporarily disabled due to many failed login attempts. Try again later.", tintColor, backgroundColor).show();
-                            }
+                                            if (errorMessage != null) {
+                                                if (errorMessage.contains("INVALID_LOGIN_CREDENTIALS")) {
+                                                    DynamicToast.makeError(LoginActivity.this, "Password is incorrect!").show();
+                                                } else if (errorMessage.contains("USER_NOT_FOUND")) {
+                                                    DynamicToast.makeError(LoginActivity.this, "User not found. Please register first.").show();
+                                                } else if (errorMessage.contains("NETWORK_ERROR")) {
+                                                    DynamicToast.makeError(LoginActivity.this, "Network error. Please check your internet connection.").show();
+                                                } else if (errorMessage.contains("We have blocked all requests from this device due to unusual activity. Try again later.")) {
+                                                    DynamicToast.makeError(LoginActivity.this, "Account temporarily disabled due to many failed login attempts. Try again later.").show();
+                                                }
+                                            }
+                                        }
+                                    });
                         }
                     }
-                });
+                } else {
+                    /* User data not found, display an error message */
+                    displayPopupMessage("User data not found", view);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("signInWithUsernameAndPassword", "Database error: " + error.getMessage());
+            }
+        });
     }
 
     /**
@@ -114,11 +130,12 @@ public class LoginActivity extends AppCompatActivity {
                     String storedHashedPassword = snapshot.child("password").getValue(String.class); /* Retrieve hashed password from the database */
                     if (salt != null && storedHashedPassword != null) {
                         /* Check if the password is in the database by hashing the entered password and comparing it to the stored hashed password */
-                        if (checkPassword(enteredPassword, salt, storedHashedPassword) || (enteredPassword.equals(HARDCODED_PASSWORD))) {
+                        if (checkPassword(enteredPassword, salt, storedHashedPassword)) {
                             /* Password matches, proceed to welcome screen */
                             User user = snapshot.getValue(User.class);
-                            assert user != null;
-                            sendToWelcomeScreen(user);
+                            if (user != null) {
+                                sendToWelcomeScreen(user);
+                            }
                         }
                     } else {
                         /* If salt or hashedPassword is missing, handle the error accordingly */
@@ -150,6 +167,7 @@ public class LoginActivity extends AppCompatActivity {
             byte[] decodedSalt = Base64.decode(salt, Base64.NO_WRAP);
             /* Hash the entered password with the retrieved salt */
             String hashedPassword = Utils.hashPasswordPBKDF2(enteredPassword, decodedSalt);
+            Log.e("checkPassword", "Salt:" + salt + "\nHashed Password: " + hashedPassword);
             return hashedPassword.equals(storedHashedPassword);
         } catch (Exception e) {
             Log.e("checkPassword", String.format("Unexpected error when checking password: %s", e.getMessage()));

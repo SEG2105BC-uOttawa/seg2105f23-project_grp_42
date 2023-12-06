@@ -49,241 +49,108 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.Query;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.pranavpandey.android.dynamic.toasts.DynamicToast;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
 
-	// TODO: Rename parameter arguments, choose names that match
-	// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-	private static final String ARG_PARAM1 = "param1";
-	private static final String ARG_PARAM2 = "param2";
+	private EditText editClubName;
+	private EditText editContact;
+	private EditText editRegion;
+	private EditText editPhoneNumber;
+	private EditText editMediaLink;
 
-	// TODO: Rename and change types of parameters
-	private String mParam1;
-	private String mParam2;
+	@Override
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		// Inflate the layout for this fragment
+		return inflater.inflate(R.layout.fragment_profile, container, false);
+	}
 
+	@Override
+	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
 
-	/*
-	String storagepath = "Users_Profile_Cover_image/";
-	String profileOrCoverPhoto;
-	ProgressDialog pd;
-	StorageReference storageReference;
-	String cameraPerms[];
-	String storagePerms[];
-	DatabaseReference databaseReference;
-	FirebaseUser firebaseUser;
-	Uri imageuri;
-	ImageView clubPicture;
-	private static final int STORAGE_REQUEST = 200;
-	private static final int IMAGEPICK_GALLERY_REQUEST = 300;
-	private static final int IMAGE_PICKCAMERA_REQUEST = 400;
-	private static final int CAMERA_REQUEST = 100;
+		// Initialize the views
+		editClubName = view.findViewById(R.id.editClubName);
+		editContact = view.findViewById(R.id.editContact);
+		editRegion = view.findViewById(R.id.editRegion);
+		editPhoneNumber = view.findViewById(R.id.editPhoneNumber);
+		editMediaLink = view.findViewById(R.id.editMediaLink);
+		Button btnUpdate = view.findViewById(R.id.btnProfileUpdate);;
 
-	 */
-	private boolean clubProfileFound;
-	private CyclingClub cyclingClub;
+		// Retrieve user information from arguments
+		Bundle bundle = getArguments();
+		User user = (User) bundle.getSerializable("user");
 
-	//private TextView clubName,contact,region,phoneNumber,mediaLink;
+		// Load the data
+		loadData(user);
 
-	public ProfileFragment() {
-		// Required empty public constructor
+		btnUpdate.setOnClickListener(v -> {
+			String clubName = editClubName.getText().toString().trim();
+			String contact = editContact.getText().toString().trim();
+			String region = editRegion.getText().toString().trim();
+			String phoneNumber = editPhoneNumber.getText().toString().trim();
+			String mediaLink = editMediaLink.getText().toString().trim();
+
+			String message = validateInput(clubName, contact, region, phoneNumber, mediaLink);
+			if (!message.isEmpty()) {
+				displayPopupMessage(message, getView());
+			} else {
+				// Create a DatabaseReference
+				DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("clubProfiles");
+
+				// Create a HashMap with the profile information
+				HashMap<String, Object> profileMap = new HashMap<>();
+				profileMap.put("clubName", clubName);
+				profileMap.put("contact", contact);
+				profileMap.put("region", region);
+				profileMap.put("phoneNumber", phoneNumber);
+				profileMap.put("mediaLink", mediaLink);
+
+				// Use setValue method to create the node if it doesn't exist, or overwrite it if it does exist
+				dRef.child(user.getUsername()).setValue(profileMap)
+						.addOnSuccessListener(aVoid -> DynamicToast.make(requireContext(), "Updated profile information.", Color.WHITE, ContextCompat.getColor(requireContext(), R.color.primary_color)).show())
+						.addOnFailureListener(e -> DynamicToast.make(requireContext(), "Failed to update profile information.", Color.WHITE, ContextCompat.getColor(requireContext(), R.color.primary_color)).show());
+			}
+		});
 	}
 
 	/**
-	 * Use this factory method to create a new instance of
-	 * this fragment using the provided parameters.
+	 * Loads the cycling club data from the database.
 	 *
-	 * @param param1 Parameter 1.
-	 * @param param2 Parameter 2.
-	 * @return A new instance of fragment ProfileFragment.
+	 * @param user The current user.
 	 */
-	// TODO: Rename and change types and number of parameters
-	public static ProfileFragment newInstance(String param1, String param2) {
-		ProfileFragment fragment = new ProfileFragment();
-		Bundle args = new Bundle();
-		args.putString(ARG_PARAM1, param1);
-		args.putString(ARG_PARAM2, param2);
-		fragment.setArguments(args);
-		return fragment;
-	}
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		if (getArguments() != null) {
-			mParam1 = getArguments().getString(ARG_PARAM1);
-			mParam2 = getArguments().getString(ARG_PARAM2);
-		}
-		clubProfileFound=false;
-
-
-		/*
-		cameraPerms = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-		storagePerms = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
-		pd = new ProgressDialog(this.getContext());
-		clubPicture = pd.findViewById(R.id.logoView);
-		Object storageReference = FirebaseStorage.getInstance().getReference();
-		clubPicture.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				pd.setMessage("Updating Profile Picture");
-				profileOrCoverPhoto = "image";
-				selectFromPhone();
-			}
-		});
-
-
-		 */
-
-
-		//Bundle bundle = getArguments();
-		//User user = (User) bundle.getSerializable("user");;
-
-
-	}
-
-
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState) {
-		// Inflate the layout for this fragment
-		View rootView  = inflater.inflate(R.layout.fragment_profile, container, false);
-
-
-
-		TextView showTitle = rootView.findViewById(R.id.profileTitle);
-
-		/* Retrieve user information from arguments */
-		Bundle bundle = getArguments();
-		User user = (User) bundle.getSerializable("user");
-		String username = user.getUsername();
-		showTitle.setText(String.format("Cycling Club Profile: %s", username));
-
-		//Retrieve club profile is exist;
-
-
-		loadData(user);
-
-
-		final Button btnUpdate = (Button) rootView.findViewById(R.id.btnProfileUpdate);
-
-		if (user.getRole().equals("Administrator") || user.getRole().equals("participant")) {
-			btnUpdate.setEnabled(false);
-		}
-
-		btnUpdate.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View view) {
-				//User user = (User) bundle.getSerializable("user");
-
-				EditText clubNameEdit =(EditText) getView().findViewById(R.id.editClubName);
-				EditText contactEdit =(EditText) getView().findViewById(R.id.editContact);
-				EditText regionEdit =(EditText) getView().findViewById(R.id.editClubRegion);
-				EditText phoneNumberEdit =(EditText) getView().findViewById(R.id.editPhoneNumber);
-				EditText mediaLinkEdit =(EditText) getView().findViewById(R.id.editMediaLink);
-				ImageView pfpEdit = (ImageView) getView().findViewById(R.id.logoView);
-
-				String clubName= clubNameEdit.getText().toString().trim();
-				String contact= contactEdit.getText().toString().trim();
-				String region= regionEdit.getText().toString().trim();
-				String phoneNumber= phoneNumberEdit.getText().toString().trim();
-				String mediaLink= mediaLinkEdit.getText().toString().trim();
-
-				String message=validateInput(clubName,contact,region,phoneNumber,mediaLink);
-				if (!message.equals("")){
-					displayPopupMessage(message, getView());
-				}else{
-
-					DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("ClubProfile");
-					String key;
-					if (!clubProfileFound) {
-						key = dRef.push().getKey();
-						cyclingClub = new CyclingClub();
-						cyclingClub.setKey(key);
-					} else {
-						key = cyclingClub.getKey();
-					}
-
-					//cyclingClub.setKey(key);
-					cyclingClub.setUser(user);
-					cyclingClub.setUsername(user.getUsername());
-
-
-					cyclingClub.setClubName(clubName);
-					cyclingClub.setMainContact(contact);
-					cyclingClub.setRegion(region);
-					cyclingClub.setPhoneNumber(phoneNumber);
-					cyclingClub.setSocialMediaLink(mediaLink);
-
-
-					dRef.child(key).setValue(cyclingClub);
-				}
-
-			}
-		});
-		return rootView;
-
-	}
-
 	private void loadData(User user) {
-		DatabaseReference dRef=FirebaseDatabase.getInstance().getReference("ClubProfile");
+		DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("clubProfiles");
 
 		dRef.addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
-			public void onDataChange(DataSnapshot dataSnapshot) {
-				for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-					CyclingClub club = snapshot.getValue(CyclingClub.class);
-
-					// Check if the category property matches the desired category
-					if (club != null && club.getUser().getUsername().equals(user.getUsername()) ){
-						clubProfileFound=true;
-						cyclingClub = club;
-						//String clubKey = snapshot.getKey();
-						// Now 'clubKey' and 'club' contain the data for the found club(s)
-						//Log.d("FirebaseData", "Club Key: " + clubKey + ", Name: " + club.getClubName() );
+			public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
+				for (DataSnapshot ds : dataSnapshot.getChildren()) {
+					if (Objects.equals(ds.getKey(), user.getUsername())) {
+						// Set the data to the EditText fields
+						editClubName.setText(ds.child("clubName").getValue(String.class));
+						editContact.setText(ds.child("contact").getValue(String.class));
+						editRegion.setText(ds.child("region").getValue(String.class));
+						editPhoneNumber.setText(ds.child("phoneNumber").getValue(String.class));
+						editMediaLink.setText(ds.child("mediaLink").getValue(String.class));
 					}
 				}
-
-				EditText clubNameEdit =(EditText) getView().findViewById(R.id.editClubName);
-				EditText contactEdit =(EditText) getView().findViewById(R.id.editContact);
-				EditText regionEdit =(EditText) getView().findViewById(R.id.editClubRegion);
-				EditText phoneNumberEdit =(EditText) getView().findViewById(R.id.editPhoneNumber);
-				EditText mediaLinkEdit =(EditText) getView().findViewById(R.id.editMediaLink);
-
-				if(clubProfileFound) {
-					//TextView clubName=getView().findViewById(R.id.editClubName);
-					clubNameEdit.setText(cyclingClub.getClubName());
-					contactEdit.setText(cyclingClub.getMainContact());
-					regionEdit.setText(cyclingClub.getRegion());
-					phoneNumberEdit.setText(cyclingClub.getPhoneNumber());
-					mediaLinkEdit.setText(cyclingClub.getSocialMediaLink());
-				}
-				else{
-					clubNameEdit.setText("");
-					contactEdit.setText("");
-					regionEdit.setText("");
-					phoneNumberEdit.setText("");
-					mediaLinkEdit.setText("");
-				}
-
-
 			}
 
 			@Override
-			public void onCancelled(DatabaseError databaseError) {
-				// Handle potential errors here.
+			public void onCancelled(@NotNull DatabaseError databaseError) {
+				// Handle error
 			}
 		});
-
 	}
-
 
 	private void displayPopupMessage(String message, View anchorView) {
 		LinearLayout layout = new LinearLayout(getContext());
@@ -302,172 +169,18 @@ public class ProfileFragment extends Fragment {
 
 
 	private String validateInput(String clubName,String contact,String region,String phoneNumber,String mediaLink ) {
-		InputValidator validator = InputValidator.getInstance();
+		Utils utils = Utils.getInstance();
 
 		String message="";
 
 		/* Validate event type */
-		if (!validator.isValidString(clubName)) { message= message+ "Club name must start with letter and can not be blank,";}
-		if (!validator.isValidString(contact)) { message= message+ "Contact must start with letter and can not be blank,";}
-		if (!validator.isValidString(region)) { message= message+ "Region must start with letter and can not be blank,";}
-		if (!validator.isValidPhoneNumber(phoneNumber)) { message= message+ "10 digit phone number required,";}
-		if (!validator.isValidSocialMediaLink(mediaLink)) { message= message+ "Invalid social media link.";}
+		if (!utils.isValidString(clubName)) { message= message+ "Club name must start with letter and can not be blank,";}
+		if (!utils.isValidString(contact)) { message= message+ "Contact must start with letter and can not be blank,";}
+		if (!utils.isValidString(region)) { message= message+ "Region must start with letter and can not be blank,";}
+		if (!utils.isValidPhoneNumber(phoneNumber)) { message= message+ "10 digit phone number required,";}
+		if (!utils.isValidSocialMediaLink(mediaLink)) { message= message+ "Invalid social media link.";}
 
 		return message;
 	}
-/*
-	private void selectFromPhone(){
-		String options[] = {"Camera","Gallery"};
-		AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-		builder.setTitle("Pick image from: ");
-		builder.setItems(options, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				if(which == 0){
-					if(!checkCameraPerms()){
-						requestCameraPerms();
-					}else{
-						selectFromCamera();
-					}
-				}else if(which == 1){
-					if(!checkStoragePerms()){
-						requestStoragePerms();
-					}else{
-						selectFromGallery();
-					}
-
-				}
-			}
-		});
-		builder.create().show();
-
-	}
-
-	@Override
-	public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-		if (resultCode == Activity.RESULT_OK) {
-			if (requestCode == IMAGEPICK_GALLERY_REQUEST) {
-				imageuri = data.getData();
-				uploadProfileCoverPhoto(imageuri);
-			}
-			if (requestCode == IMAGE_PICKCAMERA_REQUEST) {
-				uploadProfileCoverPhoto(imageuri);
-			}
-		}
-		super.onActivityResult(requestCode, resultCode, data);
-	}
-
-
-	@Override
-	public void onRequestPermissionResult(int requestCode, @NonNull String[] perms, @NonNull int[] grantResults){
-		switch (requestCode){
-			case CAMERA_REQUEST: {
-				if (grantResults.length > 0) {
-					boolean camera_accepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-					boolean writeStorageaccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-					if (camera_accepted && writeStorageaccepted) {
-						pickFromCamera();
-					} else {
-						Toast.makeText(this.getContext(), "Please Enable Camera and Storage Permissions", Toast.LENGTH_LONG).show();
-					}
-				}
-			}
-			break;
-			case STORAGE_REQUEST: {
-				if (grantResults.length > 0) {
-					boolean writeStorageaccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-					if (writeStorageaccepted) {
-						pickFromGallery();
-					} else {
-						Toast.makeText(this.getContext(), "Please Enable Storage Permissions", Toast.LENGTH_LONG).show();
-					}
-				}
-			}
-			break;
-		}
-	}
-
-
-
-	private Boolean checkCameraPerms(){
-		boolean result = ContextCompat.checkSelfPermission(this.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
-		return result;
-	}
-
-	private void requestCameraPerms(){
-		requestPermissions(cameraPerms, CAMERA_REQUEST);
-	}
-	private Boolean checkStoragePerms(){
-		boolean result = ContextCompat.checkSelfPermission(this.getContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
-		return result;
-	}
-
-	private void requestStoragePerms(){
-		requestPermissions(storagePerms, STORAGE_REQUEST);
-	}
-	private void selectFromCamera(){
-		ContentValues contentValues = new ContentValues();
-		contentValues.put(MediaStore.Images.Media.TITLE, "Temp");
-		contentValues.put(MediaStore.Images.Media.DESCRIPTION, "Description");
-		imageuri = this.getContext().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-		Intent camerIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		camerIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageuri);
-		startActivityForResult(camerIntent, IMAGE_PICKCAMERA_REQUEST);
-	}
-
-	private void selectFromGallery(){
-		Intent galleryIntent = new Intent(Intent.ACTION_PICK);
-		galleryIntent.setType("image/*");
-
-	}
-
-	private void uploadProfileCoverPhoto(final Uri uri) {
-		pd.show();
-
-		// We are taking the filepath as storagepath + firebaseauth.getUid()+".png"
-		String filepathname = storagepath + "" + profileOrCoverPhoto + "_" + firebaseUser.getUid();
-		StorageReference storageReference1 = storageReference.child(filepathname);
-		storageReference1.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-			@Override
-			public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-				Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-				while (!uriTask.isSuccessful()) ;
-
-				// We will get the url of our image using uritask
-				final Uri downloadUri = uriTask.getResult();
-				if (uriTask.isSuccessful()) {
-
-					// updating our image url into the realtime database
-					HashMap<String, Object> hashMap = new HashMap<>();
-					hashMap.put(profileOrCoverPhoto, downloadUri.toString());
-					databaseReference.child(firebaseUser.getUid()).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-						@Override
-						public void onSuccess(Void aVoid) {
-							pd.dismiss();
-							Toast.makeText(ProfileFragment.this.getContext(), "Updated", Toast.LENGTH_LONG).show();
-						}
-					}).addOnFailureListener(new OnFailureListener() {
-						@Override
-						public void onFailure(@NonNull Exception e) {
-							pd.dismiss();
-							Toast.makeText(ProfileFragment.this.getContext(), "Error Updating ", Toast.LENGTH_LONG).show();
-						}
-					});
-				} else {
-					pd.dismiss();
-					Toast.makeText(ProfileFragment.this.getContext(), "Error", Toast.LENGTH_LONG).show();
-				}
-			}
-		}).addOnFailureListener(new OnFailureListener() {
-			@Override
-			public void onFailure(@NonNull Exception e) {
-				pd.dismiss();
-				Toast.makeText(ProfileFragment.this.getContext(), "Error", Toast.LENGTH_LONG).show();
-			}
-		});
-	}
-
-
- */
 
 }
