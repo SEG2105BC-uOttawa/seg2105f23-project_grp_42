@@ -69,23 +69,6 @@ public class ProfileFragment extends Fragment {
 	private String mParam2;
 
 
-	/*
-	String storagepath = "Users_Profile_Cover_image/";
-	String profileOrCoverPhoto;
-	ProgressDialog pd;
-	StorageReference storageReference;
-	String cameraPerms[];
-	String storagePerms[];
-	DatabaseReference databaseReference;
-	FirebaseUser firebaseUser;
-	Uri imageuri;
-	ImageView clubPicture;
-	private static final int STORAGE_REQUEST = 200;
-	private static final int IMAGEPICK_GALLERY_REQUEST = 300;
-	private static final int IMAGE_PICKCAMERA_REQUEST = 400;
-	private static final int CAMERA_REQUEST = 100;
-
-	 */
 	private boolean clubProfileFound;
 	private CyclingClub cyclingClub;
 
@@ -121,29 +104,6 @@ public class ProfileFragment extends Fragment {
 			mParam2 = getArguments().getString(ARG_PARAM2);
 		}
 		clubProfileFound=false;
-
-
-		/*
-		cameraPerms = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-		storagePerms = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
-		pd = new ProgressDialog(this.getContext());
-		clubPicture = pd.findViewById(R.id.logoView);
-		Object storageReference = FirebaseStorage.getInstance().getReference();
-		clubPicture.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				pd.setMessage("Updating Profile Picture");
-				profileOrCoverPhoto = "image";
-				selectFromPhone();
-			}
-		});
-
-
-		 */
-
-
-		//Bundle bundle = getArguments();
-		//User user = (User) bundle.getSerializable("user");;
 
 
 	}
@@ -245,9 +205,7 @@ public class ProfileFragment extends Fragment {
 					if (club != null && club.getUser().getUsername().equals(user.getUsername()) ){
 						clubProfileFound=true;
 						cyclingClub = club;
-						//String clubKey = snapshot.getKey();
-						// Now 'clubKey' and 'club' contain the data for the found club(s)
-						//Log.d("FirebaseData", "Club Key: " + clubKey + ", Name: " + club.getClubName() );
+
 					}
 				}
 
@@ -315,159 +273,6 @@ public class ProfileFragment extends Fragment {
 
 		return message;
 	}
-/*
-	private void selectFromPhone(){
-		String options[] = {"Camera","Gallery"};
-		AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-		builder.setTitle("Pick image from: ");
-		builder.setItems(options, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				if(which == 0){
-					if(!checkCameraPerms()){
-						requestCameraPerms();
-					}else{
-						selectFromCamera();
-					}
-				}else if(which == 1){
-					if(!checkStoragePerms()){
-						requestStoragePerms();
-					}else{
-						selectFromGallery();
-					}
 
-				}
-			}
-		});
-		builder.create().show();
-
-	}
-
-	@Override
-	public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-		if (resultCode == Activity.RESULT_OK) {
-			if (requestCode == IMAGEPICK_GALLERY_REQUEST) {
-				imageuri = data.getData();
-				uploadProfileCoverPhoto(imageuri);
-			}
-			if (requestCode == IMAGE_PICKCAMERA_REQUEST) {
-				uploadProfileCoverPhoto(imageuri);
-			}
-		}
-		super.onActivityResult(requestCode, resultCode, data);
-	}
-
-
-	@Override
-	public void onRequestPermissionResult(int requestCode, @NonNull String[] perms, @NonNull int[] grantResults){
-		switch (requestCode){
-			case CAMERA_REQUEST: {
-				if (grantResults.length > 0) {
-					boolean camera_accepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-					boolean writeStorageaccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-					if (camera_accepted && writeStorageaccepted) {
-						pickFromCamera();
-					} else {
-						Toast.makeText(this.getContext(), "Please Enable Camera and Storage Permissions", Toast.LENGTH_LONG).show();
-					}
-				}
-			}
-			break;
-			case STORAGE_REQUEST: {
-				if (grantResults.length > 0) {
-					boolean writeStorageaccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-					if (writeStorageaccepted) {
-						pickFromGallery();
-					} else {
-						Toast.makeText(this.getContext(), "Please Enable Storage Permissions", Toast.LENGTH_LONG).show();
-					}
-				}
-			}
-			break;
-		}
-	}
-
-
-
-	private Boolean checkCameraPerms(){
-		boolean result = ContextCompat.checkSelfPermission(this.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
-		return result;
-	}
-
-	private void requestCameraPerms(){
-		requestPermissions(cameraPerms, CAMERA_REQUEST);
-	}
-	private Boolean checkStoragePerms(){
-		boolean result = ContextCompat.checkSelfPermission(this.getContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
-		return result;
-	}
-
-	private void requestStoragePerms(){
-		requestPermissions(storagePerms, STORAGE_REQUEST);
-	}
-	private void selectFromCamera(){
-		ContentValues contentValues = new ContentValues();
-		contentValues.put(MediaStore.Images.Media.TITLE, "Temp");
-		contentValues.put(MediaStore.Images.Media.DESCRIPTION, "Description");
-		imageuri = this.getContext().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-		Intent camerIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		camerIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageuri);
-		startActivityForResult(camerIntent, IMAGE_PICKCAMERA_REQUEST);
-	}
-
-	private void selectFromGallery(){
-		Intent galleryIntent = new Intent(Intent.ACTION_PICK);
-		galleryIntent.setType("image/*");
-
-	}
-
-	private void uploadProfileCoverPhoto(final Uri uri) {
-		pd.show();
-
-		// We are taking the filepath as storagepath + firebaseauth.getUid()+".png"
-		String filepathname = storagepath + "" + profileOrCoverPhoto + "_" + firebaseUser.getUid();
-		StorageReference storageReference1 = storageReference.child(filepathname);
-		storageReference1.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-			@Override
-			public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-				Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-				while (!uriTask.isSuccessful()) ;
-
-				// We will get the url of our image using uritask
-				final Uri downloadUri = uriTask.getResult();
-				if (uriTask.isSuccessful()) {
-
-					// updating our image url into the realtime database
-					HashMap<String, Object> hashMap = new HashMap<>();
-					hashMap.put(profileOrCoverPhoto, downloadUri.toString());
-					databaseReference.child(firebaseUser.getUid()).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-						@Override
-						public void onSuccess(Void aVoid) {
-							pd.dismiss();
-							Toast.makeText(ProfileFragment.this.getContext(), "Updated", Toast.LENGTH_LONG).show();
-						}
-					}).addOnFailureListener(new OnFailureListener() {
-						@Override
-						public void onFailure(@NonNull Exception e) {
-							pd.dismiss();
-							Toast.makeText(ProfileFragment.this.getContext(), "Error Updating ", Toast.LENGTH_LONG).show();
-						}
-					});
-				} else {
-					pd.dismiss();
-					Toast.makeText(ProfileFragment.this.getContext(), "Error", Toast.LENGTH_LONG).show();
-				}
-			}
-		}).addOnFailureListener(new OnFailureListener() {
-			@Override
-			public void onFailure(@NonNull Exception e) {
-				pd.dismiss();
-				Toast.makeText(ProfileFragment.this.getContext(), "Error", Toast.LENGTH_LONG).show();
-			}
-		});
-	}
-
-
- */
 
 }
