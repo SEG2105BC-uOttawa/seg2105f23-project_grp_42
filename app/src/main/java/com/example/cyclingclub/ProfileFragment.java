@@ -69,23 +69,7 @@ public class ProfileFragment extends Fragment {
 	private String mParam2;
 
 
-	/*
-	String storagepath = "Users_Profile_Cover_image/";
-	String profileOrCoverPhoto;
-	ProgressDialog pd;
-	StorageReference storageReference;
-	String cameraPerms[];
-	String storagePerms[];
-	DatabaseReference databaseReference;
-	FirebaseUser firebaseUser;
-	Uri imageuri;
-	ImageView clubPicture;
-	private static final int STORAGE_REQUEST = 200;
-	private static final int IMAGEPICK_GALLERY_REQUEST = 300;
-	private static final int IMAGE_PICKCAMERA_REQUEST = 400;
-	private static final int CAMERA_REQUEST = 100;
 
-	 */
 	private boolean clubProfileFound;
 	private CyclingClub cyclingClub;
 
@@ -130,8 +114,6 @@ public class ProfileFragment extends Fragment {
 		// Inflate the layout for this fragment
 		View rootView  = inflater.inflate(R.layout.fragment_profile, container, false);
 
-
-
 		TextView showTitle = rootView.findViewById(R.id.profileTitle);
 
 		/* Retrieve user information from arguments */
@@ -141,13 +123,9 @@ public class ProfileFragment extends Fragment {
 		showTitle.setText(String.format("Cycling Club Profile: %s", username));
 
 		//Retrieve club profile is exist;
-
-
 		loadData(user);
 
-
 		final Button btnUpdate = (Button) rootView.findViewById(R.id.btnProfileUpdate);
-
 		if (user.getRole().equals("Administrator") || user.getRole().equals("participant")) {
 			btnUpdate.setEnabled(false);
 		}
@@ -163,7 +141,7 @@ public class ProfileFragment extends Fragment {
 				EditText regionEdit =(EditText) getView().findViewById(R.id.editClubRegion);
 				EditText phoneNumberEdit =(EditText) getView().findViewById(R.id.editPhoneNumber);
 				EditText mediaLinkEdit =(EditText) getView().findViewById(R.id.editMediaLink);
-				ImageView pfpEdit = (ImageView) getView().findViewById(R.id.logoView);
+				//ImageView pfpEdit = (ImageView) getView().findViewById(R.id.logoView);
 
 				String clubName= clubNameEdit.getText().toString().trim();
 				String contact= contactEdit.getText().toString().trim();
@@ -182,6 +160,7 @@ public class ProfileFragment extends Fragment {
 						key = dRef.push().getKey();
 						cyclingClub = new CyclingClub();
 						cyclingClub.setKey(key);
+
 					} else {
 						key = cyclingClub.getKey();
 					}
@@ -199,10 +178,12 @@ public class ProfileFragment extends Fragment {
 
 
 					dRef.child(key).setValue(cyclingClub);
+					clubProfileFound=true;
 				}
 
 			}
 		});
+
 		return rootView;
 
 	}
@@ -217,12 +198,12 @@ public class ProfileFragment extends Fragment {
 					CyclingClub club = snapshot.getValue(CyclingClub.class);
 
 					// Check if the category property matches the desired category
-					if (club != null && club.getUser().getUsername().equals(user.getUsername()) ){
-						clubProfileFound=true;
-						cyclingClub = club;
-						//String clubKey = snapshot.getKey();
-						// Now 'clubKey' and 'club' contain the data for the found club(s)
-						//Log.d("FirebaseData", "Club Key: " + clubKey + ", Name: " + club.getClubName() );
+					if (club != null ){
+						if (club.getUser().getUsername().equals(user.getUsername()) ) {
+							clubProfileFound = true;
+							cyclingClub = club;
+							break;
+						}
 					}
 				}
 
@@ -231,6 +212,7 @@ public class ProfileFragment extends Fragment {
 				EditText regionEdit =(EditText) getView().findViewById(R.id.editClubRegion);
 				EditText phoneNumberEdit =(EditText) getView().findViewById(R.id.editPhoneNumber);
 				EditText mediaLinkEdit =(EditText) getView().findViewById(R.id.editMediaLink);
+
 				if(clubProfileFound) {
 					//TextView clubName=getView().findViewById(R.id.editClubName);
 					clubNameEdit.setText(cyclingClub.getClubName());
@@ -240,12 +222,15 @@ public class ProfileFragment extends Fragment {
 					mediaLinkEdit.setText(cyclingClub.getSocialMediaLink());
 				}
 				else{
+					//cyclingClub = new CyclingClub();
 					clubNameEdit.setText("");
 					contactEdit.setText("");
 					regionEdit.setText("");
 					phoneNumberEdit.setText("");
 					mediaLinkEdit.setText("");
 				}
+
+
 			}
 
 			@Override
@@ -253,7 +238,9 @@ public class ProfileFragment extends Fragment {
 				// Handle potential errors here.
 			}
 		});
+
 	}
+
 
 	private void displayPopupMessage(String message, View anchorView) {
 		LinearLayout layout = new LinearLayout(getContext());
@@ -270,6 +257,7 @@ public class ProfileFragment extends Fragment {
 		popupWindow.showAsDropDown(anchorView, 10, 0);
 	}
 
+
 	private String validateInput(String clubName,String contact,String region,String phoneNumber,String mediaLink ) {
 		InputValidator validator = InputValidator.getInstance();
 
@@ -284,5 +272,6 @@ public class ProfileFragment extends Fragment {
 
 		return message;
 	}
+
 
 }
