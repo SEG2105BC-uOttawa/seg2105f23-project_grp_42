@@ -4,6 +4,10 @@
         "source": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-main-53:/layout/registration_list.xml"
     },
     {
+        "merged": "com.example.cyclingclub.app-mergeDebugResources-50:/layout/activity_user_account_management.xml",
+        "source": "com.example.cyclingclub.app-main-53:/layout/activity_user_account_management.xml"
+    },
+    {
         "merged": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-mergeDebugResources-50:/layout/profile_pic_view.xml",
         "source": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-main-53:/layout/profile_pic_view.xml"
     },
@@ -84,12 +88,12 @@
         "source": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-main-53:/layout/event_detail.xml"
     },
     {
-        "merged": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-mergeDebugResources-50:/layout/activity_login.xml",
-        "source": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-main-53:/layout/activity_login.xml"
-    },
-    {
         "merged": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-mergeDebugResources-50:/layout/club_reviews.xml",
         "source": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-main-53:/layout/club_reviews.xml"
+    },
+    {
+        "merged": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-mergeDebugResources-50:/layout/activity_login.xml",
+        "source": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-main-53:/layout/activity_login.xml"
     },
     {
         "merged": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-mergeDebugResources-50:/layout/fragment_second.xml",
@@ -118,10 +122,6 @@
     {
         "merged": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-mergeDebugResources-50:/layout/user_list.xml",
         "source": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-main-53:/layout/user_list.xml"
-    },
-    {
-        "merged": "com.example.cyclingclub.app-mergeDebugResources-50:/layout/activity_search_for_club.xml",
-        "source": "com.example.cyclingclub.app-main-53:/layout/activity_search_for_club.xml"
     },
     {
         "merged": "/home/nick/.gradle/daemon/8.0/com.example.cyclingclub.app-mergeDebugResources-50:/layout/hill_climb_attributes.xml",

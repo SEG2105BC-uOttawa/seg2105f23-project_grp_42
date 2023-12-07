@@ -4,9 +4,7 @@ package com.example.cyclingclub.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,27 +27,14 @@ public final class ActivityUserAccountManagementBinding implements ViewBinding {
   public final RecyclerView recyclerView;
 
   @NonNull
-  public final EditText seachUsernameInput;
-
-  @NonNull
-  public final ImageButton searchUserBtn;
-
-  @NonNull
-  public final LinearLayout searchUserLayout;
-
-  @NonNull
   public final LinearLayout toolbar;
 
   private ActivityUserAccountManagementBinding(@NonNull FrameLayout rootView,
       @NonNull FrameLayout fragmentContainer, @NonNull RecyclerView recyclerView,
-      @NonNull EditText seachUsernameInput, @NonNull ImageButton searchUserBtn,
-      @NonNull LinearLayout searchUserLayout, @NonNull LinearLayout toolbar) {
+      @NonNull LinearLayout toolbar) {
     this.rootView = rootView;
     this.fragmentContainer = fragmentContainer;
     this.recyclerView = recyclerView;
-    this.seachUsernameInput = seachUsernameInput;
-    this.searchUserBtn = searchUserBtn;
-    this.searchUserLayout = searchUserLayout;
     this.toolbar = toolbar;
   }
 
@@ -88,24 +73,6 @@ public final class ActivityUserAccountManagementBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.seach_username_input;
-      EditText seachUsernameInput = ViewBindings.findChildViewById(rootView, id);
-      if (seachUsernameInput == null) {
-        break missingId;
-      }
-
-      id = R.id.search_user_btn;
-      ImageButton searchUserBtn = ViewBindings.findChildViewById(rootView, id);
-      if (searchUserBtn == null) {
-        break missingId;
-      }
-
-      id = R.id.search_user_layout;
-      LinearLayout searchUserLayout = ViewBindings.findChildViewById(rootView, id);
-      if (searchUserLayout == null) {
-        break missingId;
-      }
-
       id = R.id.toolbar;
       LinearLayout toolbar = ViewBindings.findChildViewById(rootView, id);
       if (toolbar == null) {
@@ -113,7 +80,7 @@ public final class ActivityUserAccountManagementBinding implements ViewBinding {
       }
 
       return new ActivityUserAccountManagementBinding((FrameLayout) rootView, fragmentContainer,
-          recyclerView, seachUsernameInput, searchUserBtn, searchUserLayout, toolbar);
+          recyclerView, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -188,4 +188,40 @@ public class Event {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
+    public void setElevation(String elevation) {
+        this.elevation = elevation;
+    }
+
+    public void setFee(double fee) {
+        this.fee = fee;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

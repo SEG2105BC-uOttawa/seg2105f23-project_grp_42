@@ -7,7 +7,4 @@
     <item android:title="@string/profile_text"
           android:icon="@drawable/baseline_person_outline_24"
           android:id="@+id/profileItem"/>
-    <item android:title="@string/settings_text"
-          android:icon="@drawable/baseline_settings_outline"
-          android:id="@+id/settingsItem"/>
 </menu>

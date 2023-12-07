@@ -98,6 +98,7 @@
     <string name="google_storage_bucket" translatable="false">seg2105-project-grp42.appspot.com</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_text">Home</string>
+    <string name="list_of_users">List of Users</string>
     <string name="log_in_text">Log In</string>
     <string name="login_final">Login</string>
     <string name="lorem_ipsum">

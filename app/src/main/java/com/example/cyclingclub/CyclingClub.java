@@ -126,8 +126,4 @@ public class CyclingClub {
         newComment.put("rate", rate);
         rateComments.add(newComment);
     }
-
-
-
-
 }

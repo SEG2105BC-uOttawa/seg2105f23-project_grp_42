@@ -3735,7 +3735,6 @@ id percent
 id pin
 id position
 id postLayout
-id preferences_container
 id preferences_detail
 id preferences_header
 id preferences_sliding_pane_layout
@@ -3769,7 +3768,6 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
-id seach_username_input
 id search_badge
 id search_bar
 id search_button
@@ -3779,15 +3777,12 @@ id search_go_btn
 id search_mag_icon
 id search_plate
 id search_src_text
-id search_user_btn
-id search_user_layout
 id search_voice_btn
 id seekbar
 id seekbar_value
 id select_dialog_listview
 id selected
 id selection_type
-id settingsItem
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -4084,7 +4079,6 @@ layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout club_reviews
 layout custom_dialog
-layout custom_preference_category_layout
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -4341,6 +4335,7 @@ string hide_bottom_view_on_scroll_behavior
 string home_text
 string icon_content_description
 string item_view_role_description
+string list_of_users
 string log_in_text
 string login_final
 string lorem_ipsum
@@ -5837,4 +5832,3 @@ styleable include constraintSet
 xml backup_rules
 xml data_extraction_rules
 xml image_share_filepaths
-xml settings_preferences

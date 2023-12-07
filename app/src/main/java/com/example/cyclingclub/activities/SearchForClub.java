@@ -167,7 +167,6 @@ public class SearchForClub extends AppCompatActivity {
 
     }
 
-
     private void  showRateClubDialog(CyclingClub club, User user){
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);

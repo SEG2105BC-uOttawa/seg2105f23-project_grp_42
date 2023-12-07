@@ -1,18 +1,14 @@
 package com.example.cyclingclub.activities;
 
+import android.icu.text.ListFormatter;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.view.*;
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.cyclingclub.Administrator;
-import com.example.cyclingclub.Event;
-import com.example.cyclingclub.EventType;
+import com.example.cyclingclub.*;
 import com.example.cyclingclub.R;
 import com.example.cyclingclub.fragments.EventTypeListFragment;
 import com.example.cyclingclub.utils.Utils;
@@ -266,12 +262,6 @@ public class EventTypeManagementActivity extends AppCompatActivity {
         validations.put("Limit must be a number (ex: 5). ", utils.isValidNumber(String.valueOf(eventLimit)));
         validations.put("Distance must be using a valid unit (km, m, or mi). ", utils.isValidUnit(String.valueOf(eventDistance)));
         validations.put("Elevation must be using a valid unit (km, m, or mi). ", utils.isValidUnit(String.valueOf(eventElevation)));
-
-        validations.put("Event name cannot be blank. ", eventId.isEmpty());
-        validations.put("Region cannot be blank. ", eventRegion.isEmpty());
-        validations.put("Date cannot be empty. ", eventDate.isEmpty());
-        validations.put("Distance cannot be null. ", eventDistance.isEmpty());
-        validations.put("Elevation cannot be empty. ", eventElevation.isEmpty());
 
         // Iterate over the entries in the map
         for (Map.Entry<String, Boolean> entry : validations.entrySet()) {

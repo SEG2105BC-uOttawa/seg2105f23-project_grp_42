@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cyclingclub.Administrator;
 import com.example.cyclingclub.R;
 import com.example.cyclingclub.EventType;
+import com.example.cyclingclub.User;
 import com.example.cyclingclub.activities.EventTypeManagementActivity;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.pranavpandey.android.dynamic.toasts.DynamicToast;
@@ -24,11 +25,13 @@ public class EventTypeAdapter extends RecyclerView.Adapter<EventTypeAdapter.Even
 
     private final List<EventType> eventTypes;
     private final FragmentActivity activity;
+    private final User user;
     private int selectedPosition = -1;
 
-    public EventTypeAdapter(FragmentActivity activity, List<EventType> eventTypes) {
+    public EventTypeAdapter(FragmentActivity activity, List<EventType> eventTypes, User user) {
         this.activity = activity;
         this.eventTypes = eventTypes;
+        this.user = user;
     }
 
     @NonNull
@@ -44,23 +47,27 @@ public class EventTypeAdapter extends RecyclerView.Adapter<EventTypeAdapter.Even
         holder.eventTypeNameText.setText(eventType.getTypeName());
         holder.eventTypeDescriptionText.setText(eventType.getDetail());
 
-        holder.optionsButton.setOnClickListener(v -> {
-            PopupMenu popup = new PopupMenu(activity, v);
-            popup.getMenuInflater().inflate(R.menu.user_options_menu, popup.getMenu());
+        if (!user.getRole().equals("Administrator")) {
+            holder.optionsButton.setVisibility(View.GONE);
+        } else {
+            holder.optionsButton.setOnClickListener(v -> {
+                PopupMenu popup = new PopupMenu(activity, v);
+                popup.getMenuInflater().inflate(R.menu.user_options_menu, popup.getMenu());
 
-            popup.setOnMenuItemClickListener(item -> {
-                int id = item.getItemId();
-                if (id == R.id.action_delete) {
-                    handleEventTypeDeletion(eventType);
-                } else if (id == R.id.action_update) {
-                    // Handle "Modify" button press
-                    handleEventTypeModification(eventType);
-                }
-                return true;
+                popup.setOnMenuItemClickListener(item -> {
+                    int id = item.getItemId();
+                    if (id == R.id.action_delete) {
+                        handleEventTypeDeletion(eventType);
+                    } else if (id == R.id.action_update) {
+                        // Handle "Modify" button press
+                        handleEventTypeModification(eventType);
+                    }
+                    return true;
+                });
+
+                popup.show();
             });
-
-            popup.show();
-        });
+        }
 
         // Highlight the selected item
         if (position == selectedPosition) {

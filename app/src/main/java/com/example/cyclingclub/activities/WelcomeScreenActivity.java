@@ -12,14 +12,12 @@ import com.example.cyclingclub.R;
 import com.example.cyclingclub.User;
 import com.example.cyclingclub.fragments.HomeFragment;
 import com.example.cyclingclub.fragments.ProfileFragment;
-import com.example.cyclingclub.fragments.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
 
 	private HomeFragment homeFragment;
 	private ProfileFragment profileFragment;
-	private SettingsFragment settingsFragment;
 	private boolean recreateActivity = false;
 
     @Override
@@ -83,10 +81,6 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 				profileFragment.setArguments(bundle);
 				setFragment(profileFragment);
 				return true;
-			} else if (item.getItemId() == R.id.settingsItem) {
-				setFragment(settingsFragment);
-				recreateActivity = true;
-				return true;
 			}
 
 			return false;
@@ -97,7 +91,6 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 		/* Initialize the fragments */
 		homeFragment = new HomeFragment();
 		profileFragment = new ProfileFragment();
-		settingsFragment = new SettingsFragment();
 	}
 
 	@Override
@@ -119,7 +112,6 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 	private void resetMenuIcons(BottomNavigationView bottomNavigationView) {
 		bottomNavigationView.getMenu().findItem(R.id.homeItem).setIcon(R.drawable.baseline_home_outline);
 		bottomNavigationView.getMenu().findItem(R.id.profileItem).setIcon(R.drawable.baseline_person_outline_24);
-		bottomNavigationView.getMenu().findItem(R.id.settingsItem).setIcon(R.drawable.baseline_settings_outline);
 	}
 
 	private int getSelectedIconResource(int itemID) {
@@ -129,8 +121,6 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 			iconResource = R.drawable.baseline_home;
 		} else if (itemID == R.id.profileItem) {
 			iconResource = R.drawable.baseline_person_24;
-		} else if (itemID == R.id.settingsItem) {
-			iconResource = R.drawable.baseline_settings;
 		}
 
 		return iconResource;

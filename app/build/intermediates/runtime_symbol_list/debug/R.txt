@@ -3734,7 +3734,6 @@ int id percent 0x7f0a01d3
 int id pin 0x7f0a01d4
 int id position 0x7f0a01d5
 int id postLayout 0x7f0a01d6
-int id preferences_container 0x7f0a01d7
 int id preferences_detail 0x7f0a01d8
 int id preferences_header 0x7f0a01d9
 int id preferences_sliding_pane_layout 0x7f0a01da
@@ -3768,7 +3767,6 @@ int id scrollIndicatorDown 0x7f0a01f5
 int id scrollIndicatorUp 0x7f0a01f6
 int id scrollView 0x7f0a01f7
 int id scrollable 0x7f0a01f8
-int id seach_username_input 0x7f0a01f9
 int id search_badge 0x7f0a01fa
 int id search_bar 0x7f0a01fb
 int id search_button 0x7f0a01fc
@@ -3778,15 +3776,12 @@ int id search_go_btn 0x7f0a01ff
 int id search_mag_icon 0x7f0a0200
 int id search_plate 0x7f0a0201
 int id search_src_text 0x7f0a0202
-int id search_user_btn 0x7f0a0203
-int id search_user_layout 0x7f0a0204
 int id search_voice_btn 0x7f0a0205
 int id seekbar 0x7f0a0206
 int id seekbar_value 0x7f0a0207
 int id select_dialog_listview 0x7f0a0208
 int id selected 0x7f0a0209
 int id selection_type 0x7f0a020a
-int id settingsItem 0x7f0a020b
 int id sharedValueSet 0x7f0a020c
 int id sharedValueUnset 0x7f0a020d
 int id shortcut 0x7f0a020e
@@ -4083,7 +4078,6 @@ int layout browser_actions_context_menu_page 0x7f0d0028
 int layout browser_actions_context_menu_row 0x7f0d0029
 int layout club_reviews 0x7f0d002a
 int layout custom_dialog 0x7f0d002b
-int layout custom_preference_category_layout 0x7f0d002c
 int layout design_bottom_navigation_item 0x7f0d002d
 int layout design_bottom_sheet_dialog 0x7f0d002e
 int layout design_layout_snackbar 0x7f0d002f
@@ -4340,6 +4334,7 @@ int string hide_bottom_view_on_scroll_behavior 0x7f130089
 int string home_text 0x7f13008a
 int string icon_content_description 0x7f13008b
 int string item_view_role_description 0x7f13008c
+int string list_of_users 0x7f13012a
 int string log_in_text 0x7f13008d
 int string login_final 0x7f13008e
 int string lorem_ipsum 0x7f13008f
@@ -7940,4 +7935,3 @@ int styleable include_constraintSet 0
 int xml backup_rules 0x7f160000
 int xml data_extraction_rules 0x7f160001
 int xml image_share_filepaths 0x7f160002
-int xml settings_preferences 0x7f160003

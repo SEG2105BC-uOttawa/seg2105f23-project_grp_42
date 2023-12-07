@@ -143,16 +143,11 @@ id number_one_hillclimb
 id options_button
 id participantRole
 id passwordTextField
-id preferences_container
 id profileItem
 id profileTitle
 id profile_pic_image_view
 id recycler_view
 id roleRadioGroup
-id seach_username_input
-id search_user_btn
-id search_user_layout
-id settingsItem
 id showUsername
 id spinnerLevel
 id spinnerRate
@@ -214,7 +209,6 @@ layout activity_user_account_management
 layout activity_welcome_screen
 layout add_event_dialog
 layout club_reviews
-layout custom_preference_category_layout
 layout event_detail
 layout event_type_recycler_row
 layout fragment_first
@@ -289,6 +283,7 @@ string google_crash_reporting_api_key
 string google_storage_bucket
 string hello_blank_fragment
 string home_text
+string list_of_users
 string log_in_text
 string login_final
 string lorem_ipsum
@@ -332,4 +327,3 @@ style CustomTextAppearance
 style Theme.CyclingClub
 xml backup_rules
 xml data_extraction_rules
-xml settings_preferences
