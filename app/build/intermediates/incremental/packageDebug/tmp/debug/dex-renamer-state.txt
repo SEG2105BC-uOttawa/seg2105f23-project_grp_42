@@ -1,9 +1,9 @@
-#Mon Dec 04 10:55:20 EST 2023
-base.0=C\:\\Users\\Darre\\OneDrive\\Attachments\\Desktop\\SEG Project\\seg2105f23-project_grp_42\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\Darre\\OneDrive\\Attachments\\Desktop\\SEG Project\\seg2105f23-project_grp_42\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\Darre\\OneDrive\\Attachments\\Desktop\\SEG Project\\seg2105f23-project_grp_42\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
-base.3=C\:\\Users\\Darre\\OneDrive\\Attachments\\Desktop\\SEG Project\\seg2105f23-project_grp_42\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
-base.4=C\:\\Users\\Darre\\OneDrive\\Attachments\\Desktop\\SEG Project\\seg2105f23-project_grp_42\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+#Wed Dec 06 22:35:44 EST 2023
+base.0=/home/nick/Documents/seg2105f23-project_grp_42/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/home/nick/Documents/seg2105f23-project_grp_42/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/home/nick/Documents/seg2105f23-project_grp_42/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex
+base.3=/home/nick/Documents/seg2105f23-project_grp_42/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
+base.4=/home/nick/Documents/seg2105f23-project_grp_42/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=4/classes.dex

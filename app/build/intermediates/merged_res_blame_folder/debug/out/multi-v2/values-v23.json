@@ -4,7 +4,18 @@
             "outputFile": "com.example.cyclingclub.app-mergeDebugResources-49:/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Darre\\.gradle\\caches\\transforms-3\\50786544954b7496b0a92ded292da342\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
+                    "source": "/home/nick/.gradle/caches/transforms-3/ff92050ab482929c4d0f044d21af76fb/transformed/appcompat-1.6.1/res/values-v23/values-v23.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,190,325,400,487,1225,1975,2094,2221,2443,2667,2782,2889,3002",
+                        "endLines": "2,3,4,5,19,33,34,35,38,42,43,44,45,49",
+                        "endColumns": "134,134,74,86,12,12,118,126,12,12,114,106,112,12",
+                        "endOffsets": "185,320,395,482,1220,1970,2089,2216,2438,2662,2777,2884,2997,3227"
+                    }
+                },
+                {
+                    "source": "/home/nick/.gradle/caches/transforms-3/50786544954b7496b0a92ded292da342/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,37 +34,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Darre\\.gradle\\caches\\transforms-3\\ff92050ab482929c4d0f044d21af76fb\\transformed\\appcompat-1.6.1\\res\\values-v23\\values-v23.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,190,325,400,487,1225,1975,2094,2221,2443,2667,2782,2889,3002",
-                        "endLines": "2,3,4,5,19,33,34,35,38,42,43,44,45,49",
-                        "endColumns": "134,134,74,86,12,12,118,126,12,12,114,106,112,12",
-                        "endOffsets": "185,320,395,482,1220,1970,2089,2216,2438,2662,2777,2884,2997,3227"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Darre\\OneDrive\\Attachments\\Desktop\\SEG Project\\seg2105f23-project_grp_42\\app\\src\\main\\res\\values-v23\\themes.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "66",
-                        "endLines": "7",
-                        "endColumns": "12",
-                        "endOffsets": "443"
-                    },
-                    "to": {
-                        "startLines": "53",
-                        "startColumns": "4",
-                        "startOffsets": "3382",
-                        "endLines": "58",
-                        "endColumns": "12",
-                        "endOffsets": "3704"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Darre\\.gradle\\caches\\transforms-3\\d49ec510c338e4b25b77263b6d755eb1\\transformed\\material-1.10.0\\res\\values-v23\\values-v23.xml",
+                    "source": "/home/nick/.gradle/caches/transforms-3/d49ec510c338e4b25b77263b6d755eb1/transformed/material-1.10.0/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,5,9,13,16,21,25,28,31,34,39,42,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -69,6 +50,25 @@
                         "endLines": "61,65,69,72,77,81,84,87,90,95,98,102,106",
                         "endColumns": "10,10,10,10,10,10,10,10,10,10,10,10,10",
                         "endOffsets": "3920,4062,4223,4433,4753,4990,5197,5404,5607,5939,6141,6406,6679"
+                    }
+                },
+                {
+                    "source": "/home/nick/Documents/seg2105f23-project_grp_42/app/src/main/res/values-v23/themes.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "64",
+                        "endLines": "7",
+                        "endColumns": "12",
+                        "endOffsets": "436"
+                    },
+                    "to": {
+                        "startLines": "53",
+                        "startColumns": "4",
+                        "startOffsets": "3382",
+                        "endLines": "58",
+                        "endColumns": "12",
+                        "endOffsets": "3704"
                     }
                 }
             ]

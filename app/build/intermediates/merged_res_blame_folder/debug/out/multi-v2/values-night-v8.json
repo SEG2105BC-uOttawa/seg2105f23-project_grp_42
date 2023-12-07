@@ -4,7 +4,7 @@
             "outputFile": "com.example.cyclingclub.app-mergeDebugResources-49:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Darre\\.gradle\\caches\\transforms-3\\d49ec510c338e4b25b77263b6d755eb1\\transformed\\material-1.10.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "source": "/home/nick/.gradle/caches/transforms-3/d49ec510c338e4b25b77263b6d755eb1/transformed/material-1.10.0/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,14 +21,14 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Darre\\OneDrive\\Attachments\\Desktop\\SEG Project\\seg2105f23-project_grp_42\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "source": "/home/nick/Documents/seg2105f23-project_grp_42/app/src/main/res/values-night/themes.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "55",
+                        "startOffsets": "53",
                         "endLines": "9",
                         "endColumns": "12",
-                        "endOffsets": "531"
+                        "endOffsets": "522"
                     },
                     "to": {
                         "startLines": "3",
@@ -40,15 +40,8 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Darre\\OneDrive\\Attachments\\Desktop\\SEG Project\\seg2105f23-project_grp_42\\app\\src\\main\\res\\values-night\\colors.xml",
+                    "source": "/home/nick/Documents/seg2105f23-project_grp_42/app/src/main/res/values-night/colors.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "57",
-                        "endColumns": "56",
-                        "endOffsets": "109"
-                    },
-                    "to": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",
@@ -57,7 +50,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Darre\\.gradle\\caches\\transforms-3\\ff92050ab482929c4d0f044d21af76fb\\transformed\\appcompat-1.6.1\\res\\values-night-v8\\values-night-v8.xml",
+                    "source": "/home/nick/.gradle/caches/transforms-3/ff92050ab482929c4d0f044d21af76fb/transformed/appcompat-1.6.1/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
