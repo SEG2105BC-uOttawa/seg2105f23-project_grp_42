@@ -3249,7 +3249,6 @@ id BOTTOM_END
 id BOTTOM_START
 id ButtonLayout
 id CTRL
-id CreationTitle
 id FUNCTION
 id META
 id NO_DEBUG
@@ -3392,9 +3391,7 @@ id btnSignUp
 id btnToClubFunction
 id btnUsers
 id btn_apply_hillclimb
-id btn_back_create
 id btn_back_hillclimb
-id btn_confirm_create
 id buttonDelete
 id buttonPanel
 id buttonUpdate
@@ -3514,7 +3511,6 @@ id eventNumber
 id eventTypeDetail
 id eventTypeList
 id eventTypeNameUpdate
-id event_types_list
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3580,7 +3576,6 @@ id light
 id line1
 id line3
 id linear
-id linearLayout
 id linearLayout2
 id listEvents
 id listMode
@@ -3758,9 +3753,6 @@ id search_voice_btn
 id seekbar
 id seekbar_value
 id select_dialog_listview
-id select_groupRiding
-id select_hillClimb
-id select_roadStageRace
 id selected
 id selection_type
 id settingsItem
@@ -4066,13 +4058,11 @@ layout activity_search_for_club
 layout activity_signup
 layout activity_user_account_management
 layout activity_welcome_screen
-layout admin_create_delete_event
 layout adt_layout_hint
 layout adt_layout_toast
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout club_reviews
-layout creation_screen
 layout custom_dialog
 layout custom_preference_category_layout
 layout design_bottom_navigation_item

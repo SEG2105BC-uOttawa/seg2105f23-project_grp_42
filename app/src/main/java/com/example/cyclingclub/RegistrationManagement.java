@@ -31,16 +31,21 @@ public class RegistrationManagement extends AppCompatActivity {
     private List<Registration> registrations;
     private Registration selectedRegistration;
     private User user;
+
+    public boolean ifEventFull(Registration selectedRegistration){
+        Event testEvent = selectedRegistration.getEvent();
+        int limit = selectedRegistration.getEvent().getLimit();
+        if(registrations.size() == limit ){
+            return true;
+        }
+        return false;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_management);
-
         user = (User) getIntent().getSerializableExtra("user");
-
-
         listViewRegistration = (ListView) findViewById(R.id.listRegistration);
-
         Button btnUpdate = (Button) findViewById(R.id.btnRegistrationUpdate);
         Button btnDelete = (Button) findViewById(R.id.btnDeleteRegistration);
 
@@ -64,7 +69,6 @@ public class RegistrationManagement extends AppCompatActivity {
                     registrations.add(reg);
                 }
                 regAdapter.notifyDataSetChanged();
-
             }
 
             @Override
@@ -80,10 +84,8 @@ public class RegistrationManagement extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 regAdapter.setSelectedPosition(position);
                 selectedRegistration=registrations.get(position);
-
             }
         });
-
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,18 +106,15 @@ public class RegistrationManagement extends AppCompatActivity {
                 }else{
                     dref.child(selectedRegistration.getKey()).removeValue();
                 }
-
             }
         });
     }
-
 
     @Override
     protected void onStart() {
         super.onStart();
 
     }
-
 
     private void displayPopupMessage(String message, View anchorView) {
         LinearLayout layout = new LinearLayout(this);
@@ -131,6 +130,4 @@ public class RegistrationManagement extends AppCompatActivity {
         popupWindow.setContentView(textView);
         popupWindow.showAsDropDown(anchorView, 10, 0);
     }
-
-
 }

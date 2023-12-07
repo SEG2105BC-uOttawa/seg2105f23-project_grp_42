@@ -27,7 +27,6 @@ drawable list_item_selector
 drawable logo
 font atomic_age
 id ButtonLayout
-id CreationTitle
 id Text5
 id accountType
 id attribute_1_hillclimb
@@ -62,9 +61,7 @@ id btnSignUp
 id btnToClubFunction
 id btnUsers
 id btn_apply_hillclimb
-id btn_back_create
 id btn_back_hillclimb
-id btn_confirm_create
 id buttonDelete
 id buttonUpdate
 id button_first
@@ -102,11 +99,9 @@ id eventNumber
 id eventTypeDetail
 id eventTypeList
 id eventTypeNameUpdate
-id event_types_list
 id fragment_container
 id hillClimbTitle
 id homeItem
-id linearLayout
 id linearLayout2
 id listEvents
 id listRateAndReview
@@ -124,9 +119,6 @@ id profileItem
 id profileTitle
 id roleRadioGroup
 id roleTextField
-id select_groupRiding
-id select_hillClimb
-id select_roadStageRace
 id settingsItem
 id showUsername
 id spinnerLevel
@@ -200,9 +192,7 @@ layout activity_search_for_club
 layout activity_signup
 layout activity_user_account_management
 layout activity_welcome_screen
-layout admin_create_delete_event
 layout club_reviews
-layout creation_screen
 layout custom_preference_category_layout
 layout event_detail
 layout event_type_list

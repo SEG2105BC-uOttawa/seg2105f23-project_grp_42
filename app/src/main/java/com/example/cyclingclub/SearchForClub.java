@@ -81,7 +81,7 @@ public class SearchForClub extends AppCompatActivity {
         ListView listView = findViewById(R.id.listViewClubs);
         listView.setAdapter(adapter);
 
-      //  searchClub(clubs,  user,  adapter,  "",  "","");
+        //  searchClub(clubs,  user,  adapter,  "",  "","");
 
 
         DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("ClubProfile");
@@ -176,7 +176,7 @@ public class SearchForClub extends AppCompatActivity {
                     }
                 }
 
-                querySecondDatabase( clubs,clubAdapter, userNames, clubName);
+                querySecondDatabase( clubs,clubAdapter, userNames, type, eventName, clubName);
 
             }
             @Override
@@ -190,7 +190,7 @@ public class SearchForClub extends AppCompatActivity {
 
 
     }
-    private void querySecondDatabase(List<CyclingClub> clubs,ArrayAdapter<CyclingClub> clubAdapter, List<String> userNames, String clubName){
+    private void querySecondDatabase(List<CyclingClub> clubs,ArrayAdapter<CyclingClub> clubAdapter, List<String> userNames,String type, String eventName,  String clubName){
 
         DatabaseReference dRefClub = FirebaseDatabase.getInstance().getReference("ClubProfile");
 
@@ -201,7 +201,7 @@ public class SearchForClub extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     CyclingClub club = snapshot.getValue(CyclingClub.class);
                     if((club.getClubName().contains(clubName) || clubName.equals("")) &&
-                         userNames.contains(club.getUsername())){
+                            (userNames.contains(club.getUsername()) || (eventName.equals("") && type.equals("")))){
                         clubs.add(club);
                     }
                 }
@@ -316,7 +316,7 @@ public class SearchForClub extends AppCompatActivity {
 
         //List<Map<String, Object>> reviews= new ArrayList<>();
         List<Map<String, Object>> reviews=club.getRateComments();
-       // int x=1;
+        // int x=1;
         ArrayAdapter<Map<String, Object>> adapter = new ArrayAdapter<Map<String, Object>>(
                 this,
                 android.R.layout.simple_list_item_2, // Built-in layout for a two-line list item
@@ -336,8 +336,8 @@ public class SearchForClub extends AppCompatActivity {
                 TextView text2 = view.findViewById(android.R.id.text2);
 
                 // Set the name and age in the TextViews
-               // text1.setText(Integer.toString((int) review.get("rate")));
-               // text2.setText((String) review.get("comment"));
+                // text1.setText(Integer.toString((int) review.get("rate")));
+                // text2.setText((String) review.get("comment"));
 
                 String t0=review.get("userName").toString();
                 String t1=review.get("rate").toString();

@@ -110,6 +110,9 @@ public class InputValidator {
         return matcher.matches();
     }
     public boolean isValidString(String s) {
+        if(s == null){
+            return false;
+        }
         Pattern pattern = Pattern.compile(STRING_PATTERN);
         Matcher matcher = pattern.matcher(s);
         return matcher.matches();

@@ -28,10 +28,8 @@ public class RegistrationAdapter extends ArrayAdapter<Registration> {
         // Populate other views in the item layout using dataModel
         TextView eventName= itemView.findViewById(R.id.textEventName);
         TextView participant= itemView.findViewById(R.id.textParticipant);
-
         eventName.setText(reg.getEvent().getId());
         participant.setText(reg.getParticipant().getUsername());
-
 
         // Set up the Switch
         Switch switchAccept = itemView.findViewById(R.id.switchAccept);
@@ -49,8 +47,6 @@ public class RegistrationAdapter extends ArrayAdapter<Registration> {
             // Update your boolean variable in the data model when the Switch state changes
             reg.setAwarded(isChecked);
         });
-
-
 
         if (position == selectedPosition) {
             eventName.setTextColor(getContext().getResources().getColor(android.R.color.holo_blue_dark));

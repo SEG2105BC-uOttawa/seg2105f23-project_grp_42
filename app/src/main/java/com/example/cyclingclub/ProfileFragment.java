@@ -68,7 +68,6 @@ public class ProfileFragment extends Fragment {
 	private String mParam1;
 	private String mParam2;
 
-
 	private boolean clubProfileFound;
 	private CyclingClub cyclingClub;
 
@@ -105,7 +104,6 @@ public class ProfileFragment extends Fragment {
 		}
 		clubProfileFound=false;
 
-
 	}
 
 
@@ -114,8 +112,6 @@ public class ProfileFragment extends Fragment {
 							 Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
 		View rootView  = inflater.inflate(R.layout.fragment_profile, container, false);
-
-
 
 		TextView showTitle = rootView.findViewById(R.id.profileTitle);
 
@@ -126,13 +122,9 @@ public class ProfileFragment extends Fragment {
 		showTitle.setText(String.format("Cycling Club Profile: %s", username));
 
 		//Retrieve club profile is exist;
-
-
 		loadData(user);
 
-
 		final Button btnUpdate = (Button) rootView.findViewById(R.id.btnProfileUpdate);
-
 		if (user.getRole().equals("Administrator") || user.getRole().equals("participant")) {
 			btnUpdate.setEnabled(false);
 		}
@@ -148,7 +140,7 @@ public class ProfileFragment extends Fragment {
 				EditText regionEdit =(EditText) getView().findViewById(R.id.editClubRegion);
 				EditText phoneNumberEdit =(EditText) getView().findViewById(R.id.editPhoneNumber);
 				EditText mediaLinkEdit =(EditText) getView().findViewById(R.id.editMediaLink);
-				ImageView pfpEdit = (ImageView) getView().findViewById(R.id.logoView);
+				//ImageView pfpEdit = (ImageView) getView().findViewById(R.id.logoView);
 
 				String clubName= clubNameEdit.getText().toString().trim();
 				String contact= contactEdit.getText().toString().trim();
@@ -167,6 +159,7 @@ public class ProfileFragment extends Fragment {
 						key = dRef.push().getKey();
 						cyclingClub = new CyclingClub();
 						cyclingClub.setKey(key);
+
 					} else {
 						key = cyclingClub.getKey();
 					}
@@ -184,10 +177,12 @@ public class ProfileFragment extends Fragment {
 
 
 					dRef.child(key).setValue(cyclingClub);
+					clubProfileFound=true;
 				}
 
 			}
 		});
+
 		return rootView;
 
 	}
@@ -202,9 +197,14 @@ public class ProfileFragment extends Fragment {
 					CyclingClub club = snapshot.getValue(CyclingClub.class);
 
 					// Check if the category property matches the desired category
-					if (club != null && club.getUser().getUsername().equals(user.getUsername()) ){
-						clubProfileFound=true;
-						cyclingClub = club;
+
+
+					if (club != null ){
+						if (club.getUser().getUsername().equals(user.getUsername()) ) {
+							clubProfileFound = true;
+							cyclingClub = club;
+							break;
+						}
 
 					}
 				}
@@ -224,6 +224,7 @@ public class ProfileFragment extends Fragment {
 					mediaLinkEdit.setText(cyclingClub.getSocialMediaLink());
 				}
 				else{
+					//cyclingClub = new CyclingClub();
 					clubNameEdit.setText("");
 					contactEdit.setText("");
 					regionEdit.setText("");

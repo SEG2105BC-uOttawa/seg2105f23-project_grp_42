@@ -32,15 +32,12 @@ import android.widget.ArrayAdapter;
 
 public class EventTypeManagement extends AppCompatActivity {
 
-
     private ListView listViewEventTypes;
     private List<EventType> eventTypes;
    // private DatabaseReference databaseProducts;
     //private Administrator admin;
-
     private EventType selectedEventType;
     private User user;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,17 +49,12 @@ public class EventTypeManagement extends AppCompatActivity {
         listViewEventTypes = (ListView) findViewById(R.id.eventTypeList);
         //EventTypeList eventTypeAdapter= new EventTypeList(EventTypeManagement.this, eventTypes);
         //listViewEventTypes.setAdapter(eventTypeAdapter);
-
-
         Button btnAddEventType = (Button) findViewById(R.id.btnNewEventType);
         if(!(user.getRole().equals("Administrator"))){
             btnAddEventType.setEnabled(false);
         }
-
         eventTypes = new ArrayList<>();
-
         //listViewEventTypes.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-
         //AdapterView.OnItemSelectedListener;
         AdapterView.OnItemLongClickListener longClickListener= new AdapterView.OnItemLongClickListener() {
             @Override
@@ -74,8 +66,6 @@ public class EventTypeManagement extends AppCompatActivity {
             }
         };
         listViewEventTypes.setOnItemLongClickListener(longClickListener);
-
-
         Button buttonNewEventType = (Button) findViewById(R.id.btnNewEventType);
         if (!user.getRole().equals("Administrator")) {
             buttonNewEventType.setEnabled(false);
@@ -86,9 +76,7 @@ public class EventTypeManagement extends AppCompatActivity {
         }
         //The administrator who can manage the event type database;
         //admin= new Administrator("admin","admin");
-
     }
-
 
     @Override
     protected void onStart() {
@@ -116,7 +104,6 @@ public class EventTypeManagement extends AppCompatActivity {
                     }
                 });
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
@@ -131,9 +118,6 @@ public class EventTypeManagement extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.eventtype_detail, null);
         dialogBuilder.setView(dialogView);
-
-
-
          //editTextID.setEnabled(false);
          //editTextID.setFocusable(false);
          EditText editTextName = (EditText) dialogView.findViewById(R.id.eventTypeNameUpdate);
@@ -147,14 +131,12 @@ public class EventTypeManagement extends AppCompatActivity {
         dialogBuilder.setTitle("Event Types Detail");
         editTextName.setText(et.getTypeName());
         editTextDetail.setText(et.getDetail());
-
         final AlertDialog b = dialogBuilder.create();
         b.show();
 
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 String newName = editTextName.getText().toString().trim();
                 String newDetail = editTextDetail.getText().toString().trim();
@@ -169,7 +151,6 @@ public class EventTypeManagement extends AppCompatActivity {
                 else{
                     displayPopupMessage(message,view);
                 }
-
             }
         });
 
@@ -185,22 +166,14 @@ public class EventTypeManagement extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
 
-
     public void onClickAddEventType(View view) {
-
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.eventtype_detail, null);
         dialogBuilder.setView(dialogView);
-
-        //editTextID.setEnabled(false);
-        //editTextID.setFocusable(false);
         EditText editTextName = (EditText) dialogView.findViewById(R.id.eventTypeNameUpdate);
         EditText editTextDetail = (EditText) dialogView.findViewById(R.id.editEventTypeDetail);
         final Button buttonUpdate = (Button) dialogView.findViewById(R.id.buttonUpdate);
@@ -212,10 +185,8 @@ public class EventTypeManagement extends AppCompatActivity {
         dialogBuilder.setTitle("Event Types Detail");
         editTextName.setText("");
         editTextDetail.setText("");
-
         buttonUpdate.setText("Add");
         buttonDelete.setText("Discard");
-
         final AlertDialog b = dialogBuilder.create();
         b.show();
 
@@ -236,8 +207,6 @@ public class EventTypeManagement extends AppCompatActivity {
                 else{
                     displayPopupMessage(message,view);
                 }
-
-
             }
         });
 
@@ -247,10 +216,7 @@ public class EventTypeManagement extends AppCompatActivity {
                     b.dismiss();
             }
         });
-
-
     }
-
 
     public void onClickAddEvent(View view) {
 
@@ -263,9 +229,6 @@ public class EventTypeManagement extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.event_detail, null);
         dialogBuilder.setView(dialogView);
-
-
-
         EditText editEventId = (EditText) dialogView.findViewById(R.id.editEventId);
         EditText editEventType = (EditText) dialogView.findViewById(R.id.editEventType);
         EditText editEventRegion = (EditText) dialogView.findViewById(R.id.editEventRegion);
@@ -276,7 +239,6 @@ public class EventTypeManagement extends AppCompatActivity {
         Spinner spinner = (Spinner) dialogView.findViewById(R.id.spinnerLevel);
         EditText editEventFee = (EditText) dialogView.findViewById(R.id.editEventFee);
         EditText editEventLimit = (EditText) dialogView.findViewById(R.id.editEventLimit);
-
         editEventId.setText("");
         editEventRegion.setText("");
         editEventDate.setText("");
@@ -285,10 +247,6 @@ public class EventTypeManagement extends AppCompatActivity {
         editEventElevation.setText("0");
         editEventFee.setText("0");
         editEventLimit.setText("0");
-
-
-
-
         Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnEventUpdate);
         Button buttonDelete = (Button) dialogView.findViewById(R.id.btnEventDelete);
         Button buttonRegister = (Button) dialogView.findViewById(R.id.btnRegister);
@@ -297,21 +255,13 @@ public class EventTypeManagement extends AppCompatActivity {
             buttonDelete.setEnabled(false);
         }
         buttonRegister.setVisibility(View.INVISIBLE);
-
         buttonUpdate.setText("Add");
         buttonDelete.setText("Discard");
-
-
         dialogBuilder.setTitle("Create New Event");
         editEventType.setText(selectedEventType.getTypeName());
         TextView eventTypeDetail = (TextView) dialogView.findViewById(R.id.eventTypeDetail);
         eventTypeDetail.setText(selectedEventType.getDetail());
-
-
-
-
         final AlertDialog b = dialogBuilder.create();
-
 
         // Create an ArrayAdapter with numeric values from 1 to 5
         if (spinner != null) {
@@ -324,9 +274,7 @@ public class EventTypeManagement extends AppCompatActivity {
             spinner.setAdapter(adapter);
             spinner.setSelection(0);
         }
-
         b.show();
-
 
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
