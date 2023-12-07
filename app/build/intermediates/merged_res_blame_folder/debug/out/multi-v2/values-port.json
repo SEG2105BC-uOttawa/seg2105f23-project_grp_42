@@ -4,7 +4,7 @@
             "outputFile": "com.example.cyclingclub.app-mergeDebugResources-49:/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "/home/nick/.gradle/caches/transforms-3/ff92050ab482929c4d0f044d21af76fb/transformed/appcompat-1.6.1/res/values-port/values-port.xml",
+                    "source": "/home/edgar/.gradle/caches/transforms-3/ff92050ab482929c4d0f044d21af76fb/transformed/appcompat-1.6.1/res/values-port/values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
