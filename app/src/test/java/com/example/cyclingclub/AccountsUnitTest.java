@@ -19,25 +19,6 @@ public class AccountsUnitTest {
         assertFalse(utils.isValidString("123"));
     }
 
-//    @Test
-//    public void testSearchClub() {
-//        // Create a list of clubs
-//        List<CyclingClub> clubs = new ArrayList<>();
-//        clubs.add(new CyclingClub("key1", "Club 1", "1234567890", "Region 1"));
-//        clubs.add(new CyclingClub("key2", "Club 2", "0987654321", "Region 2"));
-//        clubs.add(new CyclingClub("key3", "Club 3", "1122334455", "Region 1"));
-//
-//        // Create a SearchForClub object
-//        SearchForClub searchForClub = new SearchForClub();
-//
-//        // Call the searchClub() method
-//        searchForClub.searchClub(clubs, null, "Region 1", "eventName", "Club 1");
-//
-//        // Check if the returned list contains the expected clubs
-//        assertEquals(1, clubs.size());
-//        assertEquals("Club 1", clubs.get(0).getClubName());
-//    }
-
     @Test
     public void accountCreation_isCorrect() {
         User user = new User("test@example.com", "username", "role", "password", "salt");

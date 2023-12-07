@@ -1,6 +1,7 @@
 package com.example.cyclingclub;
 
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskCompletionSource;
 import com.google.firebase.database.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,21 +41,33 @@ public class Administrator extends User {
      * Creates a new event and adds it to the database.
      *
      * @param event The event to be created.
+     * @return
      */
-    public static void createEvent(Event event) {
+    public static boolean createEvent(Event event) {
         String key = getEventDB().push().getKey();
         event.setKey(key);
         assert key != null;
         getEventDB().child(key).setValue(event);
+        return false;
     }
 
     /**
      * Updates an existing event in the database.
      *
      * @param event The event to be updated.
+     * @return
      */
-    public static void updateEvent(Event event) {
-        getEventDB().child(event.getKey()).setValue(event);
+    public static Task<Boolean> updateEvent(Event event) {
+        TaskCompletionSource<Boolean> taskCompletionSource = new TaskCompletionSource<>();
+        getEventDB().child(event.getKey()).setValue(event)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        taskCompletionSource.setResult(true);
+                    } else {
+                        taskCompletionSource.setResult(false);
+                    }
+                });
+        return taskCompletionSource.getTask();
     }
 
     /**

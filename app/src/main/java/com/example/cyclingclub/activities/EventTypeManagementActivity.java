@@ -176,8 +176,20 @@ public class EventTypeManagementActivity extends AppCompatActivity {
             } else {
                 difficultyLevel = 1;
             }
-            double eventFee = Double.parseDouble(getTrimmedText(editEventFee));
-            int eventLimit = Integer.parseInt(getTrimmedText(editEventLimit));
+
+            String eventFeeText = getTrimmedText(editEventFee);
+            if (eventFeeText.isEmpty()) {
+                runOnUiThread(() -> DynamicToast.makeError(this, "Event fee must be entered. ").show());
+                return;
+            }
+            double eventFee = Double.parseDouble(eventFeeText);
+
+            String eventLimitText = getTrimmedText(editEventLimit);
+            if (eventLimitText.isEmpty()) {
+                runOnUiThread(() -> DynamicToast.makeError(this, "Event limit must be entered. ").show());
+                return;
+            }
+            int eventLimit = Integer.parseInt(eventLimitText);
 
             String validationMessage = validateInput(eventName, eventRegion, eventDate, eventFee, eventLimit, eventDistance, eventElevation);
             if (!validationMessage.isEmpty()) {
@@ -190,7 +202,7 @@ public class EventTypeManagementActivity extends AppCompatActivity {
 
             // Add the event to the Firebase Realtime Database
             Administrator.createEvent(event);
-            runOnUiThread(() -> DynamicToast.makeSuccess(this, "Event '" + eventName + "' has been created.").show());
+            runOnUiThread(() -> DynamicToast.makeSuccess(this, "Event '" + eventName + "' has been created. ").show());
             dialog.dismiss();
         });
 
@@ -215,7 +227,7 @@ public class EventTypeManagementActivity extends AppCompatActivity {
 
         Map<String, Boolean> validations = new LinkedHashMap<>();
         validations.put("Event type must start with letter and can not be blank. ", utils.isValidString(eventTypeName));
-        validations.put("Event description can not be blank", !TextUtils.isEmpty(eventTypeDetail));
+        validations.put("Event description can not be blank. ", !TextUtils.isEmpty(eventTypeDetail));
 
         for (Map.Entry<String, Boolean> entry : validations.entrySet()) {
             if (!entry.getValue()) {
@@ -247,13 +259,19 @@ public class EventTypeManagementActivity extends AppCompatActivity {
 
         // Create a map to store the validation messages and the corresponding validation checks
         Map<String, Boolean> validations = new LinkedHashMap<>();
-        validations.put("ID name must start with letter and can not be blank. ", utils.isValidString(eventId));
-        validations.put("Region must start with letter and can not be blank. ", utils.isValidString(eventRegion));
+        validations.put("Event name can only have alphabetical letters. ", utils.isValidString(eventId));
+        validations.put("Region can only have alphabetical letters. ", utils.isValidString(eventRegion));
         validations.put("Date must be in format YYYY-MM-DD. ", utils.isValidDate(eventDate));
-        validations.put("Fee must be a number. ", utils.isValidNumber(String.valueOf(eventFee)));
-        validations.put("Limit must be a number. ", utils.isValidNumber(String.valueOf(eventLimit)));
-        validations.put("Distance must be using a valid unit (km, meters, or miles).", utils.isValidUnit(String.valueOf(eventDistance)));
-        validations.put("Elevation must be using a valid unit (km, meters, or miles).", utils.isValidUnit(String.valueOf(eventElevation)));
+        validations.put("Fee must be a number. (ex: 49.99). ", utils.isValidNumber(String.valueOf(eventFee)));
+        validations.put("Limit must be a number (ex: 5). ", utils.isValidNumber(String.valueOf(eventLimit)));
+        validations.put("Distance must be using a valid unit (km, m, or mi). ", utils.isValidUnit(String.valueOf(eventDistance)));
+        validations.put("Elevation must be using a valid unit (km, m, or mi). ", utils.isValidUnit(String.valueOf(eventElevation)));
+
+        validations.put("Event name cannot be blank. ", eventId.isEmpty());
+        validations.put("Region cannot be blank. ", eventRegion.isEmpty());
+        validations.put("Date cannot be empty. ", eventDate.isEmpty());
+        validations.put("Distance cannot be null. ", eventDistance.isEmpty());
+        validations.put("Elevation cannot be empty. ", eventElevation.isEmpty());
 
         // Iterate over the entries in the map
         for (Map.Entry<String, Boolean> entry : validations.entrySet()) {
