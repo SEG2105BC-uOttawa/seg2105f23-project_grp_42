@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.cyclingclub.activities.EventManagementActivity;
 import com.example.cyclingclub.R;
-import com.example.cyclingclub.utils.SearchForClub;
+import com.example.cyclingclub.activities.SearchForClub;
 import com.example.cyclingclub.activities.RegistrationManagementActivity;
 import com.example.cyclingclub.activities.EventTypeManagementActivity;
 import com.example.cyclingclub.User;

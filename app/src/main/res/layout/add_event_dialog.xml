@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/eventName"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_drive_file_rename_outline_24"
+                    android:drawablePadding="10dp"
+                    android:id="@+id/edit_event_name"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:hint="@string/eventRegion"
+                android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_event_region"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_my_location_24"
+                    android:drawablePadding="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/eventDate"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_event_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_calendar_month_24"
+                    android:drawablePadding="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:hint="@string/eventLevel"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:text="@string/eventLevel"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/baseline_bolt_24"
+                    android:layout_weight="1"/>
+
+            <Spinner
+                    android:id="@+id/spinner_difficulty_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:hint="@string/eventDistance"
+                android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_event_distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_route_24"
+                    android:drawablePadding="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:hint="@string/routeElevation"
+                android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_route_eleveation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_trending_up_24"
+                    android:drawablePadding="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:hint="@string/eventLimit"
+                android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_participant_limit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_numbers_24"
+                    android:drawablePadding="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/eventFee"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_event_fee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_attach_money_24"
+                    android:drawablePadding="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+</ScrollView>

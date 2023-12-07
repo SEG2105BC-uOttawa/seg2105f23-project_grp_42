@@ -28,7 +28,7 @@
             android:name=".activities.RegistrationManagementActivity"
             android:exported="false" />
         <activity
-            android:name=".utils.SearchForClub"
+            android:name=".activities.SearchForClub"
             android:exported="false" />
         <activity
             android:name=".activities.EventManagementActivity"

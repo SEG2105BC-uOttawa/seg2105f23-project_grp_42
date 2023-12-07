@@ -1,33 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+              android:layout_gravity="center_horizontal"
     tools:context=".fragments.ProfileFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/profileTitle"
-            android:layout_width="205dp"
-            android:layout_height="50dp"
-            android:text="@string/cyclingClubProfile" />
-
-        <ImageView
-            android:id="@+id/logoView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/logo" />
-
-    </LinearLayout>
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -35,11 +13,19 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+        <TextView
+                android:id="@+id/profileTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:text="@string/profile_text"
+                android:layout_marginBottom="20dp"/>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edit_text_name"
-            android:hint="@string/clubName"
+            android:hint="@string/name"
             android:layout_marginBottom="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -47,13 +33,12 @@
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/baseline_person_24"
                     android:drawablePadding="10dp"
-                    android:id="@+id/editClubName"/>
+                    android:id="@+id/editName"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edit_text_contact"
                 android:hint="@string/contactPerson"
                 android:layout_marginBottom="10dp">
 
@@ -68,7 +53,6 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edit_text_link"
                 android:hint="@string/socialMediaLink"
                 android:layout_marginBottom="10dp">
 
@@ -83,7 +67,6 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edit_text_phone_number"
                 android:hint="@string/phoneNumber"
                 android:layout_marginBottom="10dp">
 
@@ -98,7 +81,6 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edit_text_region"
                 android:hint="@string/region"
                 android:layout_marginBottom="10dp">
 
@@ -112,7 +94,7 @@
 
         <Button
                 android:id="@+id/btnProfileUpdate"
-                android:layout_width="202dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/updateProfile"

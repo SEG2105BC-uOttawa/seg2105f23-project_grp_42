@@ -1,6 +1,5 @@
 package com.example.cyclingclub.fragments;
 
-import android.app.ActionBar;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -10,15 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.example.cyclingclub.R;
 import com.example.cyclingclub.utils.Utils;
@@ -40,7 +35,7 @@ import java.util.Objects;
  */
 public class ProfileFragment extends Fragment {
 
-	private EditText editClubName;
+	private EditText editName;
 	private EditText editContact;
 	private EditText editRegion;
 	private EditText editPhoneNumber;
@@ -57,7 +52,7 @@ public class ProfileFragment extends Fragment {
 		super.onViewCreated(view, savedInstanceState);
 
 		// Initialize the views
-		editClubName = view.findViewById(R.id.editClubName);
+		editName = view.findViewById(R.id.editName);
 		editContact = view.findViewById(R.id.editContact);
 		editRegion = view.findViewById(R.id.editRegion);
 		editPhoneNumber = view.findViewById(R.id.editPhoneNumber);
@@ -72,31 +67,48 @@ public class ProfileFragment extends Fragment {
 		loadData(user);
 
 		btnUpdate.setOnClickListener(v -> {
-			String clubName = editClubName.getText().toString().trim();
+			String name = editName.getText().toString().trim();
 			String contact = editContact.getText().toString().trim();
 			String region = editRegion.getText().toString().trim();
 			String phoneNumber = editPhoneNumber.getText().toString().trim();
 			String mediaLink = editMediaLink.getText().toString().trim();
 
-			String message = validateInput(clubName, contact, region, phoneNumber, mediaLink);
+			if (phoneNumber.isEmpty()) {
+				requireActivity().runOnUiThread(() -> DynamicToast.makeError(requireContext(), "Phone number must be entered.").show());
+				return;
+			} else if (mediaLink.isEmpty()) {
+				requireActivity().runOnUiThread(() -> DynamicToast.makeError(requireContext(), "Social media link must be entered.").show());
+				return;
+			}
+
+			String message = validateInput(name, contact, region, phoneNumber, mediaLink);
 			if (!message.isEmpty()) {
-				displayPopupMessage(message, getView());
+				requireActivity().runOnUiThread(() -> DynamicToast.makeError(requireContext(), message).show());
 			} else {
 				// Create a DatabaseReference
-				DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("clubProfiles");
+				DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("profiles");
 
 				// Create a HashMap with the profile information
 				HashMap<String, Object> profileMap = new HashMap<>();
-				profileMap.put("clubName", clubName);
+				profileMap.put("name", user.getUsername());
 				profileMap.put("contact", contact);
 				profileMap.put("region", region);
 				profileMap.put("phoneNumber", phoneNumber);
 				profileMap.put("mediaLink", mediaLink);
+				profileMap.put("role", user.getRole());
 
 				// Use setValue method to create the node if it doesn't exist, or overwrite it if it does exist
 				dRef.child(user.getUsername()).setValue(profileMap)
 						.addOnSuccessListener(aVoid -> DynamicToast.make(requireContext(), "Updated profile information.", Color.WHITE, ContextCompat.getColor(requireContext(), R.color.primary_color)).show())
 						.addOnFailureListener(e -> DynamicToast.make(requireContext(), "Failed to update profile information.", Color.WHITE, ContextCompat.getColor(requireContext(), R.color.primary_color)).show());
+
+				// If the user's role is a cycling club, add the profile to 'clubProfiles'
+				if ("cycling club".equals(user.getRole())) {
+					DatabaseReference clubProfilesRef = FirebaseDatabase.getInstance().getReference("clubProfiles");
+					clubProfilesRef.child(user.getUsername()).setValue(profileMap)
+							.addOnSuccessListener(aVoid -> DynamicToast.make(requireContext(), "Added profile to 'clubProfiles'.", Color.WHITE, ContextCompat.getColor(requireContext(), R.color.primary_color)).show())
+							.addOnFailureListener(e -> DynamicToast.make(requireContext(), "Failed to add profile to 'clubProfiles'.", Color.WHITE, ContextCompat.getColor(requireContext(), R.color.primary_color)).show());
+				}
 			}
 		});
 	}
@@ -107,21 +119,20 @@ public class ProfileFragment extends Fragment {
 	 * @param user The current user.
 	 */
 	private void loadData(User user) {
-		DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("clubProfiles");
+		DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("profiles");
 
-		dRef.addListenerForSingleValueEvent(new ValueEventListener() {
+		// Get the child node with the username of the user
+		DatabaseReference userRef = dRef.child(user.getUsername());
+
+		userRef.addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
-				for (DataSnapshot ds : dataSnapshot.getChildren()) {
-					if (Objects.equals(ds.getKey(), user.getUsername())) {
-						// Set the data to the EditText fields
-						editClubName.setText(ds.child("clubName").getValue(String.class));
-						editContact.setText(ds.child("contact").getValue(String.class));
-						editRegion.setText(ds.child("region").getValue(String.class));
-						editPhoneNumber.setText(ds.child("phoneNumber").getValue(String.class));
-						editMediaLink.setText(ds.child("mediaLink").getValue(String.class));
-					}
-				}
+				// Set the data to the EditText fields
+				editName.setText(user.getUsername());
+				editContact.setText(dataSnapshot.child("contact").getValue(String.class));
+				editRegion.setText(dataSnapshot.child("region").getValue(String.class));
+				editPhoneNumber.setText(dataSnapshot.child("phoneNumber").getValue(String.class));
+				editMediaLink.setText(dataSnapshot.child("mediaLink").getValue(String.class));
 			}
 
 			@Override
@@ -130,22 +141,6 @@ public class ProfileFragment extends Fragment {
 			}
 		});
 	}
-
-	private void displayPopupMessage(String message, View anchorView) {
-		LinearLayout layout = new LinearLayout(getContext());
-		layout.setLayoutParams(new ViewGroup.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT));
-
-		layout.setOrientation(LinearLayout.VERTICAL);
-		layout.setGravity(Gravity.CENTER);
-		TextView textView = new TextView(getContext());
-		textView.setText(message);
-		textView.setTextColor(Color.RED);
-
-		PopupWindow popupWindow = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
-		popupWindow.setContentView(textView);
-		popupWindow.showAsDropDown(anchorView, 10, 0);
-	}
-
 
 	private String validateInput(String clubName,String contact,String region,String phoneNumber,String mediaLink ) {
 		Utils utils = Utils.getInstance();

@@ -1,5 +1,7 @@
 package com.example.cyclingclub.adapters;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cyclingclub.Administrator;
 import com.example.cyclingclub.R;
 import com.example.cyclingclub.EventType;
+import com.example.cyclingclub.activities.EventTypeManagementActivity;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.pranavpandey.android.dynamic.toasts.DynamicToast;
 
@@ -21,6 +24,7 @@ public class EventTypeAdapter extends RecyclerView.Adapter<EventTypeAdapter.Even
 
     private final List<EventType> eventTypes;
     private final FragmentActivity activity;
+    private int selectedPosition = -1;
 
     public EventTypeAdapter(FragmentActivity activity, List<EventType> eventTypes) {
         this.activity = activity;
@@ -56,6 +60,28 @@ public class EventTypeAdapter extends RecyclerView.Adapter<EventTypeAdapter.Even
             });
 
             popup.show();
+        });
+
+        // Highlight the selected item
+        if (position == selectedPosition) {
+            holder.itemView.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00bfff")));
+        } else {
+            holder.itemView.setBackgroundTintList(ColorStateList.valueOf(Color.WHITE));
+        }
+
+        // Set click listener
+        holder.itemView.setOnClickListener(v -> {
+            int previousSelectedPosition = selectedPosition;
+            selectedPosition = holder.getAdapterPosition();
+
+            // Refresh only the affected items
+            notifyItemChanged(previousSelectedPosition);
+            notifyItemChanged(selectedPosition);
+
+            // Update selectedEventType in EventTypeManagementActivity
+            if (activity instanceof EventTypeManagementActivity) {
+                ((EventTypeManagementActivity) activity).setSelectedEventType(eventType);
+            }
         });
     }
 

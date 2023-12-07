@@ -1,24 +1,24 @@
 package com.example.cyclingclub.activities;
 
-import android.app.ActionBar;
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.Gravity;
-import android.view.ViewGroup;
-import android.widget.*;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import android.app.AlertDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import com.example.cyclingclub.*;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import com.example.cyclingclub.Administrator;
+import com.example.cyclingclub.Event;
+import com.example.cyclingclub.EventType;
 import com.example.cyclingclub.R;
 import com.example.cyclingclub.fragments.EventTypeListFragment;
-import com.example.cyclingclub.User;
 import com.example.cyclingclub.utils.Utils;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.database.*;
+import com.pranavpandey.android.dynamic.toasts.DynamicToast;
 
 import java.util.*;
 
@@ -29,14 +29,7 @@ import java.util.*;
  */
 public class EventTypeManagementActivity extends AppCompatActivity {
 
-    private ListView listViewEventTypes;
-    private List<EventType> eventTypes;
     private EventType selectedEventType;
-    private User user;
-    private Map<String, View> views;
-
-    private final String ADD_TEXT = "Add";
-    private final String CANCEL_TEXT = "Cancel";
 
     public EventTypeManagementActivity() { }
 
@@ -91,47 +84,42 @@ public class EventTypeManagementActivity extends AppCompatActivity {
      */
     public void onClickAddEventType(View view) {
         MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(this);
-        View dialogView = getLayoutInflater().inflate(com.example.cyclingclub.R.layout.update_event_type_dialog, null);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.update_event_type_dialog, null);
         dialogBuilder.setView(dialogView);
 
-        EditText editTextName = dialogView.findViewById(com.example.cyclingclub.R.id.editTextTypeName);
-        EditText editTextDetail = dialogView.findViewById(com.example.cyclingclub.R.id.editTextDescription);
-        Button buttonUpdate = dialogView.findViewById(com.example.cyclingclub.R.id.buttonUpdate);
-        Button buttonDelete = dialogView.findViewById(com.example.cyclingclub.R.id.buttonDelete);
+        EditText editTextTypeName = dialogView.findViewById(R.id.editTextTypeName);
+        EditText editTextDescription = dialogView.findViewById(R.id.editTextDescription);
 
-        if (editTextName == null || editTextDetail == null || buttonUpdate == null || buttonDelete == null) {
-            throw new NullPointerException("One or more views could not be found");
-        }
+        editTextTypeName.setText("");
+        editTextDescription.setText("");
 
-        editTextName.setText("");
-        editTextDetail.setText("");
-        buttonUpdate.setText(ADD_TEXT);
-        buttonDelete.setText(CANCEL_TEXT); // Changed text to "Cancel"
-        buttonDelete.setOnClickListener(null); // Set OnClickListener to null to dismiss the dialog when clicked
+        dialogBuilder.setTitle("Create Event Type");
 
-        final androidx.appcompat.app.AlertDialog b = dialogBuilder.create();
-        b.show();
+        dialogBuilder.setPositiveButton("Add", (dialog, id) -> {
+            String newEventTypeName = getTrimmedText(editTextTypeName);
+            String newDescription = getTrimmedText(editTextDescription);
 
-        buttonUpdate.setOnClickListener(view1 -> {
-            String newName = getTrimmedText(editTextName);
-            String newDetail = getTrimmedText(editTextDetail);
-
-            String message = validateTypeInput(newName, newDetail);
+            String message = validateTypeInput(newEventTypeName, newDescription);
             if (message.isEmpty()) {
-                EventType newEventType = new EventType("", newName, newDetail);
-                Administrator.createEventType(newEventType);
-                b.dismiss();
+                EventType eventType = new EventType("", newEventTypeName, newDescription);
+                Administrator.createEventType(eventType);
+                DynamicToast.makeSuccess(this, "Event type '" + newEventTypeName + "' has been created.");
+                dialog.dismiss();
             } else {
-                displayPopupMessage(message, view1);
+                DynamicToast.makeError(this, message);
             }
         });
 
-        buttonDelete.setOnClickListener(view2 -> b.dismiss());
+        dialogBuilder.setNegativeButton("Cancel", (dialog, id) -> {
+            // User cancelled the dialog
+            dialog.dismiss();
+        });
+
+        dialogBuilder.create().show();
     }
 
-    private View inflateView(int layoutId) {
-        LayoutInflater inflater = getLayoutInflater();
-        return inflater.inflate(layoutId, null);
+    public void setSelectedEventType(EventType eventType) {
+        this.selectedEventType = eventType;
     }
 
     /**
@@ -141,130 +129,77 @@ public class EventTypeManagementActivity extends AppCompatActivity {
      * @param view The view that triggered this onClick method (in this case, the Add Event button).
      */
     public void onClickAddEvent(View view) {
+        Log.d("Debug", "onClickAddEvent() called");
+
         if (selectedEventType == null) {
-            displayPopupMessage("Must select event type first!", view);
+            runOnUiThread(() -> DynamicToast.makeError(this, "Please select an event type first.").show());
+            Log.d("Debug", "selectedEventType is null");
             return;
         }
 
-        AlertDialog.Builder dialogBuilder = createDialogBuilder(com.example.cyclingclub.R.layout.update_event_type_dialog);
-        View dialogView = inflateView(com.example.cyclingclub.R.layout.event_detail);
-        views = setupDialogView(dialogView, dialogBuilder, user);
+        MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(this);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.add_event_dialog, null);
+        dialogBuilder.setView(dialogView);
 
-        EditText editEventId = findView(views, "editEventId", EditText.class);
-        EditText editEventType = findView(views, "editEventType", EditText.class);
-        EditText editEventRegion = findView(views, "editEventRegion", EditText.class);
-        EditText editEventDate = findView(views, "editEventDate", EditText.class);
-        EditText editEventRoute = findView(views, "editEventRoute", EditText.class);
-        EditText editEventDistance = findView(views, "editEventDistance", EditText.class);
-        EditText editEventElevation = findView(views, "editEventElevation", EditText.class);
-        Spinner spinner = findView(views, "spinnerLevel", Spinner.class);
-        EditText editEventFee = findView(views, "editEventFee", EditText.class);
-        EditText editEventLimit = findView(views, "editEventLimit", EditText.class);
-        Button buttonUpdate = findView(views, "buttonUpdate", Button.class);
-        Button buttonDelete = findView(views, "buttonDelete", Button.class);
+        EditText editEventName = dialogView.findViewById(R.id.edit_event_name);
+        EditText editEventRegion = dialogView.findViewById(R.id.edit_event_region);
+        EditText editEventDate = dialogView.findViewById(R.id.edit_event_date);
+        EditText editEventDistance = dialogView.findViewById(R.id.edit_event_distance);
+        EditText editEventElevation = dialogView.findViewById(R.id.edit_route_eleveation);
+        Spinner spinnerDifficultyLevel = dialogView.findViewById(R.id.spinner_difficulty_level);
+        EditText editEventFee = dialogView.findViewById(R.id.edit_event_fee);
+        EditText editEventLimit = dialogView.findViewById(R.id.edit_participant_limit);
 
-        if (editEventId == null || editEventType == null || editEventRegion == null || editEventDate == null || editEventRoute == null || editEventDistance == null || editEventElevation == null || spinner == null || editEventFee == null || editEventLimit == null || buttonUpdate == null || buttonDelete == null) {
-            throw new NullPointerException("One or more views could not be found");
+        dialogBuilder.setTitle("Create '" + selectedEventType.getTypeName() + "' Type Event");
+
+        // Create an ArrayAdapter with numeric values from 1 to 5
+        if (spinnerDifficultyLevel != null) {
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                    dialogBuilder.getContext(),
+                    R.array.number_array,
+                    android.R.layout.simple_spinner_item
+            );
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerDifficultyLevel.setAdapter(adapter);
+            spinnerDifficultyLevel.setSelection(0);
         }
 
-        // Disable the Update and Delete buttons if the user is not a cycling club
-        if (!user.getRole().equals("cycling club")) {
-            buttonUpdate.setEnabled(false);
-            buttonDelete.setEnabled(false);
-        }
-
-        buttonUpdate.setText(ADD_TEXT);
-        buttonDelete.setText(CANCEL_TEXT); // Changed text to "Cancel"
-        buttonDelete.setOnClickListener(null); // Set OnClickListener to null to dismiss the dialog when clicked
-
-        dialogBuilder.setTitle("Create New Event");
-        editEventType.setText(selectedEventType.getTypeName());
-        TextView eventTypeDetail = findView(views, "eventTypeDetail", TextView.class);
-        eventTypeDetail.setText(selectedEventType.getDetail());
-
-        AlertDialog dialog = dialogBuilder.create();
-        dialog.show();
-
-        setupUpdateButtonListener(buttonUpdate, editEventId, editEventType, editEventRegion, editEventDate, editEventRoute, editEventDistance, editEventElevation, spinner, editEventFee, editEventLimit, dialog);
-    }
-
-    /**
-     * Sets up the dialog view and the buttons.
-     * Disables the Update and Delete buttons if the user is not an Administrator.
-     *
-     * @param dialogView The view of the dialog.
-     * @param dialogBuilder The builder for the dialog.
-     * @param user The current user.
-     * @return A map of the views in the dialog.
-     */
-    private Map<String, View> setupDialogView(View dialogView, AlertDialog.Builder dialogBuilder, User user) {
-        Map<String, View> views = new HashMap<>();
-
-        views.put("editTextName", dialogView.findViewById(com.example.cyclingclub.R.id.editTextTypeName));
-        views.put("editTextDetail", dialogView.findViewById(com.example.cyclingclub.R.id.editTextDescription));
-        views.put("buttonUpdate", dialogView.findViewById(com.example.cyclingclub.R.id.buttonUpdate));
-        views.put("buttonDelete", dialogView.findViewById(com.example.cyclingclub.R.id.buttonDelete));
-        views.put("editEventId", dialogView.findViewById(com.example.cyclingclub.R.id.editEventId));
-        views.put("editEventType", dialogView.findViewById(com.example.cyclingclub.R.id.editEventType));
-        views.put("editEventRegion", dialogView.findViewById(com.example.cyclingclub.R.id.editEventRegion));
-        views.put("editEventDate", dialogView.findViewById(com.example.cyclingclub.R.id.editEventDate));
-        views.put("editEventRoute", dialogView.findViewById(com.example.cyclingclub.R.id.editEventRoute));
-        views.put("editEventDistance", dialogView.findViewById(com.example.cyclingclub.R.id.editEventDistance));
-        views.put("editEventElevation", dialogView.findViewById(com.example.cyclingclub.R.id.editEventElevation));
-        views.put("spinnerLevel", dialogView.findViewById(com.example.cyclingclub.R.id.spinnerLevel));
-        views.put("editEventFee", dialogView.findViewById(com.example.cyclingclub.R.id.editEventFee));
-        views.put("editEventLimit", dialogView.findViewById(R.id.editEventLimit));
-
-        // Disable the Update and Delete buttons if the user is not an Administrator
-        if (!user.getRole().equals("Administrator")) {
-            Objects.requireNonNull(views.get("buttonUpdate")).setEnabled(false);
-            Objects.requireNonNull(views.get("buttonDelete")).setEnabled(false);
-        }
-
-        dialogBuilder.setTitle("Event Types Detail");
-
-        return views;
-    }
-
-    /**
-     * Sets up the OnClickListener for the update button.
-     *
-     * @param button The update button.
-     * @param editEventId The EditText for the event id.
-     * @param editEventType The EditText for the event type.
-     * @param editEventRegion The EditText for the event region.
-     * @param editEventDate The EditText for the event date.
-     * @param editEventRoute The EditText for the event route.
-     * @param editEventDistance The EditText for the event distance.
-     * @param editEventElevation The EditText for the event elevation.
-     * @param spinner The Spinner for the event level.
-     * @param editEventFee The EditText for the event fee.
-     * @param editEventLimit The EditText for the event limit.
-     * @param dialog The dialog to be dismissed after the event is updated.
-     */
-    private void setupUpdateButtonListener(Button button, EditText editEventId, EditText editEventType, EditText editEventRegion, EditText editEventDate, EditText editEventRoute, EditText editEventDistance, EditText editEventElevation, Spinner spinner, EditText editEventFee, EditText editEventLimit, AlertDialog dialog) {
-        button.setOnClickListener(view -> {
-            String id = getTrimmedText(editEventId);
-            String type = getTrimmedText(editEventType);
-            String region = getTrimmedText(editEventRegion);
-            String date = getTrimmedText(editEventDate);
-            String route = getTrimmedText(editEventRoute);
-            int level = getParsedInt(spinner);
-            double fee = parseDouble(getTrimmedText(editEventFee));
-            int limit = parseInt(getTrimmedText(editEventLimit));
-            int distance = parseInt(getTrimmedText(editEventDistance));
-            int elevation = parseInt(getTrimmedText(editEventElevation));
-
-            String message = validateInput(id, region, date, route, fee, limit, distance, elevation);
-            if (TextUtils.isEmpty(message)) {
-                Event event = new Event("", id, type, selectedEventType.getDetail(), region, date, route, level, fee, limit, distance, elevation);
-
-                Administrator.createEvent(event);
-                dialog.dismiss();
+        dialogBuilder.setPositiveButton("Add", (dialog, id) -> {
+            String eventName = getTrimmedText(editEventName);
+            String eventRegion = getTrimmedText(editEventRegion);
+            String eventDate = getTrimmedText(editEventDate);
+            String eventDistance = getTrimmedText(editEventDistance);
+            String eventElevation = getTrimmedText(editEventElevation);
+            int difficultyLevel;
+            if (spinnerDifficultyLevel != null) {
+                difficultyLevel = getParsedInt(spinnerDifficultyLevel);
             } else {
-                displayPopupMessage(message, view);
+                difficultyLevel = 1;
             }
+            double eventFee = Double.parseDouble(getTrimmedText(editEventFee));
+            int eventLimit = Integer.parseInt(getTrimmedText(editEventLimit));
+
+            String validationMessage = validateInput(eventName, eventRegion, eventDate, eventFee, eventLimit, eventDistance, eventElevation);
+            if (!validationMessage.isEmpty()) {
+                runOnUiThread(() -> DynamicToast.makeError(this, validationMessage).show());
+                Log.d("Debug", "Validation failed: " + validationMessage);
+                return;
+            }
+
+            Event event = new Event("", eventName, selectedEventType.getTypeName(), selectedEventType.getDetail(), eventRegion, eventDate, difficultyLevel, eventFee, eventLimit, eventDistance, eventElevation);
+
+            // Add the event to the Firebase Realtime Database
+            Administrator.createEvent(event);
+            runOnUiThread(() -> DynamicToast.makeSuccess(this, "Event '" + eventName + "' has been created.").show());
+            dialog.dismiss();
         });
+
+        dialogBuilder.setNegativeButton("Cancel", (dialog, id) -> {
+            // User cancelled the dialog
+            dialog.dismiss();
+        });
+
+        dialogBuilder.create().show();
     }
 
     /**
@@ -297,14 +232,13 @@ public class EventTypeManagementActivity extends AppCompatActivity {
      * @param eventId The event id.
      * @param eventRegion The event region.
      * @param eventDate The event date.
-     * @param eventRoute The event route.
      * @param eventFee The event fee.
      * @param eventLimit The event limit.
      * @param eventDistance The event distance.
      * @param eventElevation The event elevation.
      * @return A validation message if there's an issue, or an empty string if everything is valid.
      */
-    private String validateInput(String eventId, String eventRegion, String eventDate, String eventRoute, double eventFee, int eventLimit, int eventDistance, int eventElevation) {
+    private String validateInput(String eventId, String eventRegion, String eventDate, double eventFee, int eventLimit, String eventDistance, String eventElevation) {
         // Get the singleton instance of the Utils class
         Utils utils = Utils.getInstance();
 
@@ -316,11 +250,10 @@ public class EventTypeManagementActivity extends AppCompatActivity {
         validations.put("ID name must start with letter and can not be blank. ", utils.isValidString(eventId));
         validations.put("Region must start with letter and can not be blank. ", utils.isValidString(eventRegion));
         validations.put("Date must be in format YYYY-MM-DD. ", utils.isValidDate(eventDate));
-        validations.put("Route must start with letter and can not be blank. ", utils.isValidString(eventRoute));
         validations.put("Fee must be a number. ", utils.isValidNumber(String.valueOf(eventFee)));
         validations.put("Limit must be a number. ", utils.isValidNumber(String.valueOf(eventLimit)));
-        validations.put("Distance must be a number. ", utils.isValidNumber(String.valueOf(eventDistance)));
-        validations.put("Elevation must be a number. ", utils.isValidNumber(String.valueOf(eventElevation)));
+        validations.put("Distance must be using a valid unit (km, meters, or miles).", utils.isValidUnit(String.valueOf(eventDistance)));
+        validations.put("Elevation must be using a valid unit (km, meters, or miles).", utils.isValidUnit(String.valueOf(eventElevation)));
 
         // Iterate over the entries in the map
         for (Map.Entry<String, Boolean> entry : validations.entrySet()) {
@@ -335,27 +268,6 @@ public class EventTypeManagementActivity extends AppCompatActivity {
     }
 
     /**
-     * Displays a popup message.
-     *
-     * @param message The message to be displayed.
-     * @param anchorView The view to anchor the popup message to.
-     */
-    private void displayPopupMessage(String message, View anchorView) {
-        LinearLayout layout = createNewLinearLayout();
-        layout.setLayoutParams(new ViewGroup.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT));
-
-        layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setGravity(Gravity.CENTER);
-        TextView textView = new TextView(this);
-        textView.setText(message);
-        textView.setTextColor(Color.RED);
-
-        PopupWindow popupWindow = new PopupWindow(layout, ViewGroup.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
-        popupWindow.setContentView(textView);
-        popupWindow.showAsDropDown(anchorView, 10, 0);
-    }
-
-    /**
      * Retrieves the text from an EditText, trims any leading or trailing whitespace, and returns the result.
      *
      * @param editText The EditText from which to retrieve the text.
@@ -366,32 +278,6 @@ public class EventTypeManagementActivity extends AppCompatActivity {
     }
 
     /**
-     * Creates a new LinearLayout with the current context.
-     *
-     * @return A new LinearLayout instance.
-     */
-    private LinearLayout createNewLinearLayout() {
-        return new LinearLayout(this);
-    }
-
-    /**
-     * Finds a view by its id and casts it to the specified type.
-     *
-     * @param views The parent views that contains the view to find.
-     * @param key The key of the view to find.
-     * @param type The type to cast the found view to.
-     * @param <T> The type of the view.
-     * @return The found view, cast to the specified type.
-     */
-    private <T extends View> T findView(Map<String, View> views, String key, Class<T> type) {
-        View view = views.get(key);
-        if (view == null) {
-            throw new NullPointerException("View with key " + key + " not found in views map");
-        }
-        return type.cast(view);
-    }
-
-    /**
      * Retrieves the selected item from a Spinner, converts it to an integer, and returns the result.
      *
      * @param spinner The Spinner from which to retrieve the selected item.
@@ -399,39 +285,5 @@ public class EventTypeManagementActivity extends AppCompatActivity {
      */
     private int getParsedInt(Spinner spinner) {
         return Integer.parseInt(spinner.getSelectedItem().toString());
-    }
-
-    /**
-     * Creates a new AlertDialog.Builder and sets the view.
-     *
-     * @param layoutId The layout resource ID of the view to inflate and set on the dialog.
-     * @return A new AlertDialog.Builder with the view set.
-     */
-    private AlertDialog.Builder createDialogBuilder(int layoutId) {
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        View dialogView = inflater.inflate(layoutId, null);
-        dialogBuilder.setView(dialogView);
-        return dialogBuilder;
-    }
-
-    /**
-     * Parses a string to a double.
-     *
-     * @param value The string to parse.
-     * @return The parsed double.
-     */
-    private double parseDouble(String value) {
-        return Double.parseDouble(value);
-    }
-
-    /**
-     * Parses a string to an integer.
-     *
-     * @param value The string to parse.
-     * @return The parsed integer.
-     */
-    private int parseInt(String value) {
-        return Integer.parseInt(value);
     }
 }

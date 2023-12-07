@@ -28,8 +28,8 @@ public class Administrator extends User {
         super("admin@gcc.ca", username, "Administrator", password, "yxgR8rdVb9q6P4NPvexREQ==");
 
         // Initialize events and eventTypes lists
-        events = new ArrayList<Event>();
-        eventTypes = new ArrayList<EventType>();
+        events = new ArrayList<>();
+        eventTypes = new ArrayList<>();
 
         // Fetch current state of events and eventTypes from the database
         events = getEvents();
@@ -165,12 +165,12 @@ public class Administrator extends User {
     }
 
     /**
-     * Returns a reference to the `clubProfiles` node in the Firebase database.
+     * Returns a reference to the `profiles` node in the Firebase database.
      *
-     * @return A DatabaseReference pointing to the `clubProfiles` node.
+     * @return A DatabaseReference pointing to the `profiles` node.
      */
     public static DatabaseReference getClubDB() {
-        return FirebaseDatabase.getInstance().getReference("clubProfiles");
+        return FirebaseDatabase.getInstance().getReference("profiles");
     }
 
     /**

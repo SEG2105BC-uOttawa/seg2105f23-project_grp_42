@@ -15,12 +15,24 @@ public class CyclingClub {
 
     private List<Map<String, Object>> rateComments;
 
+    /**
+     * No-argument constructor for Firebase.
+     */
+    public CyclingClub() {}
 
-    // Constructors (if needed)
-
-    // Constructor
-    public CyclingClub() {
-        this.rateComments = new ArrayList<>();
+    /**
+     * Full constructor for the CyclingClub class.
+     *
+     * @param key The handle of this club in the database.
+     * @param clubName The name of the club.
+     * @param phoneNumber The phone number of the club.
+     * @param region The region of the club.
+     */
+    public CyclingClub(String key, String clubName, String phoneNumber, String region) {
+        this.key = key != null ? key : "";
+        this.clubName = clubName != null ? clubName : "";
+        this.phoneNumber = phoneNumber != null ? phoneNumber : "";
+        this.region = region != null ? region : "";
     }
 
 

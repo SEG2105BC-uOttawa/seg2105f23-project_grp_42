@@ -7,17 +7,16 @@ package com.example.cyclingclub;
 public class Event {
 
     private String key;   //The handle of this event in the database
-    private String eventId;
-    private String eventType;
-    private String eventDetail;
-    private String eventRegion;
-    private String eventDate;
-    private String eventRoute;
-    private int eventLevel;
-    private double eventFee;
-    private int eventLimit;
-    private int eventDistance;
-    private int eventElevation;
+    private String id;
+    private String type;
+    private String detail;
+    private String region;
+    private String date;
+    private int level;
+    private double fee;
+    private int limit;
+    private String distance;
+    private String elevation;
 
     private String username;
 
@@ -30,31 +29,29 @@ public class Event {
      * Full constructor for the Event class.
      *
      * @param key The handle of this event in the database.
-     * @param eventId The id of the event.
-     * @param eventType The type of the event.
-     * @param eventDetail The detail of the event.
-     * @param eventRegion The region of the event.
-     * @param eventDate The date of the event.
-     * @param eventRoute The route of the event.
-     * @param eventLevel The level of the event.
-     * @param eventFee The fee of the event.
-     * @param eventLimit The limit of the event.
-     * @param eventDistance The distance of the event.
-     * @param eventElevation The elevation of the event.
+     * @param id The id of the event.
+     * @param type The type of the event.
+     * @param detail The detail of the event.
+     * @param region The region of the event.
+     * @param date The date of the event.
+     * @param level The level of the event.
+     * @param fee The fee of the event.
+     * @param limit The limit of the event.
+     * @param distance The distance of the event.
+     * @param elevation The elevation of the event.
      */
-    public Event(String key, String eventId, String eventType, String eventDetail, String eventRegion, String eventDate, String eventRoute, int eventLevel, double eventFee, int eventLimit, int eventDistance, int eventElevation) {
-        this.key = key;
-        this.eventId = eventId;
-        this.eventType = eventType;
-        this.eventDetail = eventDetail;
-        this.eventRegion = eventRegion;
-        this.eventDate = eventDate;
-        this.eventRoute = eventRoute;
-        this.eventLevel = eventLevel;
-        this.eventFee = eventFee;
-        this.eventLimit = eventLimit;
-        this.eventDistance = eventDistance;
-        this.eventElevation = eventElevation;
+    public Event(String key, String id, String type, String detail, String region, String date, int level, double fee, int limit, String distance, String elevation) {
+        this.key = key != null ? key : "";
+        this.id = id != null ? id : "";
+        this.type = type != null ? type : "";
+        this.detail = detail != null ? detail : "";
+        this.region = region != null ? region : "";
+        this.date = date != null ? date : "";
+        this.level = level;
+        this.fee = fee;
+        this.limit = limit;
+        this.distance = distance != null ? distance : "";
+        this.elevation = elevation != null ? elevation : "";
     }
 
     /**
@@ -81,7 +78,7 @@ public class Event {
      * @return The id of the event.
      */
     public String getId() {
-        return eventId;
+        return id;
     }
 
     /**
@@ -90,7 +87,7 @@ public class Event {
      * @return The type of the event.
      */
     public String getType() {
-        return eventType;
+        return type;
     }
 
     /**
@@ -99,7 +96,7 @@ public class Event {
      * @return The detail of the event.
      */
     public String getDetail() {
-        return eventDetail;
+        return detail;
     }
 
     /**
@@ -108,16 +105,7 @@ public class Event {
      * @return The region of the event.
      */
     public String getRegion() {
-        return eventRegion;
-    }
-
-    /**
-     * Returns the route of the event.
-     *
-     * @return The route of the event.
-     */
-    public String getRoute() {
-        return eventRoute;
+        return region;
     }
 
     /**
@@ -126,7 +114,7 @@ public class Event {
      * @return The date of the event.
      */
     public String getDate() {
-        return eventDate;
+        return date;
     }
 
     /**
@@ -135,7 +123,7 @@ public class Event {
      * @return The level of the event.
      */
     public int getLevel() {
-        return eventLevel;
+        return level;
     }
 
     /**
@@ -144,7 +132,7 @@ public class Event {
      * @return The fee of the event.
      */
     public double getFee() {
-        return eventFee;
+        return fee;
     }
 
     /**
@@ -153,7 +141,7 @@ public class Event {
      * @return The limit of the event.
      */
     public int getLimit() {
-        return eventLimit;
+        return limit;
     }
 
     /**
@@ -161,8 +149,8 @@ public class Event {
      *
      * @return The distance of the event.
      */
-    public int getDistance() {
-        return eventDistance;
+    public String getDistance() {
+        return distance;
     }
 
     /**
@@ -170,8 +158,8 @@ public class Event {
      *
      * @return The elevation of the event.
      */
-    public int getElevation() {
-        return eventElevation;
+    public String getElevation() {
+        return elevation;
     }
 
     /**
@@ -189,97 +177,7 @@ public class Event {
      * @param id The id of the event.
      */
     public void setId(String id) {
-        this.eventId = id;
-    }
-
-    /**
-     * Sets the type of the event.
-     *
-     * @param type The type of the event.
-     */
-    public void setType(String type) {
-        this.eventType = type;
-    }
-
-    /**
-     * Sets the detail of the event.
-     *
-     * @param detail The detail of the event.
-     */
-    public void setDetail(String detail) {
-        this.eventDetail = detail;
-    }
-
-    /**
-     * Sets the region of the event.
-     *
-     * @param region The region of the event.
-     */
-    public void setRegion(String region) {
-        this.eventRegion = region;
-    }
-
-    /**
-     * Sets the route of the event.
-     *
-     * @param route The route of the event.
-     */
-    public void setRoute(String route) {
-        this.eventRoute = route;
-    }
-
-    /**
-     * Sets the date of the event.
-     *
-     * @param date The date of the event.
-     */
-    public void setDate(String date) {
-        this.eventDate = date;
-    }
-
-    /**
-     * Sets the level of the event.
-     *
-     * @param level The level of the event.
-     */
-    public void setLevel(int level) {
-        this.eventLevel = level;
-    }
-
-    /**
-     * Sets the fee of the event.
-     *
-     * @param fee The fee of the event.
-     */
-    public void setFee(double fee) {
-        this.eventFee = fee;
-    }
-
-    /**
-     * Sets the limit of the event.
-     *
-     * @param limit The limit of the event.
-     */
-    public void setLimit(int limit) {
-        this.eventLimit = limit;
-    }
-
-    /**
-     * Sets the distance of the event.
-     *
-     * @param distance The distance of the event.
-     */
-    public void setDistance(int distance) {
-        this.eventDistance = distance;
-    }
-
-    /**
-     * Sets the elevation of the event.
-     *
-     * @param elevation The elevation of the event.
-     */
-    public void setElevation(int elevation) {
-        this.eventElevation = elevation;
+        this.id = id;
     }
 
     /**

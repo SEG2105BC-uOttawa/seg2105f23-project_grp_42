@@ -131,7 +131,6 @@ public class EventManagementActivity extends AppCompatActivity {
         EditText editTextType = dialogView.findViewById(R.id.editEventType);
         EditText editTextRegion = dialogView.findViewById(R.id.editEventRegion);
         EditText editTextDate = dialogView.findViewById(R.id.editEventDate);
-        EditText editTextRoute = dialogView.findViewById(R.id.editEventRoute);
         EditText editTextDistance = dialogView.findViewById(R.id.editEventDistance);
         EditText editTextElevation = dialogView.findViewById(R.id.editEventElevation);
         EditText editTextFee = dialogView.findViewById(R.id.editEventFee);
@@ -146,7 +145,6 @@ public class EventManagementActivity extends AppCompatActivity {
         editTextType.setText(event.getType());
         editTextRegion.setText(event.getRegion());
         editTextDate.setText(event.getDate());
-        editTextRoute.setText(event.getRoute());
         editTextDistance.setText(String.format(Locale.US, "%d", event.getDistance()));
         editTextElevation.setText(String.format(Locale.US, "%d", event.getElevation()));
         editTextFee.setText(String.format(Locale.US, "%.2f", event.getFee()));
@@ -184,15 +182,14 @@ public class EventManagementActivity extends AppCompatActivity {
         String type = ((EditText) dialog.findViewById(R.id.editEventType)).getText().toString();
         String region = ((EditText) dialog.findViewById(R.id.editEventRegion)).getText().toString();
         String date = ((EditText) dialog.findViewById(R.id.editEventDate)).getText().toString();
-        String route = ((EditText) dialog.findViewById(R.id.editEventRoute)).getText().toString();
-        int distance = Integer.parseInt(((EditText) dialog.findViewById(R.id.editEventDistance)).getText().toString());
-        int elevation = Integer.parseInt(((EditText) dialog.findViewById(R.id.editEventElevation)).getText().toString());
+        String distance = ((EditText) dialog.findViewById(R.id.editEventDistance)).getText().toString();
+        String elevation = ((EditText) dialog.findViewById(R.id.editEventElevation)).getText().toString();
         double fee = Double.parseDouble(((EditText) dialog.findViewById(R.id.editEventFee)).getText().toString());
         int limit = Integer.parseInt(((EditText) dialog.findViewById(R.id.editEventLimit)).getText().toString());
         int level = ((Spinner) dialog.findViewById(R.id.spinnerLevel)).getSelectedItemPosition() + 1;
 
         // Create a new Event object with these details
-        Event updatedEvent = new Event(event.getKey(), id, type, event.getDetail(), region, date, route, level, fee, limit, distance, elevation);
+        Event updatedEvent = new Event(event.getKey(), id, type, event.getDetail(), region, date, level, fee, limit, distance, elevation);
         // Update the event in the database
         Administrator.updateEvent(updatedEvent);
 

@@ -2,6 +2,8 @@ package com.example.cyclingclub.utils;
 
 import java.security.SecureRandom;
 import java.security.spec.KeySpec;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.crypto.SecretKeyFactory;
@@ -26,6 +28,7 @@ public class Utils {
     private static final String STRING_PATTERN = "^[A-Za-z][A-Za-z0-9 ]*$";
     private static final String SOCIAL_MEDIA_PATTERN = "^(https?:\\/\\/)?(www\\.)?((facebook|twitter|instagram|linkedin|x)\\.com|plus\\.google\\.com)\\/.*$";
     private static final String PHONE_NUMBER_PATTERN = "^\\d{10}$";
+    private static final String UNIT_PATTERN = "^\\d+(\\s)?(mi|km|m)$";
 
     private Utils() { }
 
@@ -113,6 +116,18 @@ public class Utils {
     }
 
     /**
+     * Checks whether a given string is a valid measuring unit.
+     *
+     * @param unit The string to check.
+     * @return True if the string is a valid unit, false otherwise.
+     */
+    public boolean isValidUnit(String unit) {
+        Pattern pattern = Pattern.compile(UNIT_PATTERN);
+        Matcher matcher = pattern.matcher(unit);
+        return matcher.matches();
+    }
+
+    /**
      * Validate a strong password.
      *
      * @param password The password to validate.
@@ -177,7 +192,7 @@ public class Utils {
      * Validates a social media link based on the defined SOCIAL_MEDIA_PATTERN.
      * The link is considered valid if it follows the standard URL format.
      *
-     * @param s The social media link to validate.
+     * @param link The social media link to validate.
      * @return True if the link is valid, false otherwise.
      */
     public boolean isValidSocialMediaLink(String link) {
